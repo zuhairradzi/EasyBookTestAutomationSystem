@@ -18,6 +18,7 @@ namespace EasyBookTestAutomationSystem
     {
         string ServerWanted;
         string ServerNameWanted;
+        string ServerBQwanted;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
         private IWebDriver driver;
@@ -54,6 +55,7 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine("4.0.1.a");
                     ServerWanted = "S1";
                     ServerNameWanted = "G3ASPRO01";
+                    ServerBQwanted = "01";
 
                     if (footerStr.Contains(ServerNameWanted))
                     {
@@ -87,6 +89,7 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine("4.0.1.b");
                     ServerWanted = "S2";
                     ServerNameWanted = "G3ASPRO02";
+                    ServerBQwanted = "02";
 
                     if (footerStr.Contains(ServerNameWanted))
                     {

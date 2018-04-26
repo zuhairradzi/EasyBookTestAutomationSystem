@@ -141,6 +141,69 @@ namespace EasyBookTestAutomationSystem
             }
 
 
+            /*---------------------------------------------------------------------------------------------------------//
+               Bus
+                   Backend
+                        S1
+          //---------------------------------------------------------------------------------------------------------*/
+
+            //server 1 - Backend - bus - one way - paypal myr
+            else if (server == "s1" && site == "bq" && product == "bus" && tripType == "oneway" && paymentType == "myr")
+            {
+                //Console.WriteLine("2.0.3");
+                return testCaseID = "S1-Backend-Bus-oneWay-myr";
+            }
+
+            //server 1 - Backend - bus - one way - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "bus" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Bus-oneWay-sgd";
+            }
+
+            //server 1 - Backend - bus - return - paypal myr
+            else if (server == "s1" && site == "bq" && product == "bus" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Bus-return-myr";
+            }
+
+            //server 1 - Backend - bus - return - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "bus" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Bus-return-sgd";
+            }
+
+
+            /*---------------------------------------------------------------------------------------------------------//
+               Bus
+                   Backend
+                        S2
+          //---------------------------------------------------------------------------------------------------------*/
+
+            //server 2 - backend - bus - one way - paypal myr
+            else if (server == "s2" && site == "bq" && product == "bus" && tripType == "oneway" && paymentType == "myr")
+            {
+                //Console.WriteLine("2.0.4");
+                return testCaseID = "S2-Backend-Bus-oneWay-myr";
+            }
+
+            //server 2 - backend - bus - one way - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "bus" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Bus-oneWay-sgd";
+            }
+
+            //server 2 - backend - bus - return - paypal myr
+            else if (server == "s2" && site == "bq" && product == "bus" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Bus-return-myr";
+            }
+
+            //server 2 - backend - bus - return - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "bus" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Bus-return-sgd";
+            }
+
 
 
             //--------------------------------------CAR----------------------------------------------------------------//
@@ -220,7 +283,45 @@ namespace EasyBookTestAutomationSystem
                 return testCaseID = "S2-Live-Car-oneWay-sgd";
             }
 
-         
+            //--------------------------------------CAR----------------------------------------------------------------//
+            /*---------------------------------------------------------------------------------------------------------//
+                 Car
+                     Backend
+                            S1
+            //---------------------------------------------------------------------------------------------------------*/
+
+            //server 1 - Backend - car - one way - paypal myr
+            if (server == "s1" && site == "bq" && product == "car" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Car-oneWay-myr";
+            }
+
+            //server 1 - Backend - car - one way - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "car" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Car-oneWay-sgd";
+            }
+
+
+            /*---------------------------------------------------------------------------------------------------------//
+                 Car
+                     Backend
+                            S2
+             //---------------------------------------------------------------------------------------------------------*/
+
+            //server 2 - Backend - car - one way - paypal myr
+            else if (server == "s2" && site == "bq" && product == "car" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Car-oneWay-myr";
+            }
+
+            //server 2 - testBackend - car - one way - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "car" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Car-oneWay-sgd";
+            }
+
+
 
 
 
@@ -349,6 +450,69 @@ namespace EasyBookTestAutomationSystem
             }
 
 
+            //--------------------------------------FERRY----------------------------------------------------------------//
+            /*---------------------------------------------------------------------------------------------------------//
+                 Ferry
+                     Backend
+                            S1
+            //---------------------------------------------------------------------------------------------------------*/
+
+            //server 1 - Backend - ferry - one way - paypal myr
+            if (server == "s1" && site == "bq" && product == "ferry" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Ferry-oneWay-myr";
+            }
+
+            //server 1 - Backend - ferry - one way - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "ferry" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Ferry-oneWay-sgd";
+            }
+
+            //server 1 - Backend - ferry - return - paypal myr
+            else if (server == "s1" && site == "bq" && product == "ferry" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Ferry-return-myr";
+            }
+
+            //server 1 - Backend - ferry - return - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "ferry" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Ferry-return-sgd";
+            }
+
+
+            /*---------------------------------------------------------------------------------------------------------//
+                 Ferry
+                     Backend
+                            S2
+             //---------------------------------------------------------------------------------------------------------*/
+
+            //server 2 - Backend - ferry - one way - paypal myr
+            else if (server == "s2" && site == "bq" && product == "ferry" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Ferry-oneWay-myr";
+            }
+
+            //server 2 - Backend - ferry - one way - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "ferry" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Ferry-oneWay-sgd";
+            }
+
+            //server 2 - Backend - ferry - return - paypal myr
+            else if (server == "s2" && site == "bq" && product == "ferry" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Ferry-return-myr";
+            }
+
+            //server 2 - Backend - ferry - return - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "ferry" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Ferry-return-sgd";
+            }
+
+
 
             //--------------------------------------TRAIN----------------------------------------------------------------//
             /*---------------------------------------------------------------------------------------------------------//
@@ -472,6 +636,68 @@ namespace EasyBookTestAutomationSystem
             else if (server == "s2" && site == "live" && product == "train" && tripType == "return" && paymentType == "sgd")
             {
                 return testCaseID = "S2-Live-Train-return-sgd";
+            }
+
+            //--------------------------------------TRAIN----------------------------------------------------------------//
+            /*---------------------------------------------------------------------------------------------------------//
+                 Train
+                     Backend
+                            S1
+            //---------------------------------------------------------------------------------------------------------*/
+
+            //server 1 - Backend - train - one way - paypal myr
+            if (server == "s1" && site == "bq" && product == "train" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Train-oneWay-myr";
+            }
+
+            //server 1 - Backend - train - one way - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "train" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Train-oneWay-sgd";
+            }
+
+            //server 1 - Backend - train - return - paypal myr
+            else if (server == "s1" && site == "bq" && product == "train" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S1-Backend-Train-return-myr";
+            }
+
+            //server 1 - Backend - train - return - paypal sgd
+            else if (server == "s1" && site == "bq" && product == "train" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S1-Backend-Train-return-sgd";
+            }
+
+
+            /*---------------------------------------------------------------------------------------------------------//
+                 Train
+                     Backend
+                            S2
+             //---------------------------------------------------------------------------------------------------------*/
+
+            //server 2 - Backend - train - one way - paypal myr
+            else if (server == "s2" && site == "bq" && product == "train" && tripType == "oneway" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Train-oneWay-myr";
+            }
+
+            //server 2 - Backend - train - one way - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "train" && tripType == "oneway" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Train-oneWay-sgd";
+            }
+
+            //server 2 - Backend - train - return - paypal myr
+            else if (server == "s2" && site == "bq" && product == "train" && tripType == "return" && paymentType == "myr")
+            {
+                return testCaseID = "S2-Backend-Train-return-myr";
+            }
+
+            //server 2 - Backend - train - return - paypal sgd
+            else if (server == "s2" && site == "bq" && product == "train" && tripType == "return" && paymentType == "sgd")
+            {
+                return testCaseID = "S2-Backend-Train-return-sgd";
             }
 
 

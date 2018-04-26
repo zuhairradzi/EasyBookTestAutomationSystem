@@ -13,19 +13,19 @@ namespace EasyBookTestAutomationSystem
         {
             if (testCaseID.ToLower().Contains("test")) 
             {
-                Console.WriteLine("3.0.1");
+                //Console.WriteLine("3.0.1");
                 site = "https://test.easybook.com";
                 return site;
             }
             if (testCaseID.ToLower().Contains("live"))
             {
-                Console.WriteLine("3.0.2");
+                //Console.WriteLine("3.0.2");
                 site = "https://www.easybook.com";
                 return site;
             }
-            if (testCaseID.ToLower().Contains("bq"))
+            if (testCaseID.ToLower().Contains("backend"))
             {
-                site = "https://backend.easybook.com";
+                site = "http://backend.easybook.com";
                 return site;
             }
             Console.WriteLine("Wrong site input.");

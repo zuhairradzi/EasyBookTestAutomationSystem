@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="ClassOrderSummary.cs" />
     <Compile Include="ClassTestBuy.cs" />
+    <Compile Include="LoginEBSite.cs" />
     <Compile Include="LoginETAS.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="OpenIntendedServer.cs" />
@@ -112,6 +113,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EBLogin.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.38\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.38\build\Selenium.Chrome.WebDriver.targets')" />

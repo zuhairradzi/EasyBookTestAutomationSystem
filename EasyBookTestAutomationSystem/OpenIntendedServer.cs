@@ -116,6 +116,7 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
+                string EBUrl = EBurl;
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
                 var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
@@ -173,6 +174,7 @@ namespace EasyBookTestAutomationSystem
             //Console.WriteLine("Server1Test.1 - chrome launch");
             //Console.WriteLine("URL = " + EBUrl);
             driver.Navigate().GoToUrl(EBUrl);
+            driver.Manage().Window.Maximize();
             //Console.WriteLine("Server1Test.1 - go to url");
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
@@ -222,6 +224,7 @@ namespace EasyBookTestAutomationSystem
             //Console.WriteLine("Server1Test.1");
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(EBUrl);
+            driver.Manage().Window.Maximize();
             //Console.WriteLine("Server2Test.1");
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
