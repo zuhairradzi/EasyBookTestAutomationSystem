@@ -35,7 +35,6 @@ namespace EasyBookTestAutomationSystem
             try
             {
                 OpenIntendedServer test1 = new OpenIntendedServer(driver);
-                //Console.WriteLine("4.0.1");
                 driver.Navigate().GoToUrl(EBurl);
                 driver.Manage().Window.Maximize();
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
@@ -46,32 +45,27 @@ namespace EasyBookTestAutomationSystem
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine(footerStr);
-                // string server = footerStr.Substring(142, 10);
-                //string serverName = server.Trim();
                 Console.WriteLine();
                 Console.WriteLine();
+
                 if (TestID.ToLower().Contains("s1"))
                 {
-                    //Console.WriteLine("4.0.1.a");
                     ServerWanted = "S1";
                     ServerNameWanted = "G3ASPRO01";
                     ServerBQwanted = "01";
 
                     if (footerStr.Contains(ServerNameWanted))
                     {
-                        //Console.WriteLine("4.0.1.a.1");
                         Console.WriteLine("Current server is : "+ ServerNameWanted);
                         Console.WriteLine("Server "+ServerWanted+" found");
                         Console.WriteLine();
                         Console.WriteLine();
-                        //Console.WriteLine("3.4.1");
 
 
                     }
 
                     else if (!footerStr.Contains(ServerNameWanted))
                     {
-                        //Console.WriteLine("4.0.1.a.2");
                         Console.WriteLine("Current server is : G3ASPRO02");
                         Console.WriteLine("Server " + ServerWanted + " not found");
                         Console.WriteLine();
@@ -80,29 +74,29 @@ namespace EasyBookTestAutomationSystem
 
                         test1.LaunchBrowser(EBurl);
                         test1.ConnectServer1(EBurl);
-                        //Console.WriteLine("3.4.2");
+             
                     }
 
                 }
                 else if (TestID.ToLower().Contains("s2"))
                 {
-                    //Console.WriteLine("4.0.1.b");
                     ServerWanted = "S2";
                     ServerNameWanted = "G3ASPRO02";
                     ServerBQwanted = "02";
 
                     if (footerStr.Contains(ServerNameWanted))
                     {
-                        //Console.WriteLine("4.0.1.b.1");
+ 
                         Console.WriteLine("Current server is : " + ServerNameWanted);
                         Console.WriteLine("Server " + ServerWanted + " found");
                         Console.WriteLine();
                         Console.WriteLine();
-                       // Console.WriteLine("3.4.3");
+ 
+
                     }
                     else if (!footerStr.Contains(ServerNameWanted))
                     {
-                        //Console.WriteLine("4.0.1.b.2");
+                   
                         Console.WriteLine("Current server is : G3ASPRO01");
                         Console.WriteLine("Server " + ServerWanted + " not found");
                         Console.WriteLine();
@@ -114,7 +108,7 @@ namespace EasyBookTestAutomationSystem
                         test1.LaunchBrowser(EBurl);
                         test1.ConnectServer2(EBurl);
                         Thread.Sleep(2000);
-                        //Console.WriteLine("3.4.4");
+                  
                     }
 
                 }
@@ -123,7 +117,7 @@ namespace EasyBookTestAutomationSystem
             }
             catch (Exception e)
             {
-                Console.WriteLine("Homepage not foundddd", e);
+                Console.WriteLine("Homepage not foun111", e);
 
             }
 
