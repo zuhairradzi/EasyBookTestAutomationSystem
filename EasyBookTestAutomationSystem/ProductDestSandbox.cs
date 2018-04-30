@@ -18,13 +18,30 @@ namespace EasyBookTestAutomationSystem
 {
     class ProductDestSandbox
     {
+
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        private IWebDriver driver;
+
+        //Conditions product
         string product = "bus";
-     
+        string bus = "bus";
+
+
+        //Product URL
         string busURL1;
         string busURL2;
         string busURL3;
         string ferryURL1;
-        private IWebDriver driver;
+       
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
 
         public ProductDestSandbox(IWebDriver maindriver)
         {
@@ -33,7 +50,7 @@ namespace EasyBookTestAutomationSystem
 
         public void chooseProduct()
         {
-            if (product=="bus")
+            if (product==bus)
             {
                 busURL1 = "https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
                 busURL2 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong"; ;

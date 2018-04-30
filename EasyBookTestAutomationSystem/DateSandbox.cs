@@ -16,10 +16,35 @@ using System.IO;
 
 namespace EasyBookTestAutomationSystem
 {
-    class SelectDateSandbox
+    class DateSandbox
     {
+
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
         private IWebDriver driver;
         string testID = "bustestoneway";
+
+        //Conditions product
+        string bus = "bus";
+        string train = "train";
+        string car = "car";
+        string ferry = "ferry";
+
+        //Conditions site
+        string test = "test";
+        string live = "live";
+
+        //Conditions trip type
+        string oneway = "oneway";
+        string returntrip = "return";
+
+        //Conditions currency
+        string myr = "myr";
+        string sgd = "sgd";
+
+        //Date Element
         string dateDepart;
         string dateReturn;
         string dateElementDep;
@@ -29,19 +54,27 @@ namespace EasyBookTestAutomationSystem
         string pickupTimeList;
         string returnTimeList;
 
-        public SelectDateSandbox(IWebDriver maindriver)
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+        public DateSandbox(IWebDriver maindriver)
         {
             this.driver = maindriver;
         }
 
-        public void SelectDate()
+        //---------------------METHODS-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+        public void ChooseDate(string testID)
         {
             try
             {
                 //--BUS-TEST--//
-                if (testID.ToLower().Contains("bus") && testID.ToLower().Contains("test"))
+                if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Bus";
                         dateDepart = "2020-03-08";
@@ -53,7 +86,7 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Bus";
                         dateDepart = "2020-03-08";
@@ -75,9 +108,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--BUS-LIVE--//
-                else if (testID.ToLower().Contains("bus") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Bus";
                         dateDepart = "2020-03-08";
@@ -87,7 +120,7 @@ namespace EasyBookTestAutomationSystem
                         driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Bus";
                         dateDepart = "2020-03-08";
@@ -109,9 +142,9 @@ namespace EasyBookTestAutomationSystem
 
 
                 //--TRAIN-TEST--//
-                else if (testID.ToLower().Contains("train") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Train";
                         dateDepart = "2018-05-31";
@@ -121,7 +154,7 @@ namespace EasyBookTestAutomationSystem
                         driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Train";
                         dateDepart = "2018-05-30";
@@ -141,9 +174,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--TRAIN-LIVE--//
-                else if (testID.ToLower().Contains("train") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Train";
                         dateDepart = "2018-05-31";
@@ -153,7 +186,7 @@ namespace EasyBookTestAutomationSystem
                         driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Train";
                         dateDepart = "2018-05-30";
@@ -173,9 +206,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--FERRY-TEST--//
-                else if (testID.ToLower().Contains("ferry") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Ferry";
                         dateDepart = "2019-03-21";
@@ -187,7 +220,7 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Ferry";
                         dateDepart = "2019-03-21";
@@ -208,9 +241,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--FERYY-LIVE--//
-                else if (testID.ToLower().Contains("ferry") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         dateElementDep = "dpDepartureDate_Ferry";
                         dateDepart = "2020-03-01";
@@ -220,7 +253,7 @@ namespace EasyBookTestAutomationSystem
                         driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                         dateElementDep = "dpDepartureDate_Ferry";
                         dateDepart = "2020-03-01";
@@ -242,9 +275,9 @@ namespace EasyBookTestAutomationSystem
 
 
                 //--CAR-TEST--//
-                else if (testID.ToLower().Contains("car") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("myr"))
+                    if (testID.ToLower().Contains(myr))
                     {
                         dateElementDep = "ddPickUpDateCar";
                         dateDepart = "2019-03-08";
@@ -272,7 +305,7 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("sgd"))
+                    else if (testID.ToLower().Contains(sgd))
                     {
                         dateElementDep = "ddPickUpDateCar";
                         dateDepart = "2019-03-08";
@@ -305,10 +338,10 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--CAR-LIVE--//
-                else if (testID.ToLower().Contains("car") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(live))
                 {
 
-                    if (testID.ToLower().Contains("myr"))
+                    if (testID.ToLower().Contains(myr))
                     {
                         dateElementDep = "ddPickUpDateCar";
                         dateDepart = "2046-03-08";
@@ -335,7 +368,7 @@ namespace EasyBookTestAutomationSystem
                         driver.FindElement(By.XPath(returnTimeList)).Click();
                     }
 
-                    else if (testID.ToLower().Contains("sgd"))
+                    else if (testID.ToLower().Contains(sgd))
                     {
                         dateElementDep = "ddPickUpDateCar";
                         dateDepart = "2046-03-08";
@@ -376,4 +409,5 @@ namespace EasyBookTestAutomationSystem
 
         }
     }
+    
 }

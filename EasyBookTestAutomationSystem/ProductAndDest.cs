@@ -14,11 +14,43 @@ namespace EasyBookTestAutomationSystem
 {
     class ProductAndDest
     {
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+        private IWebDriver driver;
+
+        //Conditions product
+        string bus = "bus";
+        string train = "train";
+        string car = "car";
+        string ferry = "ferry";
+
+        //Conditions site
+        string test = "test";
+        string live = "live";
+
+        //Conditions trip type
+        string oneway = "oneway";
+        string returntrip = "return";
+
+        //Conditions currency
+        string myr = "myr";
+        string sgd = "sgd";
+
+        //Product URL
         string URL1;
         string URL2;
         string URL3;
         string URL4;
-        private IWebDriver driver;
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
+
+
         public ProductAndDest(IWebDriver maindriver)
         {
             this.driver = maindriver;
@@ -26,9 +58,9 @@ namespace EasyBookTestAutomationSystem
 
         public void chooseProduct(string TestID, string EBurl)
         {
-            if (TestID.ToLower().Contains("bus"))
+            if (TestID.ToLower().Contains(bus))
             {
-                if (TestID.ToLower().Contains("test"))
+                if (TestID.ToLower().Contains(test))
                 {
                     
                     URL1 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong";
@@ -46,7 +78,7 @@ namespace EasyBookTestAutomationSystem
                     }
 
                 }
-                else if (TestID.ToLower().Contains("live"))
+                else if (TestID.ToLower().Contains(live))
                 {
                     URL1 = "https://www.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
                     URL2 = "https://www.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong"; 
@@ -67,9 +99,9 @@ namespace EasyBookTestAutomationSystem
 
             }
 
-            else if (TestID.ToLower().Contains("car"))
+            else if (TestID.ToLower().Contains(car))
             {
-                if (TestID.ToLower().Contains("test"))
+                if (TestID.ToLower().Contains(test))
                 {
                     URL1 = "https://test.easybook.com/en-my/car/booking/bukitbintangarea";
                     URL2 = "https://test.easybook.com/en-my/car/booking/kualalumpurarea";
@@ -85,7 +117,7 @@ namespace EasyBookTestAutomationSystem
 
 
                 }
-                else if (TestID.ToLower().Contains("live"))
+                else if (TestID.ToLower().Contains(live))
                 {
                     URL1 = "https://www.easybook.com/en-my/car/booking/kualalumpurarea";
 
@@ -103,9 +135,9 @@ namespace EasyBookTestAutomationSystem
             }
 
 
-            else if (TestID.ToLower().Contains("train"))
+            else if (TestID.ToLower().Contains(train))
             {
-                if (TestID.ToLower().Contains("test"))
+                if (TestID.ToLower().Contains(test))
                 {
                     URL1 = "https://test.easybook.com/en-my/train/booking/jbsentral-to-woodland";
                     URL2 = "https://test.easybook.com/en-my/train/booking/kepong-to-terminalktm";
@@ -120,7 +152,7 @@ namespace EasyBookTestAutomationSystem
                     }
 
                 }
-                else if (TestID.ToLower().Contains("live"))
+                else if (TestID.ToLower().Contains(live))
                 {
                     URL1 = "https://www.easybook.com/en-my/train/booking/jbsentral-to-woodland";
                     URL2 = "https://www.easybook.com/en-my/train/booking/kepong-to-terminalktm";
@@ -137,9 +169,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
             }
-            else if (TestID.ToLower().Contains("ferry"))
+            else if (TestID.ToLower().Contains(ferry))
             {
-                if (TestID.ToLower().Contains("test"))
+                if (TestID.ToLower().Contains(test))
                 {
                     URL1 = "https://test.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
                     URL2 = "https://test.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter";
@@ -155,7 +187,7 @@ namespace EasyBookTestAutomationSystem
 
 
                 }
-                else if (TestID.ToLower().Contains("live"))
+                else if (TestID.ToLower().Contains(live))
                 {
                     URL1 = "https://www.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
                     URL2 = "https://www.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter";

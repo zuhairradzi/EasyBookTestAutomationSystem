@@ -19,8 +19,39 @@ namespace EasyBookTestAutomationSystem
     class LaunchBrowserSandbox
     {
         private IWebDriver driver;
+
+
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+        
+        //----Login Elements--//
+
+        string ElLogin = "loginLink";
+        string ElSignIn;
+        string ElUserName = "Email";
+        string ElPassword = "Password";
         string username;
         string password;
+        string ElCaptcha = "CaptchaCode";
+        string ElBtnLogin = "btnLogin";
+        string XPathSignIn = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a";
+
+
+        //---Login details---//
+        string usernameFile = "user.txt";
+        string passwordFile = "pass.txt";
+
+
+        //---links---//
+        string urlTest = "https://test.easybook.com";
+        string urlLive = "https://www.easybook.com";
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
 
         public LaunchBrowserSandbox(IWebDriver maindriver)
         {
@@ -28,8 +59,7 @@ namespace EasyBookTestAutomationSystem
         }
         public void LaunchBrowser()
         {
-            driver.Navigate().GoToUrl("https://test.easybook.com");
-            //driver.Navigate().GoToUrl("https://www.easybook.com");
+            driver.Navigate().GoToUrl(urlTest);
             driver.Manage().Window.Maximize();
         }
 
@@ -39,7 +69,7 @@ namespace EasyBookTestAutomationSystem
 
             try
             {
-                using (StreamReader sr = new StreamReader("user.txt"))
+                using (StreamReader sr = new StreamReader(usernameFile))
                 {
                     username = sr.ReadLine();
                 }
@@ -52,7 +82,7 @@ namespace EasyBookTestAutomationSystem
 
             try
             {
-                using (StreamReader sr = new StreamReader("pass.txt"))
+                using (StreamReader sr = new StreamReader(passwordFile))
                 {
                     password = sr.ReadLine();
                 }
@@ -67,23 +97,16 @@ namespace EasyBookTestAutomationSystem
             try
             {
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText("Sign in")))).Click();
-
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("loginLink")))).Click();
-
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Email")))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Email")))).SendKeys(username);
-                
-
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Password")))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Password")))).SendKeys(password);
-
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("CaptchaCode")))).Click();
-
+                driver.FindElement(By.XPath(XPathSignIn)).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).SendKeys(username);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).SendKeys(password);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElCaptcha)))).Click();
                 Thread.Sleep(6000);
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("btnLogin")))).Click();
-
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
 
                 /*
                 driver.FindElement(By.Id("loginLink")).Click();

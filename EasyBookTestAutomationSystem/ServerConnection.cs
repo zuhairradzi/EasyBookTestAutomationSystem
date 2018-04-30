@@ -16,12 +16,30 @@ namespace EasyBookTestAutomationSystem
 {
     class ServerConnection
     {
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        private IWebDriver driver;
+
+        //----Server Elements--//
+        string ElFooter = "//*[@id=\"footer\"]/div/div[5]/div/p";
+
+        //---Server Variables--//
         string ServerWanted;
         string ServerNameWanted;
         string ServerBQwanted;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
-        private IWebDriver driver;
+        string s1 = "s1";
+        string s2 = "s2";
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
+       
         
         public ServerConnection(IWebDriver maindriver)
         {
@@ -40,7 +58,7 @@ namespace EasyBookTestAutomationSystem
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
 
-                var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+                var footer = driver.FindElement(By.XPath(ElFooter));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -48,7 +66,7 @@ namespace EasyBookTestAutomationSystem
                 Console.WriteLine();
                 Console.WriteLine();
 
-                if (TestID.ToLower().Contains("s1"))
+                if (TestID.ToLower().Contains(s1))
                 {
                     ServerWanted = "S1";
                     ServerNameWanted = "G3ASPRO01";
@@ -78,7 +96,7 @@ namespace EasyBookTestAutomationSystem
                     }
 
                 }
-                else if (TestID.ToLower().Contains("s2"))
+                else if (TestID.ToLower().Contains(s2))
                 {
                     ServerWanted = "S2";
                     ServerNameWanted = "G3ASPRO02";

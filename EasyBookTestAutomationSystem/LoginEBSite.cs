@@ -18,6 +18,14 @@ namespace EasyBookTestAutomationSystem
 {
     class LoginEBSite
     {
+
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //----Login Elements--//
+
         private IWebDriver driver;
         string ElLogin = "loginLink";
         string ElSignIn;
@@ -28,6 +36,18 @@ namespace EasyBookTestAutomationSystem
         string ElCaptcha = "CaptchaCode";
         string ElBtnLogin = "btnLogin";
         string XPathSignIn = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a";
+
+        //---Login details---//
+        string usernameFile = "user.txt";
+        string passwordFile = "pass.txt";
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
+
         public LoginEBSite(IWebDriver maindriver)
         {
             this.driver = maindriver;
@@ -39,7 +59,7 @@ namespace EasyBookTestAutomationSystem
             
             try
             {  
-                using (StreamReader sr = new StreamReader("user.txt"))
+                using (StreamReader sr = new StreamReader(usernameFile))
                 {
                     username = sr.ReadLine();
                 }
@@ -52,7 +72,7 @@ namespace EasyBookTestAutomationSystem
 
             try
             { 
-                using (StreamReader sr = new StreamReader("pass.txt"))
+                using (StreamReader sr = new StreamReader(passwordFile))
                 {
                     password = sr.ReadLine();
                 }
@@ -65,28 +85,17 @@ namespace EasyBookTestAutomationSystem
 
 
             try
-            {
-                //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, 0)");
-                //driver.Navigate().Refresh();
-                //driver.Navigate().GoToUrl(EBUrl);
-                Thread.Sleep(4000);
-                //*[@id="bs-example-navbar-collapse-1"]/ul/li[1]/a
+            {;
+                Thread.Sleep(2000);
                 driver.FindElement(By.XPath(XPathSignIn)).Click();
-                //driver.FindElement(By.LinkText("Sign in")).Click();
-                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText("Sign in")))).Click();
-
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
-
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).Clear();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).SendKeys(username);
-
-
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).Clear();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).SendKeys(password);
-
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElCaptcha)))).Click();
-
                 Thread.Sleep(6000);
+
 
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
                 

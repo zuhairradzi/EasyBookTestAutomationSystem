@@ -9,21 +9,24 @@ namespace EasyBookTestAutomationSystem
     class SiteName
     {
         string site;
+        string test = "test";
+        string live = "live";
+        string bq = "backend";
         public string chooseEBSite(string testCaseID)
         {
-            if (testCaseID.ToLower().Contains("test")) 
+            if (testCaseID.ToLower().Contains(test)) 
             {
                 //Console.WriteLine("3.0.1");
                 site = "https://test.easybook.com";
                 return site;
             }
-            if (testCaseID.ToLower().Contains("live"))
+            if (testCaseID.ToLower().Contains(live))
             {
                 //Console.WriteLine("3.0.2");
                 site = "https://www.easybook.com";
                 return site;
             }
-            if (testCaseID.ToLower().Contains("backend"))
+            if (testCaseID.ToLower().Contains(bq))
             {
                 site = "http://backend.easybook.com";
                 return site;

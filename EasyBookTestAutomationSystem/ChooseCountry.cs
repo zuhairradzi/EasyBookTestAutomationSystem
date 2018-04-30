@@ -20,20 +20,47 @@ namespace EasyBookTestAutomationSystem
     class ChooseCountry
     {
         private IWebDriver driver;
+
+
+        //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+        //conditions
+        string sg = "sg";
+
+        //page elements
+        string XPFlag = "//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img";
+
+        //country elements
+        string Singapore = "Singapore";
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
         
+
+
         public ChooseCountry (IWebDriver maindriver)
         {
             this.driver = maindriver;
         }
+
+
+
+        //---------------------METHODS-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
         public void ChangeCountry(string testID)
         {
-            if (testID.Contains("sg"))
+            if (testID.Contains(sg))
             {
                 try
                 {
 
-                    driver.FindElement(By.XPath("//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img")).Click();
-                    driver.FindElement(By.LinkText("Singapore")).Click();
+                    driver.FindElement(By.XPath(XPFlag)).Click();
+                    driver.FindElement(By.LinkText(Singapore)).Click();
                     //Thread.Sleep(2000);
 
                 }

@@ -19,20 +19,40 @@ namespace EasyBookTestAutomationSystem
     class ChooseCountrySandbox
     {
         private IWebDriver driver;
+
+        //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
         string testID = "S1-Test-Bus-oneWay-sgd";
+
+        //conditions
+        string sg = "sg";
+
+        //page elements
+        string XPFlag = "//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img";
+
+        //country elements
+        string Singapore = "Singapore";
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
         public ChooseCountrySandbox(IWebDriver maindriver)
         {
             this.driver = maindriver;
         }
         public void ChangeCountry()
         {
-            if (testID.Contains("sg"))
+            if (testID.Contains(sg))
             {
                 try
                 {
 
-                    driver.FindElement(By.XPath("//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img")).Click();
-                    driver.FindElement(By.LinkText("Singapore")).Click();
+                    driver.FindElement(By.XPath(XPFlag)).Click();
+                    driver.FindElement(By.LinkText(Singapore)).Click();
                     //Thread.Sleep(2000);
 
                 }

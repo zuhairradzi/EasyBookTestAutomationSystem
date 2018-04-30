@@ -16,11 +16,29 @@ namespace EasyBookTestAutomationSystem
 {
     class OpenIntendedServer
     {
+
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        private IWebDriver driver;
+
+        //----Server Elements--//
+        string ElFooter = "//*[@id=\"footer\"]/div/div[5]/div/p";
+
+        //---Server Variables--//
         string serverType;
         private string EBUrl;
-        private IWebDriver driver;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
+
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
+
 
         public OpenIntendedServer(IWebDriver maindriver)
         {
@@ -62,14 +80,14 @@ namespace EasyBookTestAutomationSystem
                 string EBUrl = EBurl;
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
-                var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+                var footer = driver.FindElement(By.XPath(ElFooter));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
 
                 Console.WriteLine();
                 Console.WriteLine();
 
-                if (footerStr.Contains("G3ASPRO02") && !footerStr.Contains("G3ASPRO01"))
+                if (footerStr.Contains(server_2) && !footerStr.Contains(server_1))
                 {
                     Console.WriteLine("Current server is : G3ASPRO02");
                     Console.WriteLine("Server S2 found 1 attempt");
@@ -81,7 +99,7 @@ namespace EasyBookTestAutomationSystem
 
 
                 }
-                else if (footerStr.Contains("G3ASPRO01") && !footerStr.Contains("G3ASPRO02"))
+                else if (footerStr.Contains(server_1) && !footerStr.Contains(server_2))
                 {
                     Console.WriteLine("Current server is : G3ASPRO01");
                     Console.WriteLine("Server S1 found at 1 attempt");
@@ -116,14 +134,14 @@ namespace EasyBookTestAutomationSystem
                 string EBUrl = EBurl;
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
-                var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+                var footer = driver.FindElement(By.XPath(ElFooter));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
 
 
-                if (footerStr.Contains("G3ASPRO01") && !footerStr.Contains("G3ASPRO02"))
+                if (footerStr.Contains(server_1) && !footerStr.Contains(server_2))
                 {
                     Console.WriteLine("Current server is : G3ASPRO01");
                     Console.WriteLine("Server S1 found");
@@ -133,7 +151,7 @@ namespace EasyBookTestAutomationSystem
                     Console.WriteLine();
                  
                 }
-                else if (footerStr.Contains("G3ASPRO02") && !footerStr.Contains("G3ASPRO01"))
+                else if (footerStr.Contains(server_2) && !footerStr.Contains(server_1))
                 {
                     Console.WriteLine("Current server is : G3ASPRO02");
                     Console.WriteLine("Server S2 found");
@@ -173,12 +191,12 @@ namespace EasyBookTestAutomationSystem
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
 
-            var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+            var footer = driver.FindElement(By.XPath(ElFooter));
             string footerStr = footer.Text.ToString();
 
             int i = 1;
 
-            while (!footerStr.Contains("G3ASPRO01"))
+            while (!footerStr.Contains(server_1))
             {
                 driver.Close();
                
@@ -186,7 +204,7 @@ namespace EasyBookTestAutomationSystem
 
                 Thread.Sleep(2000);
        
-                if (footerStr.Contains("G3ASPRO01"))
+                if (footerStr.Contains(server_1))
                 {
                     break;
                 }
@@ -194,7 +212,7 @@ namespace EasyBookTestAutomationSystem
                 OpenIntendedServer server1 = new OpenIntendedServer();
                 server1.Server1Test(EBUrl);
 
-                if (footerStr.Contains("G3ASPRO01"))
+                if (footerStr.Contains(server_1))
                 {
                     break;
                 }
@@ -220,19 +238,19 @@ namespace EasyBookTestAutomationSystem
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
 
-            var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+            var footer = driver.FindElement(By.XPath(ElFooter));
             string footerStr = footer.Text.ToString();
 
             int i = 1;
 
-            while (!footerStr.Contains("G3ASPRO02"))
+            while (!footerStr.Contains(server_2))
             {
                 driver.Close();
 
                 i++;
                 Thread.Sleep(2000);
 
-                if (footerStr.Contains("G3ASPRO02"))
+                if (footerStr.Contains(server_2))
                 {
                     break;
                 }

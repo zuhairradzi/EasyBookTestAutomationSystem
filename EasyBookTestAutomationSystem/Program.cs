@@ -61,7 +61,7 @@ namespace EasyBookTestAutomationSystem
             TripTypeTest.chooseTripType();
 
             //--- SELECT DATE  ---//
-            SelectDateSandbox SelectDateTest = new SelectDateSandbox(Maindriver);
+            DateSandbox SelectDateTest = new DateSandbox(Maindriver);
             SelectDateTest.SelectDate();
 
             //--- SUBMIT SEARCH  ---//
@@ -209,7 +209,7 @@ namespace EasyBookTestAutomationSystem
              
 
             //--- SELECT DATE  ---//
-            SelectDate newChooseDate = new SelectDate (Maindriver);
+            Date newChooseDate = new Date (Maindriver);
             newChooseDate.ChooseDate(testScenario);
 
             //--- SUBMIT SEARCH  ---//

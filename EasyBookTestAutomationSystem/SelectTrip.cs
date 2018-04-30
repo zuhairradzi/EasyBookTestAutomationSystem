@@ -18,28 +18,71 @@ namespace EasyBookTestAutomationSystem
 {
     class SelectTrip
     {
+        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
         private IWebDriver driver;
+
+        //Conditions product
+        string bus = "bus";
+        string train = "train";
+        string car = "car";
+        string ferry = "ferry";
+
+        //Conditions site
+        string test = "test";
+        string live = "live";
+
+        //Conditions trip type
+        string oneway = "oneway";
+        string returntrip = "return";
+
+        //Conditions currency
+        string myr = "myr";
+        string sgd = "sgd";
+
+
+        //Bus Element
+        string TextSelectBus = "Select";
+        string XPBusTest = "";
+        string XPBusLive = "";
+        //*[@id="MY-int-21237664-8919a634-deba-429f-96a2-4411ef6ed23e"]/div[1]/div[5]/a
+        string XPBusSGDlive = "//*[@id=\"MY-int-21237664-8919a634-deba-429f-96a2-4411ef6ed23e\"]/div[1]/div[5]/a";
+
+
+        //Train Element
+        string TextSelectTrain = "Select Seats/Berths";
+        string TextSelectTrain2 = "Select";
+        string XpTrainLive = "";
+        string XpTrainTest = "";
+
+        //Ferry Element
+        string XPferryLive = "//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a";
+        string XPferryTest = "//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a";
+
+
+        //Car Element
+        string XPcarTest = "//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button";
+        //*[@id="carSearchResultsTable"]/tbody/tr[1]/td[7]/div/button
+        string XPcarLive = "//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button";
+
+
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
+
+        //---------------------METHODS-------------------------------------------//
+
+
+
+
 
         public SelectTrip(IWebDriver maindriver)
         {
             this.driver = maindriver;
         }
-
-        string TextSelect = "Select";
-        //*[@id="MY-int-21237664-8919a634-deba-429f-96a2-4411ef6ed23e"]/div[1]/div[5]/a
-        string XPBusSGDlive = "//*[@id=\"MY-int-21237664-8919a634-deba-429f-96a2-4411ef6ed23e\"]/div[1]/div[5]/a";
-
-        string TextSelectTrain = "Select Seats/Berths";
-        string XpTrain = "";
-
-        string XPferryLive = "//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a";
-        string XPferryTest = "//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a";
-
-        string XPcarTest= "//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button";
-        //*[@id="carSearchResultsTable"]/tbody/tr[1]/td[7]/div/button
-        string XPcarLive = "//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button" ;
-      
-        
 
 
         public void selectTrip(string testID)
@@ -47,13 +90,13 @@ namespace EasyBookTestAutomationSystem
             try
             {
                 //--BUS-TEST--//
-                if (testID.ToLower().Contains("bus") && testID.ToLower().Contains("test"))
+                if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         try
                         {
-                             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelect)))).Click();
+                             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectBus)))).Click();
 
                            
                         }
@@ -66,7 +109,7 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
 
 
@@ -75,14 +118,14 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--BUS-LIVE--//
-                else if (testID.ToLower().Contains("bus") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
 
                         try
                         {
-                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelect)))).Click();
+                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectBus)))).Click();
 
 
                         }
@@ -93,7 +136,7 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
 
 
@@ -102,14 +145,14 @@ namespace EasyBookTestAutomationSystem
 
 
                 //--TRAIN-TEST--//
-                else if (testID.ToLower().Contains("train") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         try
                         {
 
-                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelect)))).Click();
+                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectTrain2)))).Click();
 
                         }
                         catch (NoSuchElementException)
@@ -119,21 +162,21 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
 
                     }
                 }
 
                 //--TRAIN-LIVE--//
-                else if (testID.ToLower().Contains("train") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         try
                         {
 
-                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectTrain)))).Click();
+                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectTrain2)))).Click();
 
                         }
                         catch (NoSuchElementException)
@@ -143,7 +186,7 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
 
 
@@ -151,9 +194,9 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--FERRY-TEST--//
-                else if (testID.ToLower().Contains("ferry") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
                         try
                         {
@@ -170,16 +213,16 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
                     }
 
                 }
 
                 //--FERYY-LIVE--//
-                else if (testID.ToLower().Contains("ferry") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(live))
                 {
-                    if (testID.ToLower().Contains("oneway"))
+                    if (testID.ToLower().Contains(oneway))
                     {
 
                         try
@@ -195,7 +238,7 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
 
-                    else if (testID.ToLower().Contains("return"))
+                    else if (testID.ToLower().Contains(returntrip))
                     {
 
                     }
@@ -204,9 +247,9 @@ namespace EasyBookTestAutomationSystem
 
 
                 //--CAR-TEST--//
-                else if (testID.ToLower().Contains("car") && testID.ToLower().Contains("test"))
+                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(test))
                 {
-                    if (testID.ToLower().Contains("myr"))
+                    if (testID.ToLower().Contains(myr))
                     {
                         try
                         {
@@ -222,7 +265,7 @@ namespace EasyBookTestAutomationSystem
 
                     }
 
-                    else if (testID.ToLower().Contains("sgd"))
+                    else if (testID.ToLower().Contains(sgd))
                     {
                         try
                         {
@@ -242,10 +285,10 @@ namespace EasyBookTestAutomationSystem
                 }
 
                 //--CAR-LIVE--//
-                else if (testID.ToLower().Contains("car") && testID.ToLower().Contains("live"))
+                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(live))
                 {
 
-                    if (testID.ToLower().Contains("myr"))
+                    if (testID.ToLower().Contains(myr))
                     {
                         try
                         {
@@ -260,7 +303,7 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
 
-                    else if (testID.ToLower().Contains("sgd"))
+                    else if (testID.ToLower().Contains(sgd))
                     {
                         try
                         {
