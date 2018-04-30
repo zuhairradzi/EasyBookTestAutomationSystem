@@ -19,8 +19,15 @@ namespace EasyBookTestAutomationSystem
     class LoginEBSite
     {
         private IWebDriver driver;
+        string ElLogin = "loginLink";
+        string ElSignIn;
+        string ElUserName = "Email";
+        string ElPassword = "Password";
         string username;
         string password;
+        string ElCaptcha = "CaptchaCode";
+        string ElBtnLogin = "btnLogin";
+        string XPathSignIn = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a";
         public LoginEBSite(IWebDriver maindriver)
         {
             this.driver = maindriver;
@@ -61,27 +68,27 @@ namespace EasyBookTestAutomationSystem
             {
                 //((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, 0)");
                 //driver.Navigate().Refresh();
-                driver.Navigate().GoToUrl(EBUrl);
+                //driver.Navigate().GoToUrl(EBUrl);
                 Thread.Sleep(4000);
                 //*[@id="bs-example-navbar-collapse-1"]/ul/li[1]/a
-                driver.FindElement(By.XPath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a")).Click();
+                driver.FindElement(By.XPath(XPathSignIn)).Click();
                 //driver.FindElement(By.LinkText("Sign in")).Click();
                 //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText("Sign in")))).Click();
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("loginLink")))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Email")))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Email")))).SendKeys(username);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).SendKeys(username);
 
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Password")))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("Password")))).SendKeys(password);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).SendKeys(password);
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("CaptchaCode")))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElCaptcha)))).Click();
 
                 Thread.Sleep(6000);
 
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("btnLogin")))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
                 
             }
 

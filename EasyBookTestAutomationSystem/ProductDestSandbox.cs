@@ -23,6 +23,7 @@ namespace EasyBookTestAutomationSystem
         string busURL1;
         string busURL2;
         string busURL3;
+        string ferryURL1;
         private IWebDriver driver;
 
         public ProductDestSandbox(IWebDriver maindriver)
@@ -37,6 +38,7 @@ namespace EasyBookTestAutomationSystem
                 busURL1 = "https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
                 busURL2 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong"; ;
                 busURL3 = "https://test.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral";
+                ferryURL1 = "https://test.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
             }
         }
 

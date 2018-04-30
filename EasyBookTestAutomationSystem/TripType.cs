@@ -26,7 +26,11 @@ namespace EasyBookTestAutomationSystem
 
         public void chooseTripType(string TestID)
         {
-            if (TestID.ToLower().Contains("oneway"))
+            if (TestID.ToLower().Contains("car"))
+            {
+                return;
+            }
+            else if (TestID.ToLower().Contains("oneway"))
             {
 
                 try

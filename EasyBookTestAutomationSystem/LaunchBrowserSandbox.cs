@@ -28,8 +28,8 @@ namespace EasyBookTestAutomationSystem
         }
         public void LaunchBrowser()
         {
-            //driver.Navigate().GoToUrl("https://test.easybook.com");
-            driver.Navigate().GoToUrl("https://www.easybook.com");
+            driver.Navigate().GoToUrl("https://test.easybook.com");
+            //driver.Navigate().GoToUrl("https://www.easybook.com");
             driver.Manage().Window.Maximize();
         }
 
