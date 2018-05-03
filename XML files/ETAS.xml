@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ETAS>
+
+
+	<Server>
+		<footerElement>
+			<Id></Id>
+			<XPath>//*[@id='footer']/div/div[5]/div/p</XPath>
+		</footerElement>
+		<ServerName>
+			<Server1>G3ASPRO01</Server1>
+			<Server2>G3ASPRO02</Server2>
+		</ServerName>
+	</Server>
+E
+
+	<Site>
+		<URL>
+			<test>https://test.easybook.com</test>
+			<live>https://www.easybook.com</live>
+			<backend>http://backend.easybook.com</backend>
+		</URL>
+	</Site>
+
+
+	<EBLogin>
+		<LoginElement>
+			<SignIn>
+				<Id></Id>
+				<XPath>//*[@id='bs-example-navbar-collapse-1']/ul/li[1]/a</XPath>
+			</SignIn>
+			<Login>
+				<Id>loginLink</Id>
+				<XPath></XPath>
+			</Login>
+			<Email>
+				<Id>Email</Id>
+				<Value>mohdzuhair@easybook.com</Value>
+			</Email>
+			<Pass>
+				<Id>Password</Id>
+				<Value>123456</Value>
+			</Pass>
+			<Captcha>
+				<Id>CaptchaCode</Id>
+			</Captcha>
+			<buttonLogin>
+				<Id>btnLogin</Id>
+			</buttonLogin>
+		</LoginElement>
+	</EBLogin>
+
+	<Product>
+		<ProductName>
+			<Bus>
+				<URL1>melakasentral-to-sungainibong</URL1>
+				<URL2>/bus/booking/sungainibong-to-melakasentral</URL2>
+				<URL3>/bus/booking/kovanhub206-to-melakasentral</URL3>
+				<URL4>/bus/booking/melakasentral-to-kovanhub206</URL4>
+			</Bus>
+			<Train>
+				<URL1>/train/booking/jbsentral-to-woodland</URL1>
+				<URL2>/train/booking/kepong-to-terminalktm</URL2>
+			</Train>
+			<Ferry>
+				<URL1>/ferry/booking/batamcenter-to-harbourfront</URL1>
+				<URL2>/ferry/booking/harbourfront-to-batamcenter</URL2>
+			</Ferry>
+			<Car>
+				<URL1>/car/booking/kualalumpurarea</URL1>
+				<URL2>/car/booking/bukitbintangarea</URL2>
+			</Car>
+		</ProductName>
+	</Product>
+
+	<Country>
+		<CountryMenu>
+			<XPath>//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img</XPath>
+		</CountryMenu>
+		<CountryName>
+				<Singapore><LinkText>Singapore</LinkText></Singapore>
+		</CountryName>
+	</Country>
+
+
+	<TripType>
+		<OneWay>
+			<Id>radioOneWay</Id>
+		</OneWay>
+		<Return>
+			<Id>radioRoundTrip</Id>
+		</Return>
+	</TripType>
+
+	<DateElement>
+			<BusDepature>dpDepartureDate_Bus</BusDepature>
+			<BusReturn>dpReturnDate_Bus</BusReturn>
+			<TrainDepature>dpDepartureDate_Train</TrainDepature>
+			<TrainReturn>dpReturnDate_Train</TrainReturn>
+			<FerryDepature>dpDepartureDate_Ferry</FerryDepature>
+			<FerryReturn>dpReturnDate_Ferry</FerryReturn>
+			<CarPickup>ddPickUpDateCar</CarPickup>
+			<CarReturn>ddReturnDateCar</CarReturn>
+			<CarPickupTime>ddlPickUpTimeCar</CarPickupTime>
+			<CarReturnTime>ddlReturnTimeCar</CarReturnTime>
+	</DateElement>
+
+
+	<DateValue>
+		<Bus>
+			<OneWayDate>2020-03-08</OneWayDate>
+			<ReturnDate>2020-03-09</ReturnDate>
+		</Bus>
+
+		<Ferry>
+			<TestDate>2019-03-21</TestDate>
+			<LiveDate>2020-03-01</LiveDate>
+			<Return>
+				<TestDate>2019-03-22</TestDate>
+				<LiveDate>2020-03-02</LiveDate>
+			</Return>
+		</Ferry>
+
+		<Train>
+			<OneWayDate>2018-05-30</OneWayDate>
+			<ReturnDate>2018-05-31</ReturnDate>
+		</Train>
+
+		<Car>
+			<Pickup>
+				<TestDate>2019-03-08</TestDate>
+				<LiveDate>2046-03-08</LiveDate>
+				<Time>//*[@id=\"ddlPickUpTimeCar\"]/option[1]</Time>
+			</Pickup>
+
+			<Return>
+				<TestDate>2019-03-08</TestDate>
+				<TestSGDDate>2019-03-09</TestSGDDate>
+				<LiveDate>2046-03-08</LiveDate>
+				<LiveSGDDate>2046-03-09</LiveSGDDate>
+				<MYRTime>//*[@id=\"ddlReturnTimeCar\"]/option[3]</MYRTime>
+				<SGDTime>//*[@id=\"ddlReturnTimeCar\"]/option[2]</SGDTime>
+			</Return>
+		</Car>
+
+	</DateValue>
+
+
+
+	<SubmitSearch>
+		<SearchButton>
+			<XPath>
+				//button[@value='Submit']
+			</XPath>
+			<Id>
+				
+			</Id>
+			<LinkText>
+				Search
+			</LinkText>
+		</SearchButton>
+	</SubmitSearch>
+
+
+
+	<SelectTrip>
+		<Bus>
+			<LinkText>
+				Select
+			</LinkText>
+		</Bus>
+		<Train>
+			<LinkText>
+				Select Seats/Berths
+			</LinkText>
+			<XPath>
+				
+			</XPath>
+		</Train>
+
+		<Ferry>
+			<LinkText>
+				Select
+			</LinkText>
+			<XPath>
+				<Live>
+					//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a
+				</Live>
+				<Test>
+					//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a
+				</Test>
+			</XPath>
+		</Ferry>
+
+		<Car>
+			<XPath>
+				<Live>
+					//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button
+				</Live>
+				<Test>
+					//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button
+				</Test>
+			</XPath>
+		</Car>
+	</SelectTrip>
+
+
+	<Seat>
+		<Bus>
+			<SelectSeat>
+				<XPath>
+					//div[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div"
+				</XPath>
+			</SelectSeat>
+			<ContinueButton>
+				<Id>
+					btnProceedToPassengerDetail
+				</Id>
+			</ContinueButton>
+		</Bus>
+		<Ferry>
+			<SelectSeat>
+				<XPath>
+					//div[@id='ferry-seat-chart']/div/div[2]/div/div/select
+				</XPath>
+			</SelectSeat>
+			<NoOfSeat>
+				<LinkText>
+					1 Seats
+				</LinkText>
+			</NoOfSeat>
+			<ContinueButton>
+				<XPath>
+					//*[@id=\"MY-int-219568-9ac8d73c-07cd-4f47-bedb-245f1510c2c5\"]
+				</XPath>
+			</ContinueButton>
+		</Ferry>
+		<Train>
+			<SelectSeat>
+				<XPath>
+					
+				</XPath>
+			</SelectSeat>
+			<ContinueButton>
+				<XPath>
+					
+				</XPath>
+			</ContinueButton>
+		</Train>
+	</Seat>
+
+
+
+	<PassengerDetails>
+		<Insurance>
+			<ClassName>
+				cbInsurance_MobileViewOnly
+			</ClassName>
+		</Insurance>
+		<Nationality>
+			<Id>
+				ddlNationalityCar
+			</Id>
+		</Nationality>
+	</PassengerDetails>
+
+
+
+	<PaymentType>
+		<PayPal>
+			<PayPalMYR>
+				<Id>
+					paymentPayPalEC_MYR
+				</Id>
+			</PayPalMYR>
+			<PayPalSGD>
+				<Id>
+					paymentPayPalEC_SGD
+				</Id>
+			</PayPalSGD>
+		</PayPal>
+		<PayNowButton>
+			<Id>
+				payNowBtn
+			</Id>
+		</PayNowButton>
+	</PaymentType>
+
+
+
+	<PayPalLogin>
+		<Email>
+			<Id>
+				email
+			</Id>
+			<XPath>
+				
+			</XPath>
+			<Value>
+				ebvanhieptest1@gmail.com
+			</Value>
+			<ContinueButton>
+				<Id>
+				
+				</Id>
+				<XPath>
+					//*[@id=\"btnNext\
+				</XPath>
+			</ContinueButton>
+		</Email>
+		<Password>
+			<Id>
+				password
+			</Id>
+			<XPath>
+				
+			</XPath>
+			<Value>
+				Ebtest@1133
+			</Value>
+			<ContinueButton>
+				<CssSelector>
+					#btnLogin
+				</CssSelector>
+				<XPath>
+					//*[@id=\"btnLogin\
+				</XPath>
+			</ContinueButton>
+		</Password>
+	</PayPalLogin>
+
+
+
+	<PayPalProceed>
+		<Proceed1>
+			<Id>button</Id>
+			<XPath>
+				//div[@id='button']/button
+			</XPath>
+		</Proceed1>
+		<Proceed2>
+			<Id>
+				confirmButtonTop
+			</Id>
+			<XPath>
+				
+			</XPath>
+		</Proceed2>
+		<Proceed3>
+			<Id>
+				pay_now_button
+			</Id>
+			<XPath>
+				
+			</XPath>
+		</Proceed3>
+	</PayPalProceed>
+
+
+
+	<OrderSummary>
+
+		<Bus>
+			<Div1>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+			</Div1>
+			<OrderNo>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+			</OrderNo>
+			<DepartPlace>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[2]/td[2]</XPath>
+			</DepartPlace>
+			<ArrivePlace>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
+			</ArrivePlace>
+			<DepartTime>
+				<XPath>//*[@id=\"print-content\"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+			</DepartTime>
+			<Company>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
+			</Company>
+			<PassengerName>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+			</PassengerName>
+			<ServerPlatform>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+			</ServerPlatform>
+		</Bus>
+
+		<Ferry>
+			<Div1>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+			</Div1>
+			<OrderNo>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+			</OrderNo>
+			<DepartPlace>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+			</DepartPlace>
+			<ArrivePlace>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[3]/td[2]</XPath>
+			</ArrivePlace>
+			<DepartTime>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[4]/td[2]</XPath>
+			</DepartTime>
+			<Company>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+			</Company>
+			<PassengerName>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+			</PassengerName>
+			<ServerPlatform>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+			</ServerPlatform>
+		</Ferry>
+
+		<Train></Train>
+
+		<Car>
+			<Div1>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+			</Div1>
+			<OrderNo>
+				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+			</OrderNo>
+			<PickupLocation>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+			</PickupLocation>
+			<ReturnLocation>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
+			</ReturnLocation>
+			<RentDuration>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+			</RentDuration>
+			<DepartTime>
+				<XPath>//*[@id=\"print-content\"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+			</DepartTime>
+			<CarDetail>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+			</CarDetail>
+			<Company>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+			</Company>
+			<PassengerName>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
+			</PassengerName>
+			<ServerPlatform>
+				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
+			</ServerPlatform>
+		</Car>
+
+	</OrderSummary>
+
+</ETAS>

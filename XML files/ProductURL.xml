@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<product>
+	<bus>
+		<test> 
+			<url1>
+				https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong
+			</url1>
+			<url2>
+				https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral
+			</url2>
+			<url3>
+				https://test.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral
+			</url3>
+			<url4>
+			https://test.easybook.com/en-my/bus/booking/melakasentral-to-kovanhub206
+			</url4>
+		</test>
+
+		<live> 
+			<url1>
+				https://www.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral
+			</url1>
+			<url2>
+				https://www.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong
+			</url2>
+			<url3>
+				https://www.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral
+			</url3>
+		</live>
+
+	</bus>
+
+
+	<ferry>
+		<test> 
+			<url1>
+				https://test.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront
+			</url1>
+			<url2>
+				https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral
+			</url2>
+		</test>
+
+		<live> 
+			<url1>
+				https://www.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront
+			</url1>
+			<url2>
+				https://www.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter
+			</url2>
+		</live>
+
+	</ferry>
+
+
+	<train>
+		<test> 
+			<url1>
+				https://test.easybook.com/en-my/train/booking/jbsentral-to-woodland
+			</url1>
+			<url2>
+				"https://test.easybook.com/en-my/train/booking/kepong-to-terminalktm
+			</url2>
+		</test>
+
+		<live> 
+			<url1>
+				https://www.easybook.com/en-my/train/booking/jbsentral-to-woodland
+			</url1>
+			<url2>
+				https://www.easybook.com/en-my/train/booking/kepong-to-terminalktm
+			</url2>
+		</live>
+	</train>
+
+
+	<car>
+		<test> 
+			<url1>
+				https://test.easybook.com/en-my/car/booking/bukitbintangarea
+			</url1>
+			<url2>
+				https://test.easybook.com/en-my/car/booking/kualalumpurarea
+			</url2>
+		</test>
+
+		<live> 
+			<url1>
+				"https://www.easybook.com/en-my/car/booking/kualalumpurarea
+			</url1>
+		
+		</live>
+
+	</car>
+</product>

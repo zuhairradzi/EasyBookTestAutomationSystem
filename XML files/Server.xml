@@ -1,0 +1,5 @@
+<server>
+	<footerElement xpath = "//*[@id='footer']/div/div[5]/div/p">
+		
+	</footerElement>
+</server>

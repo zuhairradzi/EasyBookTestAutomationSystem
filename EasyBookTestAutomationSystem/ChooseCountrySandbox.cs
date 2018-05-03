@@ -18,8 +18,7 @@ namespace EasyBookTestAutomationSystem
 {
     class ChooseCountrySandbox
     {
-        private IWebDriver driver;
-
+       
         //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
@@ -30,22 +29,40 @@ namespace EasyBookTestAutomationSystem
         string sg = "sg";
 
         //page elements
-        string XPFlag = "//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img";
-
-        //country elements
-        string Singapore = "Singapore";
+        string XPFlag, Singapore;
 
 
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
 
-        public ChooseCountrySandbox(IWebDriver maindriver)
+        private IWebDriver driver;
+        private XmlDocument xml;
+
+        public ChooseCountrySandbox(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
-        public void ChangeCountry()
+        public void ChangeCountry(string XMLpath)
         {
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Country/CountryMenu");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                XPFlag = xnode["XPath"].InnerText.Trim();
+                //Console.WriteLine("xpath : " + XPFlag);
+
+            }
+
+            XmlNodeList xnList = xml.SelectNodes("/ETAS/Country/CountryName");
+            foreach (XmlNode xnode in xnList)
+            {
+                Singapore = xnode["Singapore"]["LinkText"].InnerText.Trim();
+                //Console.WriteLine("country : " + Singapore);
+
+            }
             if (testID.Contains(sg))
             {
                 try

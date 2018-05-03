@@ -1,0 +1,5 @@
+<choosecountry>
+		<menuElement XPath = "//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img">
+			<country singapore = "Singapore"></country>
+		</menuElement>
+</choosecountry>

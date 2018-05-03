@@ -28,49 +28,56 @@ namespace EasyBookTestAutomationSystem
             string tripType;
             string paymentType;
 
+         
+            //IWebDriver Maindriver = new ChromeDriver();
+            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+            XmlDocument xml = new XmlDocument();
+            //XMLtest test1 = new XMLtest(xml, Maindriver);
+            //test1.testReadXML(XMLFilePath);
+
 
             //----------------------SANDBOX CLASSES-------------------------//
 
             //---CHECK SERVER--//
-
+            
             IWebDriver Maindriver = new ChromeDriver();
-            /*ServerSandbox testConnectServer = new ServerSandbox(Maindriver);
-            testConnectServer.LaunchBrowser();*/
+            //ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
+            //testConnectServer.LaunchBrowser(XMLFilePath);
 
 
 
             //---LAUNCH & LOGIN EB SITE ---//
-            LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(Maindriver);
+            LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(xml, Maindriver);
              LaunchTest.LaunchBrowser();
-             //LaunchTest.loginEB();
+             LaunchTest.loginEB(XMLFilePath);
 
 
              //--- PRODUCT AND DESTINATION ---//
-            ProductDestSandbox productTest = new ProductDestSandbox(Maindriver);
-             productTest.chooseProduct();
+            ProductDestSandbox productTest = new ProductDestSandbox(xml, Maindriver);
+             productTest.chooseProduct(XMLFilePath);
              productTest.goToProductURL();
 
 
             //--- CHOOSE COUNTRY ---//
-            ChooseCountrySandbox CountryTest = new ChooseCountrySandbox(Maindriver);
-            CountryTest.ChangeCountry();
+            ChooseCountrySandbox CountryTest = new ChooseCountrySandbox(xml, Maindriver);
+            CountryTest.ChangeCountry(XMLFilePath);
 
 
             //--- CHOOSE TRIP TYPE ---//
-            TripTypeSandbox TripTypeTest = new TripTypeSandbox(Maindriver);
-            TripTypeTest.chooseTripType();
+            TripTypeSandbox TripTypeTest = new TripTypeSandbox(xml, Maindriver);
+            TripTypeTest.chooseTripType(XMLFilePath);
 
             //--- SELECT DATE  ---//
-            DateSandbox SelectDateTest = new DateSandbox(Maindriver);
-            SelectDateTest.SelectDate();
+            /*DateSandbox SelectDateTest = new DateSandbox(xml, Maindriver);
+            SelectDateTest.ChooseDate(XMLFilePath);
 
             //--- SUBMIT SEARCH  ---//
-            SubmitSearch newSearch = new SubmitSearch(Maindriver);
+            /*SubmitSearch newSearch = new SubmitSearch(Maindriver);
             newSearch.confirmSearch();
 
             //--- SELECT TRIP  ---//
             SelectTripSandbox TripTest = new SelectTripSandbox(Maindriver);
-            TripTest.selectTrip();
+            TripTest.selectTrip();*/
 
 
 
@@ -167,12 +174,13 @@ namespace EasyBookTestAutomationSystem
 
 
 
-             //-----LAUNCH CHROME----//
-             Console.WriteLine("Launching browser");
-             IWebDriver Maindriver = new ChromeDriver();
-             ChromeOptions chromeOptions = new ChromeOptions();
-             chromeOptions.AddArgument("--disable-impl-side-painting");
+            //-----LAUNCH CHROME----//
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--disable-impl-side-painting");
 
+            IWebDriver Maindriver = new ChromeDriver();
+            Console.WriteLine("Launching browser");
+          
 
              //-----CHOOSE SITE---//
 

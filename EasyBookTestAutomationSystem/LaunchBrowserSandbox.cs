@@ -19,31 +19,19 @@ namespace EasyBookTestAutomationSystem
     class LaunchBrowserSandbox
     {
         private IWebDriver driver;
+        private XmlDocument xml;
+
 
 
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
-        
+
         //----Login Elements--//
 
-        string ElLogin = "loginLink";
-        string ElSignIn;
-        string ElUserName = "Email";
-        string ElPassword = "Password";
-        string username;
-        string password;
-        string ElCaptcha = "CaptchaCode";
-        string ElBtnLogin = "btnLogin";
-        string XPathSignIn = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a";
-
-
-        //---Login details---//
-        string usernameFile = "user.txt";
-        string passwordFile = "pass.txt";
-
-
+        string ElLogin, ElSignIn, ElemEmail, ElemPass, email, password, ElemCaptcha, ElBtnLogin;
+        
         //---links---//
         string urlTest = "https://test.easybook.com";
         string urlLive = "https://www.easybook.com";
@@ -53,9 +41,11 @@ namespace EasyBookTestAutomationSystem
 
 
 
-        public LaunchBrowserSandbox(IWebDriver maindriver)
+        public LaunchBrowserSandbox(XmlDocument xml, IWebDriver driver)
         {
-            this.driver = maindriver;
+            this.xml = xml;
+            this.driver = driver;
+            
         }
         public void LaunchBrowser()
         {
@@ -64,60 +54,52 @@ namespace EasyBookTestAutomationSystem
         }
 
 
-        public void loginEB()
+        public void loginEB(string XMLpath)
         {
 
-            try
+            xml.Load(XMLpath);
+            XmlNodeList xnList = xml.SelectNodes("/ETAS/EBLogin/LoginElement");
+            //Console.WriteLine("haha");
+            foreach (XmlNode xnode in xnList)
             {
-                using (StreamReader sr = new StreamReader(usernameFile))
-                {
-                    username = sr.ReadLine();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                ElSignIn = xnode["SignIn"]["XPath"].InnerText.Trim();
+                //Console.WriteLine("ElSignIn : " +ElSignIn.Trim());
+
+                ElLogin = xnode["Login"]["Id"].InnerText.Trim();
+                //Console.WriteLine("ElLogin : " + ElLogin.Trim());
+
+                ElemEmail = xnode["Email"]["Id"].InnerText.Trim();
+                //Console.WriteLine("ElemEmail : " + ElemEmail.Trim());
+
+                ElemPass = xnode["Pass"]["Id"].InnerText.Trim();
+                //Console.WriteLine("ElemPass : " + ElemPass.Trim());
+
+                email = xnode["Email"]["Value"].InnerText.Trim();
+                //Console.WriteLine("email : " + email.Trim());
+
+                password = xnode["Pass"]["Value"].InnerText.Trim();
+               // Console.WriteLine("password : " + password.Trim());
+
+                ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
+                //Console.WriteLine("ElemCaptcha : " + ElemCaptcha.Trim());
+
+                ElBtnLogin = xnode["buttonLogin"]["Id"].InnerText.Trim();
+                //Console.WriteLine("ElBtnLogin :" + ElBtnLogin.Trim());
             }
 
             try
             {
-                using (StreamReader sr = new StreamReader(passwordFile))
-                {
-                    password = sr.ReadLine();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
 
-
-            try
-            {
-
-                driver.FindElement(By.XPath(XPathSignIn)).Click();
+                driver.FindElement(By.XPath(ElSignIn)).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElUserName)))).SendKeys(username);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElPassword)))).SendKeys(password);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElCaptcha)))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).SendKeys(email);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).Clear();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).SendKeys(password);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemCaptcha)))).Click();
                 Thread.Sleep(6000);
 
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
-
-                /*
-                driver.FindElement(By.Id("loginLink")).Click();
-                driver.FindElement(By.Id("Email")).Clear();
-                driver.FindElement(By.Id("Email")).SendKeys(username);
-                driver.FindElement(By.Id("Password")).Clear();
-                driver.FindElement(By.Id("Password")).SendKeys(password);
-                driver.FindElement(By.Id("CaptchaCode")).Click();
-                Thread.Sleep(6000);
-
-                driver.FindElement(By.Id("btnLogin")).Click();*/
 
             }
 

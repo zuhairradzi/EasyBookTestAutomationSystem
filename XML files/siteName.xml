@@ -1,0 +1,13 @@
+<site>
+	<url>
+		<test>  
+			https://test.easybook.com 
+		</test>
+		<live>  
+			https://www.easybook.com
+		</live>
+		<backend>
+			http://backend.easybook.com
+		</backend>
+	</url>
+</site>

@@ -11,18 +11,23 @@ using System.Drawing;
 using System.Globalization;
 using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
+using System.Xml;
+using System.IO;
 
 namespace EasyBookTestAutomationSystem
 {
     class ServerConnection
     {
+
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
         private IWebDriver driver;
+        //private XmlReader reader;
 
-        //----Server Elements--//
-        string ElFooter = "//*[@id=\"footer\"]/div/div[5]/div/p";
+        //----Server Elements--//       
+        string XMLfilePath =
+"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Server.xml";
 
         //---Server Variables--//
         string ServerWanted;
@@ -32,6 +37,7 @@ namespace EasyBookTestAutomationSystem
         string server_2 = "G3ASPRO02";
         string s1 = "s1";
         string s2 = "s2";
+        string xpath;
 
 
         //-------------------------------------------------------------------------------------//
@@ -41,24 +47,38 @@ namespace EasyBookTestAutomationSystem
         //---------------------METHODS-------------------------------------------//
        
         
-        public ServerConnection(IWebDriver maindriver)
+        public ServerConnection(IWebDriver maindriver/*, XmlReader mainreader*/)
         {
             this.driver = maindriver;
+            //this.reader = mainreader;
         }
 
       
 
         public void LaunchBrowser(string TestID, string EBurl)
         {
+            XmlTextReader reader = new XmlTextReader(XMLfilePath);
+
+
             try
             {
+                while (reader.Read())
+                {
+                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
+                    {
+                        xpath = reader.GetAttribute("xpath");
+                        //Console.WriteLine("xpath : "+xpath);
+                    }
+
+                  
+                }
                 OpenIntendedServer test1 = new OpenIntendedServer(driver);
                 driver.Navigate().GoToUrl(EBurl);
                 driver.Manage().Window.Maximize();
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
 
-                var footer = driver.FindElement(By.XPath(ElFooter));
+                var footer = driver.FindElement(By.XPath(xpath));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();

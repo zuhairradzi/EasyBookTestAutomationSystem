@@ -19,19 +19,34 @@ namespace EasyBookTestAutomationSystem
     class TripTypeSandbox
     {
         private IWebDriver driver;
-        public TripTypeSandbox(IWebDriver maindriver)
+        private XmlDocument xml;
+
+        public TripTypeSandbox(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
         string TestID = "oneway";
-        public void chooseTripType()
+        string oneway, returnTrip;
+        public void chooseTripType(string XMLpath)
         {
+            xml.Load(XMLpath);
+            XmlNodeList xnOne = xml.SelectNodes("/ETAS/TripType");
+            foreach (XmlNode xnode in xnOne)
+            {
+                oneway = xnode["OneWay"]["Id"].InnerText.Trim();
+                returnTrip = xnode["Return"]["Id"].InnerText.Trim();
+                //Console.WriteLine("xpath : " + XPFlag);
+
+            }
+           
             if (TestID.ToLower().Contains("oneway"))
             {
 
                 try
                 {
-                    new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("radioOneWay")))).Click();
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(oneway)))).Click();
                 }
                 catch (Exception)
                 {
@@ -44,7 +59,7 @@ namespace EasyBookTestAutomationSystem
                 
                 try
                 {
-                    new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id("radioRoundTrip")))).Click();
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(returnTrip)))).Click();
                 }
                 catch (Exception)
                 {

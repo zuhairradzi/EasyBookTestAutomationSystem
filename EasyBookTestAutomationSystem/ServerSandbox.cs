@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Globalization;
 using OpenQA.Selenium.Interactions;
+using System.Xml;
 using NUnit.Framework;
 
 namespace EasyBookTestAutomationSystem
@@ -26,10 +27,14 @@ namespace EasyBookTestAutomationSystem
         string serverTest = "G3ASPRO01";
 
         private IWebDriver driver;
+        private XmlDocument xml;
+        string serverXPath;
 
-        public ServerSandbox(IWebDriver maindriver)
+        public ServerSandbox(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+            
         }
         public ServerSandbox()
         {
@@ -50,18 +55,27 @@ namespace EasyBookTestAutomationSystem
         }
 
 
-        public void LaunchBrowser()
+        public void LaunchBrowser(string XMLpath)
         {
             try
             {
-                ServerSandbox test1 = new ServerSandbox(driver);
+                ServerSandbox test1 = new ServerSandbox(xml, driver);
+                xml.Load(XMLpath);
+                XmlNodeList xnList = xml.SelectNodes("/ETAS/Server/footerElement");
+                Console.WriteLine("haha");
+                foreach (XmlNode xn in xnList)
+                {
+                    serverXPath = xn["XPath"].InnerText;
+                    Console.WriteLine("xpath: "+ serverXPath);
+
+                }
                 //Console.WriteLine("4.0.1");
                 driver.Navigate().GoToUrl(testURL);
                 driver.Manage().Window.Maximize();
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
 
-                var footer = driver.FindElement(By.XPath("//*[@id=\"footer\"]/div/div[5]/div/p"));
+                var footer = driver.FindElement(By.XPath(serverXPath));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();

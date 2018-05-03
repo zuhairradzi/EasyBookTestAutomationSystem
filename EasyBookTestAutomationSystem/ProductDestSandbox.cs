@@ -22,19 +22,18 @@ namespace EasyBookTestAutomationSystem
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
-        private IWebDriver driver;
 
         //Conditions product
         string product = "bus";
         string bus = "bus";
+        string EBUrl = "https://test.easybook.com/en-my";
 
 
         //Product URL
-        string busURL1;
-        string busURL2;
-        string busURL3;
-        string ferryURL1;
-       
+        string busURL1, busURL2, busURL3, ferryURL1, prodURL;
+        string busBook = "/bus/booking/";
+     
+
 
 
         //-------------------------------------------------------------------------------------//
@@ -43,25 +42,40 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------METHODS-------------------------------------------//
 
-        public ProductDestSandbox(IWebDriver maindriver)
+        private IWebDriver driver;
+        private XmlDocument xml;
+
+        public ProductDestSandbox(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
 
-        public void chooseProduct()
+        public void chooseProduct(string XMLpath)
         {
+            xml.Load(XMLpath);
+            XmlNodeList xnList = xml.SelectNodes("/ETAS/Product/ProductName");
+            //Console.WriteLine("haha");
+            foreach (XmlNode xnode in xnList)
+            {
+                busURL1 = xnode["Bus"]["URL1"].InnerText.Trim();
+                busURL2 = xnode["Bus"]["URL2"].InnerText.Trim();
+                busURL3 = xnode["Bus"]["URL3"].InnerText.Trim();
+
+
+            }
+
             if (product==bus)
             {
-                busURL1 = "https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
-                busURL2 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong"; ;
-                busURL3 = "https://test.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral";
-                ferryURL1 = "https://test.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
+                prodURL = EBUrl + busBook+ busURL1;
+               
             }
         }
 
         public void goToProductURL()
         {
-            driver.Navigate().GoToUrl(busURL1);
+            driver.Navigate().GoToUrl(prodURL);
         }
     }
 }

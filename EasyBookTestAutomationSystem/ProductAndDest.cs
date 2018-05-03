@@ -9,11 +9,19 @@ using System.Xml;
 using Microsoft.Office.Interop.Access.Dao;
 using OpenQA.Selenium;
 using System;
+using System.Xml.Linq;
 
 namespace EasyBookTestAutomationSystem
 {
     class ProductAndDest
     {
+
+        //-------------------------------XML FILE-------------------------------------------------------------------///
+        string XMLfilePath =
+"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ProductURL.xml";
+        //---------------------------------------------------------------------------------------------------------///
+
+
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
@@ -58,15 +66,39 @@ namespace EasyBookTestAutomationSystem
 
         public void chooseProduct(string TestID, string EBurl)
         {
+            //XmlTextReader reader = new XmlTextReader(XMLfilePath);
+            XmlDocument xml = new XmlDocument();
+            xml.Load(XMLfilePath);
+            //XElement booksFromFile = XElement.Load(@"books.xml");
+            XmlNodeList xnList = xml.SelectNodes("product/bus/test");
+            Console.WriteLine("1");
             if (TestID.ToLower().Contains(bus))
             {
                 if (TestID.ToLower().Contains(test))
                 {
-                    
-                    URL1 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong";
-                    URL2 = "https://test.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
-                    URL3 = "https://test.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral";
-                    URL4 = "https://test.easybook.com/en-my/bus/booking/melakasentral-to-kovanhub206";
+                    Console.WriteLine("2");
+                    foreach (XmlNode xn in xnList)
+                    {
+                        Console.WriteLine("3");
+                        URL1 = xn["url1"].InnerText;
+                        URL2 = xn["url2"].InnerText;
+                        Console.WriteLine("url: {0},{1}", URL1, URL2);
+                        Console.WriteLine("4");
+                    }/*
+                     while (reader.Read())
+                     {
+                         if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "url1")
+                         {
+                             reader.Read();
+                            URL1 = reader.Value;
+                             URL2 = reader.GetAttribute("url2");
+                             URL3 = reader.GetAttribute("url3");
+                             URL4 = reader.GetAttribute("url4");
+
+                         }
+
+
+                     }*/
 
                     try
                     {
@@ -79,11 +111,19 @@ namespace EasyBookTestAutomationSystem
 
                 }
                 else if (TestID.ToLower().Contains(live))
-                {
-                    URL1 = "https://www.easybook.com/en-my/bus/booking/sungainibong-to-melakasentral";
-                    URL2 = "https://www.easybook.com/en-my/bus/booking/melakasentral-to-sungainibong"; 
-                    URL3 = "https://www.easybook.com/en-my/bus/booking/kovanhub206-to-melakasentral";
+                {/*
+                    while (reader.Read())
+                    {
+                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "live")
+                        {
+                            URL1 = reader.GetAttribute("url1");
+                            URL2 = reader.GetAttribute("url2");
+                            URL3 = reader.GetAttribute("url3");
+                         
+                        }
 
+                    }
+                
                     try
                     {
                         driver.Navigate().GoToUrl(URL1);
@@ -93,18 +133,16 @@ namespace EasyBookTestAutomationSystem
                         Console.WriteLine("Product URL not found");
                     }
 
-
+                    */
                 }
-
-
             }
 
             else if (TestID.ToLower().Contains(car))
             {
                 if (TestID.ToLower().Contains(test))
                 {
-                    URL1 = "https://test.easybook.com/en-my/car/booking/bukitbintangarea";
-                    URL2 = "https://test.easybook.com/en-my/car/booking/kualalumpurarea";
+                    URL1 = "";
+                    URL2 = "";
 
                     try
                     {
@@ -119,7 +157,7 @@ namespace EasyBookTestAutomationSystem
                 }
                 else if (TestID.ToLower().Contains(live))
                 {
-                    URL1 = "https://www.easybook.com/en-my/car/booking/kualalumpurarea";
+                    URL1 = "";
 
                     try
                     {
@@ -139,8 +177,8 @@ namespace EasyBookTestAutomationSystem
             {
                 if (TestID.ToLower().Contains(test))
                 {
-                    URL1 = "https://test.easybook.com/en-my/train/booking/jbsentral-to-woodland";
-                    URL2 = "https://test.easybook.com/en-my/train/booking/kepong-to-terminalktm";
+                    URL1 = "";
+                    URL2 = "";
 
                     try
                     {
@@ -154,8 +192,8 @@ namespace EasyBookTestAutomationSystem
                 }
                 else if (TestID.ToLower().Contains(live))
                 {
-                    URL1 = "https://www.easybook.com/en-my/train/booking/jbsentral-to-woodland";
-                    URL2 = "https://www.easybook.com/en-my/train/booking/kepong-to-terminalktm";
+                    URL1 = "";
+                    URL2 = "";
 
                     try
                     {
@@ -173,7 +211,7 @@ namespace EasyBookTestAutomationSystem
             {
                 if (TestID.ToLower().Contains(test))
                 {
-                    URL1 = "https://test.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
+                    URL1 = "";
                     URL2 = "https://test.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter";
 
                     try

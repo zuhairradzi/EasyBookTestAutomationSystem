@@ -21,6 +21,13 @@ namespace EasyBookTestAutomationSystem
     {
         private IWebDriver driver;
 
+        //-------------------------------XML FILE-------------------------------------------------------------------///
+        string XMLfilePath =
+"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ChooseCountry.xml";
+        //---------------------------------------------------------------------------------------------------------///
+
+
+       
 
         //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
@@ -30,37 +37,57 @@ namespace EasyBookTestAutomationSystem
         string sg = "sg";
 
         //page elements
-        string XPFlag = "//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img";
-
-        //country elements
-        string Singapore = "Singapore";
-
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
+        string XPsg;
         
+        //country elements
+        string sg1;
+
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
+
 
 
         public ChooseCountry (IWebDriver maindriver)
         {
             this.driver = maindriver;
+
         }
 
+     
 
 
         //---------------------METHODS-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
-
+       
         public void ChangeCountry(string testID)
         {
+            XmlTextReader reader = new XmlTextReader(XMLfilePath);
             if (testID.Contains(sg))
             {
                 try
                 {
 
-                    driver.FindElement(By.XPath(XPFlag)).Click();
-                    driver.FindElement(By.LinkText(Singapore)).Click();
+                    while (reader.Read())
+                    {
+                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "menuElement")
+                        {
+                            XPsg = reader.GetAttribute("XPath");
+                            Console.WriteLine(XPsg);
+                        }
+
+                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "country")
+                        {
+                            sg1 = reader.GetAttribute("singapore");
+                            Console.WriteLine(sg1);
+                        }
+                    }
+
+                    driver.FindElement(By.XPath(XPsg)).Click();
+                    driver.FindElement(By.LinkText(sg1)).Click();
+
+
                     //Thread.Sleep(2000);
 
                 }
