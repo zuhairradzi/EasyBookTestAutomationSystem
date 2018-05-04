@@ -13,7 +13,7 @@ using OpenQA.Selenium.Interactions;
 using System.Xml;
 using NUnit.Framework;
 
-namespace EasyBookTestAutomationSystem
+namespace ETASSandbox
 {
     class ServerSandbox
     {

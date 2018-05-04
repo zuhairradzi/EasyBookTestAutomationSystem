@@ -14,7 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using Microsoft.Office.Interop.Access.Dao;
 
-namespace EasyBookTestAutomationSystem
+namespace ETASSandbox
 {
     class TripTypeSandbox
     {

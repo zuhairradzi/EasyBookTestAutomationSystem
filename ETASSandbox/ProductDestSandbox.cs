@@ -14,7 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using Microsoft.Office.Interop.Access.Dao;
 
-namespace EasyBookTestAutomationSystem
+namespace ETASSandbox
 {
     class ProductDestSandbox
     {
@@ -68,7 +68,7 @@ namespace EasyBookTestAutomationSystem
 
             if (product==bus)
             {
-                prodURL = EBUrl + busBook+ busURL1;
+                prodURL = EBUrl + busURL2;
                
             }
         }

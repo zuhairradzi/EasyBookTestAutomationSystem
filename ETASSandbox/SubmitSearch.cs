@@ -14,7 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 
-namespace EasyBookTestAutomationSystem
+namespace ETASSandbox
 {
     class SubmitSearch
     {

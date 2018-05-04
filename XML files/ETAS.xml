@@ -16,11 +16,15 @@ E
 
 	<Site>
 		<URL>
-			<test>https://test.easybook.com</test>
-			<live>https://www.easybook.com</live>
-			<backend>http://backend.easybook.com</backend>
+			<TestSite>https://test.easybook.com</TestSite>
+			<LiveSite>https://www.easybook.com</LiveSite>
+			<BackendSite>http://backend.easybook.com</BackendSite>
 		</URL>
 	</Site>
+
+	<Captcha>
+		<Id>CaptchaCode</Id>
+	</Captcha>
 
 
 	<EBLogin>
@@ -53,7 +57,7 @@ E
 	<Product>
 		<ProductName>
 			<Bus>
-				<URL1>melakasentral-to-sungainibong</URL1>
+				<URL1>/bus/booking/melakasentral-to-sungainibong</URL1>
 				<URL2>/bus/booking/sungainibong-to-melakasentral</URL2>
 				<URL3>/bus/booking/kovanhub206-to-melakasentral</URL3>
 				<URL4>/bus/booking/melakasentral-to-kovanhub206</URL4>
@@ -92,159 +96,220 @@ E
 		</Return>
 	</TripType>
 
-	<DateElement>
-			<BusDepature>dpDepartureDate_Bus</BusDepature>
-			<BusReturn>dpReturnDate_Bus</BusReturn>
-			<TrainDepature>dpDepartureDate_Train</TrainDepature>
-			<TrainReturn>dpReturnDate_Train</TrainReturn>
-			<FerryDepature>dpDepartureDate_Ferry</FerryDepature>
-			<FerryReturn>dpReturnDate_Ferry</FerryReturn>
-			<CarPickup>ddPickUpDateCar</CarPickup>
-			<CarReturn>ddReturnDateCar</CarReturn>
-			<CarPickupTime>ddlPickUpTimeCar</CarPickupTime>
-			<CarReturnTime>ddlReturnTimeCar</CarReturnTime>
-	</DateElement>
 
-
-	<DateValue>
+	<Date>
 		<Bus>
-			<OneWayDate>2020-03-08</OneWayDate>
-			<ReturnDate>2020-03-09</ReturnDate>
+			<DateElement>
+				<DepartElement>
+					<Id>dpDepartureDate_Bus</Id>
+				</DepartElement>
+				<ReturnElement>
+					<Id>dpReturnDate_Bus</Id>
+				</ReturnElement>
+			</DateElement>
+			<DateValue>
+				<OneWay>
+					<TestSite>2020-03-08</TestSite>
+					<LiveSite>2020-03-08</LiveSite>
+				</OneWay>
+				<ReturnTrip>
+					<TestSite>2020-03-09</TestSite>
+					<LiveSite>2020-03-09</LiveSite>
+				</ReturnTrip>
+			</DateValue>
 		</Bus>
 
 		<Ferry>
-			<TestDate>2019-03-21</TestDate>
-			<LiveDate>2020-03-01</LiveDate>
-			<Return>
-				<TestDate>2019-03-22</TestDate>
-				<LiveDate>2020-03-02</LiveDate>
-			</Return>
+			<DateElement>
+				<DepartElement>
+					<Id>dpDepartureDate_Ferry</Id>
+				</DepartElement>
+				<ReturnElement>
+					<Id>dpReturnDate_Ferry</Id>
+				</ReturnElement>
+			</DateElement>
+			<DateValue>
+				<OneWay>
+					<TestSite>2019-03-21</TestSite>
+					<LiveSite>2020-03-01</LiveSite>
+				</OneWay>
+				<ReturnTrip>
+					<TestSite>2019-03-22</TestSite>
+					<LiveSite>2020-03-02</LiveSite>
+				</ReturnTrip>
+				</DateValue>
 		</Ferry>
 
 		<Train>
-			<OneWayDate>2018-05-30</OneWayDate>
-			<ReturnDate>2018-05-31</ReturnDate>
+			<DateElement>
+				<DepartElement>
+					<Id>dpDepartureDate_Train</Id>
+				</DepartElement>
+				<ReturnElement>
+					<Id>dpReturnDate_Train</Id>
+				</ReturnElement>
+			</DateElement>
+			<DateValue>
+				<OneWay>
+					<TestSite>2018-05-30</TestSite>
+					<LiveSite>2018-05-30</LiveSite>
+				</OneWay>
+				<ReturnTrip>
+					<TestSite>2018-05-31</TestSite>
+					<LiveSite>2018-05-31</LiveSite>
+				</ReturnTrip>
+			</DateValue>
 		</Train>
 
 		<Car>
-			<Pickup>
-				<TestDate>2019-03-08</TestDate>
-				<LiveDate>2046-03-08</LiveDate>
-				<Time>//*[@id=\"ddlPickUpTimeCar\"]/option[1]</Time>
-			</Pickup>
-
-			<Return>
-				<TestDate>2019-03-08</TestDate>
-				<TestSGDDate>2019-03-09</TestSGDDate>
-				<LiveDate>2046-03-08</LiveDate>
-				<LiveSGDDate>2046-03-09</LiveSGDDate>
-				<MYRTime>//*[@id=\"ddlReturnTimeCar\"]/option[3]</MYRTime>
-				<SGDTime>//*[@id=\"ddlReturnTimeCar\"]/option[2]</SGDTime>
-			</Return>
+			<DateElement>
+				<DepartElement>
+					<Id>ddPickUpDateCar</Id>
+				</DepartElement>
+				<ReturnElement>
+					<Id>ddReturnDateCar</Id>
+				</ReturnElement>
+			</DateElement>
+			<TimeElement>
+				<PickupTimeElement>
+					<Id>ddlPickUpTimeCar</Id>
+				</PickupTimeElement>
+				<ReturnTimeElement>
+					<Id>ddlReturnTimeCar</Id>
+				</ReturnTimeElement>
+			</TimeElement>
+			<DateValue>
+				<OneWay>
+					<TestSite>2019-03-08</TestSite>
+					<LiveSite>2046-03-08</LiveSite>
+				</OneWay>
+				<ReturnTrip>
+					<TestSite>
+						<MYR>2019-03-08</MYR>
+						<SGD>2019-03-09</SGD>
+					</TestSite>
+					<LiveSite>
+						<MYR>2046-03-08</MYR>
+						<SGD>2046-03-09</SGD>
+					</LiveSite>
+				</ReturnTrip>
+			</DateValue>
+			<TimeValue>
+				//*[@id="ddlPickUpTimeCar"]/option[19]
+				//*[@id="ddlPickUpTimeCar"]/option[1]
+				<PickupTime>//*[@id='ddlPickUpTimeCar']/option[1]</PickupTime>
+				<ReturnTime>
+					<MYR>//*[@id='ddlReturnTimeCar']/option[3]</MYR>
+					<SGD>//*[@id='ddlReturnTimeCar']/option[5]</SGD>
+				</ReturnTime>
+			</TimeValue>
 		</Car>
-
-	</DateValue>
+	</Date>
 
 
 
 	<SubmitSearch>
 		<SearchButton>
+			Submit
+			//button[@value='Submit']
+			//*[@id="modify-search"]/div[7]/div/div/button
+			//*[@id="modify-search"]/div[8]/div/div/button
+			//*[@id="modify-search"]/div[8]/div/div/button
+			//*[@id="modify-search"]/div[8]/div/div/button
+			
 			<XPath>
-				//button[@value='Submit']
+				<Bus>//*[@id="modify-search"]/div[8]/div/div/button</Bus>
+				<Car>//*[@id="modify-search"]/div[7]/div/div/button</Car>
 			</XPath>
-			<Id>
-				
-			</Id>
-			<LinkText>
-				Search
-			</LinkText>
+			<Id></Id>
+			<ClassName>btn btn-orange</ClassName>
+			<CssSelector>#modify-search > div.col-lg-1.col-md-1.col-sm-1 > div > div > button</CssSelector>
+			<LinkText>Search</LinkText>
 		</SearchButton>
 	</SubmitSearch>
 
 
 
 	<SelectTrip>
+
 		<Bus>
-			<LinkText>
-				Select
-			</LinkText>
+			<TestSite>
+				<LinkText>Select</LinkText>
+			</TestSite>
+			<LiveSite>
+				<LinkText>Select</LinkText>
+			</LiveSite>
 		</Bus>
+
 		<Train>
-			<LinkText>
-				Select Seats/Berths
-			</LinkText>
-			<XPath>
-				
-			</XPath>
+			<TestSite>
+				<LinkText>Select Seats/Berths</LinkText>
+				<XPath></XPath>
+			</TestSite>
+			<LiveSite>
+				<LinkText>Select Seats/Berths</LinkText>
+				<XPath></XPath>
+			</LiveSite>
+			
 		</Train>
 
 		<Ferry>
-			<LinkText>
-				Select
-			</LinkText>
-			<XPath>
-				<Live>
-					//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a
-				</Live>
-				<Test>
-					//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a
-				</Test>
-			</XPath>
+			<TestSite>
+				<LinkText>Select</LinkText>
+				<XPath>//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a</XPath>
+			</TestSite>
+			<LiveSite>
+				<LinkText>Select</LinkText>
+				<XPath>//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a</XPath>
+			</LiveSite>
 		</Ferry>
 
 		<Car>
-			<XPath>
-				<Live>
-					//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button
-				</Live>
-				<Test>
-					//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button
-				</Test>
-			</XPath>
+			<TestSite>
+				<XPath>//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button</XPath>
+			</TestSite>
+			<LiveSite>
+				<XPath>//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button</XPath>
+			</LiveSite>
 		</Car>
+
 	</SelectTrip>
 
 
 	<Seat>
 		<Bus>
 			<SelectSeat>
+				<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
 				<XPath>
-					//div[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div"
+					<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+					<Part2>]/td[</Part2>
+					<Part3>]/a/div</Part3>
 				</XPath>
+				<ClassName>seat-cell available</ClassName>
 			</SelectSeat>
 			<ContinueButton>
-				<Id>
-					btnProceedToPassengerDetail
-				</Id>
+				<Id>btnProceedToPassengerDetail</Id>
 			</ContinueButton>
 		</Bus>
 		<Ferry>
 			<SelectSeat>
-				<XPath>
-					//div[@id='ferry-seat-chart']/div/div[2]/div/div/select
-				</XPath>
+				<XPath>//div[@id='ferry-seat-chart']/div/div[2]/div/div/select</XPath>
+				<ClassName></ClassName>
 			</SelectSeat>
 			<NoOfSeat>
-				<LinkText>
-					1 Seats
-				</LinkText>
+				<LinkText>1 Seats</LinkText>
 			</NoOfSeat>
 			<ContinueButton>
-				<XPath>
-					//*[@id=\"MY-int-219568-9ac8d73c-07cd-4f47-bedb-245f1510c2c5\"]
-				</XPath>
+				<XPath>//*[@id=\"MY-int-219568-9ac8d73c-07cd-4f47-bedb-245f1510c2c5\"]</XPath>
 			</ContinueButton>
 		</Ferry>
 		<Train>
 			<SelectSeat>
-				<XPath>
-					
-				</XPath>
+				<XPath></XPath>
+				<ClassName></ClassName>
 			</SelectSeat>
 			<ContinueButton>
-				<XPath>
-					
-				</XPath>
+				<XPath></XPath>
 			</ContinueButton>
 		</Train>
 	</Seat>
@@ -253,14 +318,15 @@ E
 
 	<PassengerDetails>
 		<Insurance>
-			<ClassName>
-				cbInsurance_MobileViewOnly
-			</ClassName>
+			<ClassName>cbInsurance_MobileViewOnly</ClassName>
 		</Insurance>
 		<Nationality>
-			<Id>
-				ddlNationalityCar
-			</Id>
+			<NationalityElement>
+			<Id>ddlNationalityCar</Id>
+			</NationalityElement>
+			<Value>
+				<SelectByText>Malaysia</SelectByText>
+			</Value>
 		</Nationality>
 	</PassengerDetails>
 
@@ -268,63 +334,42 @@ E
 
 	<PaymentType>
 		<PayPal>
-			<PayPalMYR>
-				<Id>
-					paymentPayPalEC_MYR
-				</Id>
-			</PayPalMYR>
-			<PayPalSGD>
-				<Id>
-					paymentPayPalEC_SGD
-				</Id>
-			</PayPalSGD>
+			<MYR>
+				<Id>paymentPayPalEC_MYR</Id>
+			</MYR>
+			<SGD>
+				<Id>paymentPayPalEC_SGD</Id>
+			</SGD>
 		</PayPal>
 		<PayNowButton>
-			<Id>
-				payNowBtn
-			</Id>
+			<Id>payNowBtn</Id>
 		</PayNowButton>
 	</PaymentType>
 
 
 
 	<PayPalLogin>
+		<LoginButton>
+			<Id>Log In</Id>
+		</LoginButton>
 		<Email>
-			<Id>
-				email
-			</Id>
-			<XPath>
-				
-			</XPath>
-			<Value>
-				ebvanhieptest1@gmail.com
+			<Id>email</Id>
+			<XPath></XPath>
+			<Value>ebvanhieptest1@gmail.com
 			</Value>
 			<ContinueButton>
-				<Id>
-				
-				</Id>
-				<XPath>
-					//*[@id=\"btnNext\
-				</XPath>
+				<Id>btnNext</Id>//*[@id="btnNext"]
+				<XPath>//*[@id='btnNext']</XPath>
 			</ContinueButton>
 		</Email>
 		<Password>
-			<Id>
-				password
-			</Id>
-			<XPath>
-				
-			</XPath>
-			<Value>
-				Ebtest@1133
-			</Value>
+			<Id>password</Id>
+			<XPath></XPath>
+			<Value>Ebtest@1133</Value>
 			<ContinueButton>
-				<CssSelector>
-					#btnLogin
+				<CssSelector>#btnLogin
 				</CssSelector>
-				<XPath>
-					//*[@id=\"btnLogin\
-				</XPath>
+				<XPath>//*[@id=\"btnLogin\"]</XPath>
 			</ContinueButton>
 		</Password>
 	</PayPalLogin>
@@ -334,25 +379,15 @@ E
 	<PayPalProceed>
 		<Proceed1>
 			<Id>button</Id>
-			<XPath>
-				//div[@id='button']/button
-			</XPath>
+			<XPath>//div[@id='button']/button</XPath>
 		</Proceed1>
 		<Proceed2>
-			<Id>
-				confirmButtonTop
-			</Id>
-			<XPath>
-				
-			</XPath>
+			<Id>confirmButtonTop</Id>
+			<XPath></XPath>
 		</Proceed2>
 		<Proceed3>
-			<Id>
-				pay_now_button
-			</Id>
-			<XPath>
-				
-			</XPath>
+			<Id>pay_now_button</Id>
+			<XPath></XPath>
 		</Proceed3>
 	</PayPalProceed>
 

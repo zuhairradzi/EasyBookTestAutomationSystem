@@ -36,55 +36,10 @@ namespace EasyBookTestAutomationSystem
             //test1.testReadXML(XMLFilePath);
 
 
-            //----------------------SANDBOX CLASSES-------------------------//
-
-            //---CHECK SERVER--//
-            
-            IWebDriver Maindriver = new ChromeDriver();
-            //ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
-            //testConnectServer.LaunchBrowser(XMLFilePath);
-
-
-
-            //---LAUNCH & LOGIN EB SITE ---//
-            LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(xml, Maindriver);
-             LaunchTest.LaunchBrowser();
-             LaunchTest.loginEB(XMLFilePath);
-
-
-             //--- PRODUCT AND DESTINATION ---//
-            ProductDestSandbox productTest = new ProductDestSandbox(xml, Maindriver);
-             productTest.chooseProduct(XMLFilePath);
-             productTest.goToProductURL();
-
-
-            //--- CHOOSE COUNTRY ---//
-            ChooseCountrySandbox CountryTest = new ChooseCountrySandbox(xml, Maindriver);
-            CountryTest.ChangeCountry(XMLFilePath);
-
-
-            //--- CHOOSE TRIP TYPE ---//
-            TripTypeSandbox TripTypeTest = new TripTypeSandbox(xml, Maindriver);
-            TripTypeTest.chooseTripType(XMLFilePath);
-
-            //--- SELECT DATE  ---//
-            /*DateSandbox SelectDateTest = new DateSandbox(xml, Maindriver);
-            SelectDateTest.ChooseDate(XMLFilePath);
-
-            //--- SUBMIT SEARCH  ---//
-            /*SubmitSearch newSearch = new SubmitSearch(Maindriver);
-            newSearch.confirmSearch();
-
-            //--- SELECT TRIP  ---//
-            SelectTripSandbox TripTest = new SelectTripSandbox(Maindriver);
-            TripTest.selectTrip();*/
-
-
-
             //---------------------LIVE PROGRAM----------------------------//
 
             //-----MAIN MENU-----//
-            /*
+            
             Menu mainMenu = new Menu();
              Console.WriteLine("EB TEST AUTOMATION SYSTEM");
              Console.WriteLine();
@@ -221,12 +176,12 @@ namespace EasyBookTestAutomationSystem
             newChooseDate.ChooseDate(testScenario);
 
             //--- SUBMIT SEARCH  ---//
-            SubmitSearch newSearch = new SubmitSearch(Maindriver);
-            newSearch.confirmSearch();
+            SubmitSearch newSearch = new SubmitSearch(xml, Maindriver);
+            newSearch.confirmSearch(XMLFilePath);
 
             //--- SELECT TRIP  ---//
             SelectTrip newTrip = new SelectTrip(Maindriver);
-            newTrip.selectTrip(testScenario);*/
+            newTrip.selectTrip(testScenario);
 
         }
     }

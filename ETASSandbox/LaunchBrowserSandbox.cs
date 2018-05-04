@@ -14,7 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 
-namespace EasyBookTestAutomationSystem
+namespace ETASSandbox
 {
     class LaunchBrowserSandbox
     {
@@ -63,7 +63,7 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnList)
             {
                 ElSignIn = xnode["SignIn"]["XPath"].InnerText.Trim();
-                //Console.WriteLine("ElSignIn : " +ElSignIn.Trim());
+                Console.WriteLine("ElSignIn : " +ElSignIn.Trim());
 
                 ElLogin = xnode["Login"]["Id"].InnerText.Trim();
                 //Console.WriteLine("ElLogin : " + ElLogin.Trim());
@@ -96,8 +96,8 @@ namespace EasyBookTestAutomationSystem
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).SendKeys(email);
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).Clear();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).SendKeys(password);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemCaptcha)))).Click();
-                Thread.Sleep(6000);
+               // new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemCaptcha)))).Click();
+               // Thread.Sleep(6000);
 
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
 
