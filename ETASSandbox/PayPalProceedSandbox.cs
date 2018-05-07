@@ -28,28 +28,61 @@ namespace ETASSandbox
 
         }
 
-        string continue1, continue2, continue3;
+        string continue1XP, continue2XP, continue3XP;
 
         public void ReadElement(string XMLpath)
         {
             //string testID = product + trip + site + currency;
             PaymentTypeSandbox PaymentTest = new PaymentTypeSandbox(xml, driver);
             xml.Load(XMLpath);
-            XmlNodeList xnMenu = xml.SelectNodes("/ETAS");
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/PayPalProceed");
             foreach (XmlNode xnode in xnMenu)
             {
-                continue1 = xnode["PaymentType"]["PayPal"]["Id"].InnerText.Trim();
-                Console.WriteLine("continue1 : " + continue1);
+                continue1XP = xnode["Proceed1"]["XPath"].InnerText.Trim();
+                Console.WriteLine("continue1 : " + continue1XP);
+                
+                continue2XP = xnode["Proceed2"]["Id"].InnerText.Trim();
+                Console.WriteLine("continue2 : " + continue2XP);
 
-                continue2 = xnode["PaymentType"]["PayNowButton"]["Id"].InnerText.Trim();
-                Console.WriteLine("continue2 : " + continue2);
-
-                continue3 = xnode["Captcha"]["Id"].InnerText.Trim();
-                Console.WriteLine("continue3 : " + continue3);
+                continue3XP = xnode["Proceed3"]["Id"].InnerText.Trim();
+                Console.WriteLine("continue3 : " + continue3XP);
 
 
             }
            
+        }
+
+        public void proceedPayPal()
+        {
+            try
+            {
+                Thread.Sleep(8000);
+                driver.FindElement(By.XPath(continue1XP)).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementExists(By.Id(continue2XP))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(25)).Until(ExpectedConditions.ElementExists(By.Id(continue3XP))).Click();
+           
+
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Cannot proceed to pay");
+            }
+
+            try
+            {
+                Thread.Sleep(8000);
+                //driver.FindElement(By.XPath(continue1XP)).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementExists(By.Id(continue2XP))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(25)).Until(ExpectedConditions.ElementExists(By.Id(continue3XP))).Click();
+
+
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Cannot proceed to pay");
+            }
         }
     }
 }

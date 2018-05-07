@@ -20,43 +20,6 @@ namespace EasyBookTestAutomationSystem
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
-        private IWebDriver driver;
-       
-
-        //Conditions product
-        string bus = "bus";
-        string train = "train";
-        string car = "car";
-        string ferry = "ferry";
-
-        //Conditions site
-        string test = "test";
-        string live = "live";
-
-        //Conditions trip type
-        string oneway = "oneway";
-        string returntrip = "return";
-
-        //Conditions currency
-        string myr = "myr";
-        string sgd = "sgd";
-
-        //Bus Seat Elements
-        string XPSeatBus = "";
-        string IDContinueBus = "btnProceedToPassengerDetail";
-
-        //Ferry seat elements
-        string XPFerryTestSeat = "//div[@id='ferry-seat-chart']/div/div[2]/div/div/select";
-        string XPFerryTestSeatNo = "1 Seats";
-        string XPFerryTestSeatContinue = "//*[@id=\"MY-int-219568-9ac8d73c-07cd-4f47-bedb-245f1510c2c5\"]";
-
-
-        string XPFerryLiveSeat = "";
-        string XPFerryLiveSeatNo = "";
-        string XPFerryLiveSeatContinue = "";
-
-        //Train seat elements
-        string XPTrainSeat = "";
 
 
         //-------------------------------------------------------------------------------------//
@@ -64,61 +27,75 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
+        string seatXP1, seatXP2, seatXP3, seatXPFull, seatNo, seatContinue; 
+        private IWebDriver driver;
+        private XmlDocument xml;
 
-
-        public Seat(IWebDriver maindriver)
+        public Seat(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
 
-        public void selectSeat(string testID)
+        public void ReadElement(string XMLpath, string prodName, string siteName)
+        {
+            string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
+            string siteType = char.ToUpper(siteName[0]) + siteName.Substring(1);
+
+            if (prodName == ("car"))
+            {
+                return;
+            }
+            xml.Load(XMLpath);
+            XmlNodeList xnList = xml.SelectNodes("/ETAS/Seat");
+            foreach (XmlNode xnode in xnList)
+            {
+                seatXP1 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part1"].InnerText.Trim();
+                Console.WriteLine("seatXP1 : " + seatXP1);
+                seatXP2 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part2"].InnerText.Trim();
+                Console.WriteLine("seatXP2 : " + seatXP2);
+                seatXP3 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part3"].InnerText.Trim();
+                Console.WriteLine("seatXP3 : " + seatXP3);
+                seatContinue = xnode[productType]["ContinueButton"]["XPath"].InnerText.Trim();
+                Console.WriteLine("seatContinue : " + seatContinue);
+
+                if (prodName == ("ferry"))
+                {
+                    seatNo = xnode[productType]["NoOfSeat"]["LinkText"].InnerText.Trim();
+                    Console.WriteLine("seatNo : " + seatNo);
+                }
+              
+               
+            }
+
+        }
+        public void selectSeat(string productName)
         {
             //--- CAR ---//
-            if (testID.ToLower().Contains(car))
+            if (productName.ToLower().Contains("car"))
             {
                 return;
             }
 
 
 
-
-            //--- TRAIN TEST ---//
-            else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(test))
+            //--- FERRY ---//
+            else if (productName.ToLower().Contains("ferry"))
             {
-
-            }
-
-            //--- TRAIN LIVE ---//
-            else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(live))
-            {
-
-            }
-
-
-
-            //--- FERRY TEST ---//
-            else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(test))
-            {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryTestSeat)))).Click();
-                new SelectElement(driver.FindElement(By.XPath(XPFerryTestSeat))).SelectByText(XPFerryTestSeatNo);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryTestSeat)))).Click();
-               new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryTestSeatContinue)))).Click();
-            }
-
-            //--- FERRY LIVE ---//
-            else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(live))
-            {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryLiveSeat)))).Click();
-                new SelectElement(driver.FindElement(By.XPath(XPFerryLiveSeat))).SelectByText(XPFerryLiveSeatNo);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryLiveSeat)))).Click();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(XPFerryLiveSeatContinue)))).Click();
+                seatXPFull = seatXP1 + seatXP2 + seatXP2;
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
+                new SelectElement(driver.FindElement(By.XPath(seatXPFull))).SelectByText(seatNo);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatContinue)))).Click();
             }
 
 
 
 
-            //--- BUS TEST ---//
-            else if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(test))
+
+            //--- BUS  ---//
+            else if (productName.ToLower().Contains("ferry"))
             {
                 for (int Tr = 1; Tr < 11; Tr++)
                 {
@@ -126,65 +103,14 @@ namespace EasyBookTestAutomationSystem
                     {
                         try
                         {
-                            //Thread.Sleep(1000);
-                            driver.FindElement(By.XPath("//div[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div")).Click();//WORKING
-                            driver.FindElement(By.Id(IDContinueBus)).Click();
-                            //Console.WriteLine("Continue Pax detail clicked");
-                            //Console.WriteLine("Seat Td: {0} - Tr: {1} tested", Td,Tr);
-
+                            driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
+                            driver.FindElement(By.XPath(seatContinue)).Click();
+                        
                             try
                             {
                                 IAlert simpleAlert = driver.SwitchTo().Alert();
-                                //Console.WriteLine("Popup found");
-
                                 String alertText = simpleAlert.Text;
-                                //Console.WriteLine("Alert text is " + alertText);
-
                                 simpleAlert.Accept();
-                                //Console.WriteLine("Popup clicked");
-
-                                continue;
-                            }
-                            catch (NoAlertPresentException)
-                            {
-                                Console.WriteLine("No alert found");
-                            }
-
-                        }
-                        catch (NoSuchElementException)
-                        {
-                            continue;
-                        }
-                    }
-                }
-            }
-
-            //--- BUS LIVE ---//
-            else if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(live))
-            {
-                for (int Tr = 1; Tr < 11; Tr++)
-                {
-                    for (int Td = 1; Td < 5; Td++)
-                    {
-                        try
-                        {
-                            //Thread.Sleep(1000);
-                            driver.FindElement(By.XPath("//div[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div")).Click();//WORKING
-                            driver.FindElement(By.Id(IDContinueBus)).Click();
-                            //Console.WriteLine("Continue Pax detail clicked");
-                            //Console.WriteLine("Seat Td: {0} - Tr: {1} tested", Td,Tr);
-
-                            try
-                            {
-                                IAlert simpleAlert = driver.SwitchTo().Alert();
-                                //Console.WriteLine("Popup found");
-
-                                String alertText = simpleAlert.Text;
-                                //Console.WriteLine("Alert text is " + alertText);
-
-                                simpleAlert.Accept();
-                                //Console.WriteLine("Popup clicked");
-
                                 continue;
                             }
                             catch (NoAlertPresentException)

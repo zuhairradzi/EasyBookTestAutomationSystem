@@ -23,21 +23,22 @@ namespace EasyBookTestAutomationSystem
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
         private IWebDriver driver;
-        //private XmlReader reader;
+        private XmlDocument xml;
 
-        //----Server Elements--//       
-        string XMLfilePath =
-"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Server.xml";
+        public ServerConnection(XmlDocument mainxml, IWebDriver maindriver)
+        {
+            this.xml = mainxml;
+            this.driver = maindriver;
+
+        }
+
 
         //---Server Variables--//
-        string ServerWanted;
-        string ServerNameWanted;
-        string ServerBQwanted;
+        string ServerWanted, FooterXP, ServerNameWanted, ServerBQwanted, XMLfile;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
         string s1 = "s1";
         string s2 = "s2";
-        string xpath;
 
 
         //-------------------------------------------------------------------------------------//
@@ -45,40 +46,33 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
-       
-        
-        public ServerConnection(IWebDriver maindriver/*, XmlReader mainreader*/)
+        public void ReadElement(string XMLpath)
         {
-            this.driver = maindriver;
-            //this.reader = mainreader;
+            this.XMLfile = XMLpath;
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Server");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                FooterXP = xnode["footerElement"]["XPath"].InnerText.Trim();
+                Console.WriteLine("FooterXP : " + FooterXP);
+            }
+
         }
 
-      
+
 
         public void LaunchBrowser(string TestID, string EBurl)
         {
-            XmlTextReader reader = new XmlTextReader(XMLfilePath);
-
-
+            
             try
             {
-                while (reader.Read())
-                {
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
-                    {
-                        xpath = reader.GetAttribute("xpath");
-                        //Console.WriteLine("xpath : "+xpath);
-                    }
-
-                  
-                }
-                OpenIntendedServer test1 = new OpenIntendedServer(driver);
+                OpenIntendedServer test1 = new OpenIntendedServer(xml, driver);
                 driver.Navigate().GoToUrl(EBurl);
                 driver.Manage().Window.Maximize();
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
 
-                var footer = driver.FindElement(By.XPath(xpath));
+                var footer = driver.FindElement(By.XPath(FooterXP));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -86,7 +80,7 @@ namespace EasyBookTestAutomationSystem
                 Console.WriteLine();
                 Console.WriteLine();
 
-                if (TestID.ToLower().Contains(s1))
+                if (TestID.Contains(s1))
                 {
                     ServerWanted = "S1";
                     ServerNameWanted = "G3ASPRO01";
@@ -110,13 +104,14 @@ namespace EasyBookTestAutomationSystem
                         Console.WriteLine();
                         driver.Close();
 
+                        test1.ReadElement(XMLfile);
                         test1.LaunchBrowser(EBurl);
                         test1.ConnectServer1(EBurl);
              
                     }
 
                 }
-                else if (TestID.ToLower().Contains(s2))
+                else if (TestID.Contains(s2))
                 {
                     ServerWanted = "S2";
                     ServerNameWanted = "G3ASPRO02";

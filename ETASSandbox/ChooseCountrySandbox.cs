@@ -29,7 +29,7 @@ namespace ETASSandbox
         string sg = "sg";
 
         //page elements
-        string XPFlag, Singapore;
+        string CountryMenuXP, SGLinkText;
 
 
         //-------------------------------------------------------------------------------------//
@@ -45,31 +45,33 @@ namespace ETASSandbox
             this.driver = maindriver;
 
         }
-        public void ChangeCountry(string XMLpath)
+
+        public void ReadElement(string XMLpath)
         {
+
             xml.Load(XMLpath);
-            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Country/CountryMenu");
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Country");
             foreach (XmlNode xnode in xnMenu)
             {
-                XPFlag = xnode["XPath"].InnerText.Trim();
-                //Console.WriteLine("xpath : " + XPFlag);
+                CountryMenuXP = xnode["CountryMenu"]["XPath"].InnerText.Trim();
+                Console.WriteLine("CountryMenuXP : " + CountryMenuXP);
+
+                SGLinkText = xnode["CountryName"]["LiveSite"]["LinkText"].InnerText.Trim();
+                Console.WriteLine("SGLinkText : " + SGLinkText);
 
             }
 
-            XmlNodeList xnList = xml.SelectNodes("/ETAS/Country/CountryName");
-            foreach (XmlNode xnode in xnList)
-            {
-                Singapore = xnode["Singapore"]["LinkText"].InnerText.Trim();
-                //Console.WriteLine("country : " + Singapore);
-
-            }
+        }
+        public void ChangeCountry()
+        {
+           
             if (testID.Contains(sg))
             {
                 try
                 {
 
-                    driver.FindElement(By.XPath(XPFlag)).Click();
-                    driver.FindElement(By.LinkText(Singapore)).Click();
+                    driver.FindElement(By.XPath(CountryMenuXP)).Click();
+                    driver.FindElement(By.LinkText(SGLinkText)).Click();
                     //Thread.Sleep(2000);
 
                 }
@@ -78,7 +80,6 @@ namespace ETASSandbox
                     Console.WriteLine("Country not found");
 
                 }
-
 
             }
             else

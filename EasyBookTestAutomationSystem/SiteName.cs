@@ -18,72 +18,35 @@ namespace EasyBookTestAutomationSystem
 {
     class SiteName
     {
-        string site;
+        string testSite, liveSite, BQSite, site;
         string test = "test";
         string live = "live";
         string bq = "bq";
 
+        private IWebDriver driver;
+        private XmlDocument xml;
 
-        //-------------------------------XML FILE-------------------------------------------------------------------///
-        string XMLfilePath =
-"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\siteName.xml";
-        //---------------------------------------------------------------------------------------------------------///
-
-
-        public string chooseEBSite(string testCaseID)
+        public SiteName(XmlDocument mainxml, IWebDriver maindriver)
         {
-            XmlTextReader reader = new XmlTextReader(XMLfilePath);
-            if (testCaseID.ToLower().Contains(test)) 
+            this.xml = mainxml;
+            this.driver = maindriver;
+
+        }
+
+        public string ReadElement(string XMLpath, string siteType)
+        {
+            string siteName = char.ToUpper(siteType[0]) + siteType.Substring(1);
+            Console.WriteLine("siteName : " + siteName);
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Site");
+            foreach (XmlNode xnode in xnMenu)
             {
-                
-                while (reader.Read())
-                {
-                    
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "test")
-                    {
-                       
-                        //site = reader.GetAttribute("test");
-                        reader.Read();
-                        string value = reader.Value;
-                        string site = value.Trim();
-                        //Console.WriteLine("site : "+site);
-                        return site;
-                    }
-                }
-               
+                site = xnode["URL"][siteName].InnerText.Trim();
+                Console.WriteLine("site : " + site);
+                return site;
+
             }
-            if (testCaseID.ToLower().Contains(live))
-            {
-                while (reader.Read())
-                {
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "live")
-                    {
-                        //site = reader.GetAttribute("test");
-                        reader.Read();
-                        string value = reader.Value;
-                        string site = value.Trim();
-                        //Console.WriteLine("site : "+site);
-                        return site;
-                    }
-                }
-            }
-            if (testCaseID.ToLower().Contains(bq))
-            {
-                while (reader.Read())
-                {
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "backend")
-                    {
-                        //site = reader.GetAttribute("test");
-                        reader.Read();
-                        string value = reader.Value;
-                        string site = value.Trim();
-                        //Console.WriteLine("site : "+site);
-                        return site;
-                    }
-                }
-            }
-            Console.WriteLine("Wrong site input.");
             return null;
-        } 
+        }
     }
 }

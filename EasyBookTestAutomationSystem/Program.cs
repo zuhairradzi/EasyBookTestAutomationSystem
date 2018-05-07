@@ -114,7 +114,8 @@ namespace EasyBookTestAutomationSystem
 
              TestCases newCase = new TestCases();
              //nsole.WriteLine("2.0");
-             string testScenario = newCase.testCase(server, site, product, tripType, paymentType);
+             string testScenarioUp = newCase.testCase(server, site, product, tripType, paymentType);
+             string testScenario = testScenarioUp.ToLower();
              //Console.WriteLine("2.1");
 
 
@@ -139,49 +140,66 @@ namespace EasyBookTestAutomationSystem
 
              //-----CHOOSE SITE---//
 
-             SiteName newURL = new SiteName();
-            //Console.WriteLine("3.0");
-            string ChooseEBurl = newURL.chooseEBSite(testScenario);
-            //Console.WriteLine("3.1");
+            SiteName newURL = new SiteName(xml, Maindriver);
+            string ChooseEBurl = newURL.ReadElement(XMLFilePath, site);
+          
+
+            //-----GO TO SITE---//
+            LaunchBrowser newSite = new LaunchBrowser(xml, Maindriver);
+            newSite.GoToURL(ChooseEBurl);
+            
 
 
-             //-----SERVER CONNECTION---//
+            //-----SERVER CONNECTION---//
 
-             ServerConnection newServer = new ServerConnection(Maindriver);
-              //Console.WriteLine("4.0");
-              newServer.LaunchBrowser(testScenario, ChooseEBurl);
-              //Console.WriteLine("4.1");
+            //ServerConnection newServer = new ServerConnection(xml, Maindriver);
+            //Console.WriteLine("4.0");
+            //newServer.ReadElement(XMLFilePath);
+            //newServer.LaunchBrowser(testScenario, ChooseEBurl);
+            //Console.WriteLine("4.1");
 
 
-             //-----LOGIN EB SITE---//
-             LoginEBSite newLogin = new LoginEBSite(Maindriver);
-             newLogin.loginEB(ChooseEBurl);
+            //-----LOGIN EB SITE---//
+            LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
+            newLogin.ReadElement(XMLFilePath);
+            newLogin.loginEB(ChooseEBurl);
 
 
              //--- PRODUCT AND DESTINATION ---//
-             ProductAndDest newProduct = new ProductAndDest(Maindriver);
-             newProduct.chooseProduct(testScenario, ChooseEBurl);
+            ProductAndDest newProduct = new ProductAndDest(xml, Maindriver);
+            newProduct.ReadElement(XMLFilePath, testScenario, product);
+            newProduct.chooseProduct(ChooseEBurl);
 
              //--- CHOOSE COUNTRY ---//
-             ChooseCountry CountryTest = new ChooseCountry (Maindriver);
-             CountryTest.ChangeCountry(testScenario);
+            ChooseCountry CountryTest = new ChooseCountry (xml, Maindriver);
+            CountryTest.ReadElement(XMLFilePath);
+            CountryTest.ChangeCountry(testScenario);
 
              //--- CHOOSE TRIP TYPE ---//
-             TripType newTripType = new TripType(Maindriver);
-             newTripType.chooseTripType(testScenario);
+            TripType newTripType = new TripType(xml, Maindriver);
+            newTripType.ReadElement(XMLFilePath, tripType);
+            newTripType.chooseTripType();
              
 
             //--- SELECT DATE  ---//
-            Date newChooseDate = new Date (Maindriver);
+            Date newChooseDate = new Date (xml, Maindriver);
+            newChooseDate.ReadElement(XMLFilePath, product, site, paymentType);
             newChooseDate.ChooseDate(testScenario);
 
             //--- SUBMIT SEARCH  ---//
             SubmitSearch newSearch = new SubmitSearch(xml, Maindriver);
-            newSearch.confirmSearch(XMLFilePath);
+            newSearch.ReadElement(XMLFilePath, product);
+            newSearch.confirmSearch();
 
             //--- SELECT TRIP  ---//
-            SelectTrip newTrip = new SelectTrip(Maindriver);
-            newTrip.selectTrip(testScenario);
+            SelectTrip newTrip = new SelectTrip(xml, Maindriver);
+            newTrip.ReadElement(XMLFilePath, product, site);
+            newTrip.selectTrip();
+
+            //--- SELECT SEAT  ---//
+            Seat newSeat = new Seat(xml, Maindriver);
+            newSeat.ReadElement(XMLFilePath, product, site);
+            newSeat.selectSeat(product);
 
         }
     }

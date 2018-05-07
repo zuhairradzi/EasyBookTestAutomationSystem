@@ -16,9 +16,9 @@ E
 
 	<Site>
 		<URL>
-			<TestSite>https://test.easybook.com</TestSite>
-			<LiveSite>https://www.easybook.com</LiveSite>
-			<BackendSite>http://backend.easybook.com</BackendSite>
+			<Test>https://test.easybook.com</Test>
+			<Live>https://www.easybook.com</Live>
+			<Backend>//backend.easybook.com</Backend>
 		</URL>
 	</Site>
 
@@ -57,8 +57,8 @@ E
 	<Product>
 		<ProductName>
 			<Bus>
-				<URL1>/bus/booking/melakasentral-to-sungainibong</URL1>
-				<URL2>/bus/booking/sungainibong-to-melakasentral</URL2>
+				<URL2>/bus/booking/melakasentral-to-sungainibong</URL2>
+				<URL1>/bus/booking/sungainibong-to-melakasentral</URL1>
 				<URL3>/bus/booking/kovanhub206-to-melakasentral</URL3>
 				<URL4>/bus/booking/melakasentral-to-kovanhub206</URL4>
 			</Bus>
@@ -82,15 +82,18 @@ E
 			<XPath>//div[@id='bs-example-navbar-collapse-1']/ul/li[2]/a/img</XPath>
 		</CountryMenu>
 		<CountryName>
-				<Singapore><LinkText>Singapore</LinkText></Singapore>
+				<Singapore>
+					<LinkText>Singapore</LinkText>
+					<XPath>//*[@id="country-list"]/li[2]/a</XPath>
+				</Singapore>
 		</CountryName>
 	</Country>
 
 
 	<TripType>
-		<OneWay>
+		<Oneway>
 			<Id>radioOneWay</Id>
-		</OneWay>
+		</Oneway>
 		<Return>
 			<Id>radioRoundTrip</Id>
 		</Return>
@@ -109,12 +112,12 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<TestSite>2020-03-08</TestSite>
-					<LiveSite>2020-03-08</LiveSite>
+					<Test>2020-03-08</Test>
+					<Live>2020-03-08</Live>
 				</OneWay>
 				<ReturnTrip>
-					<TestSite>2020-03-09</TestSite>
-					<LiveSite>2020-03-09</LiveSite>
+					<Test>2020-03-09</Test>
+					<Live>2020-03-09</Live>
 				</ReturnTrip>
 			</DateValue>
 		</Bus>
@@ -130,12 +133,12 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<TestSite>2019-03-21</TestSite>
-					<LiveSite>2020-03-01</LiveSite>
+					<Test>2019-03-22</Test>
+					<Live>2020-03-02</Live>
 				</OneWay>
 				<ReturnTrip>
-					<TestSite>2019-03-22</TestSite>
-					<LiveSite>2020-03-02</LiveSite>
+					<Test>2019-03-22</Test>
+					<Live>2020-03-03</Live>
 				</ReturnTrip>
 				</DateValue>
 		</Ferry>
@@ -151,12 +154,12 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<TestSite>2018-05-30</TestSite>
-					<LiveSite>2018-05-30</LiveSite>
+					<Test>2018-05-30</Test>
+					<Live>2018-05-30</Live>
 				</OneWay>
 				<ReturnTrip>
-					<TestSite>2018-05-31</TestSite>
-					<LiveSite>2018-05-31</LiveSite>
+					<Test>2018-05-31</Test>
+					<Live>2018-05-31</Live>
 				</ReturnTrip>
 			</DateValue>
 		</Train>
@@ -180,18 +183,18 @@ E
 			</TimeElement>
 			<DateValue>
 				<OneWay>
-					<TestSite>2019-03-08</TestSite>
-					<LiveSite>2046-03-08</LiveSite>
+					<Test>2019-03-08</Test>
+					<Live>2046-03-08</Live>
 				</OneWay>
 				<ReturnTrip>
-					<TestSite>
+					<Test>
 						<MYR>2019-03-08</MYR>
 						<SGD>2019-03-09</SGD>
-					</TestSite>
-					<LiveSite>
+					</Test>
+					<Live>
 						<MYR>2046-03-08</MYR>
 						<SGD>2046-03-09</SGD>
-					</LiveSite>
+					</Live>
 				</ReturnTrip>
 			</DateValue>
 			<TimeValue>
@@ -210,16 +213,11 @@ E
 
 	<SubmitSearch>
 		<SearchButton>
-			Submit
-			//button[@value='Submit']
-			//*[@id="modify-search"]/div[7]/div/div/button
-			//*[@id="modify-search"]/div[8]/div/div/button
-			//*[@id="modify-search"]/div[8]/div/div/button
-			//*[@id="modify-search"]/div[8]/div/div/button
-			
 			<XPath>
 				<Bus>//*[@id="modify-search"]/div[8]/div/div/button</Bus>
 				<Car>//*[@id="modify-search"]/div[7]/div/div/button</Car>
+				<Ferry>//*[@id="modify-search"]/div[8]/div/div/button</Ferry>
+				<Train>//*[@id="modify-search"]/div[8]/div/div/button</Train>
 			</XPath>
 			<Id></Id>
 			<ClassName>btn btn-orange</ClassName>
@@ -233,68 +231,97 @@ E
 	<SelectTrip>
 
 		<Bus>
-			<TestSite>
+			<Test>
 				<LinkText>Select</LinkText>
-			</TestSite>
-			<LiveSite>
+				<XPath>//*[@id="MY-int-20273737-05f65451-61af-4c1c-9aec-12a172b60a86"]/div[1]/div[5]/a</XPath>
+			</Test>
+			<Live>
 				<LinkText>Select</LinkText>
-			</LiveSite>
+				<XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+			</Live>
 		</Bus>
 
 		<Train>
-			<TestSite>
+			<Test>
 				<LinkText>Select Seats/Berths</LinkText>
-				<XPath></XPath>
-			</TestSite>
-			<LiveSite>
+				<XPath>//*[@id="SG-ext-web-116-532486-2-185-2-305-20180531-9021-ETS2"]/div[1]/div[5]/a</XPath>
+			</Test>
+			<Live>
 				<LinkText>Select Seats/Berths</LinkText>
-				<XPath></XPath>
-			</LiveSite>
+				<XPath>//*[@id="SG-ext-web-116-3632525-2-185-2-305-20180531-9021-ETS2"]/div[1]/div[5]/a</XPath>
+			</Live>
 			
 		</Train>
 
 		<Ferry>
-			<TestSite>
+			<Test>
 				<LinkText>Select</LinkText>
 				<XPath>//*[@id=\"MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b\"]/div[1]/div[5]/div/a</XPath>
-			</TestSite>
-			<LiveSite>
+			</Test>
+			<Live>
 				<LinkText>Select</LinkText>
 				<XPath>//*[@id=\"dep-trip-tbl\"]/tbody/tr/td[9]/div/div[1]/a</XPath>
-			</LiveSite>
+			</Live>
 		</Ferry>
-
 		<Car>
-			<TestSite>
+			<Test>
 				<XPath>//*[@id=\"carSearchResultsTable\"]/tbody/tr[12]/td[8]/div/button</XPath>
-			</TestSite>
-			<LiveSite>
+			</Test>
+			<Live>
 				<XPath>//*[@id=\"carSearchResultsTable\"]/tbody/tr[1]/td[7]/div/button</XPath>
-			</LiveSite>
+			</Live>
 		</Car>
 
 	</SelectTrip>
 
 
 	<Seat>
+
 		<Bus>
 			<SelectSeat>
-				<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
-				<XPath>
-					<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
-					<Part2>]/td[</Part2>
-					<Part3>]/a/div</Part3>
-				</XPath>
-				<ClassName>seat-cell available</ClassName>
+				<Test>
+					<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
+					<XPath>
+						<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+						<Part2>]/td[</Part2>
+						<Part3>]/a/div</Part3>
+					</XPath>
+					<ClassName>seat-cell available</ClassName>
+				</Test>
+				<Live>
+					<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
+					<XPath>
+						<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+						<Part2>]/td[</Part2>
+						<Part3>]/a/div</Part3>
+					</XPath>
+					<ClassName>seat-cell available</ClassName>
+				</Live>
 			</SelectSeat>
 			<ContinueButton>
+				<XPath>//*[@id="btnProceedToPassengerDetail"]</XPath>
 				<Id>btnProceedToPassengerDetail</Id>
 			</ContinueButton>
 		</Bus>
+
 		<Ferry>
 			<SelectSeat>
-				<XPath>//div[@id='ferry-seat-chart']/div/div[2]/div/div/select</XPath>
-				<ClassName></ClassName>
+				<Test>
+					<XPath>//div[@id='ferry-seat-chart']/div/div[2]/div/div/select
+						<Part1>//div[@id='ferry-seat-chart']</Part1>
+						<Part2>/div/div[2]</Part2>
+						<Part3>/div/div/select</Part3>
+					</XPath>
+					<ClassName></ClassName>
+				</Test>
+				<Live>
+					<XPath>//div[@id='ferry-seat-chart']/div/div[2]/div/div/select
+						<Part1>//div[@id='ferry-seat-chart']</Part1>
+						<Part2>/div/div[2]</Part2>
+						<Part3>/div/div/select</Part3>
+					</XPath>
+					<ClassName></ClassName>
+				</Live>
 			</SelectSeat>
 			<NoOfSeat>
 				<LinkText>1 Seats</LinkText>
@@ -303,10 +330,24 @@ E
 				<XPath>//*[@id=\"MY-int-219568-9ac8d73c-07cd-4f47-bedb-245f1510c2c5\"]</XPath>
 			</ContinueButton>
 		</Ferry>
+
 		<Train>
 			<SelectSeat>
-				<XPath></XPath>
+				<Test>
+					<XPath>
+						<Part1></Part1>
+						<Part2></Part2>
+						<Part3></Part3>
+					</XPath>
 				<ClassName></ClassName>
+				</Test>
+				<Live>
+					<XPath>
+						<Part1></Part1>
+						<Part2></Part2>
+						<Part3></Part3>
+					</XPath>
+				</Live>
 			</SelectSeat>
 			<ContinueButton>
 				<XPath></XPath>
@@ -408,11 +449,12 @@ E
 			<ArrivePlace>
 				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
 			</ArrivePlace>
-			<DepartTime>
-				<XPath>//*[@id=\"print-content\"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+			<DepartTime>//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]
+				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]</XPath>
 			</DepartTime>
+			//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]
 			<Company>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
+				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
 			</Company>
 			<PassengerName>
 				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
@@ -458,29 +500,31 @@ E
 			<OrderNo>
 				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
 			</OrderNo>
-			<PickupLocation>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
-			</PickupLocation>
+			<DepartPlace>
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+			</DepartPlace>
 			<ReturnLocation>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
 			</ReturnLocation>
-			<RentDuration>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+			<RentDuration>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+				//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
 			</RentDuration>
 			<DepartTime>
-				<XPath>//*[@id=\"print-content\"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
 			</DepartTime>
-			<CarDetail>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+			<CarDetail>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+				//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
 			</CarDetail>
 			<Company>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
 			</Company>
 			<PassengerName>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
 			</PassengerName>
 			<ServerPlatform>
-				<XPath>//*[@id=\"print-content\"]/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
+				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
 			</ServerPlatform>
 		</Car>
 

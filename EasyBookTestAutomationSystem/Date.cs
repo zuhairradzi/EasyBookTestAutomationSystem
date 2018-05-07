@@ -21,379 +21,86 @@ namespace EasyBookTestAutomationSystem
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
+        string DepElem, RetElem, DepDate, RetDate, carPickTimeElem, carRetTimeElem, carPicTime, carRetTime;
 
+        //-------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------//
         private IWebDriver driver;
+        private XmlDocument xml;
 
-        //Conditions product
-        string bus = "bus";
-        string train = "train";
-        string car = "car";
-        string ferry = "ferry";
-
-        //Conditions site
-        string test = "test";
-        string live = "live";
-
-        //Conditions trip type
-        string oneway = "oneway";
-        string returntrip = "return";
-
-        //Conditions currency
-        string myr = "myr";
-        string sgd = "sgd";
-
-        //Date Element
-        string dateDepart;
-        string dateReturn;
-        string dateElementDep;
-        string dateElementRet;
-        string pickupTimeElem;
-        string returnTimeElem;
-        string pickupTimeList;
-        string returnTimeList;
-
-
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-
-        public Date(IWebDriver maindriver)
+        public Date(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
 
         //---------------------METHODS-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
+        public void ReadElement(string XMLpath, string prodName, string site, string currency)
+        {
+            string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
+            string siteType = char.ToUpper(site[0]) + site.Substring(1);
+            string currencyType = currency.ToUpper();
+
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Date");
+            foreach (XmlNode xnode in xnMenu)
+            {
+
+                DepElem = xnode[productType]["DateElement"]["DepartElement"]["Id"].InnerText.Trim();
+                Console.WriteLine("Dep Elem : " + DepElem);
+                RetElem = xnode[productType]["DateElement"]["ReturnElement"]["Id"].InnerText.Trim();
+                Console.WriteLine("RetElem : " + RetElem);
+
+                DepDate = xnode[productType]["DateValue"]["OneWay"][siteType].InnerText.Trim();
+                Console.WriteLine("DepDate : " + DepDate);
+                RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType].InnerText.Trim();
+                Console.WriteLine("RetDate : " + RetDate);
+
+                if (productType.ToLower().Contains("car"))
+                {
+                    RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType][currencyType].InnerText.Trim();
+                    Console.WriteLine("RetDate : " + RetDate);
+
+                    carPickTimeElem = xnode[productType]["TimeElement"]["PickupTimeElement"]["Id"].InnerText.Trim();
+                    Console.WriteLine(" carPickTimeElem : " + carPickTimeElem);
+
+                    carRetTimeElem = xnode[productType]["TimeElement"]["ReturnTimeElement"]["Id"].InnerText.Trim();
+                    Console.WriteLine("carRetTimeElem : " + carRetTimeElem);
+
+                    carPicTime = xnode[productType]["TimeValue"]["PickupTime"].InnerText.Trim();
+                    Console.WriteLine("carPicTime : " + carPicTime);
+
+                    carRetTime = xnode[productType]["TimeValue"]["ReturnTime"][currencyType].InnerText.Trim();
+                    Console.WriteLine("carRetTime : " + carRetTime);
+                }
+
+            }
+        }
+
         public void ChooseDate(string testID)
         {
             try
             {
-                //--BUS-TEST--//
-                if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(test))
+                Date keyInDate = new Date(xml, driver);
+                if (testID.Contains("car"))
                 {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Bus";
-                        dateDepart = "2020-03-08";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Bus";
-                        dateDepart = "2020-03-08";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Bus";
-                        dateReturn = "2020-03-09";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-
-                    }
-
+                    keyInDate.EnterDate(DepElem, DepDate);
+                    keyInDate.EnterTime(carPickTimeElem, carPicTime);
+                    keyInDate.EnterDate(RetElem, RetDate);
+                    keyInDate.EnterTime(carRetTimeElem, carRetTime);
                 }
-
-                //--BUS-LIVE--//
-                else if (testID.ToLower().Contains(bus) && testID.ToLower().Contains(live))
+                else if (testID.Contains("oneway"))
                 {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Bus";
-                        dateDepart = "2020-03-08";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Bus";
-                        dateDepart = "2020-03-08";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Bus";
-                        dateReturn = "2020-03-09";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-
-                    }
+                    keyInDate.EnterDate(DepElem, DepDate);
                 }
-
-
-                //--TRAIN-TEST--//
-                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(test))
+                else if (testID.Contains("return"))
                 {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Train";
-                        dateDepart = "2018-05-31";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Train";
-                        dateDepart = "2018-05-30";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Train";
-                        dateReturn = "2018-05-31";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-                    }
-                }
-
-                //--TRAIN-LIVE--//
-                else if (testID.ToLower().Contains(train) && testID.ToLower().Contains(live))
-                {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Train";
-                        dateDepart = "2018-05-31";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Train";
-                        dateDepart = "2018-05-30";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Train";
-                        dateReturn = "2018-05-31";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-                    }
-                }
-
-                //--FERRY-TEST--//
-                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(test))
-                {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Ferry";
-                        dateDepart = "2019-03-21";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Ferry";
-                        dateDepart = "2019-03-21";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Ferry";
-                        dateReturn = "2019-03-22";
-
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-                    }
-
-                }
-
-                //--FERYY-LIVE--//
-                else if (testID.ToLower().Contains(ferry) && testID.ToLower().Contains(live))
-                {
-                    if (testID.ToLower().Contains(oneway))
-                    {
-                        dateElementDep = "dpDepartureDate_Ferry";
-                        dateDepart = "2020-03-01";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-                    }
-
-                    else if (testID.ToLower().Contains(returntrip))
-                    {
-                        dateElementDep = "dpDepartureDate_Ferry";
-                        dateDepart = "2020-03-01";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        dateElementRet = "dpReturnDate_Ferry";
-                        dateReturn = "2020-03-02";
-
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-                    }
-
-                }
-
-
-                //--CAR-TEST--//
-                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(test))
-                {
-                    if (testID.ToLower().Contains(myr))
-                    {
-                        dateElementDep = "ddPickUpDateCar";
-                        dateDepart = "2019-03-08";
-                        pickupTimeElem = "ddlPickUpTimeCar";
-                        pickupTimeList = "//*[@id=\"ddlPickUpTimeCar\"]/option[1]";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        driver.FindElement(By.Id(pickupTimeElem)).Click();
-                        driver.FindElement(By.XPath(pickupTimeList)).Click();
-
-                        dateElementRet = "ddReturnDateCar";
-                        dateReturn = "2019-03-08";
-                        returnTimeElem = "ddlReturnTimeCar";
-                        returnTimeList = "//*[@id=\"ddlReturnTimeCar\"]/option[3]";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.XPath(returnTimeList)).Click();
-
-                    }
-
-                    else if (testID.ToLower().Contains(sgd))
-                    {
-                        dateElementDep = "ddPickUpDateCar";
-                        dateDepart = "2019-03-08";
-                        pickupTimeElem = "ddlPickUpTimeCar";
-                        pickupTimeList = "//*[@id=\"ddlPickUpTimeCar\"]/option[1]";
-
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        driver.FindElement(By.Id(pickupTimeElem)).Click();
-                        driver.FindElement(By.XPath(pickupTimeList)).Click();
-
-                        dateElementRet = "ddReturnDateCar";
-                        dateReturn = "2019-03-09";
-                        returnTimeElem = "ddlReturnTimeCar";
-                        returnTimeList = "//*[@id=\"ddlReturnTimeCar\"]/option[2]";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-                        driver.FindElement(By.Id(returnTimeElem)).Click();
-                        driver.FindElement(By.XPath(returnTimeList)).Click();
-
-                    }
-
-
-                }
-
-                //--CAR-LIVE--//
-                else if (testID.ToLower().Contains(car) && testID.ToLower().Contains(live))
-                {
-
-                    if (testID.ToLower().Contains(myr))
-                    {
-                        dateElementDep = "ddPickUpDateCar";
-                        dateDepart = "2046-03-08";
-                        pickupTimeElem = "ddlPickUpTimeCar";
-                        pickupTimeList = "//*[@id=\"ddlPickUpTimeCar\"]/option[1]";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        driver.FindElement(By.Id(pickupTimeElem)).Click();
-                        driver.FindElement(By.XPath(pickupTimeList)).Click();
-
-                        dateElementRet = "ddReturnDateCar";
-                        dateReturn = "2046-03-08";
-                        returnTimeElem = "ddlReturnTimeCar";
-                        returnTimeList = "//*[@id=\"ddlReturnTimeCar\"]/option[3]";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-                        driver.FindElement(By.Id(returnTimeElem)).Click();
-                        driver.FindElement(By.XPath(returnTimeList)).Click();
-                    }
-
-                    else if (testID.ToLower().Contains(sgd))
-                    {
-                        dateElementDep = "ddPickUpDateCar";
-                        dateDepart = "2046-03-08";
-                        pickupTimeElem = "ddlPickUpTimeCar";
-                        pickupTimeList = "//*[@id=\"ddlPickUpTimeCar\"]/option[1]";
-
-                        driver.FindElement(By.Id(dateElementDep)).Click();
-                        driver.FindElement(By.Id(dateElementDep)).Clear();
-                        driver.FindElement(By.Id(dateElementDep)).SendKeys(dateDepart);
-
-                        driver.FindElement(By.Id(pickupTimeElem)).Click();
-                        driver.FindElement(By.XPath(pickupTimeList)).Click();
-
-                        dateElementRet = "ddReturnDateCar";
-                        dateReturn = "2046-03-09";
-                        returnTimeElem = "ddlReturnTimeCar";
-                        returnTimeList = "//*[@id=\"ddlReturnTimeCar\"]/option[2]";
-
-                        driver.FindElement(By.Id(dateElementRet)).Click();
-                        driver.FindElement(By.Id(dateElementRet)).Clear();
-                        driver.FindElement(By.Id(dateElementRet)).SendKeys(dateReturn);
-
-
-                        driver.FindElement(By.Id(returnTimeElem)).Click();
-                        driver.FindElement(By.XPath(returnTimeList)).Click();
-
-                    }
+                    keyInDate.EnterDate(DepElem, DepDate);
+                    keyInDate.EnterDate(RetElem, RetDate);
                 }
 
 
@@ -407,6 +114,18 @@ namespace EasyBookTestAutomationSystem
 
         }
 
+        public void EnterDate(string dateElement, string dateValue)
+        {
+            driver.FindElement(By.Id(dateElement)).Click();
+            driver.FindElement(By.Id(dateElement)).Clear();
+            driver.FindElement(By.Id(dateElement)).SendKeys(dateValue);
+        }
+
+        public void EnterTime(string timeElement, string timeValue)
+        {
+            driver.FindElement(By.Id(timeElement)).Click();
+            driver.FindElement(By.XPath(timeValue)).Click();
+        }
 
     }
 }

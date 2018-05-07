@@ -34,22 +34,27 @@ namespace ETASSandbox
             this.driver = maindriver;
 
         }
-        public void confirmSearch(string XMLpath)
+
+        public void ReadElement(string XMLpath)
+        {
+
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/SubmitSearch");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                XPSearch = xnode["SearchButton"]["XPath"]["Bus"].InnerText.Trim();
+                LinkTextSearch = xnode["SearchButton"]["LinkText"].InnerText.Trim();
+                ClNameSearch = xnode["SearchButton"]["ClassName"].InnerText.Trim();
+                CssSearch = xnode["SearchButton"]["CssSelector"].InnerText.Trim();
+
+
+            }
+
+        }
+        public void confirmSearch()
         {
             try
             {
-
-                xml.Load(XMLpath);
-                XmlNodeList xnMenu = xml.SelectNodes("/ETAS/SubmitSearch");
-                foreach (XmlNode xnode in xnMenu)
-                {
-                    XPSearch = xnode["SearchButton"]["XPath"]["Bus"].InnerText.Trim();
-                    LinkTextSearch = xnode["SearchButton"]["LinkText"].InnerText.Trim();
-                    ClNameSearch = xnode["SearchButton"]["ClassName"].InnerText.Trim();
-                    CssSearch = xnode["SearchButton"]["CssSelector"].InnerText.Trim();
-                    //Console.WriteLine("xpath : " + XPFlag);
-
-                }
                 //Thread.Sleep(2000);
                 //driver.FindElement(By.LinkText("Search")).Click();
                 //driver.FindElement(By.Name("submit")).Click();

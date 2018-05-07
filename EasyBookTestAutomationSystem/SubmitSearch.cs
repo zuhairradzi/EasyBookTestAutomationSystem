@@ -34,38 +34,29 @@ namespace EasyBookTestAutomationSystem
             this.driver = maindriver;
 
         }
-        public void confirmSearch(string XMLpath)
+        public void ReadElement(string XMLpath, string prodName)
+        {
+            string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/SubmitSearch");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                XPSearch = xnode["SearchButton"]["XPath"][productType].InnerText.Trim();
+                LinkTextSearch = xnode["SearchButton"]["LinkText"].InnerText.Trim();
+                ClNameSearch = xnode["SearchButton"]["ClassName"].InnerText.Trim();
+                CssSearch = xnode["SearchButton"]["CssSelector"].InnerText.Trim();
+            }
+
+        }
+        public void confirmSearch()
         {
             try
             {
-
-                xml.Load(XMLpath);
-                XmlNodeList xnMenu = xml.SelectNodes("/ETAS/SubmitSearch");
-                foreach (XmlNode xnode in xnMenu)
-                {
-                    XPSearch = xnode["SearchButton"]["XPath"]["Bus"].InnerText.Trim();
-                    LinkTextSearch = xnode["SearchButton"]["LinkText"].InnerText.Trim();
-                    ClNameSearch = xnode["SearchButton"]["ClassName"].InnerText.Trim();
-                    CssSearch = xnode["SearchButton"]["CssSelector"].InnerText.Trim();
-                    //Console.WriteLine("xpath : " + XPFlag);
-
-                }
-                //Thread.Sleep(2000);
-                //driver.FindElement(By.LinkText("Search")).Click();
-                //driver.FindElement(By.Name("submit")).Click();
-                //*[@id="modify-search"]/div[8]/div/div/button
                 driver.FindElement(By.XPath(XPSearch)).Click();
-                //driver.FindElement(By.CssSelector(CssSearch)).Click();
-                //driver.FindElement(By.ClassName(ClNameSearch)).Click();
-                //driver.FindElement(By.LinkText(LinkTextSearch)).Click();
-                //Thread.Sleep(2000);
-
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Submit button not found");
-                //driver.Close();
-
             }
 
         }

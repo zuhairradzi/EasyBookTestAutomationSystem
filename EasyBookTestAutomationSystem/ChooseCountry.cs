@@ -19,13 +19,7 @@ namespace EasyBookTestAutomationSystem
 {
     class ChooseCountry
     {
-        private IWebDriver driver;
-
-        //-------------------------------XML FILE-------------------------------------------------------------------///
-        string XMLfilePath =
-"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ChooseCountry.xml";
-        //---------------------------------------------------------------------------------------------------------///
-
+      
 
        
 
@@ -37,58 +31,58 @@ namespace EasyBookTestAutomationSystem
         string sg = "sg";
 
         //page elements
-        string XPsg;
+        string CountryMenuXP, SGLinkText, SGxp;
         
-        //country elements
-        string sg1;
 
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
+        private IWebDriver driver;
+        private XmlDocument xml;
 
-
-        public ChooseCountry (IWebDriver maindriver)
+        public ChooseCountry(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
 
         }
 
-     
 
 
         //---------------------METHODS-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
+        public void ReadElement(string XMLpath)
+        {
 
-       
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Country");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                CountryMenuXP = xnode["CountryMenu"]["XPath"].InnerText.Trim();
+                Console.WriteLine("CountryMenuXP : " + CountryMenuXP);
+
+                SGLinkText = xnode["CountryName"]["Singapore"]["LinkText"].InnerText.Trim();
+                Console.WriteLine("SGLinkText : " + SGLinkText);
+
+                SGxp = xnode["CountryName"]["Singapore"]["XPath"].InnerText.Trim();
+                Console.WriteLine("SGLinkText : " + SGxp);
+
+            }
+
+        }
+
+
+
         public void ChangeCountry(string testID)
         {
-            XmlTextReader reader = new XmlTextReader(XMLfilePath);
             if (testID.Contains(sg))
             {
                 try
                 {
-
-                    while (reader.Read())
-                    {
-                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "menuElement")
-                        {
-                            XPsg = reader.GetAttribute("XPath");
-                            Console.WriteLine(XPsg);
-                        }
-
-                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "country")
-                        {
-                            sg1 = reader.GetAttribute("singapore");
-                            Console.WriteLine(sg1);
-                        }
-                    }
-
-                    driver.FindElement(By.XPath(XPsg)).Click();
-                    driver.FindElement(By.LinkText(sg1)).Click();
-
-
-                    //Thread.Sleep(2000);
+                    driver.FindElement(By.XPath(CountryMenuXP)).Click();
+                    //driver.FindElement(By.LinkText(CountryMenuXP)).Click();
+                    driver.FindElement(By.XPath(SGxp)).Click();
 
                 }
                 catch (Exception e)
@@ -96,8 +90,6 @@ namespace EasyBookTestAutomationSystem
                     Console.WriteLine("Country not found");
 
                 }
-
-
             }
             else
             {

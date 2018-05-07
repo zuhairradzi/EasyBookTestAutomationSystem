@@ -85,16 +85,14 @@ namespace ETASSandbox
         //---------------------METHODS-------------------------------------------//
 
 
-        string busTest, busLive, ferryTest, ferryLive, trainTest, trainLive, carTest, carLive;
         string tripValue;
         string product = "Bus";
         string trip = "OneWay";
         string site = "TestSite";
         string currency = "SGD";
         string method = "LinkText";
-      
 
-        public void selectTrip(string XMLpath)
+        public void ReadElement(string XMLpath)
         {
             string testID = product + trip + site + currency;
             xml.Load(XMLpath);
@@ -105,6 +103,10 @@ namespace ETASSandbox
                 Console.WriteLine("tripValue : " + tripValue);
             }
 
+        }
+
+        public void selectTrip()
+        {
             try
             {
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(TextSelectBus)))).Click();

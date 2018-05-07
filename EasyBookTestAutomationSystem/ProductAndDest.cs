@@ -16,17 +16,11 @@ namespace EasyBookTestAutomationSystem
     class ProductAndDest
     {
 
-        //-------------------------------XML FILE-------------------------------------------------------------------///
-        string XMLfilePath =
-"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ProductURL.xml";
-        //---------------------------------------------------------------------------------------------------------///
-
 
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
-        private IWebDriver driver;
 
         //Conditions product
         string bus = "bus";
@@ -51,6 +45,7 @@ namespace EasyBookTestAutomationSystem
         string URL2;
         string URL3;
         string URL4;
+        string busURL1, busURL2, busURL3, ferryURL1, prodURL, productURL, product;
 
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
@@ -58,191 +53,36 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------METHODS-------------------------------------------//
 
+        private IWebDriver driver;
+        private XmlDocument xml;
 
-        public ProductAndDest(IWebDriver maindriver)
+        public ProductAndDest(XmlDocument mainxml, IWebDriver maindriver)
         {
+            this.xml = mainxml;
             this.driver = maindriver;
+
         }
 
-        public void chooseProduct(string TestID, string EBurl)
+        public void ReadElement(string XMLpath, string TestID, string prodName)
         {
-            //XmlTextReader reader = new XmlTextReader(XMLfilePath);
-            XmlDocument xml = new XmlDocument();
-            xml.Load(XMLfilePath);
-            //XElement booksFromFile = XElement.Load(@"books.xml");
-            XmlNodeList xnList = xml.SelectNodes("product/bus/test");
-            Console.WriteLine("1");
-            if (TestID.ToLower().Contains(bus))
+            string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
+            xml.Load(XMLpath);
+            XmlNodeList xnList = xml.SelectNodes("/ETAS/Product/ProductName");
+            foreach (XmlNode xnode in xnList)
             {
-                if (TestID.ToLower().Contains(test))
-                {
-                    Console.WriteLine("2");
-                    foreach (XmlNode xn in xnList)
-                    {
-                        Console.WriteLine("3");
-                        URL1 = xn["url1"].InnerText;
-                        URL2 = xn["url2"].InnerText;
-                        Console.WriteLine("url: {0},{1}", URL1, URL2);
-                        Console.WriteLine("4");
-                    }/*
-                     while (reader.Read())
-                     {
-                         if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "url1")
-                         {
-                             reader.Read();
-                            URL1 = reader.Value;
-                             URL2 = reader.GetAttribute("url2");
-                             URL3 = reader.GetAttribute("url3");
-                             URL4 = reader.GetAttribute("url4");
-
-                         }
-
-
-                     }*/
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-                }
-                else if (TestID.ToLower().Contains(live))
-                {/*
-                    while (reader.Read())
-                    {
-                        if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "live")
-                        {
-                            URL1 = reader.GetAttribute("url1");
-                            URL2 = reader.GetAttribute("url2");
-                            URL3 = reader.GetAttribute("url3");
-                         
-                        }
-
-                    }
-                
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-                    */
-                }
+                productURL = xnode[productType]["URL1"].InnerText.Trim();
+                Console.WriteLine("productURL : " + productURL); 
+              
             }
 
-            else if (TestID.ToLower().Contains(car))
-            {
-                if (TestID.ToLower().Contains(test))
-                {
-                    URL1 = "";
-                    URL2 = "";
+        }
+        public void chooseProduct(string EBurl)
+        {
+            prodURL = EBurl + productURL;
+            Console.WriteLine("prodURL : " + prodURL);
 
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
+            driver.Navigate().GoToUrl(prodURL);
 
-
-                }
-                else if (TestID.ToLower().Contains(live))
-                {
-                    URL1 = "";
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-                }
-
-            }
-
-
-            else if (TestID.ToLower().Contains(train))
-            {
-                if (TestID.ToLower().Contains(test))
-                {
-                    URL1 = "";
-                    URL2 = "";
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-                }
-                else if (TestID.ToLower().Contains(live))
-                {
-                    URL1 = "";
-                    URL2 = "";
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-                }
-
-            }
-            else if (TestID.ToLower().Contains(ferry))
-            {
-                if (TestID.ToLower().Contains(test))
-                {
-                    URL1 = "";
-                    URL2 = "https://test.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter";
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-
-                }
-                else if (TestID.ToLower().Contains(live))
-                {
-                    URL1 = "https://www.easybook.com/en-my/ferry/booking/batamcenter-to-harbourfront";
-                    URL2 = "https://www.easybook.com/en-my/ferry/booking/harbourfront-to-batamcenter";
-
-                    try
-                    {
-                        driver.Navigate().GoToUrl(URL1);
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Product URL not found");
-                    }
-
-
-                }
-
-            }
         }
     
     }

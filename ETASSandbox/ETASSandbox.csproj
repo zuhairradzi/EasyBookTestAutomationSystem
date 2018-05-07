@@ -61,10 +61,13 @@
   <ItemGroup>
     <Compile Include="ChooseCountrySandbox.cs" />
     <Compile Include="DateSandbox.cs" />
+    <Compile Include="IPServerLaunch.cs" />
     <Compile Include="LaunchBrowserSandbox.cs" />
+    <Compile Include="OrderSummarySandbox.cs" />
     <Compile Include="PassengerDetailSandbox.cs" />
     <Compile Include="PaymentTypeSandbox.cs" />
     <Compile Include="PayPalLoginSandbox.cs" />
+    <Compile Include="PayPalProceedSandbox.cs" />
     <Compile Include="ProductDestSandbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

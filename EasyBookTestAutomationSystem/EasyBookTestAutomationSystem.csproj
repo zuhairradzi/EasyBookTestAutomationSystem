@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="ChooseCountry.cs" />
     <Compile Include="Date.cs" />
+    <Compile Include="LaunchBrowser.cs" />
     <Compile Include="LoginEBSite.cs" />
     <Compile Include="LoginETAS.cs" />
     <Compile Include="Menu.cs" />

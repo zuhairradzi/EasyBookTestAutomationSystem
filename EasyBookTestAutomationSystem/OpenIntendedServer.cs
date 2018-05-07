@@ -22,16 +22,21 @@ namespace EasyBookTestAutomationSystem
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
         private IWebDriver driver;
-        
-        //----Server Elements--//
-        string XMLfilePath =
-"C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Server.xml";
+        private XmlDocument xml;
+
+        public OpenIntendedServer(XmlDocument mainxml, IWebDriver maindriver)
+        {
+            this.xml = mainxml;
+            this.driver = maindriver;
+
+        }
+
 
 
         //---Server Variables--//
         string serverType;
-        string xpath;
-        private string EBUrl;
+        string FooterXP;
+        //private string EBUrl;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
 
@@ -43,20 +48,23 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------METHODS-------------------------------------------//
 
-
-        public OpenIntendedServer(IWebDriver maindriver)
+        public void ReadElement(string XMLpath)
         {
-            this.driver = maindriver;
+
+            xml.Load(XMLpath);
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Site");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                FooterXP = xnode["footerElement"]["XPath"].InnerText.Trim();
+                Console.WriteLine("FooterXP : " + FooterXP);
+
+            }
+
         }
 
-        public OpenIntendedServer(string ChooseEBurl)
-        {
-            this.EBUrl = ChooseEBurl;
-        }
 
-        public OpenIntendedServer()
-        {
-        }
+
+
 
 
         public void LaunchBrowser(string EBurl)
@@ -81,21 +89,10 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-                XmlTextReader reader = new XmlTextReader(XMLfilePath);
-                while (reader.Read())
-                {
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
-                    {
-                        xpath = reader.GetAttribute("xpath");
-                        //Console.WriteLine("xpath : "+xpath);
-                    }
-
-
-                }
                 string EBUrl = EBurl;
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
-                var footer = driver.FindElement(By.XPath(xpath));
+                var footer = driver.FindElement(By.XPath(FooterXP));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
 
@@ -123,7 +120,7 @@ namespace EasyBookTestAutomationSystem
                     driver.Close();
 
 
-                    OpenIntendedServer server2 = new OpenIntendedServer(EBUrl);
+                    OpenIntendedServer server2 = new OpenIntendedServer(xml, driver);
                     server2.Server2Test(EBUrl);
                     Thread.Sleep(2000);
 
@@ -146,21 +143,10 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-                XmlTextReader reader = new XmlTextReader(XMLfilePath);
-                while (reader.Read())
-                {
-                    if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
-                    {
-                        xpath = reader.GetAttribute("xpath");
-                        //Console.WriteLine("xpath : "+xpath);
-                    }
-
-
-                }
-                string EBUrl = EBurl;
+                               string EBUrl = EBurl;
                 ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
                 Thread.Sleep(2000);
-                var footer = driver.FindElement(By.XPath(xpath));
+                var footer = driver.FindElement(By.XPath(FooterXP));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -186,7 +172,7 @@ namespace EasyBookTestAutomationSystem
                     driver.Close();
 
 
-                    OpenIntendedServer server1 = new OpenIntendedServer();
+                    OpenIntendedServer server1 = new OpenIntendedServer(xml, driver);
                     server1.Server1Test(EBUrl);
                     Thread.Sleep(2000);
 
@@ -209,18 +195,7 @@ namespace EasyBookTestAutomationSystem
 
         public void Server1Test(string EBUrl)
         {
-            XmlTextReader reader = new XmlTextReader(XMLfilePath);
-            while (reader.Read())
-            {
-                if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
-                {
-                    xpath = reader.GetAttribute("xpath");
-                    //Console.WriteLine("xpath : "+xpath);
-                }
-
-
-            }
-
+           
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(EBUrl);
             driver.Manage().Window.Maximize();
@@ -228,7 +203,7 @@ namespace EasyBookTestAutomationSystem
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
 
-            var footer = driver.FindElement(By.XPath(xpath));
+            var footer = driver.FindElement(By.XPath(FooterXP));
             string footerStr = footer.Text.ToString();
 
             int i = 1;
@@ -246,7 +221,7 @@ namespace EasyBookTestAutomationSystem
                     break;
                 }
 
-                OpenIntendedServer server1 = new OpenIntendedServer();
+                OpenIntendedServer server1 = new OpenIntendedServer(xml, driver);
                 server1.Server1Test(EBUrl);
 
                 if (footerStr.Contains(server_1))
@@ -268,17 +243,7 @@ namespace EasyBookTestAutomationSystem
 
         public void Server2Test(string EBUrl)
         {
-            XmlTextReader reader = new XmlTextReader(XMLfilePath);
-            while (reader.Read())
-            {
-                if ((reader.NodeType == XmlNodeType.Element) && reader.Name == "footerElement")
-                {
-                    xpath = reader.GetAttribute("xpath");
-                    //Console.WriteLine("xpath : "+xpath);
-                }
-
-
-            }
+            
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(EBUrl);
             driver.Manage().Window.Maximize();
@@ -286,7 +251,7 @@ namespace EasyBookTestAutomationSystem
             ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             Thread.Sleep(2000);
 
-            var footer = driver.FindElement(By.XPath(xpath));
+            var footer = driver.FindElement(By.XPath(FooterXP));
             string footerStr = footer.Text.ToString();
 
             int i = 1;
@@ -303,7 +268,7 @@ namespace EasyBookTestAutomationSystem
                     break;
                 }
 
-                OpenIntendedServer server2 = new OpenIntendedServer();
+                OpenIntendedServer server2 = new OpenIntendedServer(xml, driver);
                 server2.Server1Test(EBUrl);
 
                 if (footerStr.Contains("G3ASPRO02"))

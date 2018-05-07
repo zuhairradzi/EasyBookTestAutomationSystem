@@ -18,6 +18,8 @@ namespace ETASSandbox
 {
     class TripTypeSandbox
     {
+        string TestID = "oneway";
+        string oneway, returnTrip;
         private IWebDriver driver;
         private XmlDocument xml;
 
@@ -27,20 +29,25 @@ namespace ETASSandbox
             this.driver = maindriver;
 
         }
-        string TestID = "oneway";
-        string oneway, returnTrip;
-        public void chooseTripType(string XMLpath)
+
+        public void ReadElement(string XMLpath)
         {
+
             xml.Load(XMLpath);
-            XmlNodeList xnOne = xml.SelectNodes("/ETAS/TripType");
-            foreach (XmlNode xnode in xnOne)
+            XmlNodeList xnMenu = xml.SelectNodes("/ETAS/TripType");
+            foreach (XmlNode xnode in xnMenu)
             {
+
                 oneway = xnode["OneWay"]["Id"].InnerText.Trim();
                 returnTrip = xnode["Return"]["Id"].InnerText.Trim();
-                //Console.WriteLine("xpath : " + XPFlag);
 
             }
-           
+
+        }
+        
+        public void chooseTripType()
+        {
+                 
             if (TestID.ToLower().Contains("oneway"))
             {
 

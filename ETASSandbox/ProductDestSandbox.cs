@@ -52,8 +52,9 @@ namespace ETASSandbox
 
         }
 
-        public void chooseProduct(string XMLpath)
+        public void ReadElement(string XMLpath)
         {
+
             xml.Load(XMLpath);
             XmlNodeList xnList = xml.SelectNodes("/ETAS/Product/ProductName");
             //Console.WriteLine("haha");
@@ -66,6 +67,12 @@ namespace ETASSandbox
 
             }
 
+        }
+
+        public void chooseProduct()
+        {
+           
+  
             if (product==bus)
             {
                 prodURL = EBUrl + busURL2;

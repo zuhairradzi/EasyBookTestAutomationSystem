@@ -18,62 +18,62 @@ namespace EasyBookTestAutomationSystem
         {
             Console.WriteLine("Test ID : " + testID);
 
-            if (testID.ToLower().Contains("s1"))
+            if (testID.Contains("s1"))
             {
                 server = "G3ASPRO01";
             }
-            else if (testID.ToLower().Contains("s2"))
+            else if (testID.Contains("s2"))
             {
                 server = "G3ASPRO02";
             }
 
 
 
-            if (testID.ToLower().Contains("bus"))
+            if (testID.Contains("bus"))
             {
                 product = "Bus";
             }
-            else if (testID.ToLower().Contains("train"))
+            else if (testID.Contains("train"))
             {
                 product = "Train";
             }
 
-            else if (testID.ToLower().Contains("ferry"))
+            else if (testID.Contains("ferry"))
             {
                 product = "Ferry";
             }
-            else if (testID.ToLower().Contains("car"))
+            else if (testID.Contains("car"))
             {
                 product = "Car";
             }
 
 
 
-            if (testID.ToLower().Contains("test"))
+            if (testID.Contains("test"))
             {
                 site = "Test Site - test.easybook.com";
             }
-            else if (testID.ToLower().Contains("Live"))
+            else if (testID.Contains("live"))
             {
-                product = "Live Site - www.easybook.com";
+                site = "Live Site - www.easybook.com";
             }
 
 
-            if (testID.ToLower().Contains("oneway"))
+            if (testID.Contains("oneway"))
             {
                 tripType = "One Way Trip";
             }
-            else if (testID.ToLower().Contains("return"))
+            else if (testID.Contains("return"))
             {
                 tripType = "Return Trip";
             }
 
 
-            if (testID.ToLower().Contains("myr"))
+            if (testID.Contains("myr"))
             {
                 paymentType = "PayPal_MYR";
             }
-            else if (testID.ToLower().Contains("sgd"))
+            else if (testID.Contains("sgd"))
             {
                 paymentType = "PayPal_SGD";
             }
