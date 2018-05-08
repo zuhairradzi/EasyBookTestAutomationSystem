@@ -19,33 +19,10 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-
-
-        //Conditions product
-        string bus = "bus";
-        string train = "train";
-        string car = "car";
-        string ferry = "ferry";
-
-        //Conditions site
-        string test = "test";
-        string live = "live";
-
-        //Conditions trip type
-        string oneway = "oneway";
-        string returntrip = "return";
-
-        //Conditions currency
-        string myr = "myr";
-        string sgd = "sgd";
+        //-------------------------------------------------------------------------------------/
 
         //Product URL
-        string URL1;
-        string URL2;
-        string URL3;
-        string URL4;
-        string busURL1, busURL2, busURL3, ferryURL1, prodURL, productURL, product;
+        string prodURL, productURL;
 
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
@@ -53,8 +30,8 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------METHODS-------------------------------------------//
 
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public ProductAndDest(XmlDocument mainxml, IWebDriver maindriver)
         {

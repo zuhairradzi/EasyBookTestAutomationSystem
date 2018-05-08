@@ -19,8 +19,8 @@ namespace EasyBookTestAutomationSystem
     class TripType
     {
         string trip;
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public TripType(XmlDocument mainxml, IWebDriver maindriver)
         {

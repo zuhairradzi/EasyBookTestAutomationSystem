@@ -23,8 +23,8 @@ namespace EasyBookTestAutomationSystem
         string live = "live";
         string bq = "bq";
 
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public SiteName(XmlDocument mainxml, IWebDriver maindriver)
         {

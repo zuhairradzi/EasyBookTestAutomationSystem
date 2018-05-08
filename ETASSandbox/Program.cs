@@ -38,16 +38,22 @@ namespace ETASSandbox
             //---CHECK SERVER--//
 
             //IWebDriver Maindriver = new ChromeDriver();
-           // ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
-           // testConnectServer.LaunchBrowser(XMLFilePath);
+            // ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
+            // testConnectServer.LaunchBrowser(XMLFilePath);
 
-            /*IPServerLaunch testServer = new IPServerLaunch();
-            testServer.LaunchBrowser();
-            testServer.CheckServerConnection();
-            testServer.Login();*/
+            /*ServerSandbox2 newServer = new ServerSandbox2(xml, Maindriver);
+            newServer.ReadElement(XMLFilePath);
+            newServer.LaunchBrowser();
+            newServer.ConnectToServerWanted();
+            newServer.Login();
+
+           // IPServerLaunch testServer = new IPServerLaunch();
+            //testServer.LaunchBrowser();
+            //testServer.CheckServerConnection();
+           // testServer.Login();
 
             //---LAUNCH & LOGIN EB SITE ---//
-            LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(xml, Maindriver);
+           /* LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(xml, Maindriver);
             LaunchTest.LaunchBrowser();
             LaunchTest.loginEB(XMLFilePath);
 
@@ -90,16 +96,16 @@ namespace ETASSandbox
             SeatTest.selectSeat(XMLFilePath);
 
             //--- PASSENGER DETAIL PAGE  ---//
-            /*PassengerDetailSandbox PassengerTest = new PassengerDetailSandbox(xml, Maindriver);
-            PassengerTest.InfoDetail(XMLFilePath);
+            PassengerDetailSandbox PassengerTest = new PassengerDetailSandbox(xml, Maindriver);
+            PassengerTest.ReadElement(XMLFilePath);
 
 
             //--- PAYMENT METHOD  ---//
             PaymentTypeSandbox PaymentTest = new PaymentTypeSandbox(xml, Maindriver);
-            PaymentTest.ReadElement(XMLFilePath);
+            PaymentTest.ReadElement(XMLFilePath);*/
 
             //--- PAYPAL LOGIN  ---//
-            PayPalLoginSandbox PaypalTest = new PayPalLoginSandbox(xml, Maindriver);
+            /*PayPalLoginSandbox PaypalTest = new PayPalLoginSandbox(xml, Maindriver);
             PaypalTest.ReadElement(XMLFilePath);
 
             //--- PAYPAL PROCEED  ---//
@@ -108,9 +114,11 @@ namespace ETASSandbox
             PaypalProceedTest.proceedPayPal();*/
 
             //--- ORDER SUMMARY ---//
-            /*OrderSummarySandbox OStest = new OrderSummarySandbox(xml, Maindriver);
+            OrderSummarySandbox OStest = new OrderSummarySandbox(xml, Maindriver);
             OStest.ReadElement(XMLFilePath);
             OStest.GetDiv1();
+            OStest.GetPurchaseDate();
+            OStest.GetCartID();
             OStest.GetOrderNo();
             OStest.GetDepartPlace();
             OStest.GetArrivePlace();
@@ -123,7 +131,7 @@ namespace ETASSandbox
             OStest.GetCompany();
             OStest.GetPassengerName();
             OStest.Platform();
-            OStest.Server();*/
+            OStest.Server();
 
            
 

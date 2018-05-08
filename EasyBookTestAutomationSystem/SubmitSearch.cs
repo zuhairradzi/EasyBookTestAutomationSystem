@@ -23,10 +23,10 @@ namespace EasyBookTestAutomationSystem
         string XPSearch ;
         string ClNameSearch;
         string CssSearch;
-       
 
-        private IWebDriver driver;
-        private XmlDocument xml;
+
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public SubmitSearch(XmlDocument mainxml, IWebDriver maindriver)
         {

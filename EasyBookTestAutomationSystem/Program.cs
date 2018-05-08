@@ -147,22 +147,21 @@ namespace EasyBookTestAutomationSystem
             //-----GO TO SITE---//
             LaunchBrowser newSite = new LaunchBrowser(xml, Maindriver);
             newSite.GoToURL(ChooseEBurl);
-            
+
 
 
             //-----SERVER CONNECTION---//
-
-            //ServerConnection newServer = new ServerConnection(xml, Maindriver);
-            //Console.WriteLine("4.0");
-            //newServer.ReadElement(XMLFilePath);
-            //newServer.LaunchBrowser(testScenario, ChooseEBurl);
-            //Console.WriteLine("4.1");
+            /*ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
+            newServer.ReadElement(XMLFilePath, server, site);
+            newServer.LaunchBrowser(ChooseEBurl);
+            newServer.ConnectToServerWanted(ChooseEBurl);
+            //newServer.Login();*/
 
 
             //-----LOGIN EB SITE---//
             LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
             newLogin.ReadElement(XMLFilePath);
-            newLogin.loginEB(ChooseEBurl);
+            newLogin.loginEB();
 
 
              //--- PRODUCT AND DESTINATION ---//
@@ -201,7 +200,54 @@ namespace EasyBookTestAutomationSystem
             newSeat.ReadElement(XMLFilePath, product, site);
             newSeat.selectSeat(product);
 
+            //--- PASSENGER DETAILS  ---//
+            PassengerDetail PassengerTest = new PassengerDetail(xml, Maindriver);
+            PassengerTest.ReadElement(XMLFilePath, product);
+
+            //--- PAYMENT METHOD  ---//
+            PaymentType PaymentTest = new PaymentType(xml, Maindriver);
+            PaymentTest.ReadElement(XMLFilePath, paymentType);
+            PaymentTest.PaymentGate();
+            PaymentTest.goToCaptcha();
+            PaymentTest.PayNow();
+
+             //--- PAYPAL LOGIN  ---//
+            PayPalLogin PaypalTest = new PayPalLogin(xml, Maindriver);
+            PaypalTest.ReadElement(XMLFilePath);
+            PaypalTest.ClickLogin();
+            PaypalTest.enterEmPP();
+            PaypalTest.enterPwPP();
+
+            //--- PAYPAL PROCEED  ---//
+            PayPalProceed PaypalProceedTest = new PayPalProceed(xml, Maindriver);
+            PaypalProceedTest.ReadElement(XMLFilePath);
+            PaypalProceedTest.proceedPayPal1();
+            PaypalProceedTest.proceedPayPal2();
+            PaypalProceedTest.proceedPayPal3();
+
+
+
+            //--- ORDER SUMMARY ---//
+            OrderSummary OStest = new OrderSummary(xml, Maindriver);
+            OStest.ReadElement(XMLFilePath, product);
+            OStest.GetDiv1();
+            OStest.GetPurchaseDate();
+            OStest.GetCartID();
+            OStest.GetOrderNo();
+            OStest.GetDepartPlace();
+            OStest.GetArrivePlace();
+            OStest.GetReturnLocation();
+            OStest.GetDepartTime();
+            OStest.GetRentPeriod();
+            OStest.Journey();
+            OStest.GetCarDetail();
+            OStest.GetCartID();
+            OStest.GetCompany();
+            OStest.GetPassengerName();
+            OStest.Platform();
+            OStest.Server();
+
         }
     }
-    
-}
+
+ }

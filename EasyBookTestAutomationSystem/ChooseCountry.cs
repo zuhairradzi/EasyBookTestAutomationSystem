@@ -32,13 +32,13 @@ namespace EasyBookTestAutomationSystem
 
         //page elements
         string CountryMenuXP, SGLinkText, SGxp;
-        
+
 
         //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public ChooseCountry(XmlDocument mainxml, IWebDriver maindriver)
         {

@@ -53,7 +53,7 @@ namespace ETASSandbox
 
         }
 
-        public void InfoDetail(string XMLpath)
+        public void ReadElement(string XMLpath)
         {
             string testID = product + trip + site + currency;
             PassengerDetailSandbox PassengerTest = new PassengerDetailSandbox(xml, driver);

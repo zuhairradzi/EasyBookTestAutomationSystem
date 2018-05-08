@@ -28,7 +28,7 @@ namespace EasyBookTestAutomationSystem
 
 
         string ElLogin, ElSignIn, ElemEmail, ElemPass, email, password, ElemCaptcha, ElBtnLogin;
-        
+
 
 
         //-------------------------------------------------------------------------------------//
@@ -36,8 +36,8 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public LoginEBSite(XmlDocument mainxml, IWebDriver maindriver)
         {
@@ -82,11 +82,13 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void loginEB(string EBUrl)
+        public void loginEB()
         {
             try
             {
-
+                Thread.Sleep(2000);
+                //Console.WriteLine("yyyyy");
+                ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, 0)");
                 driver.FindElement(By.XPath(ElSignIn)).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).Clear();

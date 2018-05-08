@@ -27,9 +27,9 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
-        string seatXP1, seatXP2, seatXP3, seatXPFull, seatNo, seatContinue; 
-        private IWebDriver driver;
-        private XmlDocument xml;
+        string seatXP1, seatXP2, seatXP3, seatXPFull, seatNo, seatContinue;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public Seat(XmlDocument mainxml, IWebDriver maindriver)
         {
@@ -95,11 +95,11 @@ namespace EasyBookTestAutomationSystem
 
 
             //--- BUS  ---//
-            else if (productName.ToLower().Contains("ferry"))
+            else if (productName.ToLower().Contains("bus"))
             {
-                for (int Tr = 1; Tr < 11; Tr++)
+                for (int Tr = 1; Tr < 13; Tr++)
                 {
-                    for (int Td = 1; Td < 5; Td++)
+                    for (int Td = 1; Td < 8; Td++)
                     {
                         try
                         {

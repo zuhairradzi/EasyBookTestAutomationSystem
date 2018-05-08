@@ -14,31 +14,29 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 
-namespace ETASSandbox
+namespace EasyBookTestAutomationSystem
 {
-    class OrderSummarySandbox
+    class OrderSummary
     {
         private IWebDriver driver;
         private XmlDocument xml;
 
         string testID = "";
 
-        public OrderSummarySandbox(XmlDocument mainxml, IWebDriver maindriver)
+        public OrderSummary(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
 
         }
+
         string OrderNo, Div1, DivOne, DepartPlace,
-            ArrivePlace, DepartTime, Company, PassengerName, 
-            ServerPlatform, ReturnLocation, RentDuration, CarDetail;
-        string product = "Car";
-        public void ReadElement(string XMLpath)
+           ArrivePlace, DepartTime, Company, PassengerName,
+           ServerPlatform, ReturnLocation, RentDuration, CarDetail, product;
+
+        public void ReadElement(string XMLpath, string prodName)
         {
-            string url =
-                "https://www.easybook.com/en-sg/payment/paymentresult?guid=CR5e6c2e4fb5e34c8fa5&source=PaypalEC_SGD&status=completed";
-            driver.Navigate().GoToUrl(url);
-            // PaymentTypeSandbox PaymentTest = new PaymentTypeSandbox(xml, driver);
+            product = char.ToUpper(prodName[0]) + prodName.Substring(1);
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/OrderSummary");
             foreach (XmlNode xnode in xnMenu)
@@ -52,7 +50,7 @@ namespace ETASSandbox
                 DepartPlace = xnode[product]["DepartPlace"]["XPath"].InnerText.Trim();
                 //Console.WriteLine("DepartPlace : " + DepartPlace);
 
-                if(product.ToLower().Contains("ferry")|| product.ToLower().Contains("bus"))
+                if (product.ToLower().Contains("ferry") || product.ToLower().Contains("bus"))
                 {
                     ArrivePlace = xnode[product]["ArrivePlace"]["XPath"].InnerText.Trim();
                     //Console.WriteLine("ArrivePlace : " + ArrivePlace);
@@ -61,7 +59,7 @@ namespace ETASSandbox
                     CarDetail = "";
                     RentDuration = "";
                 }
-            
+
                 DepartTime = xnode[product]["DepartTime"]["XPath"].InnerText.Trim();
                 //Console.WriteLine("DepartTime : " + DepartTime);
 
@@ -88,7 +86,12 @@ namespace ETASSandbox
                     ArrivePlace = "";
                 }
             }
-            
+            string url = driver.Url;
+            Console.WriteLine();
+            Console.WriteLine("OS URL is : ");
+            Console.WriteLine();
+            Console.WriteLine(url);
+            Console.WriteLine();
 
         }
 
@@ -123,7 +126,7 @@ namespace ETASSandbox
                 Console.WriteLine("OS not found");
 
             }
-        }                          
+        }
         public void GetDiv1()
         {
             try
@@ -148,7 +151,7 @@ namespace ETASSandbox
         {
             try
             {
-                if (product== "Bus")
+                if (product == "Bus")
                 {
                     string FrontTrim = DivOne.Remove(0, 40);
                     //Console.WriteLine(FrontTrim);
@@ -250,14 +253,14 @@ namespace ETASSandbox
 
         }
 
-      
+
 
         public void GetDepartPlace()
         {
             try
             {
                 var DepartPlaceElem = driver.FindElement(By.XPath(DepartPlace));
-                string depPlace =  DepartPlaceElem.Text.ToString().Trim();
+                string depPlace = DepartPlaceElem.Text.ToString().Trim();
                 Console.WriteLine("Depart Place: " + depPlace);
 
             }
@@ -295,7 +298,7 @@ namespace ETASSandbox
                 string depPlace = DepartPlaceElem.Text.ToString().Trim();
                 //Console.WriteLine("Arrive Place : " + depPlace);
                 string arrPlace = ArrivePlaceElem.Text.ToString().Trim();
-               // Console.WriteLine("Arrive Place : " + arrPlace);
+                // Console.WriteLine("Arrive Place : " + arrPlace);
                 Console.WriteLine("Journey is : " + depPlace + " to " + arrPlace);
 
             }
@@ -456,7 +459,7 @@ namespace ETASSandbox
                 var ServPlat = driver.FindElement(By.XPath(ServerPlatform));
                 string strServPlat = ServPlat.Text.ToString();
                 string platTrim = strServPlat.Trim().ToLower();
-            
+
                 if (platTrim.Contains("mobile"))
                 {
                     string platName = "Mobile Browser";
@@ -480,8 +483,6 @@ namespace ETASSandbox
             }
 
         }
-
-
 
     }
 }

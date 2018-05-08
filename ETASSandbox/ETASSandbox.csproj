@@ -74,6 +74,7 @@
     <Compile Include="SeatSandbox.cs" />
     <Compile Include="SelectTripSandbox.cs" />
     <Compile Include="ServerSandbox.cs" />
+    <Compile Include="ServerSandbox2.cs" />
     <Compile Include="SubmitSearch.cs" />
     <Compile Include="TripTypeSandbox.cs" />
   </ItemGroup>

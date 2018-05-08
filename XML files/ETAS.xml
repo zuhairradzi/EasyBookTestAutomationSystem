@@ -3,13 +3,38 @@
 
 
 	<Server>
+		<JSactions>
+			<ScrolltoBottom>
+				<Action>window.scrollTo(0, document.body.scrollHeight - 150)</Action>
+			</ScrolltoBottom>
+		</JSactions>
 		<footerElement>
-			<Id></Id>
-			<XPath>//*[@id='footer']/div/div[5]/div/p</XPath>
+			<Test>
+				<Id></Id>
+				<XPath>//*[@id='footer']/div/div[5]/div/p</XPath>
+			</Test>
+			<Live>
+				<Id></Id>
+				<XPath>//*[@id='footer']/div/div[5]/div/p</XPath>
+			</Live>
+			<Backend>
+				<Id></Id>
+				<XPath>//*[@id='footer']/div/div[5]/div/p</XPath>
+			</Backend>
 		</footerElement>
 		<ServerName>
-			<Server1>G3ASPRO01</Server1>
-			<Server2>G3ASPRO02</Server2>
+			<Test>
+				<S1>G3ASPRO01</S1>
+				<S2>G3ASPRO02</S2>
+			</Test>
+			<Live>
+				<S1>G3ASPRO01</S1>
+				<S2>G3ASPRO02</S2>
+			</Live>
+			<Backend>
+				<S1>S1</S1>
+				<S2>S2</S2>
+			</Backend>
 		</ServerName>
 	</Server>
 E
@@ -133,7 +158,7 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<Test>2019-03-22</Test>
+					<Test>2019-03-10</Test>
 					<Live>2020-03-02</Live>
 				</OneWay>
 				<ReturnTrip>

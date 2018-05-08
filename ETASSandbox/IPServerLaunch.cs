@@ -26,7 +26,7 @@ namespace ETASSandbox
             try
             {
                 Console.WriteLine("Live (1) or test (2) site?");
-                string site = "2";//Console.ReadLine();
+                string site = "1";//Console.ReadLine();
                 if(site == "1")
                 {
                     driver.Navigate().GoToUrl(urlLive);

@@ -61,12 +61,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChooseCountry.cs" />
+    <Compile Include="ConnectToServer.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="LaunchBrowser.cs" />
     <Compile Include="LoginEBSite.cs" />
     <Compile Include="LoginETAS.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="OpenIntendedServer.cs" />
+    <Compile Include="OrderSummary.cs" />
+    <Compile Include="PassengerDetail.cs" />
+    <Compile Include="PaymentType.cs" />
+    <Compile Include="PayPalLogin.cs" />
+    <Compile Include="PayPalProceed.cs" />
     <Compile Include="ProductAndDest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -32,8 +32,8 @@ namespace EasyBookTestAutomationSystem
         //---------------------METHODS-------------------------------------------//
 
 
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public SelectTrip(XmlDocument mainxml, IWebDriver maindriver)
         {
@@ -51,7 +51,7 @@ namespace EasyBookTestAutomationSystem
             XmlNodeList xnList = xml.SelectNodes("/ETAS/SelectTrip");
             foreach (XmlNode xnode in xnList)
             {
-                tripValue = xnode[productType][siteType]["XPath"].InnerText.Trim();
+                tripValue = xnode[productType][siteType]["LinkText"].InnerText.Trim();
                 Console.WriteLine("tripValue : " + tripValue);
             }
 
@@ -61,7 +61,7 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(tripValue)))).Click();
 
 
             }

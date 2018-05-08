@@ -18,8 +18,8 @@ namespace EasyBookTestAutomationSystem
 {
     class LaunchBrowser
     {
-        private IWebDriver driver;
-        private XmlDocument xml;
+        public IWebDriver driver;
+        public XmlDocument xml;
 
         public LaunchBrowser(XmlDocument mainxml, IWebDriver maindriver)
         {
