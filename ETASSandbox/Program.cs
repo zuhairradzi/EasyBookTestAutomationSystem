@@ -35,6 +35,10 @@ namespace ETASSandbox
 
             //----------------------SANDBOX CLASSES-------------------------//
 
+            IsElementPresentSandbox newElementFind = new IsElementPresentSandbox(xml, Maindriver);
+            newElementFind.LaunchBrowser();
+            newElementFind.Login();
+
             //---CHECK SERVER--//
 
             //IWebDriver Maindriver = new ChromeDriver();
@@ -114,26 +118,59 @@ namespace ETASSandbox
             PaypalProceedTest.proceedPayPal();*/
 
             //--- ORDER SUMMARY ---//
-            OrderSummarySandbox OStest = new OrderSummarySandbox(xml, Maindriver);
-            OStest.ReadElement(XMLFilePath);
+            // OrderSummarySandbox OStest = new OrderSummarySandbox(xml, Maindriver);
+             //OStest.ReadElement(XMLFilePath);
+             /*OStest.GetDiv1();
+             OStest.GetPurchaseDate();
+             OStest.GetCartID();
+             OStest.GetOrderNo();
+             OStest.GetDepartPlace();
+             OStest.GetArrivePlace();
+             OStest.GetReturnLocation();
+             OStest.GetDepartTime();
+             OStest.GetRentPeriod();
+             OStest.Journey();
+             OStest.GetCarDetail();
+             OStest.GetCartID();
+             OStest.GetCompany();
+             OStest.GetPassengerName();
+             OStest.Platform();
+             OStest.Server();*/
+
+            /*
+
             OStest.GetDiv1();
-            OStest.GetPurchaseDate();
-            OStest.GetCartID();
-            OStest.GetOrderNo();
+
+            string productType = OStest.getProductName();
+            string CartID = OStest.GetCartID();
+            string orderNo = OStest.GetOrderNo();
+            OStest.GetDepartPlace();
+            OStest.GetArrivePlace();
+            string tripDetail = OStest.Journey();
+            string PurchaseDate = OStest.GetPurchaseDate();
+            string tripDuration = OStest.GetDepartTime();
+            string passengerName = OStest.GetPassengerName();
+            string Company = OStest.GetCompany();
+
+
             OStest.GetDepartPlace();
             OStest.GetArrivePlace();
             OStest.GetReturnLocation();
-            OStest.GetDepartTime();
-            OStest.GetRentPeriod();
+            // OStest.GetDepartTime();
+            // OStest.GetRentPeriod();
             OStest.Journey();
-            OStest.GetCarDetail();
             OStest.GetCartID();
-            OStest.GetCompany();
-            OStest.GetPassengerName();
+
             OStest.Platform();
             OStest.Server();
 
-           
+            //NewEmptyCellExcelSandbox cellTest = new NewEmptyCellExcelSandbox();
+            //cellTest.ExcelWrite();
+
+            WriteToExcelSandbox logFill = new WriteToExcelSandbox();
+            logFill.ExcelWrite(productType, CartID, orderNo, tripDetail, PurchaseDate, tripDuration, passengerName, Company);*/
+
+
 
 
         }

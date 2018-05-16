@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Reflection;
 
 namespace EasyBookTestAutomationSystem
 {
@@ -21,8 +22,6 @@ namespace EasyBookTestAutomationSystem
         private IWebDriver driver;
         private XmlDocument xml;
 
-        string testID = "";
-
         public OrderSummary(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
@@ -30,7 +29,12 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        string OrderNo, Div1, DivOne, DepartPlace,
+
+        string PurchaseDate, cartID, orderNo, Passenger, CompanyName, tripInfo, tripDuration, depTime, arriveTime, RentTime;
+
+        string testID = "";
+
+        string OrderNo, Div1, DivOne, DepartPlace, productName,
            ArrivePlace, DepartTime, Company, PassengerName,
            ServerPlatform, ReturnLocation, RentDuration, CarDetail, product;
 
@@ -45,7 +49,7 @@ namespace EasyBookTestAutomationSystem
                 //Console.WriteLine("OrderNo : " + OrderNo);
 
                 Div1 = xnode[product]["Div1"]["XPath"].InnerText.Trim();
-                //Console.WriteLine("Div1 : " + Div1);
+                Console.WriteLine("Div1 : " + Div1);
 
                 DepartPlace = xnode[product]["DepartPlace"]["XPath"].InnerText.Trim();
                 //Console.WriteLine("DepartPlace : " + DepartPlace);
@@ -134,7 +138,7 @@ namespace EasyBookTestAutomationSystem
                 var DivEl = driver.FindElement(By.XPath(Div1));
                 DivOne = DivEl.Text.ToString().Trim();
                 Console.WriteLine();
-                Console.WriteLine(DivOne);
+                Console.WriteLine("Div one = "+DivOne);
                 Console.WriteLine();
                 //Console.WriteLine("Order no : "+ OrderNo.Text);
 
@@ -147,7 +151,45 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void GetPurchaseDate()
+        public string GetProductName()
+        {
+            try
+            {
+
+                if (product == "Bus")
+                {
+                    productName = "Bus";
+                    //return productName;
+                }
+                else if (product == "Car")
+                {
+                    productName = "Car";
+                    //return productName;
+                }
+                else if (product == "Ferry")
+                {
+                    productName = "Ferry";
+                    //return productName;
+                }
+                else if (product == "Train")
+                {
+                    productName = "Train";
+                    //return productName;
+                }
+                Console.WriteLine("productName : " + productName);
+                return productName;
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("productName not found");
+                return null;
+
+            }
+
+        }
+
+        public string GetPurchaseDate()
         {
             try
             {
@@ -157,9 +199,10 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
                     //Console.WriteLine(BackTrim);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
+                    //return PurchaseDate;
                 }
 
                 else if (product == "Car")
@@ -168,29 +211,34 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
                     //Console.WriteLine(BackTrim);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
+                    //return PurchaseDate;
                 }
                 else if (product == "Ferry")
                 {
                     string FrontTrim = DivOne.Remove(0, 61);
                     string BackTrim = FrontTrim.Remove(20, 95);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     Console.WriteLine("Purchase date : " + PurchaseDate);
+                    //return PurchaseDate;
                 }
+                Console.WriteLine("Purchase date : " + PurchaseDate);
+                return PurchaseDate;
 
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Purchase date not found");
+                return null;
 
             }
 
         }
 
-        public void GetCartID()
+        public string GetCartID()
         {
             try
             {
@@ -198,12 +246,12 @@ namespace EasyBookTestAutomationSystem
                 if (product == "Bus")
                 {
                     string FrontTrim = DivOne.Remove(0, 71);
-                    //Console.WriteLine(FrontTrim);
+                    Console.WriteLine("Front trim = "+ FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 38);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
+                    cartID = BackTrim.Trim();
                     //Console.WriteLine(CartID);
-                    Console.WriteLine("Cart ID : " + CartID);
+                    Console.WriteLine("Cart ID : " + cartID);
                 }
 
                 else if (product == "Car")
@@ -212,9 +260,9 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(23, 36);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
+                    cartID = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
-                    Console.WriteLine("Cart ID : " + CartID);
+                    Console.WriteLine("Cart ID : " + cartID);
                 }
                 else if (product == "Ferry")
                 {
@@ -222,33 +270,35 @@ namespace EasyBookTestAutomationSystem
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 64);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
-                    Console.WriteLine("Cart ID : " + CartID);
+                    cartID = BackTrim.Trim();
+                    Console.WriteLine("Cart ID : " + cartID);
                 }
-
+                return cartID;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("CartID not found");
+                return null;
 
             }
 
         }
-        public void GetOrderNo()
+        public string GetOrderNo()
         {
             try
             {
                 var OrderNoEl = driver.FindElement(By.XPath(OrderNo));
-                string OrderNumber = OrderNoEl.Text.ToString().Trim();
-                Console.WriteLine("Order no : " + OrderNumber);
+                orderNo = OrderNoEl.Text.ToString().Trim();
+                Console.WriteLine("Order no : " + orderNo);
                 //Console.WriteLine("Order no : "+ OrderNo.Text);
+                return orderNo;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Order No not found");
-
+                return null;
             }
 
         }
@@ -289,97 +339,92 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void Journey()
+        public string Journey()
         {
-            try
+            if (product == "Bus"||product == "Ferry")
             {
-                var DepartPlaceElem = driver.FindElement(By.XPath(DepartPlace));
-                var ArrivePlaceElem = driver.FindElement(By.XPath(ArrivePlace));
-                string depPlace = DepartPlaceElem.Text.ToString().Trim();
-                //Console.WriteLine("Arrive Place : " + depPlace);
-                string arrPlace = ArrivePlaceElem.Text.ToString().Trim();
-                // Console.WriteLine("Arrive Place : " + arrPlace);
-                Console.WriteLine("Journey is : " + depPlace + " to " + arrPlace);
+                try
+                {
+                    var DepartPlaceElem = driver.FindElement(By.XPath(DepartPlace));
+                    var ArrivePlaceElem = driver.FindElement(By.XPath(ArrivePlace));
+                    string depPlace = DepartPlaceElem.Text.ToString().Trim();
+                    //Console.WriteLine("Arrive Place : " + depPlace);
+                    string arrPlace = ArrivePlaceElem.Text.ToString().Trim();
+                    // Console.WriteLine("Arrive Place : " + arrPlace);
+                    Console.WriteLine("Journey is : " + depPlace + " to " + arrPlace);
+                    tripInfo = depPlace + " to " + arrPlace;
+                    Console.WriteLine("trip info : " + tripInfo);
+                    return tripInfo;
 
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Journey not found");
+                    return null;
+                }
             }
-            catch (NoSuchElementException)
+
+            else if (product == "Car")
             {
-                Console.WriteLine("Journey not found");
+                try
+                {
+                    var CarDetailElem = driver.FindElement(By.XPath(CarDetail));
+                    tripInfo = CarDetailElem.Text.ToString().Trim();
+                    Console.WriteLine("CarInfo : " + tripInfo);
+                    // Console.WriteLine("Company: " + Company.Text);
+                    return tripInfo;
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("CarInfo not found");
+                    return null;
 
+                }
             }
-
+            Console.WriteLine("Trip Info not found");
+            return null;
         }
+   
 
-        public void GetDepartTime()
+        public string GetTripInfo()
         {
-            try
+            if (product == "Bus" || product == "Ferry")
             {
-                var DepartTimeElem = driver.FindElement(By.XPath(DepartTime));
-                string depTime = DepartTimeElem.Text.ToString().Trim();
-                Console.WriteLine("Depart Time : " + depTime);
-                //Console.WriteLine("Depart Time: " + DepartTime.Text);
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("Depart Time not found");
-
-            }
-
-        }
-
-        public void GetCompany()
-        {
-            try
-            {
-                var CompanyElem = driver.FindElement(By.XPath(Company));
-                string CompanyName = CompanyElem.Text.ToString().Trim();
-                Console.WriteLine("Company : " + CompanyName);
-                // Console.WriteLine("Company: " + Company.Text);
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("Company not found");
-
+                try
+                {
+                    var DepartTimeElem = driver.FindElement(By.XPath(DepartTime));
+                    depTime = DepartTimeElem.Text.ToString().Trim();
+                    Console.WriteLine("Depart Time : " + depTime);
+                    //Console.WriteLine("Depart Time: " + DepartTime.Text);
+                    return depTime;
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Depart Time not found");
+                    return null;
+                }
             }
 
-        }
-
-        public void GetCarDetail()
-        {
-            try
+            else if (product == "Car")
             {
-                var CarDetailElem = driver.FindElement(By.XPath(CarDetail));
-                string CarInfo = CarDetailElem.Text.ToString().Trim();
-                Console.WriteLine("CarInfo : " + CarInfo);
-                // Console.WriteLine("Company: " + Company.Text);
+                try
+                {
+                    var RentDurationElem = driver.FindElement(By.XPath(RentDuration));
+                    RentTime = RentDurationElem.Text.ToString().Trim();
+                    Console.WriteLine("RentTime : " + RentTime);
+                    // Console.WriteLine("Company: " + Company.Text);
+                    return RentTime;
 
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("CarInfo not found");
-
-            }
-
-        }
-
-        public void GetRentPeriod()
-        {
-            try
-            {
-                var RentDurationElem = driver.FindElement(By.XPath(RentDuration));
-                string RentTime = RentDurationElem.Text.ToString().Trim();
-                Console.WriteLine("RentTime : " + RentTime);
-                // Console.WriteLine("Company: " + Company.Text);
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("CarInfo not found");
-
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("CarInfo not found");
+                    return null;
+                }
             }
 
+            Console.WriteLine("Trip Info not found");
+            return null;
         }
 
         public void GetReturnLocation()
@@ -400,19 +445,41 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void GetPassengerName()
+        public string GetPassengerName()
         {
             try
             {
                 var PassengerNameElem = driver.FindElement(By.XPath(PassengerName));
-                string Passenger = PassengerNameElem.Text.ToString().Trim();
+                Passenger = PassengerNameElem.Text.ToString().Trim();
                 Console.WriteLine("Passenger Name : " + Passenger);
+                return Passenger;
 
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Passenger Name not found");
+                return null;
+
+            }
+
+        }
+
+        public string GetCompany()
+        {
+            try
+            {
+                var CompanyElem = driver.FindElement(By.XPath(Company));
+                CompanyName = CompanyElem.Text.ToString().Trim();
+                Console.WriteLine("Company : " + CompanyName);
+                // Console.WriteLine("Company: " + Company.Text);
+                return CompanyName;
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Company not found");
+                return null;
 
             }
 
@@ -483,6 +550,7 @@ namespace EasyBookTestAutomationSystem
             }
 
         }
+      
 
     }
 }

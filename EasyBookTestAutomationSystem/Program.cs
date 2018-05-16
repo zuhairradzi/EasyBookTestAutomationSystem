@@ -27,8 +27,9 @@ namespace EasyBookTestAutomationSystem
             string product;
             string tripType;
             string paymentType;
+            string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
 
-         
+
             //IWebDriver Maindriver = new ChromeDriver();
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
             XmlDocument xml = new XmlDocument();
@@ -192,12 +193,12 @@ namespace EasyBookTestAutomationSystem
 
             //--- SELECT TRIP  ---//
             SelectTrip newTrip = new SelectTrip(xml, Maindriver);
-            newTrip.ReadElement(XMLFilePath, product, site);
+            newTrip.ReadElement(XMLFilePath, product, site, paymentType);
             newTrip.selectTrip();
 
             //--- SELECT SEAT  ---//
             Seat newSeat = new Seat(xml, Maindriver);
-            newSeat.ReadElement(XMLFilePath, product, site);
+            newSeat.ReadElement(XMLFilePath, product, site, paymentType);
             newSeat.selectSeat(product);
 
             //--- PASSENGER DETAILS  ---//
@@ -230,22 +231,36 @@ namespace EasyBookTestAutomationSystem
             //--- ORDER SUMMARY ---//
             OrderSummary OStest = new OrderSummary(xml, Maindriver);
             OStest.ReadElement(XMLFilePath, product);
+
             OStest.GetDiv1();
-            OStest.GetPurchaseDate();
-            OStest.GetCartID();
-            OStest.GetOrderNo();
+
+            productType = OStest.GetProductName();
+           
+            CartID = OStest.GetCartID();
+            orderNo = OStest.GetOrderNo();
+
             OStest.GetDepartPlace();
             OStest.GetArrivePlace();
+            tripDetail = OStest.Journey();
+
+            PurchaseDate = OStest.GetPurchaseDate();
+            tripDuration = OStest.GetTripInfo();
+            passengerName = OStest.GetPassengerName();
+            Company = OStest.GetCompany();
+
+           
+           
             OStest.GetReturnLocation();
-            OStest.GetDepartTime();
-            OStest.GetRentPeriod();
+           // OStest.GetDepartTime();
+           // OStest.GetRentPeriod();
             OStest.Journey();
-            OStest.GetCarDetail();
             OStest.GetCartID();
-            OStest.GetCompany();
-            OStest.GetPassengerName();
+           
             OStest.Platform();
             OStest.Server();
+
+            WriteToExcel OStoExcel = new WriteToExcel();
+            OStoExcel.ExcelWrite(productType, orderNo, CartID,  tripDetail, PurchaseDate, tripDuration, passengerName, Company);
 
         }
     }

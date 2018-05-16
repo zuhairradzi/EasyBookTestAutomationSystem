@@ -62,7 +62,9 @@
     <Compile Include="ChooseCountrySandbox.cs" />
     <Compile Include="DateSandbox.cs" />
     <Compile Include="IPServerLaunch.cs" />
+    <Compile Include="IsElementPresentSandbox.cs" />
     <Compile Include="LaunchBrowserSandbox.cs" />
+    <Compile Include="NewEmptyCellExcelSandbox.cs" />
     <Compile Include="OrderSummarySandbox.cs" />
     <Compile Include="PassengerDetailSandbox.cs" />
     <Compile Include="PaymentTypeSandbox.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="ServerSandbox2.cs" />
     <Compile Include="SubmitSearch.cs" />
     <Compile Include="TripTypeSandbox.cs" />
+    <Compile Include="WriteToExcelSandbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

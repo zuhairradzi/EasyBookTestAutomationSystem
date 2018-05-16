@@ -21,7 +21,7 @@ namespace ETASSandbox
         private IWebDriver driver;
         private XmlDocument xml;
 
-        string testID = "";
+       // string testID = "";
 
         public OrderSummarySandbox(XmlDocument mainxml, IWebDriver maindriver)
         {
@@ -32,11 +32,14 @@ namespace ETASSandbox
         string OrderNo, Div1, DivOne, DepartPlace,
             ArrivePlace, DepartTime, Company, PassengerName, 
             ServerPlatform, ReturnLocation, RentDuration, CarDetail;
-        string product = "Car";
+        string product = "Bus";
+
+        string PurchaseDate, CartID, OrderNumber, journey, depTime, CompanyName, Passenger;
+
         public void ReadElement(string XMLpath)
         {
             string url =
-                "https://www.easybook.com/en-sg/payment/paymentresult?guid=CR5e6c2e4fb5e34c8fa5&source=PaypalEC_SGD&status=completed";
+                "https://test.easybook.com/en-my/payment/paymentresult?guid=BUS15a8c9d2246945b2a&source=PaypalEC_MYR&status=completed";
             driver.Navigate().GoToUrl(url);
             // PaymentTypeSandbox PaymentTest = new PaymentTypeSandbox(xml, driver);
             xml.Load(XMLpath);
@@ -123,7 +126,13 @@ namespace ETASSandbox
                 Console.WriteLine("OS not found");
 
             }
-        }                          
+        }             
+        
+        public string getProductName()
+        {
+            return product;
+        }
+                     
         public void GetDiv1()
         {
             try
@@ -144,7 +153,7 @@ namespace ETASSandbox
 
         }
 
-        public void GetPurchaseDate()
+        public string GetPurchaseDate()
         {
             try
             {
@@ -154,9 +163,10 @@ namespace ETASSandbox
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
                     //Console.WriteLine(BackTrim);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
+                   
                 }
 
                 else if (product == "Car")
@@ -165,7 +175,7 @@ namespace ETASSandbox
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
                     //Console.WriteLine(BackTrim);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
                 }
@@ -173,21 +183,21 @@ namespace ETASSandbox
                 {
                     string FrontTrim = DivOne.Remove(0, 61);
                     string BackTrim = FrontTrim.Remove(20, 95);
-                    string PurchaseDate = BackTrim.Trim();
+                    PurchaseDate = BackTrim.Trim();
                     Console.WriteLine("Purchase date : " + PurchaseDate);
                 }
-
+                return PurchaseDate;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Purchase date not found");
-
+                return null;
             }
 
         }
 
-        public void GetCartID()
+        public string GetCartID()
         {
             try
             {
@@ -198,7 +208,7 @@ namespace ETASSandbox
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 38);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
+                    CartID = BackTrim.Trim();
                     //Console.WriteLine(CartID);
                     Console.WriteLine("Cart ID : " + CartID);
                 }
@@ -209,7 +219,7 @@ namespace ETASSandbox
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(23, 36);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
+                    CartID = BackTrim.Trim();
                     //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Cart ID : " + CartID);
                 }
@@ -219,33 +229,34 @@ namespace ETASSandbox
                     //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 64);
                     //Console.WriteLine(BackTrim);
-                    string CartID = BackTrim.Trim();
+                    CartID = BackTrim.Trim();
                     Console.WriteLine("Cart ID : " + CartID);
                 }
-
+                return CartID;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("CartID not found");
-
+                return null;
             }
 
         }
-        public void GetOrderNo()
+        public string GetOrderNo()
         {
             try
             {
                 var OrderNoEl = driver.FindElement(By.XPath(OrderNo));
-                string OrderNumber = OrderNoEl.Text.ToString().Trim();
+                OrderNumber = OrderNoEl.Text.ToString().Trim();
                 Console.WriteLine("Order no : " + OrderNumber);
                 //Console.WriteLine("Order no : "+ OrderNo.Text);
+                return OrderNumber;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Order No not found");
-
+                return null;
             }
 
         }
@@ -286,7 +297,7 @@ namespace ETASSandbox
 
         }
 
-        public void Journey()
+        public string Journey()
         {
             try
             {
@@ -295,50 +306,54 @@ namespace ETASSandbox
                 string depPlace = DepartPlaceElem.Text.ToString().Trim();
                 //Console.WriteLine("Arrive Place : " + depPlace);
                 string arrPlace = ArrivePlaceElem.Text.ToString().Trim();
-               // Console.WriteLine("Arrive Place : " + arrPlace);
+                // Console.WriteLine("Arrive Place : " + arrPlace);
+                journey = depPlace + " to " + arrPlace;
                 Console.WriteLine("Journey is : " + depPlace + " to " + arrPlace);
-
+                return journey;
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Journey not found");
-
+                return null;
             }
 
         }
 
-        public void GetDepartTime()
+        public string GetDepartTime()
         {
             try
             {
                 var DepartTimeElem = driver.FindElement(By.XPath(DepartTime));
-                string depTime = DepartTimeElem.Text.ToString().Trim();
+                depTime = DepartTimeElem.Text.ToString().Trim();
                 Console.WriteLine("Depart Time : " + depTime);
                 //Console.WriteLine("Depart Time: " + DepartTime.Text);
+                return depTime;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Depart Time not found");
+                return null;
 
             }
 
         }
 
-        public void GetCompany()
+        public string GetCompany()
         {
             try
             {
                 var CompanyElem = driver.FindElement(By.XPath(Company));
-                string CompanyName = CompanyElem.Text.ToString().Trim();
+                CompanyName = CompanyElem.Text.ToString().Trim();
                 Console.WriteLine("Company : " + CompanyName);
                 // Console.WriteLine("Company: " + Company.Text);
+                return CompanyName;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Company not found");
-
+                return null;
             }
 
         }
@@ -397,20 +412,20 @@ namespace ETASSandbox
 
         }
 
-        public void GetPassengerName()
+        public string GetPassengerName()
         {
             try
             {
                 var PassengerNameElem = driver.FindElement(By.XPath(PassengerName));
-                string Passenger = PassengerNameElem.Text.ToString().Trim();
+                Passenger = PassengerNameElem.Text.ToString().Trim();
                 Console.WriteLine("Passenger Name : " + Passenger);
-
+                return Passenger;
 
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Passenger Name not found");
-
+                return null;
             }
 
         }

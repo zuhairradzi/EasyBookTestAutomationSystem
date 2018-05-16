@@ -38,11 +38,11 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void ReadElement(string XMLpath, string prodName, string siteName)
+        public void ReadElement(string XMLpath, string prodName, string siteName, string currency1)
         {
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
             string siteType = char.ToUpper(siteName[0]) + siteName.Substring(1);
-
+            string currency = currency1.ToUpper();
             if (prodName == ("car"))
             {
                 return;
@@ -51,18 +51,19 @@ namespace EasyBookTestAutomationSystem
             XmlNodeList xnList = xml.SelectNodes("/ETAS/Seat");
             foreach (XmlNode xnode in xnList)
             {
-                seatXP1 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part1"].InnerText.Trim();
+                seatXP1 = xnode[productType][siteType][currency]["SelectSeat"]["XPath"]["Part1"].InnerText.Trim();
                 Console.WriteLine("seatXP1 : " + seatXP1);
-                seatXP2 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part2"].InnerText.Trim();
+                seatXP2 = xnode[productType][siteType][currency]["SelectSeat"]["XPath"]["Part2"].InnerText.Trim();
                 Console.WriteLine("seatXP2 : " + seatXP2);
-                seatXP3 = xnode[productType]["SelectSeat"][siteType]["XPath"]["Part3"].InnerText.Trim();
+                seatXP3 = xnode[productType][siteType][currency]["SelectSeat"]["XPath"]["Part3"].InnerText.Trim();
                 Console.WriteLine("seatXP3 : " + seatXP3);
-                seatContinue = xnode[productType]["ContinueButton"]["XPath"].InnerText.Trim();
+                
+                seatContinue = xnode[productType][siteType][currency]["ContinueButton"]["XPath"].InnerText.Trim();
                 Console.WriteLine("seatContinue : " + seatContinue);
 
                 if (prodName == ("ferry"))
                 {
-                    seatNo = xnode[productType]["NoOfSeat"]["LinkText"].InnerText.Trim();
+                    seatNo = xnode[productType][siteType][currency]["NoOfSeat"]["LinkText"].InnerText.Trim();
                     Console.WriteLine("seatNo : " + seatNo);
                 }
               
@@ -83,11 +84,20 @@ namespace EasyBookTestAutomationSystem
             //--- FERRY ---//
             else if (productName.ToLower().Contains("ferry"))
             {
-                seatXPFull = seatXP1 + seatXP2 + seatXP2;
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
+                seatXPFull = seatXP1 + seatXP2 + seatXP3;
+                Console.WriteLine("Full seatXP = " + seatXPFull);
+                Thread.Sleep(1000);
+                //driver.FindElement(By.XPath(seatXPFull)).Click();
+                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
+                //new SelectElement(driver.FindElement(By.XPath(seatXPFull))).SelectByText(seatNo);
+                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
+                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatContinue)))).Click();
+
+               
+                driver.FindElement(By.XPath(seatXPFull)).Click();
                 new SelectElement(driver.FindElement(By.XPath(seatXPFull))).SelectByText(seatNo);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatContinue)))).Click();
+                driver.FindElement(By.XPath(seatXPFull)).Click();
+                driver.FindElement(By.XPath(seatContinue)).Click();
             }
 
 
@@ -103,6 +113,7 @@ namespace EasyBookTestAutomationSystem
                     {
                         try
                         {
+                            Console.WriteLine("Full seatXP = " + seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3);
                             driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
                             driver.FindElement(By.XPath(seatContinue)).Click();
                         

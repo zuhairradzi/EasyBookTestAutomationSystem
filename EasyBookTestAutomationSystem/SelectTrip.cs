@@ -43,15 +43,16 @@ namespace EasyBookTestAutomationSystem
         }
 
         string tripValue;
-        public void ReadElement(string XMLpath, string prodName, string siteName)
+        public void ReadElement(string XMLpath, string prodName, string siteName, string currency1)
         {
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
             string siteType = char.ToUpper(siteName[0]) + siteName.Substring(1);
+            string currency = currency1.ToUpper();
             xml.Load(XMLpath);
             XmlNodeList xnList = xml.SelectNodes("/ETAS/SelectTrip");
             foreach (XmlNode xnode in xnList)
             {
-                tripValue = xnode[productType][siteType]["LinkText"].InnerText.Trim();
+                tripValue = xnode[productType][siteType][currency]["XPath"].InnerText.Trim();
                 Console.WriteLine("tripValue : " + tripValue);
             }
 
@@ -61,7 +62,7 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(tripValue)))).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
 
 
             }
