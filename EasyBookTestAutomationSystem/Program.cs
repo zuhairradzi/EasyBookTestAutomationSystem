@@ -194,7 +194,7 @@ namespace EasyBookTestAutomationSystem
             //--- SELECT TRIP  ---//
             SelectTrip newTrip = new SelectTrip(xml, Maindriver);
             newTrip.ReadElement(XMLFilePath, product, site, paymentType);
-            newTrip.selectTrip();
+            newTrip.selectTrip(product);
 
             //--- SELECT SEAT  ---//
             Seat newSeat = new Seat(xml, Maindriver);
@@ -222,9 +222,9 @@ namespace EasyBookTestAutomationSystem
             //--- PAYPAL PROCEED  ---//
             PayPalProceed PaypalProceedTest = new PayPalProceed(xml, Maindriver);
             PaypalProceedTest.ReadElement(XMLFilePath);
-            PaypalProceedTest.proceedPayPal1();
-            PaypalProceedTest.proceedPayPal2();
-            PaypalProceedTest.proceedPayPal3();
+            PaypalProceedTest.proceedPayPal1(paymentType);
+            //PaypalProceedTest.proceedPayPal2();
+            //PaypalProceedTest.proceedPayPal3();
 
 
 

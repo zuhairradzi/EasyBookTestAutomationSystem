@@ -64,8 +64,9 @@ namespace ETASSandbox
         {
             try
             {
-                if (IsElementPresent(By.LinkText("Signin")))
+                if (IsElementPresent(By.LinkText("Sign in")))
                 {
+                    Console.WriteLine("By link text");
                     driver.FindElement(By.LinkText("Sign in")).Click();
                     driver.FindElement(By.Id("loginLink")).Click();
                     driver.FindElement(By.Id("Email")).Clear();
@@ -76,6 +77,7 @@ namespace ETASSandbox
                 }
                 else if (IsElementPresent(By.XPath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a")))
                 {
+                    Console.WriteLine("By Xpath");
                     driver.FindElement(By.XPath("//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[1]/a")).Click();
                     driver.FindElement(By.Id("loginLink")).Click();
                     driver.FindElement(By.Id("Email")).Clear();

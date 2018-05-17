@@ -179,12 +179,12 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<Test>2018-05-30</Test>
-					<Live>2018-05-30</Live>
+					<Test>2018-06-13</Test>
+					<Live>2018-06-15</Live>
 				</OneWay>
 				<ReturnTrip>
-					<Test>2018-05-31</Test>
-					<Live>2018-05-31</Live>
+					<Test>2018-06-13</Test>
+					<Live>2018-06-15</Live>
 				</ReturnTrip>
 			</DateValue>
 		</Train>
@@ -214,7 +214,7 @@ E
 				<ReturnTrip>
 					<Test>
 						<MYR>2019-03-08</MYR>
-						<SGD>2019-03-09</SGD>
+						<SGD>2019-03-10</SGD>
 					</Test>
 					<Live>
 						<MYR>2046-03-08</MYR>
@@ -282,21 +282,21 @@ E
 			<Test>
 				<MYR>
 					<LinkText>Select Seats/Berths</LinkText>
-					<XPath>//*[@id="MY-int-16905917-4e19d047-2b9f-4803-ac9c-5d756ee3fd8e"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select Seats/Berths</LinkText>
-					<XPath>//*[@id="MY-int-20273737-05f65451-61af-4c1c-9aec-12a172b60a86"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
 				</SGD>
 			</Test>
 			<Live>
 				<MYR>
 					<LinkText>Select Seats/Berths</LinkText>
-					<XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="SG-ext-web-116-4816412-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select Seats/Berths</LinkText>
-					<XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="SG-ext-web-116-4819908-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
 				</SGD>
 			</Live>
 		</Train>
@@ -315,33 +315,34 @@ E
 			<Live>
 				<MYR>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-219537-15e8e6b4-da56-499f-a137-0ce261cc13ff"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b"]/div[1]/div[5]/div/a</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-219537-15e8e6b4-da56-499f-a137-0ce261cc13ff"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b"]/div[1]/div[5]/div/a</XPath>
 				</SGD>
 			</Live>
 		</Ferry>
+
 		<Car>
 			<Test>
 				<MYR>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-16905917-4e19d047-2b9f-4803-ac9c-5d756ee3fd8e"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="carSearchResultsTable"]/tbody/tr[12]/td[8]/div/button</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-20273737-05f65451-61af-4c1c-9aec-12a172b60a86"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="carSearchResultsTable"]/tbody/tr[31]/td[8]/div/button</XPath>
 				</SGD>
 			</Test>
 			<Live>
 				<MYR>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="carSearchResultsTable"]/tbody/tr[4]/td[8]/div/button</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+					<XPath>//*[@id="carSearchResultsTable"]/tbody/tr[4]/td[8]/div/button</XPath>
 				</SGD>
 			</Live>
 		</Car>
@@ -357,7 +358,7 @@ E
 					<SelectSeat>
 						<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
 						<XPath>
-							<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+							<Part1>//*[@id="coach-lower"]/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
 							<Part2>]/td[</Part2>
 							<Part3>]/a/div</Part3>
 						</XPath>
@@ -372,7 +373,7 @@ E
 					<SelectSeat>
 						<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
 						<XPath>
-							<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+							<Part1>//*[@id="coach-lower"]/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
 							<Part2>]/td[</Part2>
 							<Part3>]/a/div</Part3>
 						</XPath>
@@ -389,7 +390,7 @@ E
 					<SelectSeat>
 						<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
 						<XPath>
-							<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+							<Part1>//*[@id="coach-lower"]/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
 							<Part2>]/td[</Part2>
 							<Part3>]/a/div</Part3>
 						</XPath>
@@ -404,7 +405,7 @@ E
 					<SelectSeat>
 						<XPathFull>//*[@id=\"coach-lower\"]/table/tbody/tr[3]/td/table/tbody/tr[" + (Tr) + "]/td[" + (Td) + "]/a/div</XPathFull>
 						<XPath>
-							<Part1>//*[@id='coach-lower']/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
+							<Part1>//*[@id="coach-lower"]/table/tbody/tr[3]/td/table/tbody/tr[</Part1>
 							<Part2>]/td[</Part2>
 							<Part3>]/a/div</Part3>
 						</XPath>
@@ -433,6 +434,7 @@ E
 						<LinkText>1 Seats</LinkText>
 					</NoOfSeat>
 					<ContinueButton>
+						<Id>submit</Id>
 						<XPath>//button[@id='MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b']</XPath>
 					</ContinueButton>
 				</MYR>
@@ -449,6 +451,7 @@ E
 						<LinkText>1 Seats</LinkText>
 					</NoOfSeat>
 					<ContinueButton>
+						<Id>submit</Id>
 						<XPath>//button[@id='MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b']</XPath>
 					</ContinueButton>
 				</SGD>
@@ -467,7 +470,8 @@ E
 						<LinkText>1 Seats</LinkText>
 					</NoOfSeat>
 					<ContinueButton>
-						<XPath>//*[@id='MY-int-219537-15e8e6b4-da56-499f-a137-0ce261cc13ff']</XPath>
+						<Id>submit</Id>
+						<XPath>//button[@id='MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b']</XPath>
 					</ContinueButton>
 				</MYR>
 				<SGD>
@@ -483,34 +487,92 @@ E
 						<LinkText>1 Seats</LinkText>
 					</NoOfSeat>
 					<ContinueButton>
-						<XPath>//*[@id='MY-int-219537-15e8e6b4-da56-499f-a137-0ce261cc13ff']</XPath>
+						<Id>submit</Id>
+						<XPath>//button[@id='MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b']</XPath>
 					</ContinueButton>
 				</SGD>
 			</Live>
 		</Ferry>
 
-		<Train>
-			<SelectSeat>
-				<Test>
-					<XPath>
-						<Part1></Part1>
-						<Part2></Part2>
-						<Part3></Part3>
-					</XPath>
-				<ClassName></ClassName>
-				</Test>
-				<Live>
-					<XPath>
-						<Part1></Part1>
-						<Part2></Part2>
-						<Part3></Part3>
-					</XPath>
-				</Live>
-			</SelectSeat>
-			<ContinueButton>
-				<XPath></XPath>
-			</ContinueButton>
+		<Train> 80 row X 5 column
+			<Test>
+				<MYR>
+					<TripValue>
+						<XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
+					</TripValue>
+					<SelectSeat>
+						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[1]/a/div</XPathFull>
+						<XPath>
+							<Part1>//div[@id='coach-1']/table/tbody/tr[</Part1>
+							<Part2>]/td[</Part2>
+							<Part3>]/a/div</Part3>
+						</XPath>
+						<ClassName></ClassName>
+					</SelectSeat>
+					<ContinueButton>
+						<XPath>//*[@id="btnProceedToPassengerDetail"]</XPath>
+						<Id>btnProceedToPassengerDetail</Id>
+					</ContinueButton>
+				</MYR>
+				<SGD>
+					<TripValue>
+						<XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
+					</TripValue>
+					<SelectSeat>
+						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[1]/a/div</XPathFull>
+						<XPath>
+							<Part1>//div[@id='coach-1']/table/tbody/tr[</Part1>
+							<Part2>]/td[</Part2>
+							<Part3>]/a/div</Part3>
+						</XPath>
+						<ClassName></ClassName>
+					</SelectSeat>
+					<ContinueButton>
+						<XPath>//*[@id="btnProceedToPassengerDetail"]</XPath>
+						<Id>btnProceedToPassengerDetail</Id>
+					</ContinueButton>
+				</SGD>
+			</Test>
+			<Live>
+				<MYR>
+					<TripValue>
+						<XPath>//*[@id="SG-ext-web-116-4816412-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
+					</TripValue>
+					<SelectSeat>
+						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[2]/a/div</XPathFull>
+						<XPath>
+							<Part1>//div[@id='coach-1']/table/tbody/tr[</Part1>
+							<Part2>]/td[</Part2>
+							<Part3>]/a/div</Part3>
+						</XPath>
+						<ClassName></ClassName>
+					</SelectSeat>
+					<ContinueButton>
+						<XPath>//*[@id="btnProceedToPassengerDetail"]</XPath>
+						<Id>btnProceedToPassengerDetail</Id>
+					</ContinueButton>
+				</MYR>
+				<SGD>
+					<TripValue>
+						<XPath>//*[@id="SG-ext-web-116-4819908-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
+					</TripValue>
+					<SelectSeat>
+						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[3]/td[1]/a/div</XPathFull>
+						<XPath>
+							<Part1>//div[@id='coach-1']/table/tbody/tr[</Part1>
+							<Part2>]/td[</Part2>
+							<Part3>]/a/div</Part3>
+						</XPath>
+						<ClassName></ClassName>
+					</SelectSeat>
+					<ContinueButton>
+						<XPath>//*[@id="btnProceedToPassengerDetail"]</XPath>
+						<Id>btnProceedToPassengerDetail</Id>
+					</ContinueButton>
+				</SGD>
+			</Live>
 		</Train>
+
 	</Seat>
 
 
@@ -527,6 +589,23 @@ E
 				<SelectByText>Malaysia</SelectByText>
 			</Value>
 		</Nationality>
+		<Gender>
+			<GenElement>
+				<Id></Id>
+				<XPath>//*[@id="PassengerInfoList_1__PassengerGender"]</XPath>
+			</GenElement>
+			<GenValue>
+				<Male>
+					<XPath>//*[@id="PassengerInfoList_1__PassengerGender"]/option[2]</XPath>
+				</Male>
+			</GenValue>
+		</Gender>
+		<ICPassport>
+			<FieldElement>
+				<XPath>//*[@id="txtPassengerIcOrPassport_1"]</XPath>
+			</FieldElement>
+			<Value>941015095175</Value>
+		</ICPassport>
 	</PassengerDetails>
 
 
@@ -549,6 +628,7 @@ E
 
 	<PayPalLogin>
 		<LoginButton>
+			<XPath>//*[@id="loginSection"]/div/div[2]/a</XPath>
 			<Id>Log In</Id>
 		</LoginButton>
 		<Email>
@@ -582,11 +662,11 @@ E
 		</Proceed1>
 		<Proceed2>
 			<Id>confirmButtonTop</Id>
-			<XPath></XPath>
+			<XPath>//*[@id="confirmButtonTop"]</XPath>
 		</Proceed2>
 		<Proceed3>
 			<Id>pay_now_button</Id>
-			<XPath></XPath>
+			<XPath>//*[@id="pay_now_button"]</XPath>
 		</Proceed3>
 	</PayPalProceed>
 

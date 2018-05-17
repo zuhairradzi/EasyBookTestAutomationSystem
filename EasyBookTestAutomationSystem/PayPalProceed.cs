@@ -29,7 +29,7 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        string continue1XP, continue2XP, continue3XP;
+        string continue1XP, continue2XP, continue3XP, continue1ID, continue2ID, continue3ID;
 
         public void ReadElement(string XMLpath)
         {
@@ -42,29 +42,80 @@ namespace EasyBookTestAutomationSystem
                 continue1XP = xnode["Proceed1"]["XPath"].InnerText.Trim();
                 Console.WriteLine("continue1 : " + continue1XP);
 
-                continue2XP = xnode["Proceed2"]["Id"].InnerText.Trim();
+                continue2XP = xnode["Proceed2"]["XPath"].InnerText.Trim();
                 Console.WriteLine("continue2 : " + continue2XP);
 
-                continue3XP = xnode["Proceed3"]["Id"].InnerText.Trim();
+                continue3XP = xnode["Proceed3"]["XPath"].InnerText.Trim();
                 Console.WriteLine("continue3 : " + continue3XP);
+
+                continue1ID = xnode["Proceed1"]["Id"].InnerText.Trim();
+                Console.WriteLine("continue1ID : " + continue1ID);
+
+                continue2ID = xnode["Proceed2"]["Id"].InnerText.Trim();
+                Console.WriteLine("continue2ID : " + continue2ID);
+
+                continue3ID = xnode["Proceed3"]["Id"].InnerText.Trim();
+                Console.WriteLine("continue3ID : " + continue3ID);
 
 
             }
 
         }
 
-        public void proceedPayPal1()
+        public void proceedPayPal1(string currency)
         {
-            try
+            string currencyUp = currency.ToUpper();
+            Thread.Sleep(13000);
+            if (currencyUp.Contains("MYR"))
             {
-                Thread.Sleep(12000);
-                driver.FindElement(By.XPath(continue1XP)).Click();
+                //Thread.Sleep(15000);
+                try
+                {
+                    //new WebDriverWait(driver, TimeSpan.FromSeconds(40)).Until(ExpectedConditions.ElementExists((By.Id(continue1ID)))).Click();
+                    driver.FindElement(By.Id(continue1ID)).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Cannot proceed to pay 2");
+                }
+                try
+                {
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.Id(continue2ID))).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Cannot proceed to pay 3");
+                }
+
+                try
+                {
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(35)).Until(ExpectedConditions.ElementExists(By.Id(continue3ID))).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Cannot proceed to OS");
+                }
             }
-            catch (NoSuchElementException)
+            else if (currencyUp.Contains("SGD"))
             {
-                Console.WriteLine("Cannot proceed to pay 1");
-            }
-       
+                try
+                {
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(40)).Until(ExpectedConditions.ElementExists(By.Id(continue2ID))).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Cannot proceed to pay 3");
+                }
+
+                try
+                {
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(35)).Until(ExpectedConditions.ElementExists(By.Id(continue3ID))).Click();
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Cannot proceed to OS");
+                }
+            }     
         }
 
 
@@ -90,6 +141,19 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Cannot proceed to pay 2");
+            }
+        }
+
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
             }
         }
     }

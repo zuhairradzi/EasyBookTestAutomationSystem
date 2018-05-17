@@ -58,19 +58,28 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void selectTrip()
+        public void selectTrip(string product)
         {
-            try
+            string productUp = product.ToUpper();
+            if (productUp == "TRAIN")
             {
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
-
-
+                return;
             }
-            catch (NoSuchElementException)
+            else
             {
-                Console.WriteLine("Select trip element not found");
+                try
+                {
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
 
+
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Select trip element not found");
+
+                }
             }
+           
         }
     }
 }

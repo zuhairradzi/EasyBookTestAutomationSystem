@@ -219,10 +219,11 @@ namespace EasyBookTestAutomationSystem
                 else if (product == "Ferry")
                 {
                     string FrontTrim = DivOne.Remove(0, 61);
-                    string BackTrim = FrontTrim.Remove(20, 95);
+                    string BackTrim = FrontTrim.Remove(20, 54);
                     PurchaseDate = BackTrim.Trim();
                     Console.WriteLine("Purchase date : " + PurchaseDate);
                     //return PurchaseDate;
+                    
                 }
                 Console.WriteLine("Purchase date : " + PurchaseDate);
                 return PurchaseDate;
@@ -267,9 +268,9 @@ namespace EasyBookTestAutomationSystem
                 else if (product == "Ferry")
                 {
                     string FrontTrim = DivOne.Remove(0, 91);
-                    //Console.WriteLine(FrontTrim);
-                    string BackTrim = FrontTrim.Remove(21, 64);
-                    //Console.WriteLine(BackTrim);
+                    Console.WriteLine(FrontTrim);
+                    string BackTrim = FrontTrim.Remove(21, 23);
+                    Console.WriteLine(BackTrim);
                     cartID = BackTrim.Trim();
                     Console.WriteLine("Cart ID : " + cartID);
                 }

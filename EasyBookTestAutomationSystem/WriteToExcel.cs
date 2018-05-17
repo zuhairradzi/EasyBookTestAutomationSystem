@@ -20,7 +20,7 @@ namespace EasyBookTestAutomationSystem
 {
     class WriteToExcel
     {
-        public void ExcelWrite(string productType, string CartID, string orderNo, string tripDetail, string PurchaseDate,
+        public void ExcelWrite(string productType, string orderNo, string CartID, string tripDetail, string PurchaseDate,
            string tripDuration, string passengerName, string Company)
         {
             string file = "D:\\Product Purchase Log Sandbox2.xlsx";

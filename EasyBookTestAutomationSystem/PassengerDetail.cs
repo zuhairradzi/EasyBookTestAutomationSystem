@@ -56,6 +56,11 @@ namespace EasyBookTestAutomationSystem
             {
                 PassengerTest.Nationality(nationElem, nationalityValue);
             }
+
+            if (product.ToLower().Contains("train"))
+            {
+                PassengerTest.Nationality(nationElem, nationalityValue);
+            }
         }
 
         public void untickInsurance(string insurance)

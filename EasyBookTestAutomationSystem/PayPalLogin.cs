@@ -35,7 +35,7 @@ namespace EasyBookTestAutomationSystem
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/PayPalLogin");
             foreach (XmlNode xnode in xnMenu)
             {
-                LoginButtonFirst = xnode["LoginButton"]["Id"].InnerText.Trim();
+                LoginButtonFirst = xnode["LoginButton"]["XPath"].InnerText.Trim();
                 Console.WriteLine("LoginButtonFirst : " + LoginButtonFirst);
 
                 emailElementID = xnode["Email"]["Id"].InnerText.Trim();
@@ -68,15 +68,20 @@ namespace EasyBookTestAutomationSystem
 
         public void ClickLogin()
         {
+          
             try
             {
                 new WebDriverWait(driver,
-                    TimeSpan.FromSeconds(60)).Until(ExpectedConditions.ElementExists(By.LinkText(LoginButtonFirst))).Click();
+                    TimeSpan.FromSeconds(60)).Until(ExpectedConditions.ElementExists(By.XPath(LoginButtonFirst))).Click();
+               
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Cannot click login");
+                return;
             }
+
+                   
         }
 
         public void enterEmPP()
@@ -94,7 +99,6 @@ namespace EasyBookTestAutomationSystem
             try
             {
                 driver.FindElement(By.XPath(emailProceedElementXp)).Click();
-
                 Thread.Sleep(3000);
             }
             catch (NoSuchElementException)
@@ -114,6 +118,7 @@ namespace EasyBookTestAutomationSystem
             {
                 Console.WriteLine("Cannot find pw");
             }
+
             try
             {
                 driver.FindElement(By.CssSelector(LoginButtonCss)).Click();
@@ -124,5 +129,20 @@ namespace EasyBookTestAutomationSystem
             }
 
         }
+
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+     
     }
 }

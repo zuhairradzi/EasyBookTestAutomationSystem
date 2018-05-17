@@ -27,7 +27,7 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
-        string seatXP1, seatXP2, seatXP3, seatXPFull, seatNo, seatContinue;
+        string seatXP1, seatXP2, seatXP3, seatXPFull, seatNo, seatContinueID, seatContinueXP, TrainTripValueXP;
         public IWebDriver driver;
         public XmlDocument xml;
 
@@ -58,8 +58,15 @@ namespace EasyBookTestAutomationSystem
                 seatXP3 = xnode[productType][siteType][currency]["SelectSeat"]["XPath"]["Part3"].InnerText.Trim();
                 Console.WriteLine("seatXP3 : " + seatXP3);
                 
-                seatContinue = xnode[productType][siteType][currency]["ContinueButton"]["XPath"].InnerText.Trim();
-                Console.WriteLine("seatContinue : " + seatContinue);
+                seatContinueID = xnode[productType][siteType][currency]["ContinueButton"]["Id"].InnerText.Trim();
+                Console.WriteLine("seatContinueID : " + seatContinueID);
+
+
+                seatContinueXP = xnode[productType][siteType][currency]["ContinueButton"]["XPath"].InnerText.Trim();
+                Console.WriteLine("seatContinueXP : " + seatContinueXP);
+
+                TrainTripValueXP = xnode["Train"][siteType][currency]["TripValue"]["XPath"].InnerText.Trim();
+                Console.WriteLine("TrainTripValueXP : " + TrainTripValueXP);
 
                 if (prodName == ("ferry"))
                 {
@@ -73,6 +80,7 @@ namespace EasyBookTestAutomationSystem
         }
         public void selectSeat(string productName)
         {
+           
             //--- CAR ---//
             if (productName.ToLower().Contains("car"))
             {
@@ -87,17 +95,21 @@ namespace EasyBookTestAutomationSystem
                 seatXPFull = seatXP1 + seatXP2 + seatXP3;
                 Console.WriteLine("Full seatXP = " + seatXPFull);
                 Thread.Sleep(1000);
-                //driver.FindElement(By.XPath(seatXPFull)).Click();
-                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
-                //new SelectElement(driver.FindElement(By.XPath(seatXPFull))).SelectByText(seatNo);
-                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatXPFull)))).Click();
-                //new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(seatContinue)))).Click();
-
-               
+                             
                 driver.FindElement(By.XPath(seatXPFull)).Click();
                 new SelectElement(driver.FindElement(By.XPath(seatXPFull))).SelectByText(seatNo);
                 driver.FindElement(By.XPath(seatXPFull)).Click();
-                driver.FindElement(By.XPath(seatContinue)).Click();
+                driver.FindElement(By.XPath(seatContinueXP)).Click();
+                /*
+                if (IsElementPresent(By.XPath(seatContinueXP)))
+                {
+                    driver.FindElement(By.XPath(seatContinueXP)).Click();
+                }
+                else if (IsElementPresent(By.Id(seatContinueID)))
+                {
+                    driver.FindElement(By.Id(seatContinueID)).Click();
+                }*/
+
             }
 
 
@@ -115,8 +127,17 @@ namespace EasyBookTestAutomationSystem
                         {
                             Console.WriteLine("Full seatXP = " + seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3);
                             driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
-                            driver.FindElement(By.XPath(seatContinue)).Click();
-                        
+                            driver.FindElement(By.XPath(seatContinueXP)).Click();
+                            /*
+                            if (IsElementPresent(By.XPath(seatContinueXP)))
+                            {
+                                driver.FindElement(By.XPath(seatContinueXP)).Click();
+                            }
+                            else if (IsElementPresent(By.Id(seatContinueID)))
+                            {
+                                driver.FindElement(By.Id(seatContinueID)).Click();
+                            }*/
+
                             try
                             {
                                 IAlert simpleAlert = driver.SwitchTo().Alert();
@@ -136,6 +157,59 @@ namespace EasyBookTestAutomationSystem
                         }
                     }
                 }
+            }
+
+            //---TRAIN----//
+            else if (productName.ToLower().Contains("train"))
+            {
+                for (int Tr = 1; Tr < 80; Tr++)
+                {
+                    for (int Td = 1; Td < 3; Td++)
+                    {
+                        try
+                        {
+                           
+                            Thread.Sleep(3000);
+                            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(TrainTripValueXP)))).Click();
+                            Console.WriteLine("Full seatXP = " + seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3);
+                            Thread.Sleep(7000);
+                            driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
+                            Console.WriteLine("Seat = " + Tr + " : " + Td);
+                            // driver.FindElement(By.XPath(seatContinueXP)).Click();
+                            driver.FindElement(By.Id(seatContinueID)).Click();
+
+                            try
+                            {
+                                IAlert simpleAlert = driver.SwitchTo().Alert();
+                                String alertText = simpleAlert.Text;
+                                simpleAlert.Accept();
+                                continue;
+                            }
+                            catch (NoAlertPresentException)
+                            {
+                                Console.WriteLine("No alert found");
+                            }
+
+                        }
+                        catch (NoSuchElementException)
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
             }
         }
     }
