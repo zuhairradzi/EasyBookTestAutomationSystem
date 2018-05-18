@@ -25,7 +25,6 @@ namespace EasyBookTestAutomationSystem
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         public void GoToURL(string EBUrl)

@@ -25,10 +25,9 @@ namespace EasyBookTestAutomationSystem
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
-        string insuranceElem, nationalityValue, nationElem; 
+        string insuranceElem, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue; 
 
         public void ReadElement(string XMLpath, string product)
         {
@@ -38,13 +37,14 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnList)
             {
                 insuranceElem = xnode["Insurance"]["ClassName"].InnerText.Trim();
-                Console.WriteLine("InsuranceClassName : " + insuranceElem);
-
                 nationElem = xnode["Nationality"]["NationalityElement"]["Id"].InnerText.Trim();
-                Console.WriteLine("nationalityElem : " + nationElem);
-
                 nationalityValue = xnode["Nationality"]["Value"]["SelectByText"].InnerText.Trim();
-                Console.WriteLine("natiValue : " + nationalityValue);
+                genderElemXP = xnode["Gender"]["GenElement"]["XPath"].InnerText.Trim();
+                genderElemID = xnode["Gender"]["GenElement"]["Id"].InnerText.Trim();
+                genderTypeXP = xnode["Gender"]["GenValue"]["Male"]["XPath"].InnerText.Trim();
+                genderTypeText = xnode["Gender"]["GenValue"]["Male"]["Text"].InnerText.Trim();
+                ICPassElem = xnode["ICPassport"]["FieldElement"]["XPath"].InnerText.Trim();
+                ICPassValue = xnode["ICPassport"]["Value"].InnerText.Trim();
             }
 
             if (product.ToLower().Contains("bus"))
@@ -59,7 +59,8 @@ namespace EasyBookTestAutomationSystem
 
             if (product.ToLower().Contains("train"))
             {
-                PassengerTest.Nationality(nationElem, nationalityValue);
+                PassengerTest.Gender(genderElemXP, genderTypeText);
+                PassengerTest.ICPassPort(ICPassElem, ICPassValue);
             }
         }
 
@@ -76,8 +77,6 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Insurance not found");
-                //driver.Close();
-
             }
         }
 
@@ -85,7 +84,6 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-
                 var NatElem = driver.FindElement(By.Id(natElement));
                 var selectElement = new SelectElement(NatElem);
                 selectElement.SelectByText(natType);
@@ -94,10 +92,36 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Nationality not found");
-                //driver.Close();
-
             }
 
+        }
+
+        public void Gender(string genElem, string genType)
+        {
+            try
+            {
+
+                driver.FindElement(By.XPath(genElem)).Click();
+                new SelectElement(driver.FindElement(By.XPath(genElem))).SelectByText(genType);
+                driver.FindElement(By.XPath(genElem)).Click();
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("Gender not found");
+            }
+
+        }
+
+        public void ICPassPort(string ICElem, string ICno)
+        {
+            try
+            {
+                driver.FindElement(By.XPath(ICElem)).SendKeys(ICno);
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("ICPassport not found");
+            }
         }
     }
 }

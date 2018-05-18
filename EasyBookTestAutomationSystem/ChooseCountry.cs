@@ -24,17 +24,12 @@ namespace EasyBookTestAutomationSystem
        
 
         //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
 
         //conditions
         string sg = "sg";
 
         //page elements
         string CountryMenuXP, SGLinkText, SGxp;
-
-
-        //-------------------------------------------------------------------------------------//
         //-------------------------------------------------------------------------------------//
 
         public IWebDriver driver;
@@ -44,35 +39,20 @@ namespace EasyBookTestAutomationSystem
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
-
-
         //---------------------METHODS-------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
         public void ReadElement(string XMLpath)
         {
-
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Country");
             foreach (XmlNode xnode in xnMenu)
             {
                 CountryMenuXP = xnode["CountryMenu"]["XPath"].InnerText.Trim();
-                Console.WriteLine("CountryMenuXP : " + CountryMenuXP);
-
                 SGLinkText = xnode["CountryName"]["Singapore"]["LinkText"].InnerText.Trim();
-                Console.WriteLine("SGLinkText : " + SGLinkText);
-
                 SGxp = xnode["CountryName"]["Singapore"]["XPath"].InnerText.Trim();
-                Console.WriteLine("SGLinkText : " + SGxp);
-
             }
-
         }
-
-
 
         public void ChangeCountry(string testID)
         {
@@ -88,7 +68,6 @@ namespace EasyBookTestAutomationSystem
                 catch (Exception e)
                 {
                     Console.WriteLine("Country not found");
-
                 }
             }
             else

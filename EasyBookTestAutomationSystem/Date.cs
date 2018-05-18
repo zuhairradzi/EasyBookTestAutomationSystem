@@ -19,8 +19,6 @@ namespace EasyBookTestAutomationSystem
     class Date
     {
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
         string DepElem, RetElem, DepDate, RetDate, carPickTimeElem, carRetTimeElem, carPicTime, carRetTime;
 
         //-------------------------------------------------------------------------------------//
@@ -32,13 +30,9 @@ namespace EasyBookTestAutomationSystem
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         //---------------------METHODS-------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-
         public void ReadElement(string XMLpath, string prodName, string site, string currency)
         {
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
@@ -47,37 +41,22 @@ namespace EasyBookTestAutomationSystem
 
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Date");
+
             foreach (XmlNode xnode in xnMenu)
             {
-
                 DepElem = xnode[productType]["DateElement"]["DepartElement"]["Id"].InnerText.Trim();
-                Console.WriteLine("Dep Elem : " + DepElem);
                 RetElem = xnode[productType]["DateElement"]["ReturnElement"]["Id"].InnerText.Trim();
-                Console.WriteLine("RetElem : " + RetElem);
-
                 DepDate = xnode[productType]["DateValue"]["OneWay"][siteType].InnerText.Trim();
-                Console.WriteLine("DepDate : " + DepDate);
                 RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType].InnerText.Trim();
-                Console.WriteLine("RetDate : " + RetDate);
 
                 if (productType.ToLower().Contains("car"))
                 {
                     RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType][currencyType].InnerText.Trim();
-                    Console.WriteLine("RetDate : " + RetDate);
-
                     carPickTimeElem = xnode[productType]["TimeElement"]["PickupTimeElement"]["Id"].InnerText.Trim();
-                    Console.WriteLine(" carPickTimeElem : " + carPickTimeElem);
-
                     carRetTimeElem = xnode[productType]["TimeElement"]["ReturnTimeElement"]["Id"].InnerText.Trim();
-                    Console.WriteLine("carRetTimeElem : " + carRetTimeElem);
-
                     carPicTime = xnode[productType]["TimeValue"]["PickupTime"].InnerText.Trim();
-                    Console.WriteLine("carPicTime : " + carPicTime);
-
                     carRetTime = xnode[productType]["TimeValue"]["ReturnTime"][currencyType].InnerText.Trim();
-                    Console.WriteLine("carRetTime : " + carRetTime);
                 }
-
             }
         }
 
@@ -86,6 +65,7 @@ namespace EasyBookTestAutomationSystem
             try
             {
                 Date keyInDate = new Date(xml, driver);
+
                 if (testID.Contains("car"))
                 {
                     keyInDate.EnterDate(DepElem, DepDate);
@@ -108,7 +88,6 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Date not found");
-
             }
 
 
@@ -126,6 +105,5 @@ namespace EasyBookTestAutomationSystem
             driver.FindElement(By.Id(timeElement)).Click();
             driver.FindElement(By.XPath(timeValue)).Click();
         }
-
     }
 }

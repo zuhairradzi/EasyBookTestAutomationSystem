@@ -21,13 +21,14 @@ namespace SingleTestProject
     {
         static void Main(string[] args)
         {
-            string url = "https://test.easybook.com/en-my/payment/paymentresult?guid=FRd8f02f03d99b4df090&source=PaypalEC_MYR&status=completed";
-            FerryOrderSummary newOS = new FerryOrderSummary();
+            string url = "https://test.easybook.com/en-my/payment/paymentresult?guid=TRa77f991416864df3b1&source=PaypalEC_MYR&status=completed";
+           // FerryOrderSummary newOS = new FerryOrderSummary();
+            TrainOrderSummary newOS = new TrainOrderSummary();
             newOS.LaunchBrowser(url);
             newOS.ProductName();
-            newOS.OrderNo();
+             newOS.OrderNo();
             newOS.CartID();
-            newOS.PurchaseDate();
+             newOS.PurchaseDate();
             newOS.DepartPlace();
             newOS.ArrivePlace();
             newOS.Journey();
@@ -36,6 +37,20 @@ namespace SingleTestProject
             newOS.PassengerName();
             newOS.Server();
             newOS.Platform();
+
+            /*
+            for(int i = 0; i<10; i++)
+            {
+                for (int j = 0; j<10; j++)
+                {
+                    if (j == 3)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("i = " + i + " - j = " + j);
+                }
+            }*/
+
         }
     }
 }

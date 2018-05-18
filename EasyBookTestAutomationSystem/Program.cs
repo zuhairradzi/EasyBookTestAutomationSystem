@@ -29,13 +29,9 @@ namespace EasyBookTestAutomationSystem
             string paymentType;
             string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
 
-
-            //IWebDriver Maindriver = new ChromeDriver();
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
             XmlDocument xml = new XmlDocument();
-            //XMLtest test1 = new XMLtest(xml, Maindriver);
-            //test1.testReadXML(XMLFilePath);
-
+         
 
             //---------------------LIVE PROGRAM----------------------------//
 
@@ -114,33 +110,24 @@ namespace EasyBookTestAutomationSystem
              //-----TEST CASE----//
 
              TestCases newCase = new TestCases();
-             //nsole.WriteLine("2.0");
              string testScenarioUp = newCase.testCase(server, site, product, tripType, paymentType);
              string testScenario = testScenarioUp.ToLower();
-             //Console.WriteLine("2.1");
-
-
 
              //-----TEST DESCRIPTION-----//
              TestDescription testDetail = new TestDescription();
              Console.WriteLine();
-             Console.WriteLine();
              testDetail.testInformation(testScenario);
              Console.WriteLine();
-             Console.WriteLine();
 
-
-
+            
             //-----LAUNCH CHROME----//
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");
-
             IWebDriver Maindriver = new ChromeDriver();
             Console.WriteLine("Launching browser");
           
 
              //-----CHOOSE SITE---//
-
             SiteName newURL = new SiteName(xml, Maindriver);
             string ChooseEBurl = newURL.ReadElement(XMLFilePath, site);
           
@@ -231,34 +218,26 @@ namespace EasyBookTestAutomationSystem
             //--- ORDER SUMMARY ---//
             OrderSummary OStest = new OrderSummary(xml, Maindriver);
             OStest.ReadElement(XMLFilePath, product);
-
             OStest.GetDiv1();
-
             productType = OStest.GetProductName();
-           
             CartID = OStest.GetCartID();
             orderNo = OStest.GetOrderNo();
 
             OStest.GetDepartPlace();
             OStest.GetArrivePlace();
-            tripDetail = OStest.Journey();
 
+            tripDetail = OStest.Journey();
             PurchaseDate = OStest.GetPurchaseDate();
             tripDuration = OStest.GetTripInfo();
             passengerName = OStest.GetPassengerName();
             Company = OStest.GetCompany();
 
-           
-           
             OStest.GetReturnLocation();
-           // OStest.GetDepartTime();
-           // OStest.GetRentPeriod();
             OStest.Journey();
             OStest.GetCartID();
-           
             OStest.Platform();
             OStest.Server();
-
+            
             WriteToExcel OStoExcel = new WriteToExcel();
             OStoExcel.ExcelWrite(productType, orderNo, CartID,  tripDetail, PurchaseDate, tripDuration, passengerName, Company);
 
