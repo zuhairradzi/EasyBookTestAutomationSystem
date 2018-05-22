@@ -52,9 +52,6 @@ namespace EasyBookTestAutomationSystem
                 // open the existing sheet
 
                 WSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelObj.Sheets.get_Item(1);
-
-
-
                 xlRange = (Microsoft.Office.Interop.Excel.Range)ExcelObj.Cells[WSheet.Rows.Count, 2];
                 long lastRow = (long)xlRange.get_End(Microsoft.Office.Interop.Excel.XlDirection.xlUp).Row + 1;
                 Console.WriteLine("Last row = " + lastRow);
@@ -65,21 +62,16 @@ namespace EasyBookTestAutomationSystem
                 {
                     for (int row = newRow1; row < newRow1 + 1; row++)
                     {
-                        // Console.WriteLine("row = " + row + " -- col = " + col);
-                        // Console.WriteLine(orderDetail[col - 1]);
                         WSheet.Cells[row, col + 1] = orderDetail[col - 1];
-
                     }
 
                 }
                 xlWorkbook.Save();
                 //xlWorkbook.Close();
-
             }
             catch (Exception e)
             {
                 Console.WriteLine("Excel cannot open", e);
-
             }
         }
     }

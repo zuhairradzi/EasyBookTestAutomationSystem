@@ -37,16 +37,8 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnMenu)
             {
                 paymentGateID = xnode["PaymentType"]["PayPal"][currencyUpper]["Id"].InnerText.Trim();
-                Console.WriteLine("paymentGateID : " + paymentGateID);
-
                 payNowElement = xnode["PaymentType"]["PayNowButton"]["Id"].InnerText.Trim();
-                Console.WriteLine("payNowElement : " + payNowElement);
-
                 ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
-                Console.WriteLine("ElemCaptcha : " + ElemCaptcha.Trim());
-                //*[@id="CaptchaCode"]
-
-
             }
 
         }
@@ -67,8 +59,6 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Paypal element not found");
-                //driver.Close();
-
             }
 
         }
@@ -78,15 +68,11 @@ namespace EasyBookTestAutomationSystem
             {
 
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemCaptcha)))).Click();
-
-                //Console.WriteLine("Captcha found");
                 Thread.Sleep(8000);
             }
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Captcha not found");
-                //driver.Close();
-
             }
 
         }
@@ -100,10 +86,7 @@ namespace EasyBookTestAutomationSystem
                 Actions actionsPay = new Actions(driver);
                 actionsPay.MoveToElement(payNow);
                 actionsPay.Perform();
-                //Thread.Sleep(8000);
                 IWebElement element = driver.FindElement(By.Id(payNowElement));
-
-
                 ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click()", element);
                 IAlert confirmationAlert = driver.SwitchTo().Alert();
                 String alertText = confirmationAlert.Text;
@@ -113,12 +96,7 @@ namespace EasyBookTestAutomationSystem
             catch (NoSuchElementException)
             {
                 Console.WriteLine("Pay now proceed not found");
-                //driver.Close();
-
             }
-
-
         }
     }
-
 }

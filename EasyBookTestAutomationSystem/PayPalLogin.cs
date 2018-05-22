@@ -36,39 +36,19 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnMenu)
             {
                 LoginButtonFirst = xnode["LoginButton"]["XPath"].InnerText.Trim();
-                Console.WriteLine("LoginButtonFirst : " + LoginButtonFirst);
-
                 emailElementID = xnode["Email"]["Id"].InnerText.Trim();
-                Console.WriteLine("emailElementID : " + emailElementID);
-
                 emailVal = xnode["Email"]["Value"].InnerText.Trim();
-                Console.WriteLine("emailVal : " + emailVal);
-
                 emailProceedElementXp = xnode["Email"]["ContinueButton"]["XPath"].InnerText.Trim();
-                Console.WriteLine("emailProceedElementXp : " + emailProceedElementXp.Trim());
-
                 emailProceedElementId = xnode["Email"]["ContinueButton"]["Id"].InnerText.Trim();
-                Console.WriteLine("emailProceedElementId : " + emailProceedElementId.Trim());
-
                 passwordElemId = xnode["Password"]["Id"].InnerText.Trim();
-                Console.WriteLine("paymentGateID : " + passwordElemId);
-
                 pwVal = xnode["Password"]["Value"].InnerText.Trim();
-                Console.WriteLine("payNowElement : " + pwVal);
-
                 LoginButtonCss = xnode["Password"]["ContinueButton"]["CssSelector"].InnerText.Trim();
-                Console.WriteLine("LoginButton : " + LoginButtonCss);
-
                 LoginButtonXP = xnode["Password"]["ContinueButton"]["XPath"].InnerText.Trim();
-                Console.WriteLine("LoginButton : " + LoginButtonXP);
-
-
             }
         }
 
         public void ClickLogin()
         {
-          
             try
             {
                 new WebDriverWait(driver,
@@ -80,8 +60,6 @@ namespace EasyBookTestAutomationSystem
                 Console.WriteLine("Cannot click login");
                 return;
             }
-
-                   
         }
 
         public void enterEmPP()
@@ -142,7 +120,5 @@ namespace EasyBookTestAutomationSystem
                 return false;
             }
         }
-
-     
     }
 }

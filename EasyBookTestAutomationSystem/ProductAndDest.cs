@@ -48,18 +48,13 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnList)
             {
                 productURL = xnode[productType]["URL1"].InnerText.Trim();
-                Console.WriteLine("productURL : " + productURL); 
-              
             }
 
         }
         public void chooseProduct(string EBurl)
         {
             prodURL = EBurl + productURL;
-            Console.WriteLine("prodURL : " + prodURL);
-
             driver.Navigate().GoToUrl(prodURL);
-
         }
     
     }

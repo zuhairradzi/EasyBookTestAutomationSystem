@@ -34,7 +34,7 @@ namespace EasyBookTestAutomationSystem
 
 
         //---Server Variables--//
-        string ServerWanted, FooterXP, ServerNameWanted, ServerBQwanted, XMLfile;
+        string ServerWanted, FooterXP, XMLfile, scrollDownJS, footerElem, server1, server2;
         string server_1 = "G3ASPRO01";
         string server_2 = "G3ASPRO02";
         string s1 = "s1";
@@ -46,15 +46,20 @@ namespace EasyBookTestAutomationSystem
 
 
         //---------------------METHODS-------------------------------------------//
-        public void ReadElement(string XMLpath)
+        public void ReadElement(string XMLpath, string site, string server)
         {
+            string siteType = char.ToUpper(site[0]) + site.Substring(1);
+            string serverType = char.ToUpper(server[0]) + server.Substring(1);
             this.XMLfile = XMLpath;
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Server");
             foreach (XmlNode xnode in xnMenu)
             {
-                FooterXP = xnode["footerElement"]["XPath"].InnerText.Trim();
-                Console.WriteLine("FooterXP : " + FooterXP);
+                scrollDownJS = xnode["JSactions"]["ScrolltoBottom"]["Action"].InnerText.Trim();
+                FooterXP = xnode["footerElement"][siteType]["XPath"].InnerText.Trim();
+                ServerWanted = xnode["ServerName"][siteType][serverType].InnerText.Trim();
+                server1 = xnode["ServerName"][siteType]["S1"].InnerText.Trim();
+                server2 = xnode["ServerName"][siteType]["S2"].InnerText.Trim();
             }
 
         }
@@ -69,7 +74,7 @@ namespace EasyBookTestAutomationSystem
                 OpenIntendedServer test1 = new OpenIntendedServer(xml, driver);
                 driver.Navigate().GoToUrl(EBurl);
                 driver.Manage().Window.Maximize();
-                ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
+                ((IJavaScriptExecutor)driver).ExecuteScript(scrollDownJS);
                 Thread.Sleep(2000);
 
                 var footer = driver.FindElement(By.XPath(FooterXP));
@@ -82,23 +87,19 @@ namespace EasyBookTestAutomationSystem
 
                 if (TestID.Contains(s1))
                 {
-                    ServerWanted = "S1";
-                    ServerNameWanted = "G3ASPRO01";
-                    ServerBQwanted = "01";
-
-                    if (footerStr.Contains(ServerNameWanted))
+                    if (footerStr.Contains(ServerWanted))
                     {
-                        Console.WriteLine("Current server is : "+ ServerNameWanted);
-                        Console.WriteLine("Server "+ServerWanted+" found");
+                        Console.WriteLine("Current server is : "+ ServerWanted);
+                        Console.WriteLine("Server "+ ServerWanted + " found");
                         Console.WriteLine();
                         Console.WriteLine();
 
 
                     }
 
-                    else if (!footerStr.Contains(ServerNameWanted))
+                    else if (!footerStr.Contains(ServerWanted))
                     {
-                        Console.WriteLine("Current server is : G3ASPRO02");
+                        Console.WriteLine("Current server is : S2");
                         Console.WriteLine("Server " + ServerWanted + " not found");
                         Console.WriteLine();
                         Console.WriteLine();
@@ -113,24 +114,21 @@ namespace EasyBookTestAutomationSystem
                 }
                 else if (TestID.Contains(s2))
                 {
-                    ServerWanted = "S2";
-                    ServerNameWanted = "G3ASPRO02";
-                    ServerBQwanted = "02";
 
-                    if (footerStr.Contains(ServerNameWanted))
+                    if (footerStr.Contains(ServerWanted))
                     {
  
-                        Console.WriteLine("Current server is : " + ServerNameWanted);
+                        Console.WriteLine("Current server is : " + ServerWanted);
                         Console.WriteLine("Server " + ServerWanted + " found");
                         Console.WriteLine();
                         Console.WriteLine();
  
 
                     }
-                    else if (!footerStr.Contains(ServerNameWanted))
+                    else if (!footerStr.Contains(ServerWanted))
                     {
                    
-                        Console.WriteLine("Current server is : G3ASPRO01");
+                        Console.WriteLine("Current server is : S1");
                         Console.WriteLine("Server " + ServerWanted + " not found");
                         Console.WriteLine();
                         Console.WriteLine();
@@ -150,7 +148,7 @@ namespace EasyBookTestAutomationSystem
             }
             catch (Exception e)
             {
-                Console.WriteLine("Homepage not foun111", e);
+                Console.WriteLine("Homepage not found", e);
 
             }
 

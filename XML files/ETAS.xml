@@ -54,6 +54,11 @@ E
 
 	<EBLogin>
 		<LoginElement>
+			<JSactions>
+				<ScrolltoTop>
+					<Action>window.scrollTo(0, document.body.scrollHeight - 150)</Action>
+				</ScrolltoTop>
+			</JSactions>
 			<SignIn>
 				<Id></Id>
 				<XPath>//*[@id='bs-example-navbar-collapse-1']/ul/li[1]/a</XPath>
@@ -159,11 +164,11 @@ E
 			<DateValue>
 				<OneWay>
 					<Test>2019-03-22</Test>
-					<Live>2020-03-02</Live>
+					<Live>2020-03-04</Live>
 				</OneWay>
 				<ReturnTrip>
 					<Test>2019-03-10</Test>
-					<Live>2020-03-03</Live>
+					<Live>2020-03-05</Live>
 				</ReturnTrip>
 				</DateValue>
 		</Ferry>
@@ -315,11 +320,11 @@ E
 			<Live>
 				<MYR>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-219538-86f18dbd-a9c1-4d5b-a57e-7c539cc8a211"]/div[1]/div[5]/div/a</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-219538-86f18dbd-a9c1-4d5b-a57e-7c539cc8a211"]/div[1]/div[5]/div/a</XPath>
 				</SGD>
 			</Live>
 		</Ferry>
@@ -470,8 +475,8 @@ E
 						<LinkText>1 Seats</LinkText>
 					</NoOfSeat>
 					<ContinueButton>
-						<Id>submit</Id>
-						<XPath>//button[@id='MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b']</XPath>
+						<Id>submit</Id>//*[@id="MY-int-219538-86f18dbd-a9c1-4d5b-a57e-7c539cc8a211"]
+						<XPath>//button[@id='MY-int-219538-86f18dbd-a9c1-4d5b-a57e-7c539cc8a211']</XPath>
 					</ContinueButton>
 				</MYR>
 				<SGD>
@@ -488,7 +493,7 @@ E
 					</NoOfSeat>
 					<ContinueButton>
 						<Id>submit</Id>
-						<XPath>//button[@id='MY-int-219536-dc17ec19-92ac-437d-bb4b-67d24374a22b']</XPath>
+						<XPath>//button[@id='MY-int-219538-86f18dbd-a9c1-4d5b-a57e-7c539cc8a211']</XPath>
 					</ContinueButton>
 				</SGD>
 			</Live>
@@ -579,7 +584,9 @@ E
 
 	<PassengerDetails>
 		<Insurance>
-			<ClassName>cbInsurance_MobileViewOnly</ClassName>
+			<Id>cbInsurance</Id>
+			<ClassName>IsWithInsurance</ClassName>
+			<XPath>//*[@id="cbInsurance"]</XPath>
 		</Insurance>
 		<Nationality>
 			<NationalityElement>

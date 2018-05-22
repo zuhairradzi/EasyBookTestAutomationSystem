@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckServer.cs" />
     <Compile Include="ChooseCountry.cs" />
     <Compile Include="ConnectToServer.cs" />
     <Compile Include="Date.cs" />

@@ -26,7 +26,7 @@ namespace ETASSandbox
             string paymentType;
 
 
-            IWebDriver Maindriver = new ChromeDriver();
+           // IWebDriver Maindriver = new ChromeDriver();
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
             XmlDocument xml = new XmlDocument();
             //XMLtest test1 = new XMLtest(xml, Maindriver);
@@ -35,26 +35,26 @@ namespace ETASSandbox
 
             //----------------------SANDBOX CLASSES-------------------------//
 
-            IsElementPresentSandbox newElementFind = new IsElementPresentSandbox(xml, Maindriver);
-            newElementFind.LaunchBrowser();
-            newElementFind.Login();
+           // IsElementPresentSandbox newElementFind = new IsElementPresentSandbox(xml, Maindriver);
+           // newElementFind.LaunchBrowser();
+          //  newElementFind.Login();
 
             //---CHECK SERVER--//
 
             //IWebDriver Maindriver = new ChromeDriver();
-            // ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
-            // testConnectServer.LaunchBrowser(XMLFilePath);
+           //  ServerSandbox testConnectServer = new ServerSandbox(xml, Maindriver);
+           // testConnectServer.LaunchBrowser(XMLFilePath);
 
-            /*ServerSandbox2 newServer = new ServerSandbox2(xml, Maindriver);
-            newServer.ReadElement(XMLFilePath);
-            newServer.LaunchBrowser();
-            newServer.ConnectToServerWanted();
-            newServer.Login();
+           // ServerSandbox2 newServer = new ServerSandbox2(xml, Maindriver);
+           // newServer.ReadElement(XMLFilePath);
+           // newServer.LaunchBrowser();
+           // newServer.ConnectToServerWanted();
+            //newServer.Login();
 
-           // IPServerLaunch testServer = new IPServerLaunch();
-            //testServer.LaunchBrowser();
-            //testServer.CheckServerConnection();
-           // testServer.Login();
+           IPServerLaunch testServer = new IPServerLaunch();
+            testServer.LaunchBrowser();
+            testServer.CheckServerConnection();
+           testServer.Login();
 
             //---LAUNCH & LOGIN EB SITE ---//
            /* LaunchBrowserSandbox LaunchTest = new LaunchBrowserSandbox(xml, Maindriver);

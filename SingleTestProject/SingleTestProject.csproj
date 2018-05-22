@@ -59,10 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarOrderSummary.cs" />
     <Compile Include="FerryOrderSummary.cs" />
+    <Compile Include="LaunchBrowser2.cs" />
+    <Compile Include="OrderSummary2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrainOrderSummary.cs" />
+    <Compile Include="WriteToExcel2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

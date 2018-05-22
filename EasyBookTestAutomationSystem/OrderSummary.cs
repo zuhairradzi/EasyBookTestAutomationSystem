@@ -109,6 +109,7 @@ namespace EasyBookTestAutomationSystem
         }
         public void GetDiv1()
         {
+            Thread.Sleep(2000);
             try
             {
                 var DivEl = driver.FindElement(By.XPath(Div1));
@@ -529,9 +530,6 @@ namespace EasyBookTestAutomationSystem
                 Console.WriteLine("Platform Name not found");
 
             }
-
         }
-      
-
     }
 }

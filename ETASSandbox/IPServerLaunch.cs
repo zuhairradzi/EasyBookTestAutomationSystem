@@ -26,8 +26,8 @@ namespace ETASSandbox
             try
             {
                 Console.WriteLine("Live (1) or test (2) site?");
-                string site = "1";//Console.ReadLine();
-                if(site == "1")
+                string site = "2";//Console.ReadLine();
+                if(site == "2")
                 {
                     driver.Navigate().GoToUrl(urlLive);
                 }
@@ -44,9 +44,7 @@ namespace ETASSandbox
             catch (Exception e)
             {
                 Console.WriteLine("Homepage not found", e);
-
             }
-
         }
         
         public void Login()

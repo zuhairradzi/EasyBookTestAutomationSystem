@@ -123,9 +123,7 @@ namespace EasyBookTestAutomationSystem
             //-----LAUNCH CHROME----//
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");
-            IWebDriver Maindriver = new ChromeDriver();
-            Console.WriteLine("Launching browser");
-          
+            IWebDriver Maindriver = new ChromeDriver();          
 
              //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -136,8 +134,12 @@ namespace EasyBookTestAutomationSystem
             LaunchBrowser newSite = new LaunchBrowser(xml, Maindriver);
             newSite.GoToURL(ChooseEBurl);
 
+            //-----CHECK SERVER---//
+            CheckServer NewServer = new CheckServer(xml, Maindriver);
+            NewServer.ReadElement(XMLFilePath, site);
+            NewServer.CheckServerConnection();
 
-
+            
             //-----SERVER CONNECTION---//
             /*ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
             newServer.ReadElement(XMLFilePath, server, site);
@@ -210,10 +212,6 @@ namespace EasyBookTestAutomationSystem
             PayPalProceed PaypalProceedTest = new PayPalProceed(xml, Maindriver);
             PaypalProceedTest.ReadElement(XMLFilePath);
             PaypalProceedTest.proceedPayPal1(paymentType);
-            //PaypalProceedTest.proceedPayPal2();
-            //PaypalProceedTest.proceedPayPal3();
-
-
 
             //--- ORDER SUMMARY ---//
             OrderSummary OStest = new OrderSummary(xml, Maindriver);

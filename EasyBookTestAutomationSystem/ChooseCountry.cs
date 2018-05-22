@@ -19,10 +19,6 @@ namespace EasyBookTestAutomationSystem
 {
     class ChooseCountry
     {
-      
-
-       
-
         //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
 
         //conditions

@@ -78,12 +78,15 @@ namespace EasyBookTestAutomationSystem
                 paymentType = "PayPal_SGD";
             }
 
-            Console.WriteLine("Test Description :--- ");
+            Console.WriteLine();
+            Console.WriteLine("----- Test Description --- ");
             Console.WriteLine(" Server : " + server);
             Console.WriteLine("EB Site : " + site);
             Console.WriteLine("Product : " + product);
             Console.WriteLine("Trip Type : " + tripType);
             Console.WriteLine("Payment Gateway : " + paymentType);
+            Console.WriteLine("----- --------------- --- ");
+            Console.WriteLine();
 
         }
     }

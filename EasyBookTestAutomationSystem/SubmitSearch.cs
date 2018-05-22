@@ -19,12 +19,8 @@ namespace EasyBookTestAutomationSystem
     class SubmitSearch
     {
        
-        string LinkTextSearch;
-        string XPSearch ;
-        string ClNameSearch;
-        string CssSearch;
-
-
+        string LinkTextSearch, XPSearch, ClNameSearch, CssSearch;
+       
         public IWebDriver driver;
         public XmlDocument xml;
 

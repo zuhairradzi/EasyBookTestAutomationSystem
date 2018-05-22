@@ -21,35 +21,48 @@ namespace SingleTestProject
     {
         static void Main(string[] args)
         {
-            string url = "https://test.easybook.com/en-my/payment/paymentresult?guid=TRa77f991416864df3b1&source=PaypalEC_MYR&status=completed";
-           // FerryOrderSummary newOS = new FerryOrderSummary();
-            TrainOrderSummary newOS = new TrainOrderSummary();
-            newOS.LaunchBrowser(url);
-            newOS.ProductName();
-             newOS.OrderNo();
-            newOS.CartID();
-             newOS.PurchaseDate();
-            newOS.DepartPlace();
-            newOS.ArrivePlace();
-            newOS.Journey();
-            newOS.DepartTime();
-            newOS.Company();
-            newOS.PassengerName();
-            newOS.Server();
-            newOS.Platform();
+            string urlOS;
+            Console.WriteLine("Enter CartID : ");
+            string cartID = Console.ReadLine();
+            Console.WriteLine("Enter Site type : ");
+            string siteType = Console.ReadLine();
+           
+            string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
 
-            /*
-            for(int i = 0; i<10; i++)
-            {
-                for (int j = 0; j<10; j++)
-                {
-                    if (j == 3)
-                    {
-                        continue;
-                    }
-                    Console.WriteLine("i = " + i + " - j = " + j);
-                }
-            }*/
+            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+            XmlDocument xml = new XmlDocument();
+            IWebDriver Maindriver = new ChromeDriver();
+            Console.WriteLine("Launching browser");
+
+            LaunchBrowser2 newURL = new LaunchBrowser2(xml, Maindriver);
+            newURL.GoToURL(siteType, cartID);
+
+            OrderSummary2 OStest = new OrderSummary2(xml, Maindriver);
+            
+            productType = OStest.GetProductName(cartID);
+            OStest.ReadElement(XMLFilePath);
+            OStest.GetDiv1();
+           
+            CartID = OStest.GetCartID();
+            orderNo = OStest.GetOrderNo();
+
+            OStest.GetDepartPlace();
+            OStest.GetArrivePlace();
+
+            tripDetail = OStest.Journey();
+            PurchaseDate = OStest.GetPurchaseDate();
+            tripDuration = OStest.GetTripInfo();
+            passengerName = OStest.GetPassengerName();
+            Company = OStest.GetCompany();
+
+            OStest.GetReturnLocation();
+            OStest.Journey();
+            OStest.GetCartID();
+            OStest.Platform();
+            OStest.Server();
+
+            WriteToExcel2 OStoExcel = new WriteToExcel2();
+            OStoExcel.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
 
         }
     }

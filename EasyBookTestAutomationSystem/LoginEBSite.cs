@@ -21,7 +21,7 @@ namespace EasyBookTestAutomationSystem
 
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //----Login Elements--//
-        string ElLogin, ElSignIn, ElemEmail, ElemPass, email, password, ElemCaptcha, ElBtnLogin;
+        string ElLogin, ElSignIn, ElemEmail, ElemPass, email, password, ElemCaptcha, ElBtnLogin, scrollToTopJS;
         //-------------------------------------------------------------------------------------//
 
         //---------------------METHODS-------------------------------------------//
@@ -48,6 +48,7 @@ namespace EasyBookTestAutomationSystem
                 password = xnode["Pass"]["Value"].InnerText.Trim();
                 ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
                 ElBtnLogin = xnode["buttonLogin"]["Id"].InnerText.Trim();
+                scrollToTopJS = xnode["JSactions"]["ScrolltoTop"]["Action"].InnerText.Trim();
             }
         }
 
@@ -56,7 +57,7 @@ namespace EasyBookTestAutomationSystem
             try
             {
                 Thread.Sleep(2000);
-                ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0, 0)");
+                ((IJavaScriptExecutor)driver).ExecuteScript(scrollToTopJS);
                 driver.FindElement(By.XPath(ElSignIn)).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).Clear();

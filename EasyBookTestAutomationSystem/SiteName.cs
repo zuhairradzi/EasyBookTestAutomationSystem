@@ -19,10 +19,6 @@ namespace EasyBookTestAutomationSystem
     class SiteName
     {
         string testSite, liveSite, BQSite, site;
-        string test = "test";
-        string live = "live";
-        string bq = "bq";
-
         public IWebDriver driver;
         public XmlDocument xml;
 
@@ -30,21 +26,17 @@ namespace EasyBookTestAutomationSystem
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         public string ReadElement(string XMLpath, string siteType)
         {
             string siteName = char.ToUpper(siteType[0]) + siteType.Substring(1);
-            Console.WriteLine("siteName : " + siteName);
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/Site");
             foreach (XmlNode xnode in xnMenu)
             {
                 site = xnode["URL"][siteName].InnerText.Trim();
-                Console.WriteLine("site : " + site);
                 return site;
-
             }
             return null;
         }

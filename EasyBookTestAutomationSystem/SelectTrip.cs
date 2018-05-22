@@ -18,19 +18,7 @@ namespace EasyBookTestAutomationSystem
 {
     class SelectTrip
     {
-        //---------------------VARIABLES, XPATH, ID-------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-
-
-
-
-        //-------------------------------------------------------------------------------------//
-        //-------------------------------------------------------------------------------------//
-
-
         //---------------------METHODS-------------------------------------------//
-
 
         public IWebDriver driver;
         public XmlDocument xml;
@@ -53,7 +41,6 @@ namespace EasyBookTestAutomationSystem
             foreach (XmlNode xnode in xnList)
             {
                 tripValue = xnode[productType][siteType][currency]["XPath"].InnerText.Trim();
-                Console.WriteLine("tripValue : " + tripValue);
             }
 
         }
@@ -70,8 +57,6 @@ namespace EasyBookTestAutomationSystem
                 try
                 {
                     new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
-
-
                 }
                 catch (NoSuchElementException)
                 {
