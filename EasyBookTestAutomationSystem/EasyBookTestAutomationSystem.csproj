@@ -87,6 +87,8 @@
     <Compile Include="TestDescription.cs" />
     <Compile Include="TripType.cs" />
     <Compile Include="WriteToExcel.cs" />
+    <Compile Include="WriteToExcelLive.cs" />
+    <Compile Include="WriteToExcelTest.cs" />
     <Compile Include="XMLtest.cs" />
   </ItemGroup>
   <ItemGroup>

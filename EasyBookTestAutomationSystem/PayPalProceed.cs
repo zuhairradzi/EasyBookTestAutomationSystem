@@ -50,7 +50,7 @@ namespace EasyBookTestAutomationSystem
         public void proceedPayPal1(string currency)
         {
             string currencyUp = currency.ToUpper();
-            Thread.Sleep(15000);
+            Thread.Sleep(10000);
             if (currencyUp.Contains("MYR"))
             {
                 try

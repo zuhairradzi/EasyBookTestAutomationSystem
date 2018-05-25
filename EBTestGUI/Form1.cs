@@ -22,6 +22,11 @@ namespace EBTestGUI
         string product, site, paypal;
         string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
         XmlDocument xml = new XmlDocument();
        
@@ -138,7 +143,7 @@ namespace EBTestGUI
 
             //--- ORDER SUMMARY ---//
             OrderSummary OStest = new OrderSummary(xml, Maindriver);
-            OStest.ReadElement(XMLFilePath, product);
+            OStest.ReadElement(XMLFilePath, product, site);
             OStest.GetDiv1();
             productName = OStest.GetProductName();
             CartID = OStest.GetCartID();
@@ -159,9 +164,18 @@ namespace EBTestGUI
             OStest.Platform();
             OStest.Server();
 
-            WriteToExcel OStoExcel = new WriteToExcel();
-            OStoExcel.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
 
+            WriteToExcelTest OStoExcelTest = new WriteToExcelTest();
+            WriteToExcelLive OStoExcelLive = new WriteToExcelLive();
+
+            if (passengerName.ToLower().Contains("live"))
+            {
+                OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
+            else
+            {
+                OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
         }
 
     }

@@ -49,7 +49,7 @@ namespace EBTestGUI
         public void proceedPayPal1(string currency)
         {
             string currencyUp = currency.ToUpper();
-            Thread.Sleep(15000);
+            Thread.Sleep(10000);
             if (currencyUp.Contains("MYR"))
             {
                 try
@@ -88,7 +88,6 @@ namespace EBTestGUI
                 {
                     Console.WriteLine("Cannot proceed to pay 3");
                 }
-
                 try
                 {
                     new WebDriverWait(driver, TimeSpan.FromSeconds(35)).Until(ExpectedConditions.ElementExists(By.Id(continue3ID))).Click();

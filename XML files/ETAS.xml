@@ -184,12 +184,12 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<Test>2018-06-15</Test>
-					<Live>2018-06-16</Live>
+					<Test>2018-06-21</Test>
+					<Live>2018-06-22</Live>
 				</OneWay>
 				<ReturnTrip>
-					<Test>2018-06-13</Test>
-					<Live>2018-06-15</Live>
+					<Test>2018-06-21</Test>
+					<Live>2018-06-22</Live>
 				</ReturnTrip>
 			</DateValue>
 		</Train>
@@ -503,7 +503,7 @@ E
 			<Test>
 				<MYR>
 					<TripValue>
-						<XPath>//*[@id="SG-ext-web-116-765545-7-466-4-71-20180615-65-SH"]/div[1]/div[5]/a</XPath>
+						<XPath>//*[@id="SG-ext-web-116-1264401-7-466-4-71-20180621-93-SH"]/div[1]/div[5]/a</XPath>
 					</TripValue>
 					<SelectSeat>
 						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[1]/a/div</XPathFull>
@@ -521,7 +521,7 @@ E
 				</MYR>
 				<SGD>
 					<TripValue>
-						<XPath>//*[@id="SG-ext-web-116-765545-7-466-4-71-20180615-65-SH"]/div[1]/div[5]/a</XPath>
+						<XPath>//*[@id="SG-ext-web-116-1264401-7-466-4-71-20180621-93-SH"]/div[1]/div[5]/a</XPath>
 					</TripValue>
 					<SelectSeat>
 						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[1]/a/div</XPathFull>
@@ -541,7 +541,7 @@ E
 			<Live>
 				<MYR>
 					<TripValue>
-						<XPath>//*[@id="SG-ext-web-116-4824454-7-466-4-71-20180616-63-SH"]/div[1]/div[5]/a</XPath>
+						<XPath>//*[@id="SG-ext-web-116-4866494-7-466-4-71-20180622-93-SH"]/div[1]/div[5]/a</XPath>
 					</TripValue>
 					<SelectSeat>
 						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[2]/td[2]/a/div</XPathFull>
@@ -559,7 +559,7 @@ E
 				</MYR>
 				<SGD>
 					<TripValue>
-						<XPath>//*[@id="SG-ext-web-116-4824454-7-466-4-71-20180616-63-SH"]/div[1]/div[5]/a</XPath>
+						<XPath>//*[@id="SG-ext-web-116-4866494-7-466-4-71-20180622-93-SH"]/div[1]/div[5]/a</XPath>
 					</TripValue>
 					<SelectSeat>
 						<XPathFull>//*[@id="coach-1"]/table/tbody/tr[3]/td[1]/a/div</XPathFull>
@@ -682,120 +682,246 @@ E
 	<OrderSummary>
 
 		<Bus>
-			<Div1>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
-			</Div1>
-			<OrderNo>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
-			</OrderNo>
-			<DepartPlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[2]/td[2]</XPath>
-			</DepartPlace>
-			<ArrivePlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
-			</ArrivePlace>
-			<DepartTime>//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]
-				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]</XPath>
-			</DepartTime>
-			//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]
-			<Company>
-				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
-			</Company>
-			<PassengerName>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
-			</PassengerName>
-			<ServerPlatform>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
-			</ServerPlatform>
+			<Test>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[2]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]</XPath>
+				</DepartTime>
+				//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]
+				<Company>
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Test>
+			<Live>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[2]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[3]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[4]/td[2]</XPath>
+				</DepartTime>
+				//*[@id="print-content"]/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]
+				<Company>
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Live>
 		</Bus>
 
+
 		<Ferry>
-			<Div1>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
-			</Div1>
-			<OrderNo>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
-			</OrderNo>
-			<DepartPlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
-			</DepartPlace>
-			<ArrivePlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[3]/td[2]</XPath>
-			</ArrivePlace>
-			<DepartTime>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[4]/td[2]</XPath>
-			</DepartTime>
-			<Company>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
-			</Company>
-			<PassengerName>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
-			</PassengerName>
-			<ServerPlatform>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
-			</ServerPlatform>
+			<Test>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[3]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[4]/td[2]</XPath>
+				</DepartTime>
+				<Company>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Test>
+
+			<Live>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[3]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[4]/td[2]</XPath>
+				</DepartTime>
+				<Company>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[5]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Live>
 		</Ferry>
 
 		<Train>
-			<Div1>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]</XPath>
-			</Div1>
-			<OrderNo>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]/strong[1]/span</XPath>
-			</OrderNo>
-			<DepartPlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[2]/td[2]</XPath>
-			</DepartPlace>
-			<ArrivePlace>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[3]/td[2]</XPath>
-			</ArrivePlace>
-			<DepartTime>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[5]/td[2]</XPath>
-			</DepartTime>
-			<Company>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[4]/td[2]</XPath>
-			</Company>
-			<PassengerName>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[9]/td[2]</XPath>
-			</PassengerName>
-			<ServerPlatform>
-				<XPath>//div[@id='print-content']/div[3]</XPath>
-			</ServerPlatform>
+
+			<Test>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]/strong[1]/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[4]/td[2]</XPath>
+				</DepartTime>
+				<Company>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[3]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[8]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/div[3]</XPath>
+				</ServerPlatform>
+			</Test>
+
+			<Live>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]/strong[1]/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</DepartPlace>
+				<ArrivePlace>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[3]/td[2]</XPath>
+				</ArrivePlace>
+				<DepartTime>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+				</DepartTime>
+				<Company>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[4]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[2]/tbody/tr[3]/td/table[2]/tbody/tr[9]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table[4]/tbody/tr[8]/td/text()</XPath>
+				</ServerPlatform>
+			</Live>
 		</Train>
 
 		<Car>
-			<Div1>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
-			</Div1>
-			<OrderNo>
-				<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
-			</OrderNo>
-			<DepartPlace>
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
-			</DepartPlace>
-			<ReturnLocation>
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
-			</ReturnLocation>
-			<RentDuration>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
-				//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
-			</RentDuration>
-			<DepartTime>
-				<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
-			</DepartTime>
-			<CarDetail>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
-				//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
-			</CarDetail>
-			<Company>
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
-			</Company>
-			<PassengerName>
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
-			</PassengerName>
-			<ServerPlatform>
-				<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
-			</ServerPlatform>
+			<Test>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+				</DepartPlace>
+				<ReturnLocation>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
+				</ReturnLocation>
+				<RentDuration>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+					//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+				</RentDuration>
+				<DepartTime>
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+				</DepartTime>
+				<CarDetail>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+					//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+				</CarDetail>
+				<Company>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Test>
+
+			<Live>
+				<Div1>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td</XPath>
+				</Div1>
+				<OrderNo>
+					<XPath>//div[@id='print-content']/table/tbody/tr/td/table/tbody/tr[2]/td/strong/span</XPath>
+				</OrderNo>
+				<DepartPlace>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[5]/td[2]</XPath>
+				</DepartPlace>
+				<ReturnLocation>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[6]/td[2]</XPath>
+				</ReturnLocation>
+				<RentDuration>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+					//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[7]/td[2]</XPath>
+				</RentDuration>
+				<DepartTime>
+					<XPath>//*[@id='print-content']/table/tbody/tr/td/table[3]/tbody/tr[2]/td/table[1]/tbody/tr[5]/td[2]</XPath>
+				</DepartTime>
+				<CarDetail>//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+					//*[@id="print-content"]/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]/text()
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[2]</XPath>
+				</CarDetail>
+				<Company>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td[2]</XPath>
+				</Company>
+				<PassengerName>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[1]/tbody/tr[1]/td[2]</XPath>
+				</PassengerName>
+				<ServerPlatform>
+					<XPath>//*[@id='print-content']/table[1]/tbody/tr/td/table[4]/tbody/tr[8]/td</XPath>
+				</ServerPlatform>
+			</Live>
 		</Car>
 
 	</OrderSummary>

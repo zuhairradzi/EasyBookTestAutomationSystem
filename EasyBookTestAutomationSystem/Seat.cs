@@ -77,9 +77,6 @@ namespace EasyBookTestAutomationSystem
             }
 
 
-
-
-
             //--- BUS  ---//
             else if (productName.ToLower().Contains("bus"))
             {
@@ -89,21 +86,32 @@ namespace EasyBookTestAutomationSystem
                     {
                         try
                         {
-                            Thread.Sleep(2000);
-                            Console.WriteLine("Full seatXP = " + seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3);
-                            driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
-                            driver.FindElement(By.XPath(seatContinueXP)).Click();
-                            try
+                            if (IsElementPresent(By.XPath(seatContinueXP)))
                             {
-                                IAlert simpleAlert = driver.SwitchTo().Alert();
-                                String alertText = simpleAlert.Text;
-                                simpleAlert.Accept();
-                                continue;
+
+                                Thread.Sleep(2000);
+                                Console.WriteLine("Full seatXP = " + seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3);
+                                driver.FindElement(By.XPath(seatXP1 + (Tr) + seatXP2 + (Td) + seatXP3)).Click();//WORKING
+                                driver.FindElement(By.XPath(seatContinueXP)).Click();
+                                try
+                                {
+                                    IAlert simpleAlert = driver.SwitchTo().Alert();
+                                    String alertText = simpleAlert.Text;
+                                    simpleAlert.Accept();
+                                    continue;
+                                }
+                                catch (NoAlertPresentException)
+                                {
+                                    Console.WriteLine("No alert found");
+                                }
+
+
                             }
-                            catch (NoAlertPresentException)
+                            else if (!IsElementPresent(By.XPath(seatContinueXP)))
                             {
-                                Console.WriteLine("No alert found");
+                                return;
                             }
+
 
                         }
                         catch (NoSuchElementException)

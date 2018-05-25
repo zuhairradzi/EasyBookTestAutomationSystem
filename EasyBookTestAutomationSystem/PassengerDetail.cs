@@ -27,7 +27,7 @@ namespace EasyBookTestAutomationSystem
             this.driver = maindriver;
         }
 
-        string insuranceElem, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue; 
+        string insuranceElemClass, insuranceElemID, insuranceElemXP, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue; 
 
         public void ReadElement(string XMLpath, string product)
         {
@@ -36,7 +36,9 @@ namespace EasyBookTestAutomationSystem
             XmlNodeList xnList = xml.SelectNodes("/ETAS/PassengerDetails");
             foreach (XmlNode xnode in xnList)
             {
-                insuranceElem = xnode["Insurance"]["ClassName"].InnerText.Trim();
+                insuranceElemClass = xnode["Insurance"]["ClassName"].InnerText.Trim();
+                insuranceElemID = xnode["Insurance"]["Id"].InnerText.Trim();
+                insuranceElemXP = xnode["Insurance"]["XPath"].InnerText.Trim();
                 nationElem = xnode["Nationality"]["NationalityElement"]["Id"].InnerText.Trim();
                 nationalityValue = xnode["Nationality"]["Value"]["SelectByText"].InnerText.Trim();
                 genderElemXP = xnode["Gender"]["GenElement"]["XPath"].InnerText.Trim();
@@ -49,7 +51,7 @@ namespace EasyBookTestAutomationSystem
 
             if (product.ToLower().Contains("bus"))
             {
-                PassengerTest.untickInsurance(insuranceElem);
+                PassengerTest.untickInsurance(insuranceElemID);
             }
 
             if (product.ToLower().Contains("car"))
@@ -68,10 +70,11 @@ namespace EasyBookTestAutomationSystem
         {
             try
             {
-                IWebElement element = driver.FindElement(By.ClassName(insurance));
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click()", element);
-                IAlert confirmationAlert = driver.SwitchTo().Alert();
-                confirmationAlert.Accept();
+                driver.FindElement(By.Id(insurance)).Click();
+               // IWebElement element = driver.FindElement(By.Id(insurance));
+               // ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click()", element);
+               // IAlert confirmationAlert = driver.SwitchTo().Alert();
+               // confirmationAlert.Accept();
 
             }
             catch (NoSuchElementException)

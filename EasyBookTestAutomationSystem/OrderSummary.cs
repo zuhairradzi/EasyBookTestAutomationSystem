@@ -32,37 +32,38 @@ namespace EasyBookTestAutomationSystem
         string PurchaseDate, cartID, orderNo, Passenger, CompanyName, tripInfo, tripDuration, depTime, arriveTime, RentTime;
         string OrderNo, Div1, DivOne, DepartPlace, productName,
            ArrivePlace, DepartTime, Company, PassengerName,
-           ServerPlatform, ReturnLocation, RentDuration, CarDetail, product;
+           ServerPlatform, ReturnLocation, RentDuration, CarDetail, product, siteType;
 
-        public void ReadElement(string XMLpath, string prodName)
+        public void ReadElement(string XMLpath, string prodName, string site)
         {
+            siteType = char.ToUpper(site[0]) + site.Substring(1);
             product = char.ToUpper(prodName[0]) + prodName.Substring(1);
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/OrderSummary");
             foreach (XmlNode xnode in xnMenu)
             {
-                OrderNo = xnode[product]["OrderNo"]["XPath"].InnerText.Trim();
-                Div1 = xnode[product]["Div1"]["XPath"].InnerText.Trim();
-                DepartPlace = xnode[product]["DepartPlace"]["XPath"].InnerText.Trim();
+                OrderNo = xnode[product][siteType]["OrderNo"]["XPath"].InnerText.Trim();
+                Div1 = xnode[product][siteType]["Div1"]["XPath"].InnerText.Trim();
+                DepartPlace = xnode[product][siteType]["DepartPlace"]["XPath"].InnerText.Trim();
 
                 if (product.ToLower().Contains("ferry") || product.ToLower().Contains("bus") || product.ToLower().Contains("train"))
                 {
-                    ArrivePlace = xnode[product]["ArrivePlace"]["XPath"].InnerText.Trim();
+                    ArrivePlace = xnode[product][siteType]["ArrivePlace"]["XPath"].InnerText.Trim();
                     ReturnLocation = "";
                     CarDetail = "";
                     RentDuration = "";
                 }
 
-                DepartTime = xnode[product]["DepartTime"]["XPath"].InnerText.Trim();
-                Company = xnode[product]["Company"]["XPath"].InnerText.Trim();
-                PassengerName = xnode[product]["PassengerName"]["XPath"].InnerText.Trim();
-                ServerPlatform = xnode[product]["ServerPlatform"]["XPath"].InnerText.Trim();
+                DepartTime = xnode[product][siteType]["DepartTime"]["XPath"].InnerText.Trim();
+                Company = xnode[product][siteType]["Company"]["XPath"].InnerText.Trim();
+                PassengerName = xnode[product][siteType]["PassengerName"]["XPath"].InnerText.Trim();
+                ServerPlatform = xnode[product][siteType]["ServerPlatform"]["XPath"].InnerText.Trim();
 
                 if (product.ToLower().Contains("car"))
                 {
-                    ReturnLocation = xnode[product]["ReturnLocation"]["XPath"].InnerText.Trim();
-                    RentDuration = xnode[product]["RentDuration"]["XPath"].InnerText.Trim();
-                    CarDetail = xnode[product]["CarDetail"]["XPath"].InnerText.Trim();
+                    ReturnLocation = xnode[product][siteType]["ReturnLocation"]["XPath"].InnerText.Trim();
+                    RentDuration = xnode[product][siteType]["RentDuration"]["XPath"].InnerText.Trim();
+                    CarDetail = xnode[product][siteType]["CarDetail"]["XPath"].InnerText.Trim();
                     ArrivePlace = "";
                 }
             }

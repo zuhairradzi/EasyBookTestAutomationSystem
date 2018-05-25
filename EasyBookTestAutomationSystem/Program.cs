@@ -215,7 +215,7 @@ namespace EasyBookTestAutomationSystem
 
             //--- ORDER SUMMARY ---//
             OrderSummary OStest = new OrderSummary(xml, Maindriver);
-            OStest.ReadElement(XMLFilePath, product);
+            OStest.ReadElement(XMLFilePath, product, site);
             OStest.GetDiv1();
             productType = OStest.GetProductName();
             CartID = OStest.GetCartID();
@@ -236,9 +236,17 @@ namespace EasyBookTestAutomationSystem
             OStest.Platform();
             OStest.Server();
             
-            WriteToExcel OStoExcel = new WriteToExcel();
-            OStoExcel.ExcelWrite(productType, orderNo, CartID,  tripDetail, PurchaseDate, tripDuration, passengerName, Company);
-
+            WriteToExcelTest OStoExcelTest = new WriteToExcelTest();
+            WriteToExcelLive OStoExcelLive = new WriteToExcelLive();
+            
+            if (passengerName.ToLower().Contains("live"))
+            {
+                OStoExcelLive.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
+            else
+            {
+                OStoExcelTest.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
         }
     }
 

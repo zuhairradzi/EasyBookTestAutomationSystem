@@ -27,7 +27,7 @@ namespace EBTestGUI
             this.driver = maindriver;
         }
 
-        string insuranceElem, insuranceElemID, insuranceElemXP, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue;
+        string insuranceElemClass, insuranceElemID, insuranceElemXP, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue;
 
         public void ReadElement(string XMLpath, string product)
         {
@@ -36,7 +36,7 @@ namespace EBTestGUI
             XmlNodeList xnList = xml.SelectNodes("/ETAS/PassengerDetails");
             foreach (XmlNode xnode in xnList)
             {
-                insuranceElem = xnode["Insurance"]["ClassName"].InnerText.Trim();
+                insuranceElemClass = xnode["Insurance"]["ClassName"].InnerText.Trim();
                 insuranceElemID = xnode["Insurance"]["Id"].InnerText.Trim();
                 insuranceElemXP = xnode["Insurance"]["XPath"].InnerText.Trim();
                 nationElem = xnode["Nationality"]["NationalityElement"]["Id"].InnerText.Trim();
@@ -51,7 +51,7 @@ namespace EBTestGUI
 
             if (product.ToLower().Contains("bus"))
             {
-                PassengerTest.untickInsurance(insuranceElemXP);
+                PassengerTest.untickInsurance(insuranceElemID);
             }
 
             if (product.ToLower().Contains("car"))
@@ -70,11 +70,7 @@ namespace EBTestGUI
         {
             try
             {
-                IWebElement element = driver.FindElement(By.XPath(insurance));
-                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click()", element);
-                IAlert confirmationAlert = driver.SwitchTo().Alert();
-                confirmationAlert.Accept();
-
+                driver.FindElement(By.Id(insurance)).Click();
             }
             catch (NoSuchElementException)
             {
