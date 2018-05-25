@@ -40,7 +40,7 @@ namespace SingleTestProject
             OrderSummary2 OStest = new OrderSummary2(xml, Maindriver);
             
             productType = OStest.GetProductName(cartID);
-            OStest.ReadElement(XMLFilePath);
+            OStest.ReadElement(XMLFilePath, siteType);
             OStest.GetDiv1();
            
             CartID = OStest.GetCartID();
@@ -61,9 +61,17 @@ namespace SingleTestProject
             OStest.Platform();
             OStest.Server();
 
-            WriteToExcel2 OStoExcel = new WriteToExcel2();
-            OStoExcel.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            WriteToExcelTest2 OStoExcelTest = new WriteToExcelTest2();
+            WriteToExcelLive2 OStoExcelLive = new WriteToExcelLive2();
 
+            if (passengerName.ToLower().Contains("live"))
+            {
+                OStoExcelLive.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
+            else
+            {
+                OStoExcelTest.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+            }
         }
     }
 }

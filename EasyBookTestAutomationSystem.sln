@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBTestGUI", "EBTestGUI\EBTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTest", "CodeTest\CodeTest.csproj", "{434E36E5-EEAB-4270-BBE1-5B36B79B5950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", "{3F416F01-DAB8-41BE-8296-4F39CB8AE5AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{724FA3EF-02B2-4C8C-B693-683400CB7028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{434E36E5-EEAB-4270-BBE1-5B36B79B5950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{434E36E5-EEAB-4270-BBE1-5B36B79B5950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{434E36E5-EEAB-4270-BBE1-5B36B79B5950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F416F01-DAB8-41BE-8296-4F39CB8AE5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F416F01-DAB8-41BE-8296-4F39CB8AE5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F416F01-DAB8-41BE-8296-4F39CB8AE5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F416F01-DAB8-41BE-8296-4F39CB8AE5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

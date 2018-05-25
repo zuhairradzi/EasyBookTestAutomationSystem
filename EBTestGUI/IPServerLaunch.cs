@@ -14,29 +14,28 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 
-namespace ETASSandbox
+namespace EBTestGUI
 {
     class IPServerLaunch
     {
         IWebDriver driver = new ChromeDriver();
-        public void LaunchBrowser()
+        public void LaunchBrowser(string site)
         {
             string urlLive = "https://www.easybook.com/en-my";
             string urlTest = "https://test.easybook.com/en-my";
             try
             {
-                Console.WriteLine("Live (1) or test (2) site?");
-                string site = "2";//Console.ReadLine();
-                if(site == "1")
+            
+                if (site.ToLower().Contains("live"))
                 {
                     driver.Navigate().GoToUrl(urlLive);
                 }
-                else if (site == "2")
+                else if (site.ToLower().Contains("test"))
                 {
                     driver.Navigate().GoToUrl(urlTest);
                 }
-                
-                
+
+
                 driver.Manage().Window.Maximize();
 
 
@@ -46,7 +45,7 @@ namespace ETASSandbox
                 Console.WriteLine("Homepage not found", e);
             }
         }
-        
+
         public void Login()
         {
             try
@@ -57,9 +56,6 @@ namespace ETASSandbox
                 driver.FindElement(By.Id("Email")).SendKeys("mohdzuhair@easybook.com");
                 driver.FindElement(By.Id("Password")).Clear();
                 driver.FindElement(By.Id("Password")).SendKeys("123456");
-                //driver.FindElement(By.Id("CaptchaCode")).Click();
-                //Thread.Sleep(6000);
-
                 driver.FindElement(By.Id("btnLogin")).Click();
 
             }
@@ -81,8 +77,6 @@ namespace ETASSandbox
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine(footerStr);
-                // string server = footerStr.Substring(142, 10);
-                //string serverName = server.Trim();
                 Console.WriteLine();
                 Console.WriteLine();
                 if (footerStr.Contains("G3ASPRO01"))
@@ -111,8 +105,8 @@ namespace ETASSandbox
 
             }
 
-        
-    }
 
-}
+        }
+
+    }
 }

@@ -29,7 +29,10 @@ namespace EasyBookTestAutomationSystem
             string paymentType;
             string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
 
+
+            String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+
             XmlDocument xml = new XmlDocument();
          
 
@@ -151,6 +154,7 @@ namespace EasyBookTestAutomationSystem
             //-----LOGIN EB SITE---//
             LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
             newLogin.ReadElement(XMLFilePath);
+            newLogin.ReadDB(sqlString);
             newLogin.loginEB();
 
 
@@ -204,6 +208,7 @@ namespace EasyBookTestAutomationSystem
              //--- PAYPAL LOGIN  ---//
             PayPalLogin PaypalTest = new PayPalLogin(xml, Maindriver);
             PaypalTest.ReadElement(XMLFilePath);
+            PaypalTest.ReadDB(sqlString);
             PaypalTest.ClickLogin();
             PaypalTest.enterEmPP();
             PaypalTest.enterPwPP();

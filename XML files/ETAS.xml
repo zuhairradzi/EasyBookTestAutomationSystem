@@ -69,11 +69,9 @@ E
 			</Login>
 			<Email>
 				<Id>Email</Id>
-				<Value>mohdzuhair@easybook.com</Value>
 			</Email>
 			<Pass>
 				<Id>Password</Id>
-				<Value>123456</Value>
 			</Pass>
 			<Captcha>
 				<Id>CaptchaCode</Id>
@@ -97,8 +95,8 @@ E
 				<URL2>/train/booking/kepong-to-terminalktm</URL2>
 			</Train>
 			<Ferry>
-				<URL1>/ferry/booking/harbourfront-to-batamcenter</URL1>
-				<URL2>/ferry/booking/batamcenter-to-harbourfront</URL2>
+				<URL1>/ferry/booking/batamcenter-to-harbourfront</URL1>
+				<URL2>/ferry/booking/harbourfront-to-batamcenter</URL2>
 			</Ferry>
 			<Car>
 				<URL1>/car/booking/kualalumpurarea</URL1>
@@ -163,7 +161,7 @@ E
 			</DateElement>
 			<DateValue>
 				<OneWay>
-					<Test>2019-03-22</Test>
+					<Test>2019-03-13</Test>
 					<Live>2020-03-04</Live>
 				</OneWay>
 				<ReturnTrip>
@@ -310,11 +308,11 @@ E
 			<Test>
 				<MYR>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2"]/div[1]/div[5]/div/a</XPath>
 				</MYR>
 				<SGD>
 					<LinkText>Select</LinkText>
-					<XPath>//*[@id="MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b"]/div[1]/div[5]/div/a</XPath>
+					<XPath>//*[@id="MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2"]/div[1]/div[5]/div/a</XPath>
 				</SGD>
 			</Test>
 			<Live>
@@ -427,11 +425,11 @@ E
 		<Ferry>
 			<Test>
 				<MYR>
-					<SelectSeat>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[9]
+					<SelectSeat>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[27]
 						<XPath>
 							<Part1>(//div[@id='ferry-seat-chart']</Part1>
 							<Part2>/div/div[2]</Part2>
-							<Part3>/div/div/select)[9]</Part3>
+							<Part3>/div/div/select)[27]</Part3>
 						</XPath>
 						<ClassName></ClassName>
 					</SelectSeat>
@@ -440,7 +438,7 @@ E
 					</NoOfSeat>
 					<ContinueButton>
 						<Id>submit</Id>
-						<XPath>//button[@id='MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b']</XPath>
+						<XPath>//button[@id='MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2']</XPath>
 					</ContinueButton>
 				</MYR>
 				<SGD>
@@ -457,7 +455,7 @@ E
 					</NoOfSeat>
 					<ContinueButton>
 						<Id>submit</Id>
-						<XPath>//button[@id='MY-int-382334-6fbbaf97-864f-49a1-b6ef-abdd2081dc3b']</XPath>
+						<XPath>//button[@id='MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2']</XPath>
 					</ContinueButton>
 				</SGD>
 			</Test>
@@ -642,8 +640,6 @@ E
 		<Email>
 			<Id>email</Id>
 			<XPath>//*[@id="email"]</XPath>
-			<Value>ebvanhieptest1@gmail.com
-			</Value>
 			<ContinueButton>
 				<Id>btnNext</Id>
 				<XPath>//*[@id='btnNext']</XPath>
@@ -652,7 +648,6 @@ E
 		<Password>
 			<Id>password</Id>
 			<XPath>//*[@id="password"]</XPath>
-			<Value>Ebtest@1133</Value>
 			<ContinueButton>
 				<CssSelector>#btnLogin</CssSelector>
 				<XPath>//*[@id=\"btnLogin\"]</XPath>

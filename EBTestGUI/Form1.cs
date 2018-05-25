@@ -19,22 +19,70 @@ namespace EBTestGUI
 {
     public partial class Form1 : Form
     {
-        string product, site, paypal;
-        string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
         String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
         XmlDocument xml = new XmlDocument();
-       
+
+        string product, site, siteBH, paypal;
+        string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
+        
+        List<Panel> newList = new List<Panel>();
+
+      
+
         public Form1()
         {
             InitializeComponent();
             return;
         }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            newList.Add(panelTestBuy);
+            newList.Add(panelCheckBH);
+            newList.Add(panelInstruction);
+            newList.Add(panelXMLDoc);
+        }
+
+
+        private void CheckBHButton_Click(object sender, EventArgs e)
+        {
+            newList[1].BringToFront();
+        }
+
+        private void TestBuyButton_Click(object sender, EventArgs e)
+        {
+            newList[0].BringToFront();
+        }
+
+        private void InstructionButton_Click(object sender, EventArgs e)
+        {
+            newList[2].BringToFront();
+        }
+
+        private void XMLDocButton_Click(object sender, EventArgs e)
+        {
+            newList[3].BringToFront();
+        }
+        private void siteName(object sender, EventArgs e)
+        {
+            RadioButton button = (RadioButton)sender;
+            siteBH = button.Text;
+        }
+        
+        private void IPServer_Click(object sender, EventArgs e)
+        {
+            //-----LAUNCH CHROME----//
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--disable-impl-side-painting");
+            IPServerLaunch testServer = new IPServerLaunch();
+            testServer.LaunchBrowser(siteBH);
+            testServer.CheckServerConnection();
+            testServer.Login();
+        }
+        
+
+       
 
         private void productType(object sender, EventArgs e)
         {
@@ -78,6 +126,7 @@ namespace EBTestGUI
             //-----LOGIN EB SITE---//
             LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
             newLogin.ReadElement(XMLFilePath);
+            newLogin.ReadDB(sqlString);
             newLogin.loginEB();
 
 
@@ -132,6 +181,7 @@ namespace EBTestGUI
             //--- PAYPAL LOGIN  ---//
             PayPalLogin PaypalTest = new PayPalLogin(xml, Maindriver);
             PaypalTest.ReadElement(XMLFilePath);
+            PaypalTest.ReadDB(sqlString);
             PaypalTest.ClickLogin();
             PaypalTest.enterEmPP();
             PaypalTest.enterPwPP();

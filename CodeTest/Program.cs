@@ -14,6 +14,15 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Reflection;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace CodeTest
 {
@@ -25,8 +34,15 @@ namespace CodeTest
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Test.xml";
             XmlDocument xml = new XmlDocument();
 
-            EditXML edit = new EditXML(xml);
-            edit.writeToXML(XMLFilePath);
+            String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
+            SqlConnection conn = new SqlConnection();
+
+            ReadFromSQL read = new ReadFromSQL(conn);
+            read.getValue(sqlString);
+
+
+            //EditXML edit = new EditXML(xml);
+            //edit.writeToXML(XMLFilePath);
 
           
         }

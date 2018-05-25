@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace EasyBookTestAutomationSystem
 {
@@ -37,13 +38,33 @@ namespace EasyBookTestAutomationSystem
             {
                 LoginButtonFirst = xnode["LoginButton"]["XPath"].InnerText.Trim();
                 emailElementID = xnode["Email"]["Id"].InnerText.Trim();
-                emailVal = xnode["Email"]["Value"].InnerText.Trim();
+                //emailVal = xnode["Email"]["Value"].InnerText.Trim();
                 emailProceedElementXp = xnode["Email"]["ContinueButton"]["XPath"].InnerText.Trim();
                 emailProceedElementId = xnode["Email"]["ContinueButton"]["Id"].InnerText.Trim();
                 passwordElemId = xnode["Password"]["Id"].InnerText.Trim();
-                pwVal = xnode["Password"]["Value"].InnerText.Trim();
+                //pwVal = xnode["Password"]["Value"].InnerText.Trim();
                 LoginButtonCss = xnode["Password"]["ContinueButton"]["CssSelector"].InnerText.Trim();
                 LoginButtonXP = xnode["Password"]["ContinueButton"]["XPath"].InnerText.Trim();
+            }
+        }
+
+        public void ReadDB(string sqlString)
+        {
+            using (SqlConnection connection = new SqlConnection(sqlString))
+            using (SqlCommand command = new SqlCommand("select * from loginPayPal", connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        emailVal = reader["emailPP"].ToString();
+                        pwVal = reader["passwordPP"].ToString();
+                        Console.WriteLine("emailPP : " + reader["emailPP"].ToString());
+                        Console.WriteLine("passwordPP : " + reader["passwordPP"].ToString());
+                        //Console.WriteLine();
+                    }
+                }
             }
         }
 

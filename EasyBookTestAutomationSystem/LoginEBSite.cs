@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace EasyBookTestAutomationSystem
 {
@@ -44,11 +45,31 @@ namespace EasyBookTestAutomationSystem
                 ElLogin = xnode["Login"]["Id"].InnerText.Trim();
                 ElemEmail = xnode["Email"]["Id"].InnerText.Trim();
                 ElemPass = xnode["Pass"]["Id"].InnerText.Trim();
-                email = xnode["Email"]["Value"].InnerText.Trim();
-                password = xnode["Pass"]["Value"].InnerText.Trim();
+               // email = xnode["Email"]["Value"].InnerText.Trim();
+               // password = xnode["Pass"]["Value"].InnerText.Trim();
                 ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
                 ElBtnLogin = xnode["buttonLogin"]["Id"].InnerText.Trim();
                 scrollToTopJS = xnode["JSactions"]["ScrolltoTop"]["Action"].InnerText.Trim();
+            }
+        }
+
+        public void ReadDB(string sqlString)
+        {
+            using (SqlConnection connection = new SqlConnection(sqlString))
+            using (SqlCommand command = new SqlCommand("select * from loginEB", connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        email = reader["emailEB"].ToString();
+                        password = reader["passwordEB"].ToString();
+                        Console.WriteLine("emailEB : " + reader["emailEB"].ToString());
+                        Console.WriteLine("passwordEB : " + reader["passwordEB"].ToString());
+                        //Console.WriteLine();
+                    }
+                }
             }
         }
 
