@@ -55,6 +55,7 @@
             this.emailTextbox.Text = "email";
             this.emailTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.emailTextbox.Click += new System.EventHandler(this.emailTextbox_Click);
+            this.emailTextbox.TextChanged += new System.EventHandler(this.emailTextbox_TextChanged);
             // 
             // passwordTextbox
             // 

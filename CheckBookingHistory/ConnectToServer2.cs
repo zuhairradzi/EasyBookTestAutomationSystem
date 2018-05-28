@@ -13,9 +13,9 @@ using OpenQA.Selenium.Interactions;
 using System.Xml;
 using NUnit.Framework;
 
-namespace EasyBookTestAutomationSystem
+namespace CheckBookingHistory
 {
-    class ConnectToServer
+    class ConnectToServer2
     {
         public IWebDriver driver;
         public XmlDocument xml;
@@ -24,7 +24,7 @@ namespace EasyBookTestAutomationSystem
         //string testURL = "https://test.easybook.com";
         //string serverWanted = "G3ASPRO01";
 
-        public ConnectToServer(XmlDocument mainxml, IWebDriver maindriver)
+        public ConnectToServer2(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
@@ -79,7 +79,7 @@ namespace EasyBookTestAutomationSystem
                 //string serverName = server.Trim();
                 Console.WriteLine();
                 Console.WriteLine();
-               
+
             }
             catch (NoSuchElementException)
             {
@@ -89,12 +89,13 @@ namespace EasyBookTestAutomationSystem
 
         public IWebDriver ConnectToServerWanted(string EBUrl)
         {
-            ConnectToServer newServer = new ConnectToServer(xml, driver);
+            ConnectToServer2 newServer = new ConnectToServer2(xml, driver);
             try
             {
                 //Console.WriteLine("Connect server : "+footerStr);
                 while (!footerStr.Contains(serverNeeded))
                 {
+                    // this.Close();
                     driver.Close();
                     driver = new ChromeDriver();
                     driver.Navigate().GoToUrl(EBUrl);
@@ -126,28 +127,9 @@ namespace EasyBookTestAutomationSystem
             }
         }
 
-        public void Login()
+        private void Close()
         {
-            try
-            {
-                driver.FindElement(By.LinkText("Sign in")).Click();
-                driver.FindElement(By.Id("loginLink")).Click();
-                driver.FindElement(By.Id("Email")).Clear();
-                driver.FindElement(By.Id("Email")).SendKeys("mohdzuhair@easybook.com");
-                driver.FindElement(By.Id("Password")).Clear();
-                driver.FindElement(By.Id("Password")).SendKeys("123456");
-                //driver.FindElement(By.Id("CaptchaCode")).Click();
-                //Thread.Sleep(6000);
-
-                driver.FindElement(By.Id("btnLogin")).Click();
-                string driverStr = Convert.ToString(driver);
-                Console.WriteLine("Driver : "+ driverStr);
-            }
-
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("Login not found");
-            }
+            this.Close();
         }
     }
 }

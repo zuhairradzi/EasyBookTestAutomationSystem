@@ -13,7 +13,7 @@ using OpenQA.Selenium.Interactions;
 using System.Xml;
 using NUnit.Framework;
 
-namespace EasyBookTestAutomationSystem
+namespace EBTestGUI
 {
     class ConnectToServer
     {
@@ -41,45 +41,27 @@ namespace EasyBookTestAutomationSystem
                 string serverName = char.ToUpper(serverInput[0]) + serverInput.Substring(1);
 
                 serverXPath = xnode["footerElement"][site]["XPath"].InnerText.Trim();
-                Console.WriteLine("serverXPath : " + serverXPath);
-
                 serverNeeded = xnode["ServerName"][site][serverName].InnerText.Trim();
-                Console.WriteLine("serverXPath : " + serverXPath);
-
                 server1Name = xnode["ServerName"][site]["S1"].InnerText.Trim();
-                Console.WriteLine("server1Name : " + server1Name);
-
                 server2Name = xnode["ServerName"][site]["S2"].InnerText.Trim();
-                Console.WriteLine("server2Name : " + server2Name);
-
                 ScrollBottom = xnode["JSactions"]["ScrolltoBottom"]["Action"].InnerText.Trim();
-                Console.WriteLine("ScrollBottom : " + ScrollBottom);
-
-
             }
-            Console.WriteLine("Server wanted : " + serverNeeded);
-
         }
 
         public void LaunchBrowser(string EBUrl)
         {
             try
             {
-                //driver.Navigate().GoToUrl(EBUrl);
-                //driver.Manage().Window.Maximize();
                 ((IJavaScriptExecutor)driver).ExecuteScript(ScrollBottom);
                 Thread.Sleep(2000);
-
                 var footer = driver.FindElement(By.XPath(serverXPath));
                 footerStr = footer.Text.ToString();
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine(footerStr);
-                // string server = footerStr.Substring(142, 10);
-                //string serverName = server.Trim();
                 Console.WriteLine();
                 Console.WriteLine();
-               
+
             }
             catch (NoSuchElementException)
             {
@@ -92,7 +74,6 @@ namespace EasyBookTestAutomationSystem
             ConnectToServer newServer = new ConnectToServer(xml, driver);
             try
             {
-                //Console.WriteLine("Connect server : "+footerStr);
                 while (!footerStr.Contains(serverNeeded))
                 {
                     driver.Close();
@@ -106,8 +87,6 @@ namespace EasyBookTestAutomationSystem
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine(footerStr);
-                    // string server = footerStr.Substring(142, 10);
-                    //string serverName = server.Trim();
                     Console.WriteLine();
                     Console.WriteLine();
                 }
@@ -126,28 +105,9 @@ namespace EasyBookTestAutomationSystem
             }
         }
 
-        public void Login()
+        private void Close()
         {
-            try
-            {
-                driver.FindElement(By.LinkText("Sign in")).Click();
-                driver.FindElement(By.Id("loginLink")).Click();
-                driver.FindElement(By.Id("Email")).Clear();
-                driver.FindElement(By.Id("Email")).SendKeys("mohdzuhair@easybook.com");
-                driver.FindElement(By.Id("Password")).Clear();
-                driver.FindElement(By.Id("Password")).SendKeys("123456");
-                //driver.FindElement(By.Id("CaptchaCode")).Click();
-                //Thread.Sleep(6000);
-
-                driver.FindElement(By.Id("btnLogin")).Click();
-                string driverStr = Convert.ToString(driver);
-                Console.WriteLine("Driver : "+ driverStr);
-            }
-
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("Login not found");
-            }
+            this.Close();
         }
     }
 }

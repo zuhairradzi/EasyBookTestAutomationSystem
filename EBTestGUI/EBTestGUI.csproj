@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="CheckServer.cs" />
     <Compile Include="ChooseCountry.cs" />
+    <Compile Include="ConnectToServer.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -114,6 +115,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginEBSite.cs" />
+    <Compile Include="ManageBooking.cs" />
     <Compile Include="OrderSummary.cs" />
     <Compile Include="PassengerDetail.cs" />
     <Compile Include="PaymentType.cs" />

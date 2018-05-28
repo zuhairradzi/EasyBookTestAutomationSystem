@@ -28,7 +28,7 @@ namespace EasyBookTestAutomationSystem
             string tripType;
             string paymentType;
             string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
-
+            IWebDriver Maindriver;
 
             String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
             String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
@@ -126,7 +126,7 @@ namespace EasyBookTestAutomationSystem
             //-----LAUNCH CHROME----//
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");
-            IWebDriver Maindriver = new ChromeDriver();          
+            Maindriver = new ChromeDriver();          
 
              //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -144,11 +144,11 @@ namespace EasyBookTestAutomationSystem
 
             
             //-----SERVER CONNECTION---//
-            /*ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
+            ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
             newServer.ReadElement(XMLFilePath, server, site);
             newServer.LaunchBrowser(ChooseEBurl);
-            newServer.ConnectToServerWanted(ChooseEBurl);
-            //newServer.Login();*/
+            Maindriver = newServer.ConnectToServerWanted(ChooseEBurl);
+            //newServer.Login();
 
 
             //-----LOGIN EB SITE---//

@@ -22,9 +22,11 @@ namespace EBTestGUI
         String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
         String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
         XmlDocument xml = new XmlDocument();
+        IWebDriver Maindriver;
 
-        string product, site, siteBH, paypal;
+        string product, site, siteBH, paypal, server;
         string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
+        string orderNumber, dateHistory;
         
         List<Panel> newList = new List<Panel>();
 
@@ -41,13 +43,36 @@ namespace EBTestGUI
             newList.Add(panelTestBuy);
             newList.Add(panelCheckBH);
             newList.Add(panelInstruction);
-            newList.Add(panelXMLDoc);
+            newList.Add(panelGenOS);
         }
+
+        private void OrderNo_Click(object sender, EventArgs e)
+        {
+            OrderNo_textBox.Text = "";
+            //orderNumber = OrderNo_textBox.Text;
+        }
+
+        private void OSTextField_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateHistory2(object sender, EventArgs e)
+        {
+            dateTextField.Text = "";
+            //dateHistory = dateTextField.Text.ToString();
+        }
+        /*
+        private void dateBookingHistory(object sender, EventArgs e)
+        {
+            dateHistory = dateTimeBH.Value.ToString("MM/dd/yyyy");
+        }*/
 
 
         private void CheckBHButton_Click(object sender, EventArgs e)
         {
             newList[1].BringToFront();
+            //panelCheckBH.BringToFront();
         }
 
         private void TestBuyButton_Click(object sender, EventArgs e)
@@ -70,20 +95,6 @@ namespace EBTestGUI
             siteBH = button.Text;
         }
         
-        private void IPServer_Click(object sender, EventArgs e)
-        {
-            //-----LAUNCH CHROME----//
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.AddArgument("--disable-impl-side-painting");
-            IPServerLaunch testServer = new IPServerLaunch();
-            testServer.LaunchBrowser(siteBH);
-            testServer.CheckServerConnection();
-            testServer.Login();
-        }
-        
-
-       
-
         private void productType(object sender, EventArgs e)
         {
             RadioButton button = (RadioButton)sender;
@@ -96,18 +107,64 @@ namespace EBTestGUI
             paypal = button.Text;
         }
 
+        private void serverType(object sender, EventArgs e)
+        {
+            RadioButton button = (RadioButton)sender;
+            server = button.Text;
+        }
+
         private void siteType(object sender, EventArgs e)
         {
             RadioButton button = (RadioButton)sender;
             site = button.Text;           
         }
-       
+
+        private void CheckHistoryClick(object sender, EventArgs e)
+        {
+            Maindriver = new ChromeDriver();
+
+            //-----CHOOSE SITE---//
+            SiteName newURL = new SiteName(xml, Maindriver);
+            string ChooseEBurl = newURL.ReadElement(XMLFilePath, siteBH);
+
+            //-----GO TO SITE---//
+            LaunchBrowser newSite = new LaunchBrowser(xml, Maindriver);
+            newSite.GoToURL(ChooseEBurl);
+
+            //-----CHECK SERVER---//
+            CheckServer NewServer = new CheckServer(xml, Maindriver);
+            NewServer.ReadElement(XMLFilePath, siteBH);
+            NewServer.CheckServerConnection();
+
+
+            if (server.ToLower().Contains("s1") || server.ToLower().Contains("s2"))
+            {
+                //-----SERVER CONNECTION---//
+                ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
+                newServer.ReadElement(XMLFilePath, server, siteBH);
+                newServer.LaunchBrowser(ChooseEBurl);
+                Maindriver = newServer.ConnectToServerWanted(ChooseEBurl);
+            }
+
+            //-----LOGIN EB SITE---//
+            LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
+            newLogin.ReadElement(XMLFilePath);
+            newLogin.ReadDB(sqlString);
+            newLogin.loginEB();
+
+            //--CHECK BOOKING HISTORY--//
+            ManageBooking newHistory = new ManageBooking(xml, Maindriver);
+            newHistory.ReadElement(XMLFilePath, siteBH, product);
+            newHistory.searchBooking(dateTextField.Text, OrderNo_textBox.Text);
+            Thread.Sleep(10000);
+        }
+
         private void Run_Click(object sender, EventArgs e)
         {
             //-----LAUNCH CHROME----//
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");
-            IWebDriver Maindriver = new ChromeDriver();
+            Maindriver = new ChromeDriver();
 
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -123,6 +180,15 @@ namespace EBTestGUI
             NewServer.ReadElement(XMLFilePath, site);
             NewServer.CheckServerConnection();
 
+            if(server.ToLower().Contains("s1")|| server.ToLower().Contains("s2"))
+            {
+                //-----SERVER CONNECTION---//
+                ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
+                newServer.ReadElement(XMLFilePath, server, site);
+                newServer.LaunchBrowser(ChooseEBurl);
+                Maindriver = newServer.ConnectToServerWanted(ChooseEBurl);
+            }
+         
             //-----LOGIN EB SITE---//
             LoginEBSite newLogin = new LoginEBSite(xml, Maindriver);
             newLogin.ReadElement(XMLFilePath);

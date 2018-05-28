@@ -37,7 +37,7 @@
 			</Backend>
 		</ServerName>
 	</Server>
-E
+
 
 	<Site>
 		<URL>
@@ -81,6 +81,105 @@ E
 			</buttonLogin>
 		</LoginElement>
 	</EBLogin>
+
+	<BookingHistory>
+		<Test>
+			<Date>
+				<Element>
+					<XPath>//*[@id="dpStartDate"]</XPath>
+					<Id>dpStartDate</Id>
+				</Element>
+				<Value></Value>
+			</Date>
+			<SelectProduct>
+				<Element>
+					<XPath>//*[@id="ddlproduct"]</XPath>
+					<Id>ddlproduct</Id>
+				</Element>
+				<Product>
+					<Bus>
+						<XPath>//*[@id="ddlproduct"]/option[1]</XPath>
+						<LinkText>Bus</LinkText>
+					</Bus>
+					<Ferry>
+						<XPath>//*[@id="ddlproduct"]/option[2]</XPath>
+						<LinkText>Ferry</LinkText>
+					</Ferry>
+					<Train>
+						<XPath>//*[@id="ddlproduct"]/option[5]</XPath>
+						<LinkText>Train</LinkText>
+					</Train>
+					<Car>
+						<XPath>//*[@id="ddlproduct"]/option[3]</XPath>
+						<LinkText>Car</LinkText>
+					</Car>
+				</Product>
+			</SelectProduct>
+			<SearchButton>
+				<XPath>//*[@id="searchHistory"]</XPath>
+				<Id>searchHistory</Id>
+			</SearchButton>
+			<SearchOS>
+				<OrderNo>
+					<XPath></XPath>
+					<No></No>
+				</OrderNo>
+				<CartGUID></CartGUID>
+				<InvoiceNo>
+					<XPath></XPath>
+					<No></No>
+				</InvoiceNo>
+			</SearchOS>
+		</Test>
+		<Live>
+			<Date>
+				<Element>
+					<XPath>//*[@id="dpStartDate"]</XPath>
+					<Id>dpStartDate</Id>
+				</Element>
+				<Value></Value>
+			</Date>
+			<SelectProduct>
+				<Element>
+					<XPath>//*[@id="ddlproduct"]</XPath>
+					<Id>ddlproduct</Id>
+				</Element>
+				<Product>
+					<Bus>
+						<XPath>//*[@id="ddlproduct"]/option[1]</XPath>
+						<LinkText>Bus</LinkText>
+					</Bus>
+					<Ferry>
+						<XPath>//*[@id="ddlproduct"]/option[2]</XPath>
+						<LinkText>Ferry</LinkText>
+					</Ferry>
+					<Train>
+						<XPath>//*[@id="ddlproduct"]/option[5]</XPath>
+						<LinkText>Train</LinkText>
+					</Train>
+					<Car>
+						<XPath>//*[@id="ddlproduct"]/option[3]</XPath>
+						<LinkText>Car</LinkText>
+					</Car>
+				</Product>
+			</SelectProduct>
+			<SearchButton>
+				<XPath>//*[@id="searchHistory"]</XPath>
+				<Id>searchHistory</Id>
+			</SearchButton>
+			<SearchOS>
+				<OrderNo>
+					<XPath></XPath>
+					<No></No>
+				</OrderNo>
+				<CartGUID></CartGUID>
+				<InvoiceNo>
+					<XPath></XPath>
+					<No></No>
+				</InvoiceNo>
+			</SearchOS>
+		</Live>
+	</BookingHistory>
 
 	<Product>
 		<ProductName>

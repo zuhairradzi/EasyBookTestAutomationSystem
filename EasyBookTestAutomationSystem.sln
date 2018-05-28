@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{724FA3EF-02B2-4C8C-B693-683400CB7028}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBookingHistory", "CheckBookingHistory\CheckBookingHistory.csproj", "{6B850D13-A0A9-4C34-9390-DC1235CD2961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724FA3EF-02B2-4C8C-B693-683400CB7028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B850D13-A0A9-4C34-9390-DC1235CD2961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B850D13-A0A9-4C34-9390-DC1235CD2961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B850D13-A0A9-4C34-9390-DC1235CD2961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B850D13-A0A9-4C34-9390-DC1235CD2961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,6 +21,13 @@ namespace SingleTestProject
     {
         static void Main(string[] args)
         {
+            
+
+            String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
+            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+            XmlDocument xml = new XmlDocument();
+          
+
             string urlOS;
             Console.WriteLine("Enter CartID : ");
             string cartID = Console.ReadLine();
@@ -28,9 +35,7 @@ namespace SingleTestProject
             string siteType = Console.ReadLine();
            
             string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
-
-            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
-            XmlDocument xml = new XmlDocument();
+            
             IWebDriver Maindriver = new ChromeDriver();
             Console.WriteLine("Launching browser");
 
@@ -72,6 +77,7 @@ namespace SingleTestProject
             {
                 OStoExcelTest.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
             }
+            
         }
     }
 }

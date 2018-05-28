@@ -14,34 +14,34 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 
-namespace SingleTestProject
+namespace CheckBookingHistory
 {
     class LaunchBrowser2
     {
         public IWebDriver driver;
         public XmlDocument xml;
-        string url, urlOS;
+        string url;
         public LaunchBrowser2(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
         }
 
-        public void GoToURL(string siteType, string cartID)
+        public string GoToURL(string siteType)
         {
             if (siteType.ToLower().Contains("test"))
             {
-                urlOS = "https://test.easybook.com/en-my/payment/paymentresult?guid=" + cartID + "&source=PaypalEC_SGD&status=completed";
                 url = "https://test.easybook.com/en-my";
             }
 
             else if (siteType.ToLower().Contains("live"))
             {
-                urlOS = "https://www.easybook.com/en-my/payment/paymentresult?guid=" + cartID + "&source=PaypalEC_SGD&status=completed";
                 url = "https://www.easybook.com/en-my";
             }
-            driver.Navigate().GoToUrl(urlOS);
+
+            driver.Navigate().GoToUrl(url);
             driver.Manage().Window.Maximize();
+            return url;
         }
     }
 }
