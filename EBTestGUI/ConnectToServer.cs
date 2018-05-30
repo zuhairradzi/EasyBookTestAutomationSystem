@@ -12,6 +12,7 @@ using System.Globalization;
 using OpenQA.Selenium.Interactions;
 using System.Xml;
 using NUnit.Framework;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -65,7 +66,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Server element not found");
+                MessageBox.Show("Could not find server element");
             }
         }
 
@@ -100,7 +101,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Server element not found");
+                MessageBox.Show("Could not find server element");
                 return null;
             }
         }

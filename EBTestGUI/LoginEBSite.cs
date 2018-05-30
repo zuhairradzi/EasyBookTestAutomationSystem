@@ -14,6 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -83,7 +84,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Login not found");
+                MessageBox.Show("Could not Login");
             }
         }
     }

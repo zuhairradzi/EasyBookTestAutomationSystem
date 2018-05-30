@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -62,7 +63,7 @@ namespace EBTestGUI
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Country not found");
+                    MessageBox.Show("Could not find intended country's element");
                 }
             }
             else

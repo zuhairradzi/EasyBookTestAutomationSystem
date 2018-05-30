@@ -31,20 +31,20 @@ namespace CodeTest
         static void Main(string[] args)
         {
             
-            /*String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Test.xml";
+            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\Test.xml";
             XmlDocument xml = new XmlDocument();
 
             String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
             SqlConnection conn = new SqlConnection();
 
-            ReadFromSQL read = new ReadFromSQL(conn);
-            read.getValue(sqlString);*/
+            //ReadFromSQL read = new ReadFromSQL(conn);
+            //read.getValue(sqlString);
 
-            MD5Encryption hash = new MD5Encryption();
+            /*MD5Encryption hash = new MD5Encryption();
             Console.WriteLine(hash.CalculateMD5Hash("mohdzuhair"));
             Console.WriteLine();
             Console.WriteLine(hash.CalculateMD5Hash("123456"));
-            /*
+            
             try
             {
                 string FileName = "";
@@ -68,12 +68,12 @@ namespace CodeTest
 
             Console.ReadLine();
 
-            /* Console.WriteLine(hash.SHA1Hash("mohdzuhair@easybook.com"));
+            Console.WriteLine(hash.SHA1Hash("mohdzuhair@easybook.com"));
              Console.WriteLine();
              Console.WriteLine(hash.SHA1Hash("123456"));*/
 
-            //EditXML edit = new EditXML(xml);
-            //edit.writeToXML(XMLFilePath);
+            EditXML edit = new EditXML(xml);
+            edit.writeToXML(XMLFilePath);
 
 
         }

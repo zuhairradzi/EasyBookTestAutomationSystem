@@ -117,6 +117,8 @@
     <Compile Include="LoginEBSite.cs" />
     <Compile Include="ManageBooking.cs" />
     <Compile Include="OrderSummary.cs" />
+    <Compile Include="OrderSummaryGen.cs" />
+    <Compile Include="OSLinkGeneration.cs" />
     <Compile Include="PassengerDetail.cs" />
     <Compile Include="PaymentType.cs" />
     <Compile Include="PayPalLogin.cs" />
@@ -132,6 +134,12 @@
     <Compile Include="WriteToExcel.cs" />
     <Compile Include="WriteToExcelLive.cs" />
     <Compile Include="WriteToExcelTest.cs" />
+    <Compile Include="XMLDocumentation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMLDocumentation.Designer.cs">
+      <DependentUpon>XMLDocumentation.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +155,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="XMLDocumentation.resx">
+      <DependentUpon>XMLDocumentation.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="EBTestGUI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

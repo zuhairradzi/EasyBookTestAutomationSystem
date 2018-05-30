@@ -35,7 +35,7 @@
             this.radioButtonBHLive = new System.Windows.Forms.RadioButton();
             this.IPServerButton = new System.Windows.Forms.Button();
             this.panelCheckBH = new System.Windows.Forms.Panel();
-            this.dateTextField = new System.Windows.Forms.TextBox();
+            this.dateTimePickerBH = new System.Windows.Forms.DateTimePicker();
             this.panel8 = new System.Windows.Forms.Panel();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -47,21 +47,20 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.OrderNo_textBox = new System.Windows.Forms.TextBox();
             this.panelGenOS = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.GenOSWriteExcel = new System.Windows.Forms.RadioButton();
+            this.GenOS = new System.Windows.Forms.RadioButton();
+            this.RunGenOSButton = new System.Windows.Forms.Button();
+            this.OS_textField = new System.Windows.Forms.TextBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.InstructionButton = new System.Windows.Forms.Button();
             this.EditXMLButton = new System.Windows.Forms.Button();
             this.GenOSButton = new System.Windows.Forms.Button();
             this.CheckBHButton = new System.Windows.Forms.Button();
             this.TestBuyButton = new System.Windows.Forms.Button();
-            this.panelXMLDoc = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.OS_textField = new System.Windows.Forms.TextBox();
-            this.RunGenOSButton = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.GenOS = new System.Windows.Forms.RadioButton();
-            this.GenOSWriteExcel = new System.Windows.Forms.RadioButton();
             this.panelInstruction = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelTestBuy = new System.Windows.Forms.Panel();
@@ -86,9 +85,9 @@
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panelGenOS.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panelInstruction.SuspendLayout();
             this.panelTestBuy.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -101,12 +100,12 @@
             // 
             this.EBTestTitle.AutoSize = true;
             this.EBTestTitle.Font = new System.Drawing.Font("Myanmar Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EBTestTitle.Location = new System.Drawing.Point(246, 20);
+            this.EBTestTitle.Location = new System.Drawing.Point(275, 20);
             this.EBTestTitle.Name = "EBTestTitle";
             this.EBTestTitle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.EBTestTitle.Size = new System.Drawing.Size(292, 34);
+            this.EBTestTitle.Size = new System.Drawing.Size(253, 34);
             this.EBTestTitle.TabIndex = 7;
-            this.EBTestTitle.Text = "EasyBook Test Buy Automation";
+            this.EBTestTitle.Text = "EasyBook Test Automation";
             this.EBTestTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
@@ -161,27 +160,24 @@
             // 
             // panelCheckBH
             // 
-            this.panelCheckBH.BackColor = System.Drawing.Color.LawnGreen;
-            this.panelCheckBH.Controls.Add(this.dateTextField);
+            this.panelCheckBH.BackColor = System.Drawing.Color.LightGray;
+            this.panelCheckBH.Controls.Add(this.dateTimePickerBH);
             this.panelCheckBH.Controls.Add(this.panel8);
             this.panelCheckBH.Controls.Add(this.panel7);
             this.panelCheckBH.Controls.Add(this.OrderNo_textBox);
             this.panelCheckBH.Controls.Add(this.panel5);
             this.panelCheckBH.Controls.Add(this.IPServerButton);
-            this.panelCheckBH.Location = new System.Drawing.Point(176, 67);
+            this.panelCheckBH.Location = new System.Drawing.Point(240, 60);
             this.panelCheckBH.Name = "panelCheckBH";
-            this.panelCheckBH.Size = new System.Drawing.Size(371, 324);
+            this.panelCheckBH.Size = new System.Drawing.Size(380, 330);
             this.panelCheckBH.TabIndex = 9;
             // 
-            // dateTextField
+            // dateTimePickerBH
             // 
-            this.dateTextField.ForeColor = System.Drawing.Color.DimGray;
-            this.dateTextField.Location = new System.Drawing.Point(133, 29);
-            this.dateTextField.Name = "dateTextField";
-            this.dateTextField.Size = new System.Drawing.Size(81, 20);
-            this.dateTextField.TabIndex = 15;
-            this.dateTextField.Text = "Date";
-            this.dateTextField.Click += new System.EventHandler(this.dateHistory2);
+            this.dateTimePickerBH.Location = new System.Drawing.Point(132, 31);
+            this.dateTimePickerBH.Name = "dateTimePickerBH";
+            this.dateTimePickerBH.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePickerBH.TabIndex = 16;
             // 
             // panel8
             // 
@@ -304,15 +300,103 @@
             // 
             // panelGenOS
             // 
-            this.panelGenOS.BackColor = System.Drawing.Color.Aqua;
+            this.panelGenOS.BackColor = System.Drawing.Color.LightGray;
             this.panelGenOS.Controls.Add(this.panel11);
             this.panelGenOS.Controls.Add(this.RunGenOSButton);
             this.panelGenOS.Controls.Add(this.OS_textField);
             this.panelGenOS.Controls.Add(this.panel10);
-            this.panelGenOS.Location = new System.Drawing.Point(240, 45);
+            this.panelGenOS.Location = new System.Drawing.Point(240, 60);
             this.panelGenOS.Name = "panelGenOS";
-            this.panelGenOS.Size = new System.Drawing.Size(379, 327);
+            this.panelGenOS.Size = new System.Drawing.Size(380, 330);
             this.panelGenOS.TabIndex = 11;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.GenOSWriteExcel);
+            this.panel11.Controls.Add(this.GenOS);
+            this.panel11.Location = new System.Drawing.Point(149, 88);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(205, 75);
+            this.panel11.TabIndex = 6;
+            // 
+            // GenOSWriteExcel
+            // 
+            this.GenOSWriteExcel.AutoSize = true;
+            this.GenOSWriteExcel.Location = new System.Drawing.Point(17, 41);
+            this.GenOSWriteExcel.Name = "GenOSWriteExcel";
+            this.GenOSWriteExcel.Size = new System.Drawing.Size(181, 17);
+            this.GenOSWriteExcel.TabIndex = 1;
+            this.GenOSWriteExcel.TabStop = true;
+            this.GenOSWriteExcel.Text = "Generate OS and Write To Excel";
+            this.GenOSWriteExcel.UseVisualStyleBackColor = true;
+            this.GenOSWriteExcel.CheckedChanged += new System.EventHandler(this.GenOSAction);
+            // 
+            // GenOS
+            // 
+            this.GenOS.AutoSize = true;
+            this.GenOS.Location = new System.Drawing.Point(17, 18);
+            this.GenOS.Name = "GenOS";
+            this.GenOS.Size = new System.Drawing.Size(109, 17);
+            this.GenOS.TabIndex = 0;
+            this.GenOS.TabStop = true;
+            this.GenOS.Text = "Generate OS only";
+            this.GenOS.UseVisualStyleBackColor = true;
+            this.GenOS.CheckedChanged += new System.EventHandler(this.GenOSAction);
+            // 
+            // RunGenOSButton
+            // 
+            this.RunGenOSButton.Location = new System.Drawing.Point(133, 234);
+            this.RunGenOSButton.Name = "RunGenOSButton";
+            this.RunGenOSButton.Size = new System.Drawing.Size(96, 38);
+            this.RunGenOSButton.TabIndex = 5;
+            this.RunGenOSButton.Text = "Run";
+            this.RunGenOSButton.UseVisualStyleBackColor = true;
+            this.RunGenOSButton.Click += new System.EventHandler(this.RunGenOS_Click);
+            // 
+            // OS_textField
+            // 
+            this.OS_textField.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.OS_textField.Location = new System.Drawing.Point(121, 46);
+            this.OS_textField.Name = "OS_textField";
+            this.OS_textField.Size = new System.Drawing.Size(144, 20);
+            this.OS_textField.TabIndex = 4;
+            this.OS_textField.Text = "Purchase ID";
+            this.OS_textField.Click += new System.EventHandler(this.OSTextField_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Transparent;
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.radioButton9);
+            this.panel10.Controls.Add(this.radioButton10);
+            this.panel10.Location = new System.Drawing.Point(28, 88);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(96, 79);
+            this.panel10.TabIndex = 3;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton9.Location = new System.Drawing.Point(22, 43);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(45, 19);
+            this.radioButton9.TabIndex = 1;
+            this.radioButton9.Text = "Test";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.siteType);
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton10.Location = new System.Drawing.Point(21, 18);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(46, 19);
+            this.radioButton10.TabIndex = 0;
+            this.radioButton10.Text = "Live";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.siteType);
             // 
             // panel3
             // 
@@ -355,6 +439,7 @@
             this.GenOSButton.TabIndex = 2;
             this.GenOSButton.Text = "Generate OS";
             this.GenOSButton.UseVisualStyleBackColor = true;
+            this.GenOSButton.Click += new System.EventHandler(this.GenerateOSTab_Click);
             // 
             // CheckBHButton
             // 
@@ -376,102 +461,13 @@
             this.TestBuyButton.UseVisualStyleBackColor = true;
             this.TestBuyButton.Click += new System.EventHandler(this.TestBuyButton_Click);
             // 
-            // panelXMLDoc
-            // 
-            this.panelXMLDoc.BackColor = System.Drawing.Color.Orchid;
-            this.panelXMLDoc.Location = new System.Drawing.Point(405, 0);
-            this.panelXMLDoc.Name = "panelXMLDoc";
-            this.panelXMLDoc.Size = new System.Drawing.Size(379, 327);
-            this.panelXMLDoc.TabIndex = 12;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.Transparent;
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.radioButton9);
-            this.panel10.Controls.Add(this.radioButton10);
-            this.panel10.Location = new System.Drawing.Point(28, 88);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(96, 79);
-            this.panel10.TabIndex = 3;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton9.Location = new System.Drawing.Point(22, 43);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(45, 19);
-            this.radioButton9.TabIndex = 1;
-            this.radioButton9.Text = "Test";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton10.Location = new System.Drawing.Point(21, 18);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(46, 19);
-            this.radioButton10.TabIndex = 0;
-            this.radioButton10.Text = "Live";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // OS_textField
-            // 
-            this.OS_textField.Location = new System.Drawing.Point(121, 46);
-            this.OS_textField.Name = "OS_textField";
-            this.OS_textField.Size = new System.Drawing.Size(144, 20);
-            this.OS_textField.TabIndex = 4;
-            this.OS_textField.Click += new System.EventHandler(this.OSTextField_Click);
-            // 
-            // RunGenOSButton
-            // 
-            this.RunGenOSButton.Location = new System.Drawing.Point(133, 234);
-            this.RunGenOSButton.Name = "RunGenOSButton";
-            this.RunGenOSButton.Size = new System.Drawing.Size(96, 38);
-            this.RunGenOSButton.TabIndex = 5;
-            this.RunGenOSButton.Text = "Run";
-            this.RunGenOSButton.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.GenOSWriteExcel);
-            this.panel11.Controls.Add(this.GenOS);
-            this.panel11.Location = new System.Drawing.Point(149, 88);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(205, 75);
-            this.panel11.TabIndex = 6;
-            // 
-            // GenOS
-            // 
-            this.GenOS.AutoSize = true;
-            this.GenOS.Location = new System.Drawing.Point(17, 18);
-            this.GenOS.Name = "GenOS";
-            this.GenOS.Size = new System.Drawing.Size(109, 17);
-            this.GenOS.TabIndex = 0;
-            this.GenOS.TabStop = true;
-            this.GenOS.Text = "Generate OS only";
-            this.GenOS.UseVisualStyleBackColor = true;
-            // 
-            // GenOSWriteExcel
-            // 
-            this.GenOSWriteExcel.AutoSize = true;
-            this.GenOSWriteExcel.Location = new System.Drawing.Point(17, 41);
-            this.GenOSWriteExcel.Name = "GenOSWriteExcel";
-            this.GenOSWriteExcel.Size = new System.Drawing.Size(181, 17);
-            this.GenOSWriteExcel.TabIndex = 1;
-            this.GenOSWriteExcel.TabStop = true;
-            this.GenOSWriteExcel.Text = "Generate OS and Write To Excel";
-            this.GenOSWriteExcel.UseVisualStyleBackColor = true;
-            // 
             // panelInstruction
             // 
-            this.panelInstruction.BackColor = System.Drawing.Color.Silver;
+            this.panelInstruction.BackColor = System.Drawing.Color.LightGray;
             this.panelInstruction.Controls.Add(this.richTextBox1);
-            this.panelInstruction.Location = new System.Drawing.Point(291, 98);
+            this.panelInstruction.Location = new System.Drawing.Point(240, 60);
             this.panelInstruction.Name = "panelInstruction";
-            this.panelInstruction.Size = new System.Drawing.Size(379, 327);
+            this.panelInstruction.Size = new System.Drawing.Size(380, 330);
             this.panelInstruction.TabIndex = 13;
             // 
             // richTextBox1
@@ -480,19 +476,20 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(306, 289);
             this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "This is the guide to use the software.\n";
+            this.richTextBox1.Text = "Welcome to EasyBook Test Automation System. This is the instruction to use the sy" +
+    "stem.";
             // 
             // panelTestBuy
             // 
-            this.panelTestBuy.BackColor = System.Drawing.Color.DarkOrange;
+            this.panelTestBuy.BackColor = System.Drawing.Color.LightGray;
             this.panelTestBuy.Controls.Add(this.panel14);
             this.panelTestBuy.Controls.Add(this.panel15);
             this.panelTestBuy.Controls.Add(this.button2);
             this.panelTestBuy.Controls.Add(this.panel16);
             this.panelTestBuy.Controls.Add(this.panel17);
-            this.panelTestBuy.Location = new System.Drawing.Point(295, 99);
+            this.panelTestBuy.Location = new System.Drawing.Point(240, 60);
             this.panelTestBuy.Name = "panelTestBuy";
-            this.panelTestBuy.Size = new System.Drawing.Size(371, 324);
+            this.panelTestBuy.Size = new System.Drawing.Size(380, 330);
             this.panelTestBuy.TabIndex = 14;
             // 
             // panel14
@@ -518,6 +515,7 @@
             this.radioButton11.TabIndex = 3;
             this.radioButton11.Text = "Car";
             this.radioButton11.UseVisualStyleBackColor = true;
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.productType);
             // 
             // radioButton12
             // 
@@ -529,6 +527,7 @@
             this.radioButton12.TabIndex = 2;
             this.radioButton12.Text = "Train";
             this.radioButton12.UseVisualStyleBackColor = true;
+            this.radioButton12.CheckedChanged += new System.EventHandler(this.productType);
             // 
             // radioButton13
             // 
@@ -540,6 +539,7 @@
             this.radioButton13.TabIndex = 1;
             this.radioButton13.Text = "Ferry";
             this.radioButton13.UseVisualStyleBackColor = true;
+            this.radioButton13.CheckedChanged += new System.EventHandler(this.productType);
             // 
             // radioButton14
             // 
@@ -551,6 +551,7 @@
             this.radioButton14.TabIndex = 0;
             this.radioButton14.Text = "Bus";
             this.radioButton14.UseVisualStyleBackColor = true;
+            this.radioButton14.CheckedChanged += new System.EventHandler(this.productType);
             // 
             // panel15
             // 
@@ -574,6 +575,7 @@
             this.radioButton15.TabIndex = 2;
             this.radioButton15.Text = "Irrelevant";
             this.radioButton15.UseVisualStyleBackColor = true;
+            this.radioButton15.CheckedChanged += new System.EventHandler(this.serverType);
             // 
             // radioButton16
             // 
@@ -585,6 +587,7 @@
             this.radioButton16.TabIndex = 1;
             this.radioButton16.Text = "S2";
             this.radioButton16.UseVisualStyleBackColor = true;
+            this.radioButton16.CheckedChanged += new System.EventHandler(this.serverType);
             // 
             // radioButton17
             // 
@@ -596,6 +599,7 @@
             this.radioButton17.TabIndex = 0;
             this.radioButton17.Text = "S1";
             this.radioButton17.UseVisualStyleBackColor = true;
+            this.radioButton17.CheckedChanged += new System.EventHandler(this.serverType);
             // 
             // button2
             // 
@@ -608,6 +612,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Run";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Run_Click);
             // 
             // panel16
             // 
@@ -630,6 +635,7 @@
             this.radioButton18.TabIndex = 1;
             this.radioButton18.Text = "SGD";
             this.radioButton18.UseVisualStyleBackColor = true;
+            this.radioButton18.CheckedChanged += new System.EventHandler(this.paypalType);
             // 
             // radioButton19
             // 
@@ -641,6 +647,7 @@
             this.radioButton19.TabIndex = 0;
             this.radioButton19.Text = "MYR";
             this.radioButton19.UseVisualStyleBackColor = true;
+            this.radioButton19.CheckedChanged += new System.EventHandler(this.paypalType);
             // 
             // panel17
             // 
@@ -663,6 +670,7 @@
             this.radioButton20.TabIndex = 1;
             this.radioButton20.Text = "Test";
             this.radioButton20.UseVisualStyleBackColor = true;
+            this.radioButton20.CheckedChanged += new System.EventHandler(this.siteType);
             // 
             // radioButton21
             // 
@@ -674,25 +682,25 @@
             this.radioButton21.TabIndex = 0;
             this.radioButton21.Text = "Live";
             this.radioButton21.UseVisualStyleBackColor = true;
+            this.radioButton21.CheckedChanged += new System.EventHandler(this.siteType);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(961, 523);
-            this.Controls.Add(this.panelTestBuy);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.panelInstruction);
             this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelCheckBH);
+            this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.EBTestTitle);
-            this.Controls.Add(this.panelXMLDoc);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Easybook Test Automation";
             this.Load += new System.EventHandler(this.HomePage_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -704,11 +712,11 @@
             this.panel7.PerformLayout();
             this.panelGenOS.ResumeLayout(false);
             this.panelGenOS.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panelInstruction.ResumeLayout(false);
             this.panelTestBuy.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -748,8 +756,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox dateTextField;
-        private System.Windows.Forms.Panel panelXMLDoc;
         private System.Windows.Forms.Button RunGenOSButton;
         private System.Windows.Forms.TextBox OS_textField;
         private System.Windows.Forms.Panel panel10;
@@ -777,6 +783,7 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.RadioButton radioButton20;
         private System.Windows.Forms.RadioButton radioButton21;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBH;
     }
 }
 

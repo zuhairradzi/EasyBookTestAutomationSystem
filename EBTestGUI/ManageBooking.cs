@@ -14,6 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -50,12 +51,21 @@ namespace EBTestGUI
 
         public void searchBooking(string date, string orderNo)
         {
-            driver.FindElement(By.Id(dateElemID)).Click();
-            driver.FindElement(By.Id(dateElemID)).SendKeys(date);
-            driver.FindElement(By.Id(SelElemID)).Click();
-            driver.FindElement(By.XPath(productElemXP)).Click();
-            driver.FindElement(By.Id(searchButId)).Click();
-            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(orderNo)))).Click();
+            try
+            {
+                //  Do some stuff here which might throw an exception
+                driver.FindElement(By.Id(dateElemID)).Click();
+                driver.FindElement(By.Id(dateElemID)).SendKeys(date);
+                driver.FindElement(By.Id(SelElemID)).Click();
+                driver.FindElement(By.XPath(productElemXP)).Click();
+                driver.FindElement(By.Id(searchButId)).Click();
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.LinkText(orderNo)))).Click();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not find Order No");
+            }
+           
         }
     }
 }

@@ -14,16 +14,15 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace EBTestGUI
 {
-    class OrderSummary
+    class OrderSummaryGen
     {
         private IWebDriver driver;
         private XmlDocument xml;
 
-        public OrderSummary(XmlDocument mainxml, IWebDriver maindriver)
+        public OrderSummaryGen(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
@@ -35,10 +34,9 @@ namespace EBTestGUI
            ArrivePlace, DepartTime, Company, PassengerName,
            ServerPlatform, ReturnLocation, RentDuration, CarDetail, product, siteType;
 
-        public void ReadElement(string XMLpath, string prodName, string site)
+        public void ReadElement(string XMLpath, string site)
         {
             siteType = char.ToUpper(site[0]) + site.Substring(1);
-            product = char.ToUpper(prodName[0]) + prodName.Substring(1);
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/OrderSummary");
             foreach (XmlNode xnode in xnMenu)
@@ -122,30 +120,35 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Div 1 not found");
+                Console.WriteLine("Order No not found");
+
             }
 
         }
 
-        public string GetProductName()
+        public string GetProductName(string url)
         {
             try
             {
 
-                if (product == "Bus")
+                if (url.Contains("BUS"))
                 {
+                    product = "Bus";
                     productName = "Bus";
                 }
-                else if (product == "Car")
+                else if (url.Contains("CR"))
                 {
+                    product = "Car";
                     productName = "Car";
                 }
-                else if (product == "Ferry")
+                else if (url.Contains("FR"))
                 {
+                    product = "Ferry";
                     productName = "Ferry";
                 }
-                else if (product == "Train")
+                else if (url.Contains("TR"))
                 {
+                    product = "Train";
                     productName = "Train";
                 }
                 Console.WriteLine("productName : " + productName);
@@ -154,7 +157,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Product Name not found");
+                Console.WriteLine("productName not found");
                 return null;
             }
 
@@ -213,7 +216,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Purchase date not found");
+                Console.WriteLine("Purchase date not found");
                 return null;
 
             }
@@ -269,7 +272,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Cart ID not found");
+                Console.WriteLine("CartID not found");
                 return null;
 
             }
@@ -287,7 +290,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Order No not found");
+                Console.WriteLine("Order No not found");
                 return null;
             }
 
@@ -306,7 +309,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Depart Place not found");
+                Console.WriteLine("Depart Place not found");
+
             }
 
         }
@@ -322,7 +326,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Arrive Place not found");
+                Console.WriteLine("Arrive Place not found");
+
             }
 
         }
@@ -361,7 +366,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Car Info not found");
+                    Console.WriteLine("CarInfo not found");
                     return null;
 
                 }
@@ -384,7 +389,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Depart Time not found");
+                    Console.WriteLine("Depart Time not found");
                     return null;
                 }
             }
@@ -401,7 +406,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Rent Period not found");
+                    Console.WriteLine("CarInfo not found");
                     return null;
                 }
             }
@@ -421,7 +426,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Return Location not found");
+                Console.WriteLine("Return Location not found");
+
             }
 
         }
@@ -439,7 +445,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Passenger Name not found");
+                Console.WriteLine("Passenger Name not found");
                 return null;
 
             }
@@ -458,7 +464,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Company Name not found");
+                Console.WriteLine("Company not found");
                 return null;
 
             }
@@ -493,7 +499,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Server not found");
+                Console.WriteLine("Server Name not found");
+
             }
 
         }
@@ -524,9 +531,12 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Platform not found");
+                Console.WriteLine("Platform Name not found");
+
             }
 
         }
+
+
     }
 }

@@ -27,7 +27,11 @@ namespace EBTestGUI
         string product, site, siteBH, paypal, server;
         string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
         string orderNumber, dateHistory;
-        
+        string textFieldOS, radioGenOS;
+
+        string busHisXP, ferHisXP, traHisXP, carHisXP;
+
+
         List<Panel> newList = new List<Panel>();
 
       
@@ -40,10 +44,10 @@ namespace EBTestGUI
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            newList.Add(panelTestBuy);
-            newList.Add(panelCheckBH);
-            newList.Add(panelInstruction);
-            newList.Add(panelGenOS);
+            newList.Add(panelTestBuy);//0
+            newList.Add(panelCheckBH);//1
+            newList.Add(panelInstruction);//2
+            newList.Add(panelGenOS); //3
         }
 
         private void OrderNo_Click(object sender, EventArgs e)
@@ -54,21 +58,22 @@ namespace EBTestGUI
 
         private void OSTextField_Click(object sender, EventArgs e)
         {
-
+            OS_textField.Text = "";
         }
 
-        private void dateHistory2(object sender, EventArgs e)
+      
+
+        private void GenOSAction(object sender, EventArgs e)
         {
-            dateTextField.Text = "";
-            //dateHistory = dateTextField.Text.ToString();
+            RadioButton button = (RadioButton)sender;
+            radioGenOS = button.Text;
         }
-        /*
-        private void dateBookingHistory(object sender, EventArgs e)
+
+        private void GenerateOSTab_Click(object sender, EventArgs e)
         {
-            dateHistory = dateTimeBH.Value.ToString("MM/dd/yyyy");
-        }*/
-
-
+            newList[3].BringToFront();
+        }
+        
         private void CheckBHButton_Click(object sender, EventArgs e)
         {
             newList[1].BringToFront();
@@ -87,7 +92,9 @@ namespace EBTestGUI
 
         private void XMLDocButton_Click(object sender, EventArgs e)
         {
-            newList[3].BringToFront();
+            this.Hide();
+            HomePage form2 = new HomePage();
+            form2.Show();
         }
         private void siteName(object sender, EventArgs e)
         {
@@ -119,10 +126,59 @@ namespace EBTestGUI
             site = button.Text;           
         }
 
+        private void RunGenOS_Click(object sender, EventArgs e)
+        {
+            IWebDriver Maindriver = new ChromeDriver();
+            Console.WriteLine("Launching browser");
+
+            OSLinkGeneration newURL = new OSLinkGeneration(xml, Maindriver);
+            newURL.GoToURL(site, OS_textField.Text);
+
+            OrderSummaryGen OStest = new OrderSummaryGen(xml, Maindriver);
+
+            productName = OStest.GetProductName(OS_textField.Text);
+            OStest.ReadElement(XMLFilePath, site);
+            OStest.GetDiv1();
+
+            CartID = OStest.GetCartID();
+            orderNo = OStest.GetOrderNo();
+
+            OStest.GetDepartPlace();
+            OStest.GetArrivePlace();
+
+            tripDetail = OStest.Journey();
+            PurchaseDate = OStest.GetPurchaseDate();
+            tripDuration = OStest.GetTripInfo();
+            passengerName = OStest.GetPassengerName();
+            Company = OStest.GetCompany();
+
+            OStest.GetReturnLocation();
+            OStest.Journey();
+            OStest.GetCartID();
+            OStest.Platform();
+            OStest.Server();
+
+            if (radioGenOS.ToLower().Contains("excel"))
+            {
+                WriteToExcelTest OStoExcelTest = new WriteToExcelTest();
+                WriteToExcelLive OStoExcelLive = new WriteToExcelLive();
+
+                if (passengerName.ToLower().Contains("live"))
+                {
+                    OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                }
+                else
+                {
+                    OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                }
+            }
+           
+        }
+
         private void CheckHistoryClick(object sender, EventArgs e)
         {
             Maindriver = new ChromeDriver();
-
+            string date = dateTimePickerBH.Value.ToString("MM/dd/yyyy");
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
             string ChooseEBurl = newURL.ReadElement(XMLFilePath, siteBH);
@@ -155,8 +211,7 @@ namespace EBTestGUI
             //--CHECK BOOKING HISTORY--//
             ManageBooking newHistory = new ManageBooking(xml, Maindriver);
             newHistory.ReadElement(XMLFilePath, siteBH, product);
-            newHistory.searchBooking(dateTextField.Text, OrderNo_textBox.Text);
-            Thread.Sleep(10000);
+            newHistory.searchBooking(date, OrderNo_textBox.Text);
         }
 
         private void Run_Click(object sender, EventArgs e)
