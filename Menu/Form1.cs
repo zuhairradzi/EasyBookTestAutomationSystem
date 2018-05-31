@@ -20,7 +20,7 @@ namespace Menu
 {
     public partial class Form1 : Form
     {
-        string testXP, xpathNew;
+        string testXP, xpathNew, XMLtext;
         List<Panel> newList = new List<Panel>();
 
 
@@ -42,35 +42,46 @@ namespace Menu
 
         private void EditButton_Click(object sender, EventArgs e)
         {
+            XmlNodeList xnMenu = xml.SelectNodes("/Header");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                XMLEditTextbox.Text = xnode["H1"].InnerText.Trim();
+                XMLEditTextbox2.Text = xnode["H2"].InnerText.Trim();
+            }
             newList[1].BringToFront();
+           
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+           
             xpathNew = XMLEditTextbox.Text;
             XpathLabel.Text = xpathNew;
+            xpathNew = XMLEditTextbox2.Text;
+            XPathLabel2.Text = xpathNew;
             newList[0].BringToFront();
             xml.Load(XMLFilePath);
-            XmlNodeList xnMenu = xml.SelectNodes("/Header");
-            foreach (XmlNode xnode in xnMenu)
+            XmlNodeList xnMenu1 = xml.SelectNodes("/Header");
+            foreach (XmlNode xnode in xnMenu1)
             {
-                xnode["H2"].InnerText = XpathLabel.Text;
+                xnode["H1"].InnerText = XpathLabel.Text;
+                xnode["H2"].InnerText = XPathLabel2.Text;
             }
             xml.Save(XMLFilePath);
             // XpathLabel.Text = xpathNew;
         }
-
-       
-
+        
         private void XMLDocTab_Click(object sender, EventArgs e)
         {
             xml.Load(XMLFilePath);
             XmlNodeList xnMenu = xml.SelectNodes("/Header");
             foreach (XmlNode xnode in xnMenu)
             {
-                testXP = xnode["H2"].InnerText.Trim();
+                XpathLabel.Text = xnode["H1"].InnerText.Trim();
+                XPathLabel2.Text = xnode["H2"].InnerText.Trim();
             }
-            XpathLabel.Text = testXP.ToString();
+            newList[0].BringToFront();
+            //XpathLabel.Text = testXP.ToString();
         }
 
        

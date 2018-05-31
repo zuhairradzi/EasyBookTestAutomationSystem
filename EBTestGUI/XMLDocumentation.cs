@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System.Xml;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -12,8 +16,9 @@ namespace EBTestGUI
 {
     public partial class HomePage : Form
     {
-        string productComboInput, siteComboInput, currencyComboInput;
+        string path, xpathNew;
         List<Panel> newList = new List<Panel>();
+        XmlDocument xml = new XmlDocument();
         public HomePage()
         {
             InitializeComponent();
@@ -50,59 +55,138 @@ namespace EBTestGUI
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            newList.Add(panelXML1);//0
-            /*ComboboxItem item = new ComboboxItem();
-            item.Text = "Item text1";
-            item.Value = 12;
+            newList.Add(panelXML1Display);
+            newList.Add(panelXML1Edit);
+            
+           
+            List<SiteCombo> listSite = new List<SiteCombo>();
+            listSite.Add(new SiteCombo() { ID = "Test", site = "Test" });
+            listSite.Add(new SiteCombo() { ID = "Live", site = "Live" });
+            SiteComboBox.DataSource = listSite;
+            SiteComboBox.ValueMember = "ID";
+            SiteComboBox.DisplayMember = "site";
 
-            Product.Items.Add(item);
+            List<ProductCombo> listProduct = new List<ProductCombo>();
+            listProduct.Add(new ProductCombo() { ID = "Bus", product = "Bus" });
+            listProduct.Add(new ProductCombo() { ID = "Ferry", product = "Ferry" });
+            listProduct.Add(new ProductCombo() { ID = "Train", product = "Train" });
+            listProduct.Add(new ProductCombo() { ID = "Car", product = "Car" });
+            ProductComboBox.DataSource = listProduct;
+            ProductComboBox.ValueMember = "ID";
+            ProductComboBox.DisplayMember = "product";
 
-            Product.SelectedIndex = 0;*/
+            List<CurrencyCombo> listCurrency = new List<CurrencyCombo>();
+            listCurrency.Add(new CurrencyCombo() { ID = "MYR", currency = "MYR" });
+            listCurrency.Add(new CurrencyCombo() { ID = "SGD", currency = "SGD" });
+            CurrencyComboBox.DataSource = listCurrency;
+            CurrencyComboBox.ValueMember = "ID";
+            CurrencyComboBox.DisplayMember = "currency";
 
-            //MessageBox.Show((Product.SelectedItem as ComboboxItem).Value.ToString());
-            Dictionary<string, string> productValue = new Dictionary<string, string>();
-            productValue.Add("0", "Bus");
-            productValue.Add("1", "Ferry");
-            productValue.Add("3", "Train");
-            productValue.Add("4", "Car");
-            ProductComboBox.DataSource = new BindingSource(productValue, null);
-            ProductComboBox.DisplayMember = "Value";
-            ProductComboBox.ValueMember = "Key";
-
-            Dictionary<string, string> siteValue = new Dictionary<string, string>();
-            siteValue.Add("1", "Live");
-            siteValue.Add("2", "Test");
-            SiteComboBox.DataSource = new BindingSource(siteValue, null);
-            SiteComboBox.DisplayMember = "Value";
-            SiteComboBox.ValueMember = "Key";
-
-            Dictionary<string, string> currencyValue = new Dictionary<string, string>();
-            currencyValue.Add("1", "MYR");
-            currencyValue.Add("2", "SGD");
-            CurrencyComboBox.DataSource = new BindingSource(currencyValue, null);
-            CurrencyComboBox.DisplayMember = "Value";
-            CurrencyComboBox.ValueMember = "Key";
         }
 
-        public class ComboboxItem
+         public void xmlPath (string xmlfilePath)
         {
-            public string Text { get; set; }
-            public object Value { get; set; }
-
-            public override string ToString()
-            {
-                return Text;
-            }
+            path = xmlfilePath;
         }
 
         private void GetXMLButton_Click(object sender, EventArgs e)
         {
-            productComboInput = ProductComboBox.SelectedItem.ToString();
-            int productInt = Convert.ToInt32(productComboInput);
-           // siteComboInput = SiteComboBox.ValueMember.ToString();
-            //currencyComboInput = CurrencyComboBox.ValueMember.ToString();
+           IndexInputCallXML ind = new IndexInputCallXML();
+           int key = ind.ReadElement(path, ProductComboBox.SelectedValue.ToString(), SiteComboBox.SelectedValue.ToString(), CurrencyComboBox.SelectedValue.ToString());
+            //newList[key-1].BringToFront();
+            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            xml.Load(path);
+            XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                DateContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
+            }
+            
+            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                TripContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
+            }
+            
+           
+            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                ContinueContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
+            }
+            
+          
+            newList[0].BringToFront();
+        }
 
-            newList[productInt].BringToFront();
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            xml.Load(path);
+            XmlNodeList xnMenu = xml.SelectNodes("ETAS/Date");
+            foreach (XmlNode xnode in xnMenu)
+            {
+                dateContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
+            }
+            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+            foreach (XmlNode xnode in xnMenu2)
+            {
+                tripContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
+            }
+            
+            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
+            foreach (XmlNode xnode in xnMenu3)
+            {
+                ContContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
+            }
+            
+            
+            newList[1].BringToFront();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login logOut = new Login();
+            logOut.Show();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            xpathNew = dateContent1TextBox.Text;
+            DateContent1.Text = xpathNew;
+
+            xpathNew = tripContent1TextBox.Text;
+            TripContent1.Text = xpathNew;
+
+            xpathNew = ContContent1TextBox.Text;
+            ContinueContent1.Text = xpathNew;
+
+
+            newList[0].BringToFront();
+            xml.Load(path);
+
+            XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText = DateContent1.Text;
+            }
+            
+            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+               
+                xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripContent1.Text;
+            }
+
+            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText = ContinueContent1.Text;
+            }
+             
+            xml.Save(path);
         }
     }
 }

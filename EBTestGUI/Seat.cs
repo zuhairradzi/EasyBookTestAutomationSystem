@@ -27,7 +27,6 @@ namespace EBTestGUI
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         public void ReadElement(string XMLpath, string prodName, string siteName, string currency1)
@@ -35,10 +34,12 @@ namespace EBTestGUI
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
             string siteType = char.ToUpper(siteName[0]) + siteName.Substring(1);
             string currency = currency1.ToUpper();
+
             if (prodName.ToLower().Contains("car"))
             {
                 return;
             }
+
             xml.Load(XMLpath);
             XmlNodeList xnList = xml.SelectNodes("/ETAS/Seat");
             foreach (XmlNode xnode in xnList)
@@ -49,6 +50,7 @@ namespace EBTestGUI
                 seatContinueID = xnode[productType][siteType][currency]["ContinueButton"]["Id"].InnerText.Trim();
                 seatContinueXP = xnode[productType][siteType][currency]["ContinueButton"]["XPath"].InnerText.Trim();
                 TrainTripValueXP = xnode["Train"][siteType][currency]["TripValue"]["XPath"].InnerText.Trim();
+
                 if (prodName.ToLower().Contains("ferry"))
                 {
                     seatNo = xnode[productType][siteType][currency]["NoOfSeat"]["LinkText"].InnerText.Trim();

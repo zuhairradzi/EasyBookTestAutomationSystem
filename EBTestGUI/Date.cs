@@ -74,24 +74,16 @@ namespace EBTestGUI
                     keyInDate.EnterDate(RetElem, RetDate);
                     keyInDate.EnterTime(carRetTimeElem, carRetTime);
                 }
-                else// if (testID.Contains("oneway"))
+                else
                 {
                     keyInDate.EnterDate(DepElem, DepDate);
-                }/*
-                else if (testID.Contains("return"))
-                {
-                    keyInDate.EnterDate(DepElem, DepDate);
-                    keyInDate.EnterDate(RetElem, RetDate);
-                }*/
-
-
+                }
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Could not find date element");
+                MessageBox.Show("Date element not found");
+                Console.WriteLine("Date element not found");
             }
-
-
         }
 
         public void EnterDate(string dateElement, string dateValue)

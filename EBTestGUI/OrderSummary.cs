@@ -105,8 +105,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("OS not found");
-
+                MessageBox.Show("Order summary not found");
+                Console.WriteLine("Order summary not found");
             }
         }
         public void GetDiv1()
@@ -122,7 +122,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Div 1 not found");
+                MessageBox.Show("Div one not found");
+                Console.WriteLine("Div one not found");
             }
 
         }
@@ -154,7 +155,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Product Name not found");
+                MessageBox.Show("Product name not found");
+                Console.WriteLine("Product name not found");
                 return null;
             }
 
@@ -214,6 +216,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Purchase date not found");
+                Console.WriteLine("Purchase date not found");
                 return null;
 
             }
@@ -270,6 +273,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Cart ID not found");
+                Console.WriteLine("Cart ID not found");
                 return null;
 
             }
@@ -288,6 +292,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Order No not found");
+                Console.WriteLine("Order No not found");
                 return null;
             }
 
@@ -307,6 +312,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Depart Place not found");
+                Console.WriteLine("Depart Place not found");
             }
 
         }
@@ -323,6 +329,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Arrive Place not found");
+                Console.WriteLine("Arrive Place not found");
             }
 
         }
@@ -345,7 +352,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Journey not found");
+                    MessageBox.Show("Trip Info not found");
+                    Console.WriteLine("Trip Info not found");
                     return null;
                 }
             }
@@ -362,6 +370,7 @@ namespace EBTestGUI
                 catch (NoSuchElementException)
                 {
                     MessageBox.Show("Car Info not found");
+                    Console.WriteLine("Car Info not found");
                     return null;
 
                 }
@@ -385,6 +394,7 @@ namespace EBTestGUI
                 catch (NoSuchElementException)
                 {
                     MessageBox.Show("Depart Time not found");
+                    Console.WriteLine("Depart Time not found");
                     return null;
                 }
             }
@@ -402,6 +412,7 @@ namespace EBTestGUI
                 catch (NoSuchElementException)
                 {
                     MessageBox.Show("Rent Period not found");
+                    Console.WriteLine("Rent Period not found");
                     return null;
                 }
             }
@@ -440,6 +451,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Passenger Name not found");
+                Console.WriteLine("Pasengger Name not found");
                 return null;
 
             }
@@ -458,7 +470,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Company Name not found");
+                MessageBox.Show("Company not found");
+                Console.WriteLine("Company not found");
                 return null;
 
             }
@@ -494,6 +507,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Server not found");
+                Console.WriteLine("Server not found");
             }
 
         }
@@ -525,6 +539,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
                 MessageBox.Show("Platform not found");
+                Console.WriteLine("Platform not found");
             }
 
         }

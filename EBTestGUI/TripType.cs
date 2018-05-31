@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using Microsoft.Office.Interop.Access.Dao;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -47,7 +48,8 @@ namespace EBTestGUI
             }
             catch (Exception)
             {
-                Console.WriteLine("One Way trip not found");
+                MessageBox.Show("One way button not found");
+                Console.WriteLine("One way button not found");
             }
         }
     }

@@ -18,7 +18,7 @@ namespace EBTestGUI
 {
     class SiteName
     {
-        string testSite, liveSite, BQSite, site;
+        string site;
         public IWebDriver driver;
         public XmlDocument xml;
 

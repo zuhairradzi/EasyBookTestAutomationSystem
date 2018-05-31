@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -36,6 +37,7 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.EBTestTitle = new System.Windows.Forms.Label();
+            this.buttonBypass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -128,6 +130,16 @@
             this.EBTestTitle.Text = "EasyBook Test Buy Automation";
             this.EBTestTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // buttonBypass
+            // 
+            this.buttonBypass.Location = new System.Drawing.Point(567, 171);
+            this.buttonBypass.Name = "buttonBypass";
+            this.buttonBypass.Size = new System.Drawing.Size(102, 58);
+            this.buttonBypass.TabIndex = 9;
+            this.buttonBypass.Text = "buttonBypass";
+            this.buttonBypass.UseVisualStyleBackColor = true;
+            this.buttonBypass.Click += new System.EventHandler(this.buttonBypass_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,9 +147,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.buttonBypass);
             this.Controls.Add(this.EBTestTitle);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -162,5 +176,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label EBTestTitle;
+        private System.Windows.Forms.Button buttonBypass;
     }
 }

@@ -50,7 +50,7 @@ namespace EBTestGUI
             try
             {
                 ((IJavaScriptExecutor)driver).ExecuteScript(scrollDownJS);
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
                 var footer = driver.FindElement(By.XPath(footerElem));
                 string footerStr = footer.Text.ToString();
                 Console.WriteLine();
@@ -62,27 +62,19 @@ namespace EBTestGUI
                     Console.WriteLine("Current server is : " + server1);
                     Console.WriteLine("Server 1 found 1 attempt");
                     Console.WriteLine();
-                    Console.WriteLine();
-
                 }
                 else if (footerStr.Contains(server2))
                 {
                     Console.WriteLine("Current server is :" + server2);
                     Console.WriteLine("Server 2 found at 1 attempt");
                     Console.WriteLine();
-                    Console.WriteLine();
-
                 }
-
-
-
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Could not find Server element");
+                MessageBox.Show("Server element not found!");
+                Console.WriteLine("Server element not found!");
             }
-
-
         }
     }
 }

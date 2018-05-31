@@ -47,5 +47,12 @@ namespace EBTestGUI
                 MessageBox.Show("Please enter correct email and password", "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonBypass_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 home = new Form1();
+            home.Show();
+        }
     }
 }

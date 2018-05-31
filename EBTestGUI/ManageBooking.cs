@@ -53,7 +53,6 @@ namespace EBTestGUI
         {
             try
             {
-                //  Do some stuff here which might throw an exception
                 driver.FindElement(By.Id(dateElemID)).Click();
                 driver.FindElement(By.Id(dateElemID)).SendKeys(date);
                 driver.FindElement(By.Id(SelElemID)).Click();
@@ -63,9 +62,9 @@ namespace EBTestGUI
             }
             catch (Exception)
             {
-                MessageBox.Show("Could not find Order No");
+                MessageBox.Show("Order No not found");
+                Console.WriteLine("Order No not found");
             }
-           
         }
     }
 }

@@ -26,7 +26,6 @@ namespace EBTestGUI
             string urlTest = "https://test.easybook.com/en-my";
             try
             {
-            
                 if (site.ToLower().Contains("live"))
                 {
                     driver.Navigate().GoToUrl(urlLive);
@@ -35,15 +34,13 @@ namespace EBTestGUI
                 {
                     driver.Navigate().GoToUrl(urlTest);
                 }
-
-
                 driver.Manage().Window.Maximize();
-
-
+                
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("Homepage not found", e);
+                MessageBox.Show("Homepage not found");
+                Console.WriteLine("Homepage not found");
             }
         }
 
@@ -63,7 +60,8 @@ namespace EBTestGUI
 
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Could not find login element");
+                MessageBox.Show("Login element not found");
+                Console.WriteLine("Login element not found");
             }
         }
 

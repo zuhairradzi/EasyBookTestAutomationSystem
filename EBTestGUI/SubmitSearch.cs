@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -51,7 +52,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Submit button not found");
+                MessageBox.Show("Search button not found");
+                Console.WriteLine("Search button not found");
             }
 
         }

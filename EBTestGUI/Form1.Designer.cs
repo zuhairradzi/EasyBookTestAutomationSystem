@@ -37,14 +37,14 @@
             this.panelCheckBH = new System.Windows.Forms.Panel();
             this.dateTimePickerBH = new System.Windows.Forms.DateTimePicker();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCarBH = new System.Windows.Forms.RadioButton();
+            this.radioButtonTrainBH = new System.Windows.Forms.RadioButton();
+            this.radioButtonFerryBH = new System.Windows.Forms.RadioButton();
+            this.radioButtonBusBH = new System.Windows.Forms.RadioButton();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonNoServerBH = new System.Windows.Forms.RadioButton();
+            this.radioButtonS2BH = new System.Windows.Forms.RadioButton();
+            this.radioButtonS1BH = new System.Windows.Forms.RadioButton();
             this.OrderNo_textBox = new System.Windows.Forms.TextBox();
             this.panelGenOS = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -53,8 +53,8 @@
             this.RunGenOSButton = new System.Windows.Forms.Button();
             this.OS_textField = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTestOS = new System.Windows.Forms.RadioButton();
+            this.radioButtonLiveOS = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.InstructionButton = new System.Windows.Forms.Button();
             this.EditXMLButton = new System.Windows.Forms.Button();
@@ -62,24 +62,25 @@
             this.CheckBHButton = new System.Windows.Forms.Button();
             this.TestBuyButton = new System.Windows.Forms.Button();
             this.panelInstruction = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxInstruction = new System.Windows.Forms.RichTextBox();
             this.panelTestBuy = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCar = new System.Windows.Forms.RadioButton();
+            this.radioButtonTrain = new System.Windows.Forms.RadioButton();
+            this.radioButtonFerry = new System.Windows.Forms.RadioButton();
+            this.radioButtonBus = new System.Windows.Forms.RadioButton();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
+            this.radioButtonNoServer = new System.Windows.Forms.RadioButton();
+            this.radioButtonS2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonS1 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
+            this.radioButtonSGD = new System.Windows.Forms.RadioButton();
+            this.radioButtonMYR = new System.Windows.Forms.RadioButton();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTest = new System.Windows.Forms.RadioButton();
+            this.radioButtonLive = new System.Windows.Forms.RadioButton();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panelCheckBH.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -183,110 +184,110 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.Transparent;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.radioButton5);
-            this.panel8.Controls.Add(this.radioButton6);
-            this.panel8.Controls.Add(this.radioButton7);
-            this.panel8.Controls.Add(this.radioButton8);
+            this.panel8.Controls.Add(this.radioButtonCarBH);
+            this.panel8.Controls.Add(this.radioButtonTrainBH);
+            this.panel8.Controls.Add(this.radioButtonFerryBH);
+            this.panel8.Controls.Add(this.radioButtonBusBH);
             this.panel8.Location = new System.Drawing.Point(28, 76);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(87, 131);
             this.panel8.TabIndex = 14;
             // 
-            // radioButton5
+            // radioButtonCarBH
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(19, 89);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(42, 19);
-            this.radioButton5.TabIndex = 3;
-            this.radioButton5.Text = "Car";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.Click += new System.EventHandler(this.productType);
+            this.radioButtonCarBH.AutoSize = true;
+            this.radioButtonCarBH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonCarBH.Location = new System.Drawing.Point(19, 89);
+            this.radioButtonCarBH.Name = "radioButtonCarBH";
+            this.radioButtonCarBH.Size = new System.Drawing.Size(42, 19);
+            this.radioButtonCarBH.TabIndex = 3;
+            this.radioButtonCarBH.Text = "Car";
+            this.radioButtonCarBH.UseVisualStyleBackColor = true;
+            this.radioButtonCarBH.Click += new System.EventHandler(this.productType);
             // 
-            // radioButton6
+            // radioButtonTrainBH
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(19, 66);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(50, 19);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.Text = "Train";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.Click += new System.EventHandler(this.productType);
+            this.radioButtonTrainBH.AutoSize = true;
+            this.radioButtonTrainBH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTrainBH.Location = new System.Drawing.Point(19, 66);
+            this.radioButtonTrainBH.Name = "radioButtonTrainBH";
+            this.radioButtonTrainBH.Size = new System.Drawing.Size(50, 19);
+            this.radioButtonTrainBH.TabIndex = 2;
+            this.radioButtonTrainBH.Text = "Train";
+            this.radioButtonTrainBH.UseVisualStyleBackColor = true;
+            this.radioButtonTrainBH.Click += new System.EventHandler(this.productType);
             // 
-            // radioButton7
+            // radioButtonFerryBH
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.Location = new System.Drawing.Point(19, 43);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(51, 19);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.Text = "Ferry";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.Click += new System.EventHandler(this.productType);
+            this.radioButtonFerryBH.AutoSize = true;
+            this.radioButtonFerryBH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonFerryBH.Location = new System.Drawing.Point(19, 43);
+            this.radioButtonFerryBH.Name = "radioButtonFerryBH";
+            this.radioButtonFerryBH.Size = new System.Drawing.Size(51, 19);
+            this.radioButtonFerryBH.TabIndex = 1;
+            this.radioButtonFerryBH.Text = "Ferry";
+            this.radioButtonFerryBH.UseVisualStyleBackColor = true;
+            this.radioButtonFerryBH.Click += new System.EventHandler(this.productType);
             // 
-            // radioButton8
+            // radioButtonBusBH
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton8.Location = new System.Drawing.Point(19, 20);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(44, 19);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.Text = "Bus";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.Click += new System.EventHandler(this.productType);
+            this.radioButtonBusBH.AutoSize = true;
+            this.radioButtonBusBH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonBusBH.Location = new System.Drawing.Point(19, 20);
+            this.radioButtonBusBH.Name = "radioButtonBusBH";
+            this.radioButtonBusBH.Size = new System.Drawing.Size(44, 19);
+            this.radioButtonBusBH.TabIndex = 0;
+            this.radioButtonBusBH.Text = "Bus";
+            this.radioButtonBusBH.UseVisualStyleBackColor = true;
+            this.radioButtonBusBH.Click += new System.EventHandler(this.productType);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.radioButton2);
-            this.panel7.Controls.Add(this.radioButton3);
-            this.panel7.Controls.Add(this.radioButton4);
+            this.panel7.Controls.Add(this.radioButtonNoServerBH);
+            this.panel7.Controls.Add(this.radioButtonS2BH);
+            this.panel7.Controls.Add(this.radioButtonS1BH);
             this.panel7.Location = new System.Drawing.Point(133, 76);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(93, 114);
             this.panel7.TabIndex = 7;
             // 
-            // radioButton2
+            // radioButtonNoServerBH
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(15, 68);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(74, 19);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "Irrelevant";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.Click += new System.EventHandler(this.serverType);
+            this.radioButtonNoServerBH.AutoSize = true;
+            this.radioButtonNoServerBH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNoServerBH.Location = new System.Drawing.Point(15, 68);
+            this.radioButtonNoServerBH.Name = "radioButtonNoServerBH";
+            this.radioButtonNoServerBH.Size = new System.Drawing.Size(74, 19);
+            this.radioButtonNoServerBH.TabIndex = 2;
+            this.radioButtonNoServerBH.Text = "Irrelevant";
+            this.radioButtonNoServerBH.UseVisualStyleBackColor = true;
+            this.radioButtonNoServerBH.Click += new System.EventHandler(this.serverType);
             // 
-            // radioButton3
+            // radioButtonS2BH
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(15, 43);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(37, 19);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.Text = "S2";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.Click += new System.EventHandler(this.serverType);
+            this.radioButtonS2BH.AutoSize = true;
+            this.radioButtonS2BH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS2BH.Location = new System.Drawing.Point(15, 43);
+            this.radioButtonS2BH.Name = "radioButtonS2BH";
+            this.radioButtonS2BH.Size = new System.Drawing.Size(37, 19);
+            this.radioButtonS2BH.TabIndex = 1;
+            this.radioButtonS2BH.Text = "S2";
+            this.radioButtonS2BH.UseVisualStyleBackColor = true;
+            this.radioButtonS2BH.Click += new System.EventHandler(this.serverType);
             // 
-            // radioButton4
+            // radioButtonS1BH
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(16, 18);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(36, 19);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.Text = "S1";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.Click += new System.EventHandler(this.serverType);
+            this.radioButtonS1BH.AutoSize = true;
+            this.radioButtonS1BH.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS1BH.Location = new System.Drawing.Point(16, 18);
+            this.radioButtonS1BH.Name = "radioButtonS1BH";
+            this.radioButtonS1BH.Size = new System.Drawing.Size(36, 19);
+            this.radioButtonS1BH.TabIndex = 0;
+            this.radioButtonS1BH.Text = "S1";
+            this.radioButtonS1BH.UseVisualStyleBackColor = true;
+            this.radioButtonS1BH.Click += new System.EventHandler(this.serverType);
             // 
             // OrderNo_textBox
             // 
@@ -360,47 +361,48 @@
             this.OS_textField.Name = "OS_textField";
             this.OS_textField.Size = new System.Drawing.Size(144, 20);
             this.OS_textField.TabIndex = 4;
-            this.OS_textField.Text = "Purchase ID";
+            this.OS_textField.Text = "Cart ID";
             this.OS_textField.Click += new System.EventHandler(this.OSTextField_Click);
             // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.radioButton9);
-            this.panel10.Controls.Add(this.radioButton10);
+            this.panel10.Controls.Add(this.radioButtonTestOS);
+            this.panel10.Controls.Add(this.radioButtonLiveOS);
             this.panel10.Location = new System.Drawing.Point(28, 88);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(96, 79);
             this.panel10.TabIndex = 3;
             // 
-            // radioButton9
+            // radioButtonTestOS
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton9.Location = new System.Drawing.Point(22, 43);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(45, 19);
-            this.radioButton9.TabIndex = 1;
-            this.radioButton9.Text = "Test";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.siteType);
+            this.radioButtonTestOS.AutoSize = true;
+            this.radioButtonTestOS.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTestOS.Location = new System.Drawing.Point(22, 43);
+            this.radioButtonTestOS.Name = "radioButtonTestOS";
+            this.radioButtonTestOS.Size = new System.Drawing.Size(45, 19);
+            this.radioButtonTestOS.TabIndex = 1;
+            this.radioButtonTestOS.Text = "Test";
+            this.radioButtonTestOS.UseVisualStyleBackColor = true;
+            this.radioButtonTestOS.CheckedChanged += new System.EventHandler(this.siteType);
             // 
-            // radioButton10
+            // radioButtonLiveOS
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton10.Location = new System.Drawing.Point(21, 18);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(46, 19);
-            this.radioButton10.TabIndex = 0;
-            this.radioButton10.Text = "Live";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.siteType);
+            this.radioButtonLiveOS.AutoSize = true;
+            this.radioButtonLiveOS.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonLiveOS.Location = new System.Drawing.Point(22, 18);
+            this.radioButtonLiveOS.Name = "radioButtonLiveOS";
+            this.radioButtonLiveOS.Size = new System.Drawing.Size(46, 19);
+            this.radioButtonLiveOS.TabIndex = 0;
+            this.radioButtonLiveOS.Text = "Live";
+            this.radioButtonLiveOS.UseVisualStyleBackColor = true;
+            this.radioButtonLiveOS.CheckedChanged += new System.EventHandler(this.siteType);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkMagenta;
+            this.panel3.Controls.Add(this.buttonLogOut);
             this.panel3.Controls.Add(this.InstructionButton);
             this.panel3.Controls.Add(this.EditXMLButton);
             this.panel3.Controls.Add(this.GenOSButton);
@@ -464,20 +466,21 @@
             // panelInstruction
             // 
             this.panelInstruction.BackColor = System.Drawing.Color.LightGray;
-            this.panelInstruction.Controls.Add(this.richTextBox1);
+            this.panelInstruction.Controls.Add(this.richTextBoxInstruction);
             this.panelInstruction.Location = new System.Drawing.Point(240, 60);
             this.panelInstruction.Name = "panelInstruction";
             this.panelInstruction.Size = new System.Drawing.Size(380, 330);
             this.panelInstruction.TabIndex = 13;
             // 
-            // richTextBox1
+            // richTextBoxInstruction
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(28, 25);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(306, 289);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "Welcome to EasyBook Test Automation System. This is the instruction to use the sy" +
-    "stem.";
+            this.richTextBoxInstruction.Location = new System.Drawing.Point(30, 29);
+            this.richTextBoxInstruction.Name = "richTextBoxInstruction";
+            this.richTextBoxInstruction.ReadOnly = true;
+            this.richTextBoxInstruction.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBoxInstruction.Size = new System.Drawing.Size(316, 281);
+            this.richTextBoxInstruction.TabIndex = 0;
+            this.richTextBoxInstruction.Text = resources.GetString("richTextBoxInstruction.Text");
             // 
             // panelTestBuy
             // 
@@ -496,110 +499,110 @@
             // 
             this.panel14.BackColor = System.Drawing.Color.Transparent;
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.radioButton11);
-            this.panel14.Controls.Add(this.radioButton12);
-            this.panel14.Controls.Add(this.radioButton13);
-            this.panel14.Controls.Add(this.radioButton14);
+            this.panel14.Controls.Add(this.radioButtonCar);
+            this.panel14.Controls.Add(this.radioButtonTrain);
+            this.panel14.Controls.Add(this.radioButtonFerry);
+            this.panel14.Controls.Add(this.radioButtonBus);
             this.panel14.Location = new System.Drawing.Point(31, 22);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(87, 131);
             this.panel14.TabIndex = 0;
             // 
-            // radioButton11
+            // radioButtonCar
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton11.Location = new System.Drawing.Point(19, 89);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(42, 19);
-            this.radioButton11.TabIndex = 3;
-            this.radioButton11.Text = "Car";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.productType);
+            this.radioButtonCar.AutoSize = true;
+            this.radioButtonCar.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonCar.Location = new System.Drawing.Point(19, 89);
+            this.radioButtonCar.Name = "radioButtonCar";
+            this.radioButtonCar.Size = new System.Drawing.Size(42, 19);
+            this.radioButtonCar.TabIndex = 3;
+            this.radioButtonCar.Text = "Car";
+            this.radioButtonCar.UseVisualStyleBackColor = true;
+            this.radioButtonCar.CheckedChanged += new System.EventHandler(this.productType);
             // 
-            // radioButton12
+            // radioButtonTrain
             // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton12.Location = new System.Drawing.Point(19, 66);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(50, 19);
-            this.radioButton12.TabIndex = 2;
-            this.radioButton12.Text = "Train";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            this.radioButton12.CheckedChanged += new System.EventHandler(this.productType);
+            this.radioButtonTrain.AutoSize = true;
+            this.radioButtonTrain.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTrain.Location = new System.Drawing.Point(19, 66);
+            this.radioButtonTrain.Name = "radioButtonTrain";
+            this.radioButtonTrain.Size = new System.Drawing.Size(50, 19);
+            this.radioButtonTrain.TabIndex = 2;
+            this.radioButtonTrain.Text = "Train";
+            this.radioButtonTrain.UseVisualStyleBackColor = true;
+            this.radioButtonTrain.CheckedChanged += new System.EventHandler(this.productType);
             // 
-            // radioButton13
+            // radioButtonFerry
             // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton13.Location = new System.Drawing.Point(19, 43);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(51, 19);
-            this.radioButton13.TabIndex = 1;
-            this.radioButton13.Text = "Ferry";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            this.radioButton13.CheckedChanged += new System.EventHandler(this.productType);
+            this.radioButtonFerry.AutoSize = true;
+            this.radioButtonFerry.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonFerry.Location = new System.Drawing.Point(19, 43);
+            this.radioButtonFerry.Name = "radioButtonFerry";
+            this.radioButtonFerry.Size = new System.Drawing.Size(51, 19);
+            this.radioButtonFerry.TabIndex = 1;
+            this.radioButtonFerry.Text = "Ferry";
+            this.radioButtonFerry.UseVisualStyleBackColor = true;
+            this.radioButtonFerry.CheckedChanged += new System.EventHandler(this.productType);
             // 
-            // radioButton14
+            // radioButtonBus
             // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton14.Location = new System.Drawing.Point(19, 20);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(44, 19);
-            this.radioButton14.TabIndex = 0;
-            this.radioButton14.Text = "Bus";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            this.radioButton14.CheckedChanged += new System.EventHandler(this.productType);
+            this.radioButtonBus.AutoSize = true;
+            this.radioButtonBus.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonBus.Location = new System.Drawing.Point(19, 20);
+            this.radioButtonBus.Name = "radioButtonBus";
+            this.radioButtonBus.Size = new System.Drawing.Size(44, 19);
+            this.radioButtonBus.TabIndex = 0;
+            this.radioButtonBus.Text = "Bus";
+            this.radioButtonBus.UseVisualStyleBackColor = true;
+            this.radioButtonBus.CheckedChanged += new System.EventHandler(this.productType);
             // 
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.Transparent;
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.radioButton15);
-            this.panel15.Controls.Add(this.radioButton16);
-            this.panel15.Controls.Add(this.radioButton17);
+            this.panel15.Controls.Add(this.radioButtonNoServer);
+            this.panel15.Controls.Add(this.radioButtonS2);
+            this.panel15.Controls.Add(this.radioButtonS1);
             this.panel15.Location = new System.Drawing.Point(143, 144);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(93, 114);
             this.panel15.TabIndex = 6;
             // 
-            // radioButton15
+            // radioButtonNoServer
             // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton15.Location = new System.Drawing.Point(15, 68);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(74, 19);
-            this.radioButton15.TabIndex = 2;
-            this.radioButton15.Text = "Irrelevant";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            this.radioButton15.CheckedChanged += new System.EventHandler(this.serverType);
+            this.radioButtonNoServer.AutoSize = true;
+            this.radioButtonNoServer.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNoServer.Location = new System.Drawing.Point(15, 68);
+            this.radioButtonNoServer.Name = "radioButtonNoServer";
+            this.radioButtonNoServer.Size = new System.Drawing.Size(74, 19);
+            this.radioButtonNoServer.TabIndex = 2;
+            this.radioButtonNoServer.Text = "Irrelevant";
+            this.radioButtonNoServer.UseVisualStyleBackColor = true;
+            this.radioButtonNoServer.CheckedChanged += new System.EventHandler(this.serverType);
             // 
-            // radioButton16
+            // radioButtonS2
             // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton16.Location = new System.Drawing.Point(15, 43);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(37, 19);
-            this.radioButton16.TabIndex = 1;
-            this.radioButton16.Text = "S2";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            this.radioButton16.CheckedChanged += new System.EventHandler(this.serverType);
+            this.radioButtonS2.AutoSize = true;
+            this.radioButtonS2.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS2.Location = new System.Drawing.Point(15, 43);
+            this.radioButtonS2.Name = "radioButtonS2";
+            this.radioButtonS2.Size = new System.Drawing.Size(37, 19);
+            this.radioButtonS2.TabIndex = 1;
+            this.radioButtonS2.Text = "S2";
+            this.radioButtonS2.UseVisualStyleBackColor = true;
+            this.radioButtonS2.CheckedChanged += new System.EventHandler(this.serverType);
             // 
-            // radioButton17
+            // radioButtonS1
             // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton17.Location = new System.Drawing.Point(16, 18);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(36, 19);
-            this.radioButton17.TabIndex = 0;
-            this.radioButton17.Text = "S1";
-            this.radioButton17.UseVisualStyleBackColor = true;
-            this.radioButton17.CheckedChanged += new System.EventHandler(this.serverType);
+            this.radioButtonS1.AutoSize = true;
+            this.radioButtonS1.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS1.Location = new System.Drawing.Point(16, 18);
+            this.radioButtonS1.Name = "radioButtonS1";
+            this.radioButtonS1.Size = new System.Drawing.Size(36, 19);
+            this.radioButtonS1.TabIndex = 0;
+            this.radioButtonS1.Text = "S1";
+            this.radioButtonS1.UseVisualStyleBackColor = true;
+            this.radioButtonS1.CheckedChanged += new System.EventHandler(this.serverType);
             // 
             // button2
             // 
@@ -618,71 +621,81 @@
             // 
             this.panel16.BackColor = System.Drawing.Color.Transparent;
             this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Controls.Add(this.radioButton18);
-            this.panel16.Controls.Add(this.radioButton19);
+            this.panel16.Controls.Add(this.radioButtonSGD);
+            this.panel16.Controls.Add(this.radioButtonMYR);
             this.panel16.Location = new System.Drawing.Point(32, 175);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(89, 83);
             this.panel16.TabIndex = 5;
             // 
-            // radioButton18
+            // radioButtonSGD
             // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton18.Location = new System.Drawing.Point(19, 43);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(47, 19);
-            this.radioButton18.TabIndex = 1;
-            this.radioButton18.Text = "SGD";
-            this.radioButton18.UseVisualStyleBackColor = true;
-            this.radioButton18.CheckedChanged += new System.EventHandler(this.paypalType);
+            this.radioButtonSGD.AutoSize = true;
+            this.radioButtonSGD.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSGD.Location = new System.Drawing.Point(19, 43);
+            this.radioButtonSGD.Name = "radioButtonSGD";
+            this.radioButtonSGD.Size = new System.Drawing.Size(47, 19);
+            this.radioButtonSGD.TabIndex = 1;
+            this.radioButtonSGD.Text = "SGD";
+            this.radioButtonSGD.UseVisualStyleBackColor = true;
+            this.radioButtonSGD.CheckedChanged += new System.EventHandler(this.paypalType);
             // 
-            // radioButton19
+            // radioButtonMYR
             // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton19.Location = new System.Drawing.Point(19, 20);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(49, 19);
-            this.radioButton19.TabIndex = 0;
-            this.radioButton19.Text = "MYR";
-            this.radioButton19.UseVisualStyleBackColor = true;
-            this.radioButton19.CheckedChanged += new System.EventHandler(this.paypalType);
+            this.radioButtonMYR.AutoSize = true;
+            this.radioButtonMYR.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonMYR.Location = new System.Drawing.Point(19, 20);
+            this.radioButtonMYR.Name = "radioButtonMYR";
+            this.radioButtonMYR.Size = new System.Drawing.Size(49, 19);
+            this.radioButtonMYR.TabIndex = 0;
+            this.radioButtonMYR.Text = "MYR";
+            this.radioButtonMYR.UseVisualStyleBackColor = true;
+            this.radioButtonMYR.CheckedChanged += new System.EventHandler(this.paypalType);
             // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.Transparent;
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.radioButton20);
-            this.panel17.Controls.Add(this.radioButton21);
+            this.panel17.Controls.Add(this.radioButtonTest);
+            this.panel17.Controls.Add(this.radioButtonLive);
             this.panel17.Location = new System.Drawing.Point(143, 23);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(93, 108);
             this.panel17.TabIndex = 1;
             // 
-            // radioButton20
+            // radioButtonTest
             // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton20.Location = new System.Drawing.Point(17, 42);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(45, 19);
-            this.radioButton20.TabIndex = 1;
-            this.radioButton20.Text = "Test";
-            this.radioButton20.UseVisualStyleBackColor = true;
-            this.radioButton20.CheckedChanged += new System.EventHandler(this.siteType);
+            this.radioButtonTest.AutoSize = true;
+            this.radioButtonTest.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTest.Location = new System.Drawing.Point(17, 42);
+            this.radioButtonTest.Name = "radioButtonTest";
+            this.radioButtonTest.Size = new System.Drawing.Size(45, 19);
+            this.radioButtonTest.TabIndex = 1;
+            this.radioButtonTest.Text = "Test";
+            this.radioButtonTest.UseVisualStyleBackColor = true;
+            this.radioButtonTest.CheckedChanged += new System.EventHandler(this.siteType);
             // 
-            // radioButton21
+            // radioButtonLive
             // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton21.Location = new System.Drawing.Point(16, 17);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(46, 19);
-            this.radioButton21.TabIndex = 0;
-            this.radioButton21.Text = "Live";
-            this.radioButton21.UseVisualStyleBackColor = true;
-            this.radioButton21.CheckedChanged += new System.EventHandler(this.siteType);
+            this.radioButtonLive.AutoSize = true;
+            this.radioButtonLive.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonLive.Location = new System.Drawing.Point(16, 17);
+            this.radioButtonLive.Name = "radioButtonLive";
+            this.radioButtonLive.Size = new System.Drawing.Size(46, 19);
+            this.radioButtonLive.TabIndex = 0;
+            this.radioButtonLive.Text = "Live";
+            this.radioButtonLive.UseVisualStyleBackColor = true;
+            this.radioButtonLive.CheckedChanged += new System.EventHandler(this.siteType);
+            // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(26, 421);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(134, 24);
+            this.buttonLogOut.TabIndex = 5;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // Form1
             // 
@@ -690,10 +703,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.panelInstruction);
             this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelCheckBH);
-            this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.EBTestTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -748,42 +761,43 @@
         private System.Windows.Forms.Panel panelGenOS;
         private System.Windows.Forms.TextBox OrderNo_textBox;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButtonCarBH;
+        private System.Windows.Forms.RadioButton radioButtonTrainBH;
+        private System.Windows.Forms.RadioButton radioButtonFerryBH;
+        private System.Windows.Forms.RadioButton radioButtonBusBH;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButtonNoServerBH;
+        private System.Windows.Forms.RadioButton radioButtonS2BH;
+        private System.Windows.Forms.RadioButton radioButtonS1BH;
         private System.Windows.Forms.Button RunGenOSButton;
         private System.Windows.Forms.TextBox OS_textField;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton radioButtonTestOS;
+        private System.Windows.Forms.RadioButton radioButtonLiveOS;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.RadioButton GenOSWriteExcel;
         private System.Windows.Forms.RadioButton GenOS;
         private System.Windows.Forms.Panel panelInstruction;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panelTestBuy;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton14;
+        private System.Windows.Forms.RadioButton radioButtonCar;
+        private System.Windows.Forms.RadioButton radioButtonTrain;
+        private System.Windows.Forms.RadioButton radioButtonFerry;
+        private System.Windows.Forms.RadioButton radioButtonBus;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.RadioButton radioButton17;
+        private System.Windows.Forms.RadioButton radioButtonNoServer;
+        private System.Windows.Forms.RadioButton radioButtonS2;
+        private System.Windows.Forms.RadioButton radioButtonS1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.RadioButton radioButton18;
-        private System.Windows.Forms.RadioButton radioButton19;
+        private System.Windows.Forms.RadioButton radioButtonSGD;
+        private System.Windows.Forms.RadioButton radioButtonMYR;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.RadioButton radioButton20;
-        private System.Windows.Forms.RadioButton radioButton21;
+        private System.Windows.Forms.RadioButton radioButtonTest;
+        private System.Windows.Forms.RadioButton radioButtonLive;
         private System.Windows.Forms.DateTimePicker dateTimePickerBH;
+        private System.Windows.Forms.RichTextBox richTextBoxInstruction;
+        private System.Windows.Forms.Button buttonLogOut;
     }
 }
 

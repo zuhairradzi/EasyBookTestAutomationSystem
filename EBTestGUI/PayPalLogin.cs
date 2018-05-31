@@ -14,6 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -26,7 +27,6 @@ namespace EBTestGUI
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         string LoginButtonFirst, emailElementID, emailVal, emailProceedElementId, emailProceedElementXp, passwordElemId, pwVal, LoginButtonCss, LoginButtonXP;
@@ -70,12 +70,11 @@ namespace EBTestGUI
             {
                 new WebDriverWait(driver,
                     TimeSpan.FromSeconds(60)).Until(ExpectedConditions.ElementExists(By.XPath(LoginButtonFirst))).Click();
-
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Cannot click login");
-                return;
+                MessageBox.Show("Login to PayPal button not found");
+                Console.WriteLine("Login to PayPal button not found");
             }
         }
 
@@ -88,7 +87,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Cannot find email element");
+                MessageBox.Show("PayPal email field not found");
+                Console.WriteLine("PayPal email field not found");
             }
 
             try
@@ -98,7 +98,9 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Cannot proceed to pw");
+
+                MessageBox.Show("Cannot proceed to password");
+                Console.WriteLine("Cannot proceed to password");
             }
         }
 
@@ -111,7 +113,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Cannot find pw");
+                MessageBox.Show("Password field not found");
+                Console.WriteLine("Password field not found");
             }
 
             try
@@ -120,7 +123,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Cannot login");
+                MessageBox.Show("Cannot login into PayPal");
+                Console.WriteLine("Cannot login into PayPal");
             }
 
         }

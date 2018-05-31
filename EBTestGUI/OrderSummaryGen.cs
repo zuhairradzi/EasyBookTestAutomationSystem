@@ -14,6 +14,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -85,7 +86,6 @@ namespace EBTestGUI
 
             try
             {
-                //Thread.Sleep(3000);
                 string url = driver.Url;
                 Console.WriteLine();
                 Console.WriteLine("OS URL is : ");
@@ -103,7 +103,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("OS not found");
+                MessageBox.Show("Could not find Order Summary URL");
 
             }
         }
@@ -120,8 +120,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Order No not found");
-
+                MessageBox.Show("Div One not found");
+                Console.WriteLine("Div One not found");
             }
 
         }
@@ -157,7 +157,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("productName not found");
+                MessageBox.Show("Product Name not found");
+                Console.WriteLine("Product Name not found");
                 return null;
             }
 
@@ -170,25 +171,17 @@ namespace EBTestGUI
                 if (product == "Bus")
                 {
                     string FrontTrim = DivOne.Remove(0, 40);
-                    //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
-                    //Console.WriteLine(BackTrim);
                     PurchaseDate = BackTrim.Trim();
-                    //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
-                    //return PurchaseDate;
                 }
 
                 else if (product == "Car")
                 {
                     string FrontTrim = DivOne.Remove(0, 42);
-                    //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 69);
-                    //Console.WriteLine(BackTrim);
                     PurchaseDate = BackTrim.Trim();
-                    //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Purchase date : " + PurchaseDate);
-                    //return PurchaseDate;
                 }
                 else if (product == "Ferry")
                 {
@@ -196,8 +189,6 @@ namespace EBTestGUI
                     string BackTrim = FrontTrim.Remove(20, 54);
                     PurchaseDate = BackTrim.Trim();
                     Console.WriteLine("Purchase date : " + PurchaseDate);
-                    //return PurchaseDate;
-
                 }
 
                 else if (product == "Train")
@@ -206,8 +197,6 @@ namespace EBTestGUI
                     string BackTrim = FrontTrim.Remove(22, 68);
                     PurchaseDate = BackTrim.Trim();
                     Console.WriteLine("Purchase date : " + PurchaseDate);
-                    //return PurchaseDate;
-
                 }
                 Console.WriteLine("Purchase date : " + PurchaseDate);
                 return PurchaseDate;
@@ -216,7 +205,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Purchase date not found");
+                MessageBox.Show("Purchase Date not found");
+                Console.WriteLine("Purchase Date not found");
                 return null;
 
             }
@@ -231,39 +221,29 @@ namespace EBTestGUI
                 if (product == "Bus")
                 {
                     string FrontTrim = DivOne.Remove(0, 71);
-                    //Console.WriteLine("Front trim = "+ FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 38);
-                    //Console.WriteLine(BackTrim);
                     cartID = BackTrim.Trim();
-                    //Console.WriteLine(CartID);
                     Console.WriteLine("Cart ID : " + cartID);
                 }
 
                 else if (product == "Car")
                 {
                     string FrontTrim = DivOne.Remove(0, 73);
-                    //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(23, 36);
-                    //Console.WriteLine(BackTrim);
                     cartID = BackTrim.Trim();
-                    //Console.WriteLine(PurchaseDate);
                     Console.WriteLine("Cart ID : " + cartID);
                 }
                 else if (product == "Ferry")
                 {
                     string FrontTrim = DivOne.Remove(0, 91);
-                    //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 23);
-                    //Console.WriteLine(BackTrim);
                     cartID = BackTrim.Trim();
                     Console.WriteLine("Cart ID : " + cartID);
                 }
                 else if (product == "Train")
                 {
                     string FrontTrim = DivOne.Remove(0, 71);
-                    //Console.WriteLine(FrontTrim);
                     string BackTrim = FrontTrim.Remove(21, 38);
-                    // Console.WriteLine(BackTrim);
                     cartID = BackTrim.Trim();
                     Console.WriteLine("Cart ID : " + cartID);
                 }
@@ -272,7 +252,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("CartID not found");
+                MessageBox.Show("Cart ID not found");
+                Console.WriteLine("Cart ID not found");
                 return null;
 
             }
@@ -290,6 +271,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Order No not found");
                 Console.WriteLine("Order No not found");
                 return null;
             }
@@ -309,8 +291,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Depart Place not found");
                 Console.WriteLine("Depart Place not found");
-
             }
 
         }
@@ -326,8 +308,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Arrive Place not found");
                 Console.WriteLine("Arrive Place not found");
-
             }
 
         }
@@ -350,7 +332,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Journey not found");
+                    MessageBox.Show("Trip Info not found");
+                    Console.WriteLine("Trip Info not found");
                     return null;
                 }
             }
@@ -366,12 +349,14 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("CarInfo not found");
+                    MessageBox.Show("Car Info not found");
+                    Console.WriteLine("Car Info not found");
                     return null;
 
                 }
             }
-            Console.WriteLine("Trip Info not found");
+            MessageBox.Show("Trip Info/Car Info not found");
+            Console.WriteLine("Trip Info/Car Info not found");
             return null;
         }
 
@@ -389,6 +374,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
+                    MessageBox.Show("Depart Time not found");
                     Console.WriteLine("Depart Time not found");
                     return null;
                 }
@@ -406,12 +392,14 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("CarInfo not found");
+                    MessageBox.Show("Rent Period not found");
+                    Console.WriteLine("Rent Period not found");
                     return null;
                 }
             }
 
-            Console.WriteLine("Trip Info not found");
+            MessageBox.Show("Depart Time/Rent Period not found");
+            Console.WriteLine("Depart Time/Rent Period not found");
             return null;
         }
 
@@ -426,8 +414,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Return Location not found");
                 Console.WriteLine("Return Location not found");
-
             }
 
         }
@@ -440,14 +428,12 @@ namespace EBTestGUI
                 Passenger = PassengerNameElem.Text.ToString().Trim();
                 Console.WriteLine("Passenger Name : " + Passenger);
                 return Passenger;
-
-
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Passenger Name not found");
                 Console.WriteLine("Passenger Name not found");
                 return null;
-
             }
 
         }
@@ -460,13 +446,12 @@ namespace EBTestGUI
                 CompanyName = CompanyElem.Text.ToString().Trim();
                 Console.WriteLine("Company : " + CompanyName);
                 return CompanyName;
-
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Company not found");
                 Console.WriteLine("Company not found");
                 return null;
-
             }
 
         }
@@ -492,15 +477,16 @@ namespace EBTestGUI
                 }
                 else
                 {
-                    Console.WriteLine("Server name not found");
+                    MessageBox.Show("Server Name not found");
+                    Console.WriteLine("Server Name not found");
                 }
 
 
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Server Name not found");
-
+                MessageBox.Show("Server Element not found");
+                Console.WriteLine("Server Element not found");
             }
 
         }
@@ -525,14 +511,15 @@ namespace EBTestGUI
                 }
                 else
                 {
-                    Console.WriteLine("Platform name not found");
+                    MessageBox.Show("Platform Name not found");
+                    Console.WriteLine("Platform Name not found");
                 }
 
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Platform Name not found");
-
+                MessageBox.Show("Platform Element not found");
+                Console.WriteLine("Platform Element not found");
             }
 
         }

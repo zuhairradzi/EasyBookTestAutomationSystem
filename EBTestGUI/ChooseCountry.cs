@@ -20,11 +20,8 @@ namespace EBTestGUI
     class ChooseCountry
     {
         //---------------------VARIABLES, XPATH,  ID-------------------------------------------//
-
-        //conditions
+        
         string sg = "sg";
-
-        //page elements
         string CountryMenuXP, SGLinkText, SGxp;
         //-------------------------------------------------------------------------------------//
 
@@ -57,20 +54,18 @@ namespace EBTestGUI
                 try
                 {
                     driver.FindElement(By.XPath(CountryMenuXP)).Click();
-                    //driver.FindElement(By.LinkText(CountryMenuXP)).Click();
                     driver.FindElement(By.XPath(SGxp)).Click();
-
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Could not find intended country's element");
+                    MessageBox.Show("Country not found");
+                    Console.WriteLine("Country not found!");
                 }
             }
             else
             {
                 return;
             }
-
         }
     }
 }

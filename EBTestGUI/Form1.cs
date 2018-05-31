@@ -50,18 +50,13 @@ namespace EBTestGUI
             newList.Add(panelGenOS); //3
         }
 
-        private void OrderNo_Click(object sender, EventArgs e)
+        private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            OrderNo_textBox.Text = "";
-            //orderNumber = OrderNo_textBox.Text;
+            this.Hide();
+            Login logOut = new Login();
+            logOut.Show();
         }
 
-        private void OSTextField_Click(object sender, EventArgs e)
-        {
-            OS_textField.Text = "";
-        }
-
-      
 
         private void GenOSAction(object sender, EventArgs e)
         {
@@ -95,6 +90,7 @@ namespace EBTestGUI
             this.Hide();
             HomePage form2 = new HomePage();
             form2.Show();
+            form2.xmlPath(XMLFilePath);
         }
         private void siteName(object sender, EventArgs e)
         {
@@ -126,8 +122,41 @@ namespace EBTestGUI
             site = button.Text;           
         }
 
+
+        private void OrderNo_Click(object sender, EventArgs e)
+        {
+            OrderNo_textBox.Text = "";
+            //orderNumber = OrderNo_textBox.Text;
+        }
+
+        private void OSTextField_Click(object sender, EventArgs e)
+        {
+            OS_textField.Text = "";
+        }
+
+
+
         private void RunGenOS_Click(object sender, EventArgs e)
         {
+            if (OS_textField.Text == "" || OS_textField.Text == "Cart ID")
+            {
+                MessageBox.Show("Please enter the Cart ID!");
+                return;
+            }
+
+            if (radioButtonLiveOS.Checked == false && radioButtonTestOS.Checked == false)
+            {
+                MessageBox.Show("Please choose a site type!");
+                return;
+            }
+
+            if (GenOS.Checked == false && GenOSWriteExcel.Checked == false)
+            {
+                MessageBox.Show("Please choose an action!");
+                return;
+            }
+
+         
             IWebDriver Maindriver = new ChromeDriver();
             Console.WriteLine("Launching browser");
 
@@ -177,6 +206,29 @@ namespace EBTestGUI
 
         private void CheckHistoryClick(object sender, EventArgs e)
         {
+            if (OrderNo_textBox.Text == "" || OrderNo_textBox.Text == "Order No")
+            {
+                MessageBox.Show("Please enter the Order No!");
+                return;
+            }
+
+            if (radioButtonBusBH.Checked == false && radioButtonFerryBH.Checked == false && radioButtonTrainBH.Checked == false && radioButtonCarBH.Checked == false)
+            {
+                MessageBox.Show("Please choose a product!");
+                return;
+            }
+
+            if (radioButtonBHLive.Checked == false && radioButtonBHTest.Checked == false)
+            {
+                MessageBox.Show("Please choose a site type!");
+                return;
+            }
+            
+            if (radioButtonS1BH.Checked == false && radioButtonS2BH.Checked == false && radioButtonNoServerBH.Checked == false)
+            {
+                MessageBox.Show("Please choose a server type!");
+                return;
+            }
             Maindriver = new ChromeDriver();
             string date = dateTimePickerBH.Value.ToString("MM/dd/yyyy");
             //-----CHOOSE SITE---//
@@ -216,6 +268,29 @@ namespace EBTestGUI
 
         private void Run_Click(object sender, EventArgs e)
         {
+            if (radioButtonBus.Checked == false && radioButtonFerry.Checked == false && radioButtonTrain.Checked == false && radioButtonCar.Checked == false)
+            {
+                MessageBox.Show("Please choose a product!");
+                return;
+            }
+
+            if (radioButtonLive.Checked == false && radioButtonTest.Checked == false)
+            {
+                MessageBox.Show("Please choose a site type!");
+                return;
+            }
+
+            if (radioButtonMYR.Checked == false && radioButtonSGD.Checked == false)
+            {
+                MessageBox.Show("Please choose a currency!");
+                return;
+            }
+
+            if (radioButtonS1.Checked == false && radioButtonS2.Checked == false && radioButtonNoServer.Checked == false)
+            {
+                MessageBox.Show("Please choose a server type!");
+                return;
+            }
             //-----LAUNCH CHROME----//
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");

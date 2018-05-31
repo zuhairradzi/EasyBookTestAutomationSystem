@@ -21,15 +21,11 @@ namespace EBTestGUI
         public IWebDriver driver;
         public XmlDocument xml;
         string serverXPath, server1Name, server2Name, ScrollBottom, footerStr, serverNeeded;
-        //string siteType = "test";
-        //string testURL = "https://test.easybook.com";
-        //string serverWanted = "G3ASPRO01";
 
         public ConnectToServer(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         public void ReadElement(string XMLpath, string serverInput, string siteType)
@@ -66,7 +62,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Could not find server element");
+                MessageBox.Show("Server element not found");
+                Console.WriteLine("Server element not found");
             }
         }
 
@@ -101,7 +98,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Could not find server element");
+                MessageBox.Show("Server element not found");
+                Console.WriteLine("Server element not found");
                 return null;
             }
         }

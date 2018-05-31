@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -25,7 +26,6 @@ namespace EBTestGUI
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         public void ReadElement(string XMLpath, string currency)
@@ -40,7 +40,6 @@ namespace EBTestGUI
                 payNowElement = xnode["PaymentType"]["PayNowButton"]["Id"].InnerText.Trim();
                 ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
             }
-
         }
 
         public void PaymentGate()
@@ -58,10 +57,11 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Paypal element not found");
+                MessageBox.Show("PayPal option not found");
+                Console.WriteLine("PayPal option not found");
             }
-
         }
+
         public void goToCaptcha()
         {
             try
@@ -72,16 +72,15 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Captcha not found");
+                MessageBox.Show("Captcha field not found");
+                Console.WriteLine("Captcha field not found");
             }
-
         }
 
         public void PayNow()
         {
             try
             {
-
                 var payNow = driver.FindElement(By.Id(payNowElement));
                 Actions actionsPay = new Actions(driver);
                 actionsPay.MoveToElement(payNow);
@@ -95,7 +94,8 @@ namespace EBTestGUI
 
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Pay now proceed not found");
+                MessageBox.Show("Proceed to payment button not found");
+                Console.WriteLine("Proceed to payment button not found");
             }
         }
     }

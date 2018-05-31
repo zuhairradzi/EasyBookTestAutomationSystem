@@ -34,21 +34,26 @@
             this.button3 = new System.Windows.Forms.Button();
             this.XMLDocTab = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panelDisplayXML = new System.Windows.Forms.Panel();
-            this.TestXPLabel = new System.Windows.Forms.Label();
-            this.XpathLabel = new System.Windows.Forms.Label();
-            this.EditXML_Button = new System.Windows.Forms.Button();
-            this.UpdateXMLButton = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.panelEditXML = new System.Windows.Forms.Panel();
+            this.XMLEditTextbox2 = new System.Windows.Forms.TextBox();
+            this.TestXpath4 = new System.Windows.Forms.Label();
+            this.XMLEditTextbox = new System.Windows.Forms.TextBox();
             this.vScrollBar3 = new System.Windows.Forms.VScrollBar();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.XMLEditTextbox = new System.Windows.Forms.TextBox();
+            this.TestXPath3 = new System.Windows.Forms.Label();
+            this.panelDisplayXML = new System.Windows.Forms.Panel();
+            this.XPathLabel2 = new System.Windows.Forms.Label();
+            this.TestXPLabel2 = new System.Windows.Forms.Label();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.UpdateXMLButton = new System.Windows.Forms.Button();
+            this.EditXML_Button = new System.Windows.Forms.Button();
+            this.XpathLabel = new System.Windows.Forms.Label();
+            this.TestXPLabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panelDisplayXML.SuspendLayout();
             this.panelEditXML.SuspendLayout();
+            this.panelDisplayXML.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -104,78 +109,44 @@
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // panelDisplayXML
-            // 
-            this.panelDisplayXML.AutoScroll = true;
-            this.panelDisplayXML.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panelDisplayXML.Controls.Add(this.vScrollBar1);
-            this.panelDisplayXML.Controls.Add(this.UpdateXMLButton);
-            this.panelDisplayXML.Controls.Add(this.EditXML_Button);
-            this.panelDisplayXML.Controls.Add(this.XpathLabel);
-            this.panelDisplayXML.Controls.Add(this.TestXPLabel);
-            this.panelDisplayXML.Location = new System.Drawing.Point(244, 58);
-            this.panelDisplayXML.Name = "panelDisplayXML";
-            this.panelDisplayXML.Size = new System.Drawing.Size(282, 306);
-            this.panelDisplayXML.TabIndex = 1;
-            // 
-            // TestXPLabel
-            // 
-            this.TestXPLabel.AutoSize = true;
-            this.TestXPLabel.Location = new System.Drawing.Point(47, 37);
-            this.TestXPLabel.Name = "TestXPLabel";
-            this.TestXPLabel.Size = new System.Drawing.Size(59, 13);
-            this.TestXPLabel.TabIndex = 0;
-            this.TestXPLabel.Text = "Test Xpath";
-            // 
-            // XpathLabel
-            // 
-            this.XpathLabel.AutoSize = true;
-            this.XpathLabel.Location = new System.Drawing.Point(54, 59);
-            this.XpathLabel.Name = "XpathLabel";
-            this.XpathLabel.Size = new System.Drawing.Size(35, 13);
-            this.XpathLabel.TabIndex = 1;
-            this.XpathLabel.Text = "Xpath";
-            // 
-            // EditXML_Button
-            // 
-            this.EditXML_Button.Location = new System.Drawing.Point(38, 211);
-            this.EditXML_Button.Name = "EditXML_Button";
-            this.EditXML_Button.Size = new System.Drawing.Size(103, 58);
-            this.EditXML_Button.TabIndex = 2;
-            this.EditXML_Button.Text = "Edit";
-            this.EditXML_Button.UseVisualStyleBackColor = true;
-            this.EditXML_Button.Click += new System.EventHandler(this.EditButton_Click);
-            // 
-            // UpdateXMLButton
-            // 
-            this.UpdateXMLButton.Location = new System.Drawing.Point(177, 211);
-            this.UpdateXMLButton.Name = "UpdateXMLButton";
-            this.UpdateXMLButton.Size = new System.Drawing.Size(95, 57);
-            this.UpdateXMLButton.TabIndex = 3;
-            this.UpdateXMLButton.Text = "Update";
-            this.UpdateXMLButton.UseVisualStyleBackColor = true;
-            this.UpdateXMLButton.Click += new System.EventHandler(this.UpdateButton_Click);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(263, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(19, 208);
-            this.vScrollBar1.TabIndex = 5;
-            // 
             // panelEditXML
             // 
             this.panelEditXML.AutoScroll = true;
             this.panelEditXML.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panelEditXML.Controls.Add(this.XMLEditTextbox2);
+            this.panelEditXML.Controls.Add(this.TestXpath4);
             this.panelEditXML.Controls.Add(this.XMLEditTextbox);
             this.panelEditXML.Controls.Add(this.vScrollBar3);
             this.panelEditXML.Controls.Add(this.UpdateButton);
             this.panelEditXML.Controls.Add(this.EditButton);
-            this.panelEditXML.Controls.Add(this.label4);
+            this.panelEditXML.Controls.Add(this.TestXPath3);
             this.panelEditXML.Location = new System.Drawing.Point(244, 58);
             this.panelEditXML.Name = "panelEditXML";
             this.panelEditXML.Size = new System.Drawing.Size(282, 306);
             this.panelEditXML.TabIndex = 7;
+            // 
+            // XMLEditTextbox2
+            // 
+            this.XMLEditTextbox2.Location = new System.Drawing.Point(53, 133);
+            this.XMLEditTextbox2.Name = "XMLEditTextbox2";
+            this.XMLEditTextbox2.Size = new System.Drawing.Size(66, 20);
+            this.XMLEditTextbox2.TabIndex = 8;
+            // 
+            // TestXpath4
+            // 
+            this.TestXpath4.AutoSize = true;
+            this.TestXpath4.Location = new System.Drawing.Point(47, 106);
+            this.TestXpath4.Name = "TestXpath4";
+            this.TestXpath4.Size = new System.Drawing.Size(65, 13);
+            this.TestXpath4.TabIndex = 7;
+            this.TestXpath4.Text = "Test Xpath2";
+            // 
+            // XMLEditTextbox
+            // 
+            this.XMLEditTextbox.Location = new System.Drawing.Point(53, 64);
+            this.XMLEditTextbox.Name = "XMLEditTextbox";
+            this.XMLEditTextbox.Size = new System.Drawing.Size(66, 20);
+            this.XMLEditTextbox.TabIndex = 6;
             // 
             // vScrollBar3
             // 
@@ -204,21 +175,101 @@
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // label4
+            // TestXPath3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Test Xpath";
+            this.TestXPath3.AutoSize = true;
+            this.TestXPath3.Location = new System.Drawing.Point(47, 37);
+            this.TestXPath3.Name = "TestXPath3";
+            this.TestXPath3.Size = new System.Drawing.Size(59, 13);
+            this.TestXPath3.TabIndex = 0;
+            this.TestXPath3.Text = "Test Xpath";
             // 
-            // XMLEditTextbox
+            // panelDisplayXML
             // 
-            this.XMLEditTextbox.Location = new System.Drawing.Point(53, 64);
-            this.XMLEditTextbox.Name = "XMLEditTextbox";
-            this.XMLEditTextbox.Size = new System.Drawing.Size(66, 20);
-            this.XMLEditTextbox.TabIndex = 6;
+            this.panelDisplayXML.AutoScroll = true;
+            this.panelDisplayXML.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panelDisplayXML.Controls.Add(this.XPathLabel2);
+            this.panelDisplayXML.Controls.Add(this.TestXPLabel2);
+            this.panelDisplayXML.Controls.Add(this.vScrollBar1);
+            this.panelDisplayXML.Controls.Add(this.UpdateXMLButton);
+            this.panelDisplayXML.Controls.Add(this.EditXML_Button);
+            this.panelDisplayXML.Controls.Add(this.XpathLabel);
+            this.panelDisplayXML.Controls.Add(this.TestXPLabel);
+            this.panelDisplayXML.Location = new System.Drawing.Point(244, 58);
+            this.panelDisplayXML.Name = "panelDisplayXML";
+            this.panelDisplayXML.Size = new System.Drawing.Size(282, 306);
+            this.panelDisplayXML.TabIndex = 1;
+            // 
+            // XPathLabel2
+            // 
+            this.XPathLabel2.AutoSize = true;
+            this.XPathLabel2.Location = new System.Drawing.Point(54, 119);
+            this.XPathLabel2.Name = "XPathLabel2";
+            this.XPathLabel2.Size = new System.Drawing.Size(35, 13);
+            this.XPathLabel2.TabIndex = 7;
+            this.XPathLabel2.Text = "Xpath";
+            // 
+            // TestXPLabel2
+            // 
+            this.TestXPLabel2.AutoSize = true;
+            this.TestXPLabel2.Location = new System.Drawing.Point(47, 97);
+            this.TestXPLabel2.Name = "TestXPLabel2";
+            this.TestXPLabel2.Size = new System.Drawing.Size(65, 13);
+            this.TestXPLabel2.TabIndex = 6;
+            this.TestXPLabel2.Text = "Test Xpath2";
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(263, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(19, 208);
+            this.vScrollBar1.TabIndex = 5;
+            // 
+            // UpdateXMLButton
+            // 
+            this.UpdateXMLButton.Location = new System.Drawing.Point(177, 211);
+            this.UpdateXMLButton.Name = "UpdateXMLButton";
+            this.UpdateXMLButton.Size = new System.Drawing.Size(95, 57);
+            this.UpdateXMLButton.TabIndex = 3;
+            this.UpdateXMLButton.Text = "Update";
+            this.UpdateXMLButton.UseVisualStyleBackColor = true;
+            this.UpdateXMLButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // EditXML_Button
+            // 
+            this.EditXML_Button.Location = new System.Drawing.Point(38, 211);
+            this.EditXML_Button.Name = "EditXML_Button";
+            this.EditXML_Button.Size = new System.Drawing.Size(103, 58);
+            this.EditXML_Button.TabIndex = 2;
+            this.EditXML_Button.Text = "Edit";
+            this.EditXML_Button.UseVisualStyleBackColor = true;
+            this.EditXML_Button.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // XpathLabel
+            // 
+            this.XpathLabel.AutoSize = true;
+            this.XpathLabel.Location = new System.Drawing.Point(54, 59);
+            this.XpathLabel.Name = "XpathLabel";
+            this.XpathLabel.Size = new System.Drawing.Size(35, 13);
+            this.XpathLabel.TabIndex = 1;
+            this.XpathLabel.Text = "Xpath";
+            // 
+            // TestXPLabel
+            // 
+            this.TestXPLabel.AutoSize = true;
+            this.TestXPLabel.Location = new System.Drawing.Point(47, 37);
+            this.TestXPLabel.Name = "TestXPLabel";
+            this.TestXPLabel.Size = new System.Drawing.Size(59, 13);
+            this.TestXPLabel.TabIndex = 0;
+            this.TestXPLabel.Text = "Test Xpath";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Location = new System.Drawing.Point(231, 45);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(323, 334);
+            this.panel2.TabIndex = 8;
             // 
             // Form1
             // 
@@ -226,17 +277,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gold;
             this.ClientSize = new System.Drawing.Size(586, 461);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelDisplayXML);
             this.Controls.Add(this.panelEditXML);
+            this.Controls.Add(this.panelDisplayXML);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
-            this.panelDisplayXML.ResumeLayout(false);
-            this.panelDisplayXML.PerformLayout();
             this.panelEditXML.ResumeLayout(false);
             this.panelEditXML.PerformLayout();
+            this.panelDisplayXML.ResumeLayout(false);
+            this.panelDisplayXML.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -248,18 +300,23 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button XMLDocTab;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panelDisplayXML;
-        private System.Windows.Forms.Button UpdateXMLButton;
-        private System.Windows.Forms.Button EditXML_Button;
-        private System.Windows.Forms.Label XpathLabel;
-        private System.Windows.Forms.Label TestXPLabel;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Panel panelEditXML;
+        private System.Windows.Forms.TextBox XMLEditTextbox2;
+        private System.Windows.Forms.Label TestXpath4;
         private System.Windows.Forms.TextBox XMLEditTextbox;
         private System.Windows.Forms.VScrollBar vScrollBar3;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label TestXPath3;
+        private System.Windows.Forms.Panel panelDisplayXML;
+        private System.Windows.Forms.Label XPathLabel2;
+        private System.Windows.Forms.Label TestXPLabel2;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button UpdateXMLButton;
+        private System.Windows.Forms.Button EditXML_Button;
+        private System.Windows.Forms.Label XpathLabel;
+        private System.Windows.Forms.Label TestXPLabel;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

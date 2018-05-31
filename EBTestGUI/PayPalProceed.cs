@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -25,7 +26,6 @@ namespace EBTestGUI
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         string continue1XP, continue2XP, continue3XP, continue1ID, continue2ID, continue3ID;
@@ -58,7 +58,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Cannot proceed to pay 2");
+                    MessageBox.Show("Continue #1 not found");
+                    Console.WriteLine("Continue #1 not found");
                 }
                 try
                 {
@@ -66,7 +67,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Cannot proceed to pay 3");
+                    MessageBox.Show("Continue #2 not found");
+                    Console.WriteLine("Continue #2 not found");
                 }
 
                 try
@@ -75,7 +77,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Cannot proceed to OS");
+                    MessageBox.Show("Cannot proceed to Order Summary");
+                    Console.WriteLine("Cannot proceed to Order Summary");
                 }
             }
             else if (currencyUp.Contains("SGD"))
@@ -86,7 +89,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Cannot proceed to pay 3");
+                    MessageBox.Show("Continue #2 not found");
+                    Console.WriteLine("Continue #2 not found");
                 }
                 try
                 {
@@ -94,7 +98,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Cannot proceed to OS");
+                    MessageBox.Show("Cannot proceed to Order Summary");
+                    Console.WriteLine("Cannot proceed to Order Summary");
                 }
             }
         }

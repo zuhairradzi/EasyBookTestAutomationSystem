@@ -38,18 +38,46 @@
             this.EBTestTitle = new System.Windows.Forms.Label();
             this.panelClassifyBar = new System.Windows.Forms.Panel();
             this.ProductComboBox = new System.Windows.Forms.ComboBox();
-            this.panelXML1 = new System.Windows.Forms.Panel();
+            this.panelXML1Display = new System.Windows.Forms.Panel();
             this.SiteComboBox = new System.Windows.Forms.ComboBox();
             this.panelComboSearch = new System.Windows.Forms.Panel();
-            this.CurrencyComboBox = new System.Windows.Forms.ComboBox();
             this.GetXMLButton = new System.Windows.Forms.Button();
+            this.CurrencyComboBox = new System.Windows.Forms.ComboBox();
+            this.Title1 = new System.Windows.Forms.Label();
+            this.DateTitle1 = new System.Windows.Forms.Label();
+            this.DateValue1 = new System.Windows.Forms.Label();
+            this.DateContent1 = new System.Windows.Forms.Label();
+            this.TripContent1 = new System.Windows.Forms.Label();
+            this.TripValue1 = new System.Windows.Forms.Label();
+            this.TripTitle1 = new System.Windows.Forms.Label();
+            this.ContinueContent1 = new System.Windows.Forms.Label();
+            this.ContinueValue1 = new System.Windows.Forms.Label();
+            this.ContinueTitle1 = new System.Windows.Forms.Label();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.panelXML1Edit = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateContent1TextBox = new System.Windows.Forms.TextBox();
+            this.tripContent1TextBox = new System.Windows.Forms.TextBox();
+            this.ContContent1TextBox = new System.Windows.Forms.TextBox();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.panelSideTab.SuspendLayout();
+            this.panelClassifyBar.SuspendLayout();
+            this.panelXML1Display.SuspendLayout();
             this.panelComboSearch.SuspendLayout();
+            this.panelXML1Edit.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSideTab
             // 
             this.panelSideTab.BackColor = System.Drawing.Color.DarkMagenta;
+            this.panelSideTab.Controls.Add(this.buttonLogOut);
             this.panelSideTab.Controls.Add(this.InstructionButton);
             this.panelSideTab.Controls.Add(this.EditXMLButton);
             this.panelSideTab.Controls.Add(this.GenOSButton);
@@ -124,29 +152,44 @@
             // panelClassifyBar
             // 
             this.panelClassifyBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.panelClassifyBar.Location = new System.Drawing.Point(230, 400);
+            this.panelClassifyBar.Controls.Add(this.buttonUpdate);
+            this.panelClassifyBar.Controls.Add(this.buttonEdit);
+            this.panelClassifyBar.Location = new System.Drawing.Point(240, 400);
             this.panelClassifyBar.Name = "panelClassifyBar";
-            this.panelClassifyBar.Size = new System.Drawing.Size(510, 60);
+            this.panelClassifyBar.Size = new System.Drawing.Size(380, 60);
             this.panelClassifyBar.TabIndex = 9;
             // 
             // ProductComboBox
             // 
+            this.ProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductComboBox.FormattingEnabled = true;
             this.ProductComboBox.Location = new System.Drawing.Point(7, 9);
             this.ProductComboBox.Name = "ProductComboBox";
             this.ProductComboBox.Size = new System.Drawing.Size(90, 21);
             this.ProductComboBox.TabIndex = 0;
             // 
-            // panelXML1
+            // panelXML1Display
             // 
-            this.panelXML1.BackColor = System.Drawing.Color.LightGray;
-            this.panelXML1.Location = new System.Drawing.Point(240, 60);
-            this.panelXML1.Name = "panelXML1";
-            this.panelXML1.Size = new System.Drawing.Size(380, 330);
-            this.panelXML1.TabIndex = 10;
+            this.panelXML1Display.AutoScroll = true;
+            this.panelXML1Display.BackColor = System.Drawing.Color.LightGray;
+            this.panelXML1Display.Controls.Add(this.ContinueContent1);
+            this.panelXML1Display.Controls.Add(this.ContinueValue1);
+            this.panelXML1Display.Controls.Add(this.ContinueTitle1);
+            this.panelXML1Display.Controls.Add(this.TripContent1);
+            this.panelXML1Display.Controls.Add(this.TripValue1);
+            this.panelXML1Display.Controls.Add(this.TripTitle1);
+            this.panelXML1Display.Controls.Add(this.DateContent1);
+            this.panelXML1Display.Controls.Add(this.DateValue1);
+            this.panelXML1Display.Controls.Add(this.DateTitle1);
+            this.panelXML1Display.Controls.Add(this.Title1);
+            this.panelXML1Display.Location = new System.Drawing.Point(240, 60);
+            this.panelXML1Display.Name = "panelXML1Display";
+            this.panelXML1Display.Size = new System.Drawing.Size(380, 330);
+            this.panelXML1Display.TabIndex = 10;
             // 
             // SiteComboBox
             // 
+            this.SiteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SiteComboBox.FormattingEnabled = true;
             this.SiteComboBox.Location = new System.Drawing.Point(7, 56);
             this.SiteComboBox.Name = "SiteComboBox";
@@ -162,16 +205,8 @@
             this.panelComboSearch.Controls.Add(this.ProductComboBox);
             this.panelComboSearch.Location = new System.Drawing.Point(644, 60);
             this.panelComboSearch.Name = "panelComboSearch";
-            this.panelComboSearch.Size = new System.Drawing.Size(110, 319);
+            this.panelComboSearch.Size = new System.Drawing.Size(110, 330);
             this.panelComboSearch.TabIndex = 12;
-            // 
-            // CurrencyComboBox
-            // 
-            this.CurrencyComboBox.FormattingEnabled = true;
-            this.CurrencyComboBox.Location = new System.Drawing.Point(7, 104);
-            this.CurrencyComboBox.Name = "CurrencyComboBox";
-            this.CurrencyComboBox.Size = new System.Drawing.Size(90, 21);
-            this.CurrencyComboBox.TabIndex = 12;
             // 
             // GetXMLButton
             // 
@@ -183,13 +218,246 @@
             this.GetXMLButton.UseVisualStyleBackColor = true;
             this.GetXMLButton.Click += new System.EventHandler(this.GetXMLButton_Click);
             // 
+            // CurrencyComboBox
+            // 
+            this.CurrencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CurrencyComboBox.FormattingEnabled = true;
+            this.CurrencyComboBox.Location = new System.Drawing.Point(7, 104);
+            this.CurrencyComboBox.Name = "CurrencyComboBox";
+            this.CurrencyComboBox.Size = new System.Drawing.Size(90, 21);
+            this.CurrencyComboBox.TabIndex = 12;
+            // 
+            // Title1
+            // 
+            this.Title1.AutoSize = true;
+            this.Title1.Location = new System.Drawing.Point(34, 23);
+            this.Title1.Name = "Title1";
+            this.Title1.Size = new System.Drawing.Size(115, 13);
+            this.Title1.TabIndex = 0;
+            this.Title1.Text = "Element and Value List";
+            // 
+            // DateTitle1
+            // 
+            this.DateTitle1.AutoSize = true;
+            this.DateTitle1.Location = new System.Drawing.Point(34, 57);
+            this.DateTitle1.Name = "DateTitle1";
+            this.DateTitle1.Size = new System.Drawing.Size(30, 13);
+            this.DateTitle1.TabIndex = 1;
+            this.DateTitle1.Text = "Date";
+            // 
+            // DateValue1
+            // 
+            this.DateValue1.AutoSize = true;
+            this.DateValue1.Location = new System.Drawing.Point(62, 79);
+            this.DateValue1.Name = "DateValue1";
+            this.DateValue1.Size = new System.Drawing.Size(60, 13);
+            this.DateValue1.TabIndex = 2;
+            this.DateValue1.Text = "Date Value";
+            // 
+            // DateContent1
+            // 
+            this.DateContent1.AutoSize = true;
+            this.DateContent1.Location = new System.Drawing.Point(68, 103);
+            this.DateContent1.Name = "DateContent1";
+            this.DateContent1.Size = new System.Drawing.Size(67, 13);
+            this.DateContent1.TabIndex = 3;
+            this.DateContent1.Text = "DateContent";
+            // 
+            // TripContent1
+            // 
+            this.TripContent1.AutoSize = true;
+            this.TripContent1.Location = new System.Drawing.Point(68, 180);
+            this.TripContent1.Name = "TripContent1";
+            this.TripContent1.Size = new System.Drawing.Size(62, 13);
+            this.TripContent1.TabIndex = 6;
+            this.TripContent1.Text = "TripContent";
+            // 
+            // TripValue1
+            // 
+            this.TripValue1.AutoSize = true;
+            this.TripValue1.Location = new System.Drawing.Point(62, 156);
+            this.TripValue1.Name = "TripValue1";
+            this.TripValue1.Size = new System.Drawing.Size(55, 13);
+            this.TripValue1.TabIndex = 5;
+            this.TripValue1.Text = "Trip Value";
+            // 
+            // TripTitle1
+            // 
+            this.TripTitle1.AutoSize = true;
+            this.TripTitle1.Location = new System.Drawing.Point(34, 134);
+            this.TripTitle1.Name = "TripTitle1";
+            this.TripTitle1.Size = new System.Drawing.Size(72, 13);
+            this.TripTitle1.TabIndex = 4;
+            this.TripTitle1.Text = "Trip Selection";
+            // 
+            // ContinueContent1
+            // 
+            this.ContinueContent1.AutoSize = true;
+            this.ContinueContent1.Location = new System.Drawing.Point(68, 266);
+            this.ContinueContent1.Name = "ContinueContent1";
+            this.ContinueContent1.Size = new System.Drawing.Size(86, 13);
+            this.ContinueContent1.TabIndex = 9;
+            this.ContinueContent1.Text = "ContinueContent";
+            // 
+            // ContinueValue1
+            // 
+            this.ContinueValue1.AutoSize = true;
+            this.ContinueValue1.Location = new System.Drawing.Point(62, 242);
+            this.ContinueValue1.Name = "ContinueValue1";
+            this.ContinueValue1.Size = new System.Drawing.Size(79, 13);
+            this.ContinueValue1.TabIndex = 8;
+            this.ContinueValue1.Text = "Continue Value";
+            // 
+            // ContinueTitle1
+            // 
+            this.ContinueTitle1.AutoSize = true;
+            this.ContinueTitle1.Location = new System.Drawing.Point(34, 220);
+            this.ContinueTitle1.Name = "ContinueTitle1";
+            this.ContinueTitle1.Size = new System.Drawing.Size(83, 13);
+            this.ContinueTitle1.TabIndex = 7;
+            this.ContinueTitle1.Text = "Continue Button";
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(37, 12);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(126, 37);
+            this.buttonEdit.TabIndex = 0;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(211, 12);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(126, 37);
+            this.buttonUpdate.TabIndex = 1;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // panelXML1Edit
+            // 
+            this.panelXML1Edit.AutoScroll = true;
+            this.panelXML1Edit.BackColor = System.Drawing.Color.LightGray;
+            this.panelXML1Edit.Controls.Add(this.ContContent1TextBox);
+            this.panelXML1Edit.Controls.Add(this.tripContent1TextBox);
+            this.panelXML1Edit.Controls.Add(this.dateContent1TextBox);
+            this.panelXML1Edit.Controls.Add(this.label2);
+            this.panelXML1Edit.Controls.Add(this.label3);
+            this.panelXML1Edit.Controls.Add(this.label5);
+            this.panelXML1Edit.Controls.Add(this.label6);
+            this.panelXML1Edit.Controls.Add(this.label8);
+            this.panelXML1Edit.Controls.Add(this.label9);
+            this.panelXML1Edit.Controls.Add(this.label10);
+            this.panelXML1Edit.Location = new System.Drawing.Point(240, 60);
+            this.panelXML1Edit.Name = "panelXML1Edit";
+            this.panelXML1Edit.Size = new System.Drawing.Size(380, 330);
+            this.panelXML1Edit.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(62, 242);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Continue Value";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Continue Button";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(62, 156);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Trip Value";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Trip Selection";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(62, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Date Value";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(34, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Date";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(115, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Element and Value List";
+            // 
+            // dateContent1TextBox
+            // 
+            this.dateContent1TextBox.Location = new System.Drawing.Point(68, 102);
+            this.dateContent1TextBox.Name = "dateContent1TextBox";
+            this.dateContent1TextBox.Size = new System.Drawing.Size(94, 20);
+            this.dateContent1TextBox.TabIndex = 9;
+            // 
+            // tripContent1TextBox
+            // 
+            this.tripContent1TextBox.Location = new System.Drawing.Point(68, 184);
+            this.tripContent1TextBox.Name = "tripContent1TextBox";
+            this.tripContent1TextBox.Size = new System.Drawing.Size(280, 20);
+            this.tripContent1TextBox.TabIndex = 10;
+            // 
+            // ContContent1TextBox
+            // 
+            this.ContContent1TextBox.Location = new System.Drawing.Point(68, 266);
+            this.ContContent1TextBox.Name = "ContContent1TextBox";
+            this.ContContent1TextBox.Size = new System.Drawing.Size(280, 20);
+            this.ContContent1TextBox.TabIndex = 11;
+            // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(24, 412);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(137, 24);
+            this.buttonLogOut.TabIndex = 6;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.panelXML1Edit);
             this.Controls.Add(this.panelComboSearch);
-            this.Controls.Add(this.panelXML1);
+            this.Controls.Add(this.panelXML1Display);
             this.Controls.Add(this.panelClassifyBar);
             this.Controls.Add(this.EBTestTitle);
             this.Controls.Add(this.panelSideTab);
@@ -200,7 +468,12 @@
             this.Text = "Easybook Test Automation";
             this.Load += new System.EventHandler(this.HomePage_Load);
             this.panelSideTab.ResumeLayout(false);
+            this.panelClassifyBar.ResumeLayout(false);
+            this.panelXML1Display.ResumeLayout(false);
+            this.panelXML1Display.PerformLayout();
             this.panelComboSearch.ResumeLayout(false);
+            this.panelXML1Edit.ResumeLayout(false);
+            this.panelXML1Edit.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,10 +490,34 @@
         private System.Windows.Forms.Label EBTestTitle;
         private System.Windows.Forms.Panel panelClassifyBar;
         private System.Windows.Forms.ComboBox ProductComboBox;
-        private System.Windows.Forms.Panel panelXML1;
+        private System.Windows.Forms.Panel panelXML1Display;
         private System.Windows.Forms.ComboBox SiteComboBox;
         private System.Windows.Forms.Panel panelComboSearch;
         private System.Windows.Forms.ComboBox CurrencyComboBox;
         private System.Windows.Forms.Button GetXMLButton;
+        private System.Windows.Forms.Label DateValue1;
+        private System.Windows.Forms.Label DateTitle1;
+        private System.Windows.Forms.Label Title1;
+        private System.Windows.Forms.Label DateContent1;
+        private System.Windows.Forms.Label ContinueContent1;
+        private System.Windows.Forms.Label ContinueValue1;
+        private System.Windows.Forms.Label ContinueTitle1;
+        private System.Windows.Forms.Label TripContent1;
+        private System.Windows.Forms.Label TripValue1;
+        private System.Windows.Forms.Label TripTitle1;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Panel panelXML1Edit;
+        private System.Windows.Forms.TextBox ContContent1TextBox;
+        private System.Windows.Forms.TextBox tripContent1TextBox;
+        private System.Windows.Forms.TextBox dateContent1TextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button buttonLogOut;
     }
 }

@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -74,6 +75,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Insurance not found");
                 Console.WriteLine("Insurance not found");
             }
         }
@@ -89,22 +91,22 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Nationality not found");
                 Console.WriteLine("Nationality not found");
             }
-
         }
 
         public void Gender(string genElem, string genType)
         {
             try
             {
-
                 driver.FindElement(By.XPath(genElem)).Click();
                 new SelectElement(driver.FindElement(By.XPath(genElem))).SelectByText(genType);
                 driver.FindElement(By.XPath(genElem)).Click();
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Gender not found");
                 Console.WriteLine("Gender not found");
             }
 
@@ -118,7 +120,8 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("ICPassport not found");
+                MessageBox.Show("IC/Passport field not found");
+                Console.WriteLine("IC/Passport field not found");
             }
         }
     }

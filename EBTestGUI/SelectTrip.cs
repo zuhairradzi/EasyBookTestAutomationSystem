@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using System.Xml;
 using System.IO;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -28,7 +29,6 @@ namespace EBTestGUI
         {
             this.xml = mainxml;
             this.driver = maindriver;
-
         }
 
         string tripValue;
@@ -43,7 +43,6 @@ namespace EBTestGUI
             {
                 tripValue = xnode[productType][siteType][currency]["XPath"].InnerText.Trim();
             }
-
         }
 
         public void selectTrip(string product)
@@ -61,8 +60,8 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    Console.WriteLine("Select trip element not found");
-
+                    MessageBox.Show("Select trip not found");
+                    Console.WriteLine("Select trip not found");
                 }
             }
 
