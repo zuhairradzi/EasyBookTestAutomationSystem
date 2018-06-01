@@ -31,6 +31,7 @@ namespace EBTestGUI
 
         public void ReadElement(string XMLpath, string tripType)
         {
+            
             string TripTy = char.ToUpper(tripType[0]) + tripType.Substring(1);
             xml.Load(XMLpath);
             XmlNodeList xnMenu = xml.SelectNodes("/ETAS/TripType");
@@ -40,8 +41,12 @@ namespace EBTestGUI
             }
         }
 
-        public void chooseTripType()
+        public void chooseTripType(string product)
         {
+            if (product.ToLower().Contains("car"))
+            {
+                return;
+            }
             try
             {
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(trip)))).Click();

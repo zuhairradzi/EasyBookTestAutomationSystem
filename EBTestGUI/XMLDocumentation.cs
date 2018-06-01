@@ -19,6 +19,8 @@ namespace EBTestGUI
         string path, xpathNew;
         List<Panel> newList = new List<Panel>();
         XmlDocument xml = new XmlDocument();
+        private bool buttonEditwasClicked = false;
+        private bool buttonGetXMLwasClicked = false; 
         public HomePage()
         {
             InitializeComponent();
@@ -55,10 +57,12 @@ namespace EBTestGUI
 
         private void HomePage_Load(object sender, EventArgs e)
         {
+          
             newList.Add(panelXML1Display);
             newList.Add(panelXML1Edit);
-            
-           
+            newList.Add(PanelXMLInstruction);
+
+
             List<SiteCombo> listSite = new List<SiteCombo>();
             listSite.Add(new SiteCombo() { ID = "Test", site = "Test" });
             listSite.Add(new SiteCombo() { ID = "Live", site = "Live" });
@@ -91,26 +95,35 @@ namespace EBTestGUI
 
         private void GetXMLButton_Click(object sender, EventArgs e)
         {
-           IndexInputCallXML ind = new IndexInputCallXML();
-           int key = ind.ReadElement(path, ProductComboBox.SelectedValue.ToString(), SiteComboBox.SelectedValue.ToString(), CurrencyComboBox.SelectedValue.ToString());
+            buttonGetXMLwasClicked = true;
+           //IndexInputCallXML ind = new IndexInputCallXML();
+           //int key = ind.ReadElement(path, ProductComboBox.SelectedValue.ToString(), SiteComboBox.SelectedValue.ToString(), CurrencyComboBox.SelectedValue.ToString());
             //newList[key-1].BringToFront();
-            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            //MessageBox.Show("GET XML ===> product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
             xml.Load(path);
+
+            XmlNodeList xnMenu4 = xml.SelectNodes("ETAS/Product");
+            foreach (XmlNode xnode in xnMenu4)
+            {
+                RoutesContent.Text = xnode["ProductName"][ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()]["URL1"].InnerText.Trim();
+            }
+
+
             XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
             foreach (XmlNode xnode in xnMenu1)
             {
-                DateContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
+                DateContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText.Trim();
             }
             
             XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
-            foreach (XmlNode xnode in xnMenu1)
+            foreach (XmlNode xnode in xnMenu2)
             {
                 TripContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
             }
             
            
             XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
-            foreach (XmlNode xnode in xnMenu1)
+            foreach (XmlNode xnode in xnMenu3)
             {
                 ContinueContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
             }
@@ -121,12 +134,27 @@ namespace EBTestGUI
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
-            xml.Load(path);
-            XmlNodeList xnMenu = xml.SelectNodes("ETAS/Date");
-            foreach (XmlNode xnode in xnMenu)
+            if (buttonGetXMLwasClicked == false)
             {
-                dateContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
+                MessageBox.Show("Get intended XML documentation before edit");
+                return;
+            }
+            buttonEditwasClicked = true;
+
+            //MessageBox.Show("EDIT ===> product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            xml.Load(path);
+
+            XmlNodeList xnMenu4 = xml.SelectNodes("ETAS/Product");
+            foreach (XmlNode xnode in xnMenu4)
+            {
+                RoutesTextBox.Text = xnode["ProductName"][ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()]["URL1"].InnerText.Trim();
+            }
+
+            XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                dateTimePickerUpdateXML.Value = DateTime.Parse(xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText.Trim());
+                //dateContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
             }
             XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
             foreach (XmlNode xnode in xnMenu2)
@@ -151,42 +179,73 @@ namespace EBTestGUI
             logOut.Show();
         }
 
+        private void EditXMLButton_Click(object sender, EventArgs e)
+        {
+            newList[2].BringToFront();
+        }
+
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
-            xpathNew = dateContent1TextBox.Text;
-            DateContent1.Text = xpathNew;
-
-            xpathNew = tripContent1TextBox.Text;
-            TripContent1.Text = xpathNew;
-
-            xpathNew = ContContent1TextBox.Text;
-            ContinueContent1.Text = xpathNew;
-
-
-            newList[0].BringToFront();
-            xml.Load(path);
-
-            XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
-            foreach (XmlNode xnode in xnMenu1)
+            if (buttonEditwasClicked == false)
             {
-                xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText = DateContent1.Text;
+                MessageBox.Show("Edit first before update");
+                return;
             }
-            
-            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
-            foreach (XmlNode xnode in xnMenu1)
+            //MessageBox.Show("UPDATE ===> product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
+            DialogResult dialogResult = MessageBox.Show("Are you sure want to edit the XML data?", "Confirmation Message", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-               
-                xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripContent1.Text;
-            }
+                xpathNew = RoutesTextBox.Text;
+                RoutesContent.Text = xpathNew;
 
-            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
-            foreach (XmlNode xnode in xnMenu1)
-            {
-                xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText = ContinueContent1.Text;
+                //xpathNew = dateContent1TextBox.Text;
+                xpathNew = dateTimePickerUpdateXML.Value.ToString("yyyy-MM-dd");
+                DateContent1.Text = xpathNew;
+
+                xpathNew = tripContent1TextBox.Text;
+                TripContent1.Text = xpathNew;
+
+                xpathNew = ContContent1TextBox.Text;
+                ContinueContent1.Text = xpathNew;
+
+
+                newList[0].BringToFront();
+                xml.Load(path);
+
+                XmlNodeList xnMenu4 = xml.SelectNodes("ETAS/Product");
+                foreach (XmlNode xnode in xnMenu4)
+                {
+                    xnode["ProductName"][ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()]["URL1"].InnerText = RoutesContent.Text;
+                }
+
+
+                XmlNodeList xnMenu1 = xml.SelectNodes("ETAS/Date");
+                foreach (XmlNode xnode in xnMenu1)
+                {
+                    xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText = DateContent1.Text;
+                }
+
+                XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+                foreach (XmlNode xnode in xnMenu2)
+                {
+                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripContent1.Text;
+                }
+
+                XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
+                foreach (XmlNode xnode in xnMenu3)
+                {
+                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText = ContinueContent1.Text;
+                }
+
+                MessageBox.Show("Update for <=> " + ProductComboBox.SelectedValue.ToString() + " <=> " + SiteComboBox.SelectedValue.ToString() + " <=> currency : " + CurrencyComboBox.SelectedValue.ToString()+" successful");
+                buttonEditwasClicked = false;
+                xml.Save(path);
             }
-             
-            xml.Save(path);
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Update cancelled");
+                return;
+            }
         }
     }
 }

@@ -275,7 +275,6 @@ namespace EBTestGUI
                 MessageBox.Show("Cart ID not found");
                 Console.WriteLine("Cart ID not found");
                 return null;
-
             }
 
         }
@@ -478,7 +477,7 @@ namespace EBTestGUI
 
         }
 
-        public void Server()
+        public string Server()
         {
             try
             {
@@ -490,16 +489,20 @@ namespace EBTestGUI
                     string serverName = "Server 1";
                     string serverName2 = "G3ASPRO01";
                     Console.WriteLine("Server : " + serverName + " - " + serverName2);
+                    return serverName2;
                 }
                 else if (serverTrim.Contains("G3ASPRO02"))
                 {
                     string serverName = "Server 2";
                     string serverName2 = "G3ASPRO02";
                     Console.WriteLine("Server : " + serverName + " - " + serverName2);
+                    return serverName2;
                 }
                 else
                 {
+                    MessageBox.Show("Server name not found");
                     Console.WriteLine("Server name not found");
+                    return null;
                 }
 
 
@@ -508,11 +511,12 @@ namespace EBTestGUI
             {
                 MessageBox.Show("Server not found");
                 Console.WriteLine("Server not found");
+                return null;
             }
 
         }
 
-        public void Platform()
+        public string Platform()
         {
             try
             {
@@ -524,15 +528,19 @@ namespace EBTestGUI
                 {
                     string platName = "Mobile Browser";
                     Console.WriteLine("Platform : " + platName);
+                    return platName;
                 }
                 else if (platTrim.Contains("desktop"))
                 {
                     string platName = "Desktop Browser";
                     Console.WriteLine("Platform : " + platName);
+                    return platName;
                 }
                 else
                 {
+                    MessageBox.Show("Platform not found");
                     Console.WriteLine("Platform name not found");
+                    return null; 
                 }
 
             }
@@ -540,6 +548,7 @@ namespace EBTestGUI
             {
                 MessageBox.Show("Platform not found");
                 Console.WriteLine("Platform not found");
+                return null;
             }
 
         }

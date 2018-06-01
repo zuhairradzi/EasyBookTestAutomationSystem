@@ -132,11 +132,11 @@
             // 
             // buttonBypass
             // 
-            this.buttonBypass.Location = new System.Drawing.Point(567, 171);
+            this.buttonBypass.Location = new System.Drawing.Point(327, 391);
             this.buttonBypass.Name = "buttonBypass";
             this.buttonBypass.Size = new System.Drawing.Size(102, 58);
             this.buttonBypass.TabIndex = 9;
-            this.buttonBypass.Text = "buttonBypass";
+            this.buttonBypass.Text = "Bypass Login";
             this.buttonBypass.UseVisualStyleBackColor = true;
             this.buttonBypass.Click += new System.EventHandler(this.buttonBypass_Click);
             // 

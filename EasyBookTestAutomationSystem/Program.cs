@@ -160,8 +160,8 @@ namespace EasyBookTestAutomationSystem
 
              //--- PRODUCT AND DESTINATION ---//
             ProductAndDest newProduct = new ProductAndDest(xml, Maindriver);
-            newProduct.ReadElement(XMLFilePath, testScenario, product);
-            newProduct.chooseProduct(ChooseEBurl);
+            newProduct.ReadElement(XMLFilePath, testScenario, product, site);
+            newProduct.chooseProduct(product, ChooseEBurl);
 
              //--- CHOOSE COUNTRY ---//
             ChooseCountry CountryTest = new ChooseCountry (xml, Maindriver);

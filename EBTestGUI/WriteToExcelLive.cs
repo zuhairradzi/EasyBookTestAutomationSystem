@@ -21,13 +21,13 @@ namespace EBTestGUI
     class WriteToExcelLive
     {
         public void ExcelWrite(string productType, string orderNo, string CartID, string tripDetail, string PurchaseDate,
-           string tripDuration, string passengerName, string Company)
+           string tripDuration, string passengerName, string Company, string serverUsed, string platformUsed, string timeTaken)
         {
             string file = "D:\\Product Purchase Log Live.xlsx";
             File.SetAttributes(file, File.GetAttributes(file) & ~FileAttributes.ReadOnly);
 
             int i = 0;
-            string[] orderDetail = { productType, orderNo, CartID, "", tripDetail, PurchaseDate, tripDuration, passengerName, Company };
+            string[] orderDetail = { productType, orderNo, CartID, "", tripDetail, PurchaseDate, tripDuration, passengerName, Company, "", "", "", "", serverUsed, platformUsed, timeTaken };
 
             Microsoft.Office.Interop.Excel.Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Worksheet WSheet;
@@ -58,7 +58,7 @@ namespace EBTestGUI
                 long newRow = lastRow;
                 int newRow1 = Convert.ToInt32(newRow);
                 Console.WriteLine("new row = " + newRow1);
-                for (int col = 1; col < 12; col++)
+                for (int col = 1; col < 17; col++)
                 {
                     for (int row = newRow1; row < newRow1 + 1; row++)
                     {

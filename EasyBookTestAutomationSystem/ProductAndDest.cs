@@ -40,8 +40,9 @@ namespace EasyBookTestAutomationSystem
 
         }
 
-        public void ReadElement(string XMLpath, string TestID, string prodName)
+        public void ReadElement(string XMLpath, string TestID, string prodName, string site)
         {
+            string siteName = char.ToUpper(site[0]) + site.Substring(1);
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
             xml.Load(XMLpath);
             XmlNodeList xnList = xml.SelectNodes("/ETAS/Product/ProductName");
@@ -51,9 +52,10 @@ namespace EasyBookTestAutomationSystem
             }
 
         }
-        public void chooseProduct(string EBurl)
+        public void chooseProduct(string product, string EBurl)
         {
-            prodURL = EBurl + productURL;
+            string prod = product.ToLower();
+            prodURL = EBurl + "/" + prod + "/booking/" + productURL;
             driver.Navigate().GoToUrl(prodURL);
         }
     

@@ -56,6 +56,7 @@
             this.radioButtonTestOS = new System.Windows.Forms.RadioButton();
             this.radioButtonLiveOS = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.InstructionButton = new System.Windows.Forms.Button();
             this.EditXMLButton = new System.Windows.Forms.Button();
             this.GenOSButton = new System.Windows.Forms.Button();
@@ -80,7 +81,6 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.radioButtonTest = new System.Windows.Forms.RadioButton();
             this.radioButtonLive = new System.Windows.Forms.RadioButton();
-            this.buttonLogOut = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panelCheckBH.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -413,6 +413,16 @@
             this.panel3.Size = new System.Drawing.Size(180, 470);
             this.panel3.TabIndex = 3;
             // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(26, 421);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(134, 24);
+            this.buttonLogOut.TabIndex = 5;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            // 
             // InstructionButton
             // 
             this.InstructionButton.Location = new System.Drawing.Point(24, 20);
@@ -687,24 +697,14 @@
             this.radioButtonLive.UseVisualStyleBackColor = true;
             this.radioButtonLive.CheckedChanged += new System.EventHandler(this.siteType);
             // 
-            // buttonLogOut
-            // 
-            this.buttonLogOut.Location = new System.Drawing.Point(26, 421);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(134, 24);
-            this.buttonLogOut.TabIndex = 5;
-            this.buttonLogOut.Text = "Log Out";
-            this.buttonLogOut.UseVisualStyleBackColor = true;
-            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.panelInstruction);
+            this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelCheckBH);
             this.Controls.Add(this.panel3);

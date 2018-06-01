@@ -14,6 +14,8 @@ using NUnit.Framework;
 using System.Xml;
 using Microsoft.Office.Interop.Access.Dao;
 using System.Windows.Forms;
+using System.Diagnostics;
+
 
 namespace EBTestGUI
 {
@@ -23,18 +25,28 @@ namespace EBTestGUI
         String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
         XmlDocument xml = new XmlDocument();
         IWebDriver Maindriver;
+        Stopwatch sw = new Stopwatch();
+        TimeSpan ts;
 
         string product, site, siteBH, paypal, server;
-        string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
+        string productName, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration, serverTestBuy, platformTestBuy;
         string orderNumber, dateHistory;
         string textFieldOS, radioGenOS;
+        string timeStart, timeEnd, duration, elapsedTime;
 
         string busHisXP, ferHisXP, traHisXP, carHisXP;
 
 
         List<Panel> newList = new List<Panel>();
 
-      
+        private void SelTest_Click(object sender, EventArgs e)
+        {
+            ChromeDriver driver = new ChromeDriver("D:\\");
+            driver.Navigate().GoToUrl("https://www.google.com/");
+            driver.Manage().Window.Maximize();
+
+
+        }
 
         public Form1()
         {
@@ -57,6 +69,19 @@ namespace EBTestGUI
             logOut.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sw.Start();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            sw.Stop();
+            ts = sw.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds,ts.Milliseconds / 10);
+            MessageBox.Show("Time recorded : "+ elapsedTime);
+            sw.Reset();
+        }
 
         private void GenOSAction(object sender, EventArgs e)
         {
@@ -157,7 +182,7 @@ namespace EBTestGUI
             }
 
          
-            IWebDriver Maindriver = new ChromeDriver();
+            IWebDriver Maindriver = new ChromeDriver("D:\\");
             Console.WriteLine("Launching browser");
 
             OSLinkGeneration newURL = new OSLinkGeneration(xml, Maindriver);
@@ -172,8 +197,8 @@ namespace EBTestGUI
             CartID = OStest.GetCartID();
             orderNo = OStest.GetOrderNo();
 
-            OStest.GetDepartPlace();
-            OStest.GetArrivePlace();
+           // OStest.GetDepartPlace();
+            //OStest.GetArrivePlace();
 
             tripDetail = OStest.Journey();
             PurchaseDate = OStest.GetPurchaseDate();
@@ -181,11 +206,11 @@ namespace EBTestGUI
             passengerName = OStest.GetPassengerName();
             Company = OStest.GetCompany();
 
-            OStest.GetReturnLocation();
-            OStest.Journey();
-            OStest.GetCartID();
-            OStest.Platform();
-            OStest.Server();
+           // OStest.GetReturnLocation();
+            platformTestBuy = OStest.Platform();
+            serverTestBuy = OStest.Server();
+
+            elapsedTime = "OS generation only";
 
             if (radioGenOS.ToLower().Contains("excel"))
             {
@@ -194,11 +219,11 @@ namespace EBTestGUI
 
                 if (passengerName.ToLower().Contains("live"))
                 {
-                    OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                    OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company, serverTestBuy, platformTestBuy, elapsedTime);
                 }
                 else
                 {
-                    OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                    OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company, serverTestBuy, platformTestBuy, elapsedTime);
                 }
             }
            
@@ -229,7 +254,7 @@ namespace EBTestGUI
                 MessageBox.Show("Please choose a server type!");
                 return;
             }
-            Maindriver = new ChromeDriver();
+            Maindriver = new ChromeDriver("D:\\");
             string date = dateTimePickerBH.Value.ToString("MM/dd/yyyy");
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -292,9 +317,13 @@ namespace EBTestGUI
                 return;
             }
             //-----LAUNCH CHROME----//
+            
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--disable-impl-side-painting");
-            Maindriver = new ChromeDriver();
+            Maindriver = new ChromeDriver("D:\\");
+
+            //--TIMER START--//
+            sw.Start();
 
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -328,8 +357,8 @@ namespace EBTestGUI
 
             //--- PRODUCT AND DESTINATION ---//
             ProductAndDest newProduct = new ProductAndDest(xml, Maindriver);
-            newProduct.ReadElement(XMLFilePath, product);
-            newProduct.chooseProduct(ChooseEBurl);
+            newProduct.ReadElement(XMLFilePath, product, site);
+            newProduct.chooseProduct(product, ChooseEBurl);
 
             //--- CHOOSE COUNTRY ---//
             ChooseCountry CountryTest = new ChooseCountry(xml, Maindriver);
@@ -339,7 +368,7 @@ namespace EBTestGUI
             //--- CHOOSE TRIP TYPE ---//
             TripType newTripType = new TripType(xml, Maindriver);
             newTripType.ReadElement(XMLFilePath, "oneway");
-            newTripType.chooseTripType();
+            newTripType.chooseTripType(product);
 
 
             //--- SELECT DATE  ---//
@@ -351,6 +380,11 @@ namespace EBTestGUI
             SubmitSearch newSearch = new SubmitSearch(xml, Maindriver);
             newSearch.ReadElement(XMLFilePath, product);
             newSearch.confirmSearch();
+
+            //--- SORT FARE  ---//
+            SortFare low = new SortFare(xml, Maindriver);
+            low.ReadElement(XMLFilePath, product, site, paypal);
+            low.lowFare(product);
 
             //--- SELECT TRIP  ---//
             SelectTrip newTrip = new SelectTrip(xml, Maindriver);
@@ -395,8 +429,8 @@ namespace EBTestGUI
             CartID = OStest.GetCartID();
             orderNo = OStest.GetOrderNo();
 
-            OStest.GetDepartPlace();
-            OStest.GetArrivePlace();
+           // OStest.GetDepartPlace();
+            //OStest.GetArrivePlace();
 
             tripDetail = OStest.Journey();
             PurchaseDate = OStest.GetPurchaseDate();
@@ -404,25 +438,30 @@ namespace EBTestGUI
             passengerName = OStest.GetPassengerName();
             Company = OStest.GetCompany();
 
-            OStest.GetReturnLocation();
-            OStest.Journey();
-            OStest.GetCartID();
-            OStest.Platform();
-            OStest.Server();
+           // OStest.GetReturnLocation();
+             platformTestBuy = OStest.Platform();
+             serverTestBuy =  OStest.Server();
+
+            //--STOP TIMER--//
+            sw.Stop();
+            ts = sw.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            //MessageBox.Show("Time recorded : " + elapsedTime);
+            sw.Reset();
 
 
+            //--WRITE TO EXCEL--//
             WriteToExcelTest OStoExcelTest = new WriteToExcelTest();
             WriteToExcelLive OStoExcelLive = new WriteToExcelLive();
 
             if (passengerName.ToLower().Contains("live"))
             {
-                OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                OStoExcelLive.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company, serverTestBuy, platformTestBuy, elapsedTime);
             }
             else
             {
-                OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
+                OStoExcelTest.ExcelWrite(productName, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company, serverTestBuy, platformTestBuy, elapsedTime);
             }
         }
-
     }
 }

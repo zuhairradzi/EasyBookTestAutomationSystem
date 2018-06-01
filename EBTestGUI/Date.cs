@@ -47,12 +47,11 @@ namespace EBTestGUI
             {
                 DepElem = xnode[productType]["DateElement"]["DepartElement"]["Id"].InnerText.Trim();
                 RetElem = xnode[productType]["DateElement"]["ReturnElement"]["Id"].InnerText.Trim();
-                DepDate = xnode[productType]["DateValue"]["OneWay"][siteType].InnerText.Trim();
-                RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType].InnerText.Trim();
+                DepDate = xnode[productType]["DateValue"]["OneWay"][siteType][currencyType].InnerText.Trim();
+                RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType][currencyType].InnerText.Trim();
 
                 if (productType.ToLower().Contains("car"))
                 {
-                    RetDate = xnode[productType]["DateValue"]["ReturnTrip"][siteType][currencyType].InnerText.Trim();
                     carPickTimeElem = xnode[productType]["TimeElement"]["PickupTimeElement"]["Id"].InnerText.Trim();
                     carRetTimeElem = xnode[productType]["TimeElement"]["ReturnTimeElement"]["Id"].InnerText.Trim();
                     carPicTime = xnode[productType]["TimeValue"]["PickupTime"].InnerText.Trim();

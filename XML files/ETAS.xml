@@ -192,22 +192,48 @@
   <Product>
     <ProductName>
       <Bus>
-        <URL1>/bus/booking/sungainibong-to-melakasentral</URL1>
-        <URL2>/bus/booking/melakasentral-to-sungainibong</URL2>
-        <URL3>/bus/booking/kovanhub206-to-melakasentral</URL3>
-        <URL4>/bus/booking/melakasentral-to-kovanhub206</URL4>
+        <Test>
+          <URL1>sungainibong-to-melakasentral</URL1>
+          <URL2>melakasentral-to-sungainibong</URL2>
+          <URL3>kovanhub206-to-melakasentral</URL3>
+          <URL4>melakasentral-to-kovanhub206</URL4>
+        </Test>
+        <Live>
+          <URL1>sungainibong-to-melakasentral</URL1>
+          <URL2>melakasentral-to-sungainibong</URL2>
+          <URL3>kovanhub206-to-melakasentral</URL3>
+          <URL4>melakasentral-to-kovanhub206</URL4>
+        </Live>
       </Bus>
       <Train>
-        <URL1>/train/booking/jbsentral-to-woodland</URL1>
-        <URL2>/train/booking/kepong-to-terminalktm</URL2>
+        <Test>
+          <URL1>jbsentral-to-woodland</URL1>
+          <URL2>kepong-to-terminalktm</URL2>
+        </Test>
+        <Live>
+          <URL1>jbsentral-to-woodland</URL1>
+          <URL2>kepong-to-terminalktm</URL2>
+        </Live>
       </Train>
       <Ferry>
-        <URL1>/ferry/booking/batamcenter-to-harbourfront</URL1>
-        <URL2>/ferry/booking/harbourfront-to-batamcenter</URL2>
+        <Test>
+          <URL1>batamcenter-to-harbourfront</URL1>
+          <URL2>harbourfront-to-batamcenter</URL2>
+        </Test>
+        <Live>
+          <URL1>batamcenter-to-harbourfront</URL1>
+          <URL2>harbourfront-to-batamcenter</URL2>
+        </Live>
       </Ferry>
       <Car>
-        <URL1>/car/booking/kualalumpurarea</URL1>
-        <URL2>/car/booking/bukitbintangarea</URL2>
+        <Test>
+          <URL1>kualalumpurarea</URL1>
+          <URL2>bukitbintangarea</URL2>
+        </Test>
+        <Live>
+          <URL1>kualalumpurarea</URL1>
+          <URL2>bukitbintangarea</URL2>
+        </Live>
       </Car>
     </ProductName>
   </Product>
@@ -242,12 +268,24 @@
       </DateElement>
       <DateValue>
         <OneWay>
-          <Test>2020-03-08</Test>
-          <Live>2020-03-08</Live>
+          <Test>
+            <MYR>2020-03-09</MYR>
+            <SGD>2020-03-09</SGD>
+          </Test>
+          <Live>
+            <MYR>2020-03-09</MYR>
+            <SGD>2020-03-09</SGD>
+          </Live>
         </OneWay>
         <ReturnTrip>
-          <Test>2020-03-09</Test>
-          <Live>2020-03-09</Live>
+          <Test>
+            <MYR>2020-03-09</MYR>
+            <SGD>2020-03-09</SGD>
+          </Test>
+          <Live>
+            <MYR>2020-03-09</MYR>
+            <SGD>2020-03-09</SGD>
+          </Live>
         </ReturnTrip>
       </DateValue>
     </Bus>
@@ -262,12 +300,24 @@
       </DateElement>
       <DateValue>
         <OneWay>
-          <Test>2019-03-13</Test>
-          <Live>2020-03-04</Live>
+          <Test>
+            <MYR>2019-03-13</MYR>
+            <SGD>2019-03-13</SGD>
+          </Test>
+          <Live>
+            <MYR>2020-03-04</MYR>
+            <SGD>2020-03-04</SGD>
+          </Live>
         </OneWay>
         <ReturnTrip>
-          <Test>2019-03-10</Test>
-          <Live>2020-03-05</Live>
+          <Test>
+            <MYR>2019-03-13</MYR>
+            <SGD>2019-03-13</SGD>
+          </Test>
+          <Live>
+            <MYR>2020-03-04</MYR>
+            <SGD>2020-03-04</SGD>
+          </Live>
         </ReturnTrip>
       </DateValue>
     </Ferry>
@@ -282,12 +332,24 @@
       </DateElement>
       <DateValue>
         <OneWay>
-          <Test>2018-06-21</Test>
-          <Live>2018-06-22</Live>
+          <Test>
+            <MYR>2018-06-28</MYR>
+            <SGD>2018-06-28</SGD>
+          </Test>
+          <Live>
+            <MYR>2018-06-30</MYR>
+            <SGD>2018-06-30</SGD>
+          </Live>
         </OneWay>
         <ReturnTrip>
-          <Test>2018-06-21</Test>
-          <Live>2018-06-22</Live>
+          <Test>
+            <MYR>2018-06-28</MYR>
+            <SGD>2018-06-28</SGD>
+          </Test>
+          <Live>
+            <MYR>2018-06-30</MYR>
+            <SGD>2018-06-30</SGD>
+          </Live>
         </ReturnTrip>
       </DateValue>
     </Train>
@@ -310,8 +372,14 @@
       </TimeElement>
       <DateValue>
         <OneWay>
-          <Test>2019-03-08</Test>
-          <Live>2046-03-08</Live>
+          <Test>
+            <MYR>2019-03-08</MYR>
+            <SGD>2019-03-08</SGD>
+          </Test>
+          <Live>
+            <MYR>2046-03-08</MYR>
+            <SGD>2046-03-08</SGD>
+          </Live>
         </OneWay>
         <ReturnTrip>
           <Test>
@@ -345,65 +413,60 @@
       <LinkText>Search</LinkText>
     </SearchButton>
   </SubmitSearch>
-
-
   <SelectTrip>
     <Bus>
       <Test>
         <MYR>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-16905917-4e19d047-2b9f-4803-ac9c-5d756ee3fd8e"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="MY-int-20062721-f7d8e011-27ee-4df3-a7ec-e61a516205b3"]/div[1]/div[5]/a</XPath>
         </MYR>
         <SGD>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-20273737-05f65451-61af-4c1c-9aec-12a172b60a86"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="MY-int-20281297-ec599671-3a5e-4656-8efe-dee42f6abfdd"]/div[1]/div[5]/a</XPath>
         </SGD>
       </Test>
-
       <Live>
         <MYR>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="MY-int-20127689-1c037221-f9bb-4f10-b344-922bf5b7f103"]/div[1]/div[5]/a</XPath>
         </MYR>
         <SGD>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-21237652-616423e5-43c2-4d63-aab1-d3f554b08abb"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="MY-int-17805347-0e30cf9b-63a8-4852-a293-5d987b48b5f9"]/div[1]/div[5]/a</XPath>
         </SGD>
       </Live>
     </Bus>
-
     <Train>
       <Test>
         <MYR>
           <LinkText>Select Seats/Berths</LinkText>
-          <XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="SG-ext-web-116-1581471-7-466-4-71-20180628-81-SH"]/div[1]/div[5]/a</XPath>
         </MYR>
         <SGD>
           <LinkText>Select Seats/Berths</LinkText>
-          <XPath>//*[@id="SG-ext-web-116-544585-7-466-4-71-20180613-93-SH"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="SG-ext-web-116-1581471-7-466-4-71-20180628-81-SH"]/div[1]/div[5]/a</XPath>
         </SGD>
       </Test>
       <Live>
         <MYR>
           <LinkText>Select Seats/Berths</LinkText>
-          <XPath>//*[@id="SG-ext-web-116-4816412-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="SG-ext-web-116-4916638-7-466-4-71-20180630-81-SH"]/div[1]/div[5]/a</XPath>
         </MYR>
         <SGD>
           <LinkText>Select Seats/Berths</LinkText>
-          <XPath>//*[@id="SG-ext-web-116-4819908-7-466-4-71-20180615-93-SH"]/div[1]/div[5]/a</XPath>
+          <XPath>//*[@id="SG-ext-web-116-4916638-7-466-4-71-20180630-81-SH"]/div[1]/div[5]/a</XPath>
         </SGD>
       </Live>
     </Train>
-
     <Ferry>
       <Test>
         <MYR>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2"]/div[1]/div[5]/div/a</XPath>
+          <XPath>//*[@id="MY-int-276134-6b68acd2-4e9d-4d08-83e2-eee11108d196"]/div[1]/div[5]/div/a</XPath>
         </MYR>
         <SGD>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2"]/div[1]/div[5]/div/a</XPath>
+          <XPath>//*[@id="MY-int-276134-6b68acd2-4e9d-4d08-83e2-eee11108d196"]/div[1]/div[5]/div/a</XPath>
         </SGD>
       </Test>
       <Live>
@@ -417,31 +480,29 @@
         </SGD>
       </Live>
     </Ferry>
-
     <Car>
       <Test>
         <MYR>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[12]/td[8]/div/button</XPath>
+          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[1]/td[8]/div/button</XPath>
         </MYR>
         <SGD>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[31]/td[8]/div/button</XPath>
+          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[1]/td[8]/div/button</XPath>
         </SGD>
       </Test>
       <Live>
         <MYR>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[4]/td[8]/div/button</XPath>
+          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[1]/td[8]/div/button</XPath>
         </MYR>
         <SGD>
           <LinkText>Select</LinkText>
-          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[4]/td[8]/div/button</XPath>
+          <XPath>//*[@id="carSearchResultsTable"]/tbody/tr[1]/td[8]/div/button</XPath>
         </SGD>
       </Live>
     </Car>
   </SelectTrip>
-
   <Seat>
     <Bus>
       <Test>
@@ -513,11 +574,11 @@
       <Test>
         <MYR>
           <SelectSeat>
-            <XPathFull>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[27]</XPathFull>
+            <XPathFull>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[1]</XPathFull>
             <XPath>
               <Part1>(//div[@id='ferry-seat-chart']</Part1>
               <Part2>/div/div[2]</Part2>
-              <Part3>/div/div/select)[27]</Part3>
+              <Part3>/div/div/select)[1]</Part3>
             </XPath>
             <ClassName>
             </ClassName>
@@ -527,16 +588,16 @@
           </NoOfSeat>
           <ContinueButton>
             <Id>submit</Id>
-            <XPath>//button[@id='MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2']</XPath>
+            <XPath>//button[@id="MY-int-276134-6b68acd2-4e9d-4d08-83e2-eee11108d196"]</XPath>
           </ContinueButton>
         </MYR>
         <SGD>
           <SelectSeat>
-            <XPathFull>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[9]</XPathFull>
+            <XPathFull>(//div[@id='ferry-seat-chart']/div/div[2]/div/div/select)[1]</XPathFull>
             <XPath>
               <Part1>(//div[@id='ferry-seat-chart']</Part1>
               <Part2>/div/div[2]</Part2>
-              <Part3>/div/div/select)[9]</Part3>
+              <Part3>/div/div/select)[1]</Part3>
             </XPath>
             <ClassName>
             </ClassName>
@@ -546,7 +607,7 @@
           </NoOfSeat>
           <ContinueButton>
             <Id>submit</Id>
-            <XPath>//button[@id='MY-int-316026-7846749e-6c72-42ea-9c09-8d6ab67e9be2']</XPath>
+            <XPath>//button[@id="MY-int-276134-6b68acd2-4e9d-4d08-83e2-eee11108d196"]</XPath>
           </ContinueButton>
         </SGD>
       </Test>
@@ -670,30 +731,30 @@
       </Live>
     </Train>
     <Car>
-        <Test>
-            <MYR>
-                <ContinueButton>
-                    <XPath>Null</XPath>
-                </ContinueButton>
-            </MYR>
-            <SGD>
-                <ContinueButton>
-                    <XPath>Null</XPath>
-                </ContinueButton>
-            </SGD>
-        </Test>
-        <Live>
-            <MYR>
-                <ContinueButton>
-                    <XPath>Null</XPath>
-                </ContinueButton>
-            </MYR>
-            <SGD>
-                <ContinueButton>
-                    <XPath>Null</XPath>
-                </ContinueButton>
-            </SGD>
-        </Live>
+      <Test>
+        <MYR>
+          <ContinueButton>
+            <XPath>Null</XPath>
+          </ContinueButton>
+        </MYR>
+        <SGD>
+          <ContinueButton>
+            <XPath>Null</XPath>
+          </ContinueButton>
+        </SGD>
+      </Test>
+      <Live>
+        <MYR>
+          <ContinueButton>
+            <XPath>Null</XPath>
+          </ContinueButton>
+        </MYR>
+        <SGD>
+          <ContinueButton>
+            <XPath>Null</XPath>
+          </ContinueButton>
+        </SGD>
+      </Live>
     </Car>
   </Seat>
   <PassengerDetails>
@@ -1050,4 +1111,29 @@
       </Live>
     </Car>
   </Index>
+  <Sort>
+    <Bus>
+      <Fare>
+        <LinkText>Fare</LinkText>
+        <XPath>//*[@id="depart-trip-list"]/div/div[2]/div[1]/div/div[1]/ul[1]/li[3]/a</XPath>
+      </Fare>
+    </Bus>
+    <Ferry>
+      <Fare>
+        <LinkText>Fare</LinkText>
+        <XPath>//*[@id="dep-trip-div"]/div/div[2]/div[1]/div/div[1]/ul[1]/li[3]/a</XPath>
+      </Fare>
+    </Ferry>
+    <Train>
+      <Fare>
+        <LinkText>Fare</LinkText>
+        <XPath>//*[@id="depart-trip-list"]/div/div[2]/div[1]/div/div[1]/ul[1]/li[3]/a/i</XPath>
+      </Fare>
+    </Train>
+    <Car>
+      <Fare>
+        <LinkText>Daily Rate</LinkText>"//table[@id='carSearchResultsTable']/thead/tr/th[7]/a"
+          <XPath>//*[@id="carSearchResultsTable"]/thead/tr/th[7]/a</XPath></Fare>
+    </Car>
+  </Sort>
 </ETAS>
