@@ -45,12 +45,15 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkMagenta;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.MediumVioletRed;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(254, 120);
+            this.panel1.Location = new System.Drawing.Point(311, 64);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 250);
             this.panel1.TabIndex = 0;
@@ -121,18 +124,18 @@
             // EBTestTitle
             // 
             this.EBTestTitle.AutoSize = true;
-            this.EBTestTitle.Font = new System.Drawing.Font("Myanmar Text", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EBTestTitle.Location = new System.Drawing.Point(238, 30);
+            this.EBTestTitle.Font = new System.Drawing.Font("Bebas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EBTestTitle.Location = new System.Drawing.Point(306, 20);
             this.EBTestTitle.Name = "EBTestTitle";
             this.EBTestTitle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.EBTestTitle.Size = new System.Drawing.Size(292, 34);
+            this.EBTestTitle.Size = new System.Drawing.Size(260, 28);
             this.EBTestTitle.TabIndex = 8;
-            this.EBTestTitle.Text = "EasyBook Test Buy Automation";
+            this.EBTestTitle.Text = "EasyBook Test Automation";
             this.EBTestTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonBypass
             // 
-            this.buttonBypass.Location = new System.Drawing.Point(327, 391);
+            this.buttonBypass.Location = new System.Drawing.Point(379, 320);
             this.buttonBypass.Name = "buttonBypass";
             this.buttonBypass.Size = new System.Drawing.Size(102, 58);
             this.buttonBypass.TabIndex = 9;

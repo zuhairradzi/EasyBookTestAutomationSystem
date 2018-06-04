@@ -60,6 +60,7 @@ namespace EBTestGUI
             newList.Add(panelCheckBH);//1
             newList.Add(panelInstruction);//2
             newList.Add(panelGenOS); //3
+            labelMenuTitle.Text = "Instruction";
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -69,19 +70,7 @@ namespace EBTestGUI
             logOut.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            sw.Start();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            sw.Stop();
-            ts = sw.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds,ts.Milliseconds / 10);
-            MessageBox.Show("Time recorded : "+ elapsedTime);
-            sw.Reset();
-        }
+      
 
         private void GenOSAction(object sender, EventArgs e)
         {
@@ -92,22 +81,26 @@ namespace EBTestGUI
         private void GenerateOSTab_Click(object sender, EventArgs e)
         {
             newList[3].BringToFront();
+            labelMenuTitle.Text = "Generate Order Summary";
         }
         
         private void CheckBHButton_Click(object sender, EventArgs e)
         {
             newList[1].BringToFront();
+            labelMenuTitle.Text = "Check Booking History";
             //panelCheckBH.BringToFront();
         }
 
         private void TestBuyButton_Click(object sender, EventArgs e)
         {
             newList[0].BringToFront();
+            labelMenuTitle.Text = "Test Buy Automation";
         }
 
         private void InstructionButton_Click(object sender, EventArgs e)
         {
             newList[2].BringToFront();
+            labelMenuTitle.Text = "Instruction";
         }
 
         private void XMLDocButton_Click(object sender, EventArgs e)
@@ -357,7 +350,7 @@ namespace EBTestGUI
 
             //--- PRODUCT AND DESTINATION ---//
             ProductAndDest newProduct = new ProductAndDest(xml, Maindriver);
-            newProduct.ReadElement(XMLFilePath, product, site);
+            newProduct.ReadElement(XMLFilePath, product, site, paypal);
             newProduct.chooseProduct(product, ChooseEBurl);
 
             //--- CHOOSE COUNTRY ---//

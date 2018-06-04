@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="XMLInstructionTextBox.Text" xml:space="preserve">
+    <value>For first time users, please read the instruction first. 
+
+This is the XML panel where you can edit the relevant information needed to run the automation test buy process. The information that is editable are the destination/place of the trip, the date of the trip, the XPath value used to select the trip and the XPath value used to continue to passenger details page after selecting the trip. These four information are editable due to the frequent change happend among them and this will provide the users with the ability to edit the information precisely without opening the XML document and edit manually.
+
+Bear in mind that XPath is the value use by the selenium to navigate through the elements of the webpage, so please ensure the edited infomation is accurate and precised.
+ </value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

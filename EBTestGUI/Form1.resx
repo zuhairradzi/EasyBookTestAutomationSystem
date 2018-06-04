@@ -120,24 +120,13 @@
   <data name="richTextBoxInstruction.Text" xml:space="preserve">
     <value>Welcome to EasyBook Test Automation System. The purpose of this system is to automate the daily task done by the Quality Assurance personnel in Easybook.
 
+The main task that is automated by this system is the process of test buy. The test buy done in this system are set to follow the dummy test buy scripts. The users can manually change the value of the test buy process however in the XML value tab. For current time, only PayPal payment method is supported by this system. 
+
+All the process of doing the test buy are automated except the action of filling the captcha part in the passenger detail page. Captcha stand for "Completely Automated Public Turing test to tell Computers and Humans Apart" which intended to prevent bots and automation system to go through the website. Please be aware whenever during the test buy process and alert to fill the Captcha code. There are maximum of 8 seconds wait time provided to fill in the Captcha code.
+
+Other testing process that can be automated from this system are checking the booking history and generating the order summary. 
 
 
-
-
-aaaaaaaaaaaaaaa
-
-
-
-
-
-aaaaaaaaaaaa
-
-
-
-
-sssssssssssssssssssssssss
-
-ssssssssssss
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
