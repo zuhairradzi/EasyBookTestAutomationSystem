@@ -64,6 +64,7 @@ namespace EBTestGUI
             {
                 PassengerTest.Gender(genderElemXP, genderTypeText);
                 PassengerTest.ICPassPort(ICPassElem, ICPassValue);
+                PassengerTest.untickInsurance(insuranceElemID);
             }
         }
 

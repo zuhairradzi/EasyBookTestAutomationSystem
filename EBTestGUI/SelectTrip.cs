@@ -24,24 +24,35 @@ namespace EBTestGUI
 
         public IWebDriver driver;
         public XmlDocument xml;
-
+        string frontXP, backXP;
+        string tripKey, tripXP;
         public SelectTrip(XmlDocument mainxml, IWebDriver maindriver)
         {
             this.xml = mainxml;
             this.driver = maindriver;
         }
-
-        string tripValue;
+        
         public void ReadElement(string XMLpath, string prodName, string siteName, string currency1)
         {
             string productType = char.ToUpper(prodName[0]) + prodName.Substring(1);
             string siteType = char.ToUpper(siteName[0]) + siteName.Substring(1);
             string currency = currency1.ToUpper();
             xml.Load(XMLpath);
-            XmlNodeList xnList = xml.SelectNodes("/ETAS/SelectTrip");
-            foreach (XmlNode xnode in xnList)
+            XmlNodeList xnList2 = xml.SelectNodes("/ETAS/TripXPath");
+            foreach (XmlNode xnode in xnList2)
             {
-                tripValue = xnode[productType][siteType][currency]["XPath"].InnerText.Trim();
+                frontXP = xnode[productType][siteType][currency]["Front"].InnerText.Trim();
+                tripKey = xnode[productType][siteType][currency]["Key"].InnerText.Trim();
+                backXP = xnode[productType][siteType][currency]["Back"].InnerText.Trim();
+
+                if (productType.ToLower().Contains("car"))
+                {
+                    tripXP = xnode[productType][siteType][currency]["XPathFull"].InnerText.Trim();
+                }
+                else
+                {
+                    tripXP = frontXP + tripKey + backXP;
+                }
             }
         }
 
@@ -56,7 +67,7 @@ namespace EBTestGUI
             {
                 try
                 {
-                    new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.XPath(tripValue)))).Click();
+                    new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.XPath(tripXP)))).Click();
                 }
                 catch (NoSuchElementException)
                 {

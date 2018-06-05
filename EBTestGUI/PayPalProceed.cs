@@ -49,7 +49,7 @@ namespace EBTestGUI
         public void proceedPayPal1(string currency)
         {
             string currencyUp = currency.ToUpper();
-            Thread.Sleep(10000);
+            Thread.Sleep(15000);
             if (currencyUp.Contains("MYR"))
             {
                 try

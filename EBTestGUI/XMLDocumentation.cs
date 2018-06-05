@@ -132,8 +132,21 @@ namespace EBTestGUI
             {
                 DateContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText.Trim();
             }
-            
-            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+
+            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/TripXPath");
+            foreach (XmlNode xnode in xnMenu2)
+            {
+                if (ProductComboBox.SelectedValue.ToString().ToLower().Contains("car"))
+                {
+                    TripKey.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPathFull"].InnerText.Trim();
+                }
+                else
+                {
+                    TripKey.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
+                }
+                //TripKey.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
+            }
+            /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
             foreach (XmlNode xnode in xnMenu2)
             {
                 TripContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
@@ -144,7 +157,7 @@ namespace EBTestGUI
             foreach (XmlNode xnode in xnMenu3)
             {
                 ContinueContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
-            }
+            }*/
             
           
             newList[0].BringToFront();
@@ -170,6 +183,7 @@ namespace EBTestGUI
                     RoutesFromTextBox.Text = xnode["ProductName"][ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["URL1"].InnerText.Trim();
                     RoutesToTextBox.Text = "area";
                     RoutesToTextBox.ReadOnly = true;
+                    RoutesToTextBox.BackColor = Color.Gray;
                     toLabel.Text = "";
                 }
             }
@@ -190,18 +204,24 @@ namespace EBTestGUI
                 dateTimePickerUpdateXML.Value = DateTime.Parse(xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText.Trim());
                 //dateContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()].InnerText.Trim();
             }
-            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+            XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/TripXPath");
             foreach (XmlNode xnode in xnMenu2)
             {
-                tripContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
+                if (ProductComboBox.SelectedValue.ToString().ToLower().Contains("car"))
+                {
+                    tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPathFull"].InnerText.Trim();
+                }
+                else
+                {
+                    tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
+                }
+               // tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
             }
-            
-            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
-            foreach (XmlNode xnode in xnMenu3)
+            /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+            foreach (XmlNode xnode in xnMenu2)
             {
-                ContContent1TextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
-            }
-            
+                tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
+            }*/
             
             newList[1].BringToFront();
         }
@@ -245,11 +265,9 @@ namespace EBTestGUI
                 xpathNew = dateTimePickerUpdateXML.Value.ToString("yyyy-MM-dd");
                 DateContent1.Text = xpathNew;
 
-                xpathNew = tripContent1TextBox.Text;
-                TripContent1.Text = xpathNew;
-
-                xpathNew = ContContent1TextBox.Text;
-                ContinueContent1.Text = xpathNew;
+                xpathNew = tripKeyTextBox.Text;
+                TripKey.Text = xpathNew;
+                
 
 
                 newList[0].BringToFront();
@@ -283,17 +301,26 @@ namespace EBTestGUI
                     xnode[ProductComboBox.SelectedValue.ToString()]["DateValue"]["OneWay"][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()].InnerText = DateContent1.Text;
                 }
 
-                XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+               
+                    XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/TripXPath");
                 foreach (XmlNode xnode in xnMenu2)
                 {
-                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripContent1.Text;
+                    if (ProductComboBox.SelectedValue.ToString().ToLower().Contains("car"))
+                    {
+                        xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPathFull"].InnerText = TripKey.Text;
+                    }
+                    else
+                    {
+                        xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText = TripKey.Text;
+                    }
+                    //xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText = TripKey.Text;
                 }
-
-                XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
-                foreach (XmlNode xnode in xnMenu3)
+                /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
+                foreach (XmlNode xnode in xnMenu2)
                 {
-                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText = ContinueContent1.Text;
-                }
+                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripKey.Text;
+                }*/
+
 
                 MessageBox.Show("Update for [" + ProductComboBox.SelectedValue.ToString() + " <=> " + SiteComboBox.SelectedValue.ToString() + " <=> " + CurrencyComboBox.SelectedValue.ToString()+"] successful");
                 buttonEditwasClicked = false;

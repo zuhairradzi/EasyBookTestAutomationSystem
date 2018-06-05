@@ -35,6 +35,11 @@
             this.radioButtonBHLive = new System.Windows.Forms.RadioButton();
             this.IPServerButton = new System.Windows.Forms.Button();
             this.panelCheckBH = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerBH = new System.Windows.Forms.DateTimePicker();
             this.panel8 = new System.Windows.Forms.Panel();
             this.radioButtonCarBH = new System.Windows.Forms.RadioButton();
@@ -47,6 +52,9 @@
             this.radioButtonS1BH = new System.Windows.Forms.RadioButton();
             this.OrderNo_textBox = new System.Windows.Forms.TextBox();
             this.panelGenOS = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.GenOSWriteExcel = new System.Windows.Forms.RadioButton();
             this.GenOS = new System.Windows.Forms.RadioButton();
@@ -65,6 +73,10 @@
             this.panelInstruction = new System.Windows.Forms.Panel();
             this.richTextBoxInstruction = new System.Windows.Forms.RichTextBox();
             this.panelTestBuy = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelChooseProduct = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.radioButtonCar = new System.Windows.Forms.RadioButton();
             this.radioButtonTrain = new System.Windows.Forms.RadioButton();
@@ -81,19 +93,7 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.radioButtonTest = new System.Windows.Forms.RadioButton();
             this.radioButtonLive = new System.Windows.Forms.RadioButton();
-            this.labelChooseProduct = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.labelMenuTitle = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.panelCheckBH.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -189,6 +189,56 @@
             this.panelCheckBH.Name = "panelCheckBH";
             this.panelCheckBH.Size = new System.Drawing.Size(380, 330);
             this.panelCheckBH.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(30, 228);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(104, 23);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Choose Server";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(30, 170);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 23);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Choose Site";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(30, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(113, 23);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Choose Product";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(30, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 23);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Enter Date";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(30, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 23);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Enter Order Number";
             // 
             // dateTimePickerBH
             // 
@@ -333,6 +383,36 @@
             this.panelGenOS.Name = "panelGenOS";
             this.panelGenOS.Size = new System.Drawing.Size(380, 330);
             this.panelGenOS.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(30, 139);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Choose Action";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(30, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 23);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Choose Site";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(30, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Enter Cart ID";
             // 
             // panel11
             // 
@@ -565,6 +645,46 @@
             this.panelTestBuy.Size = new System.Drawing.Size(380, 330);
             this.panelTestBuy.TabIndex = 14;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 212);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 23);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Choose Server";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 23);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Choose PayPal Currency";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(30, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 23);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Choose Site Type";
+            // 
+            // labelChooseProduct
+            // 
+            this.labelChooseProduct.AutoSize = true;
+            this.labelChooseProduct.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChooseProduct.Location = new System.Drawing.Point(30, 10);
+            this.labelChooseProduct.Name = "labelChooseProduct";
+            this.labelChooseProduct.Size = new System.Drawing.Size(109, 23);
+            this.labelChooseProduct.TabIndex = 7;
+            this.labelChooseProduct.Text = "Choose Product";
+            // 
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -756,76 +876,6 @@
             this.radioButtonLive.UseVisualStyleBackColor = true;
             this.radioButtonLive.CheckedChanged += new System.EventHandler(this.siteType);
             // 
-            // labelChooseProduct
-            // 
-            this.labelChooseProduct.AutoSize = true;
-            this.labelChooseProduct.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChooseProduct.Location = new System.Drawing.Point(30, 10);
-            this.labelChooseProduct.Name = "labelChooseProduct";
-            this.labelChooseProduct.Size = new System.Drawing.Size(109, 23);
-            this.labelChooseProduct.TabIndex = 7;
-            this.labelChooseProduct.Text = "Choose Product";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 23);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Choose Site Type";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 23);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Choose PayPal Currency";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 212);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 23);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Choose Server";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Enter Cart ID";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 23);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Choose Site";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(30, 139);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 23);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Choose Action";
-            // 
             // labelMenuTitle
             // 
             this.labelMenuTitle.AutoSize = true;
@@ -837,69 +887,20 @@
             this.labelMenuTitle.Text = "Menu Title";
             this.labelMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(30, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 23);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Enter Order Number";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(30, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 23);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Enter Date";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(30, 111);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 23);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Choose Product";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(30, 170);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 23);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Choose Site";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(30, 228);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 23);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Choose Server";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelInstruction);
+            this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelCheckBH);
             this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.labelMenuTitle);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.EBTestTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
