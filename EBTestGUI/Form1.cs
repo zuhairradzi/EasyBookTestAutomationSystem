@@ -21,8 +21,12 @@ namespace EBTestGUI
 {
     public partial class Form1 : Form
     {
-        String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
-        String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+       String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
+       // String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
+
+       // String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Easybook Test System\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
+        String XMLFilePath = "D:\\Easybook Test System\\ETAS.xml";
+
         XmlDocument xml = new XmlDocument();
         IWebDriver Maindriver;
         Stopwatch sw = new Stopwatch();
@@ -36,17 +40,25 @@ namespace EBTestGUI
 
         string busHisXP, ferHisXP, traHisXP, carHisXP;
 
+        private void threadButton_Click(object sender, EventArgs e)
+        {
+            Action openGoogle = () =>
+            {
+                ChromeDriver driver = new ChromeDriver("D:\\Easybook Test System\\");
+                driver.Navigate().GoToUrl("https://www.google.com/");
+                driver.Manage().Window.Maximize();
+            };
+
+            var tasks = new[] { Task.Factory.StartNew(openGoogle), Task.Factory.StartNew(openGoogle), };
+            Task.WaitAll(tasks);
+           // ChromeDriver driver = new ChromeDriver("D:\\Easybook Test System\\");
+            //driver.Navigate().GoToUrl("https://www.google.com/");
+            //driver.Manage().Window.Maximize();
+        }
 
         List<Panel> newList = new List<Panel>();
 
-        private void SelTest_Click(object sender, EventArgs e)
-        {
-            ChromeDriver driver = new ChromeDriver("D:\\");
-            driver.Navigate().GoToUrl("https://www.google.com/");
-            driver.Manage().Window.Maximize();
-
-
-        }
+    
 
         public Form1()
         {
@@ -175,7 +187,7 @@ namespace EBTestGUI
             }
 
          
-            IWebDriver Maindriver = new ChromeDriver("D:\\");
+            IWebDriver Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
             Console.WriteLine("Launching browser");
 
             OSLinkGeneration newURL = new OSLinkGeneration(xml, Maindriver);
@@ -247,7 +259,9 @@ namespace EBTestGUI
                 MessageBox.Show("Please choose a server type!");
                 return;
             }
-            Maindriver = new ChromeDriver("D:\\");
+
+           
+                Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
             string date = dateTimePickerBH.Value.ToString("MM/dd/yyyy");
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
@@ -309,11 +323,10 @@ namespace EBTestGUI
                 MessageBox.Show("Please choose a server type!");
                 return;
             }
+
+
             //-----LAUNCH CHROME----//
-            
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.AddArgument("--disable-impl-side-painting");
-            Maindriver = new ChromeDriver("D:\\");
+            Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
 
             //--TIMER START--//
             sw.Start();

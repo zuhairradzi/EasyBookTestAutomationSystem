@@ -31,6 +31,7 @@ namespace EBTestGUI
         {
             driver.Navigate().GoToUrl(EBUrl);
             driver.Manage().Window.Maximize();
+
         }
     }
 }

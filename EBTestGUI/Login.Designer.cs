@@ -141,6 +141,7 @@
             this.buttonBypass.TabIndex = 9;
             this.buttonBypass.Text = "Bypass Login";
             this.buttonBypass.UseVisualStyleBackColor = true;
+            this.buttonBypass.Visible = false;
             this.buttonBypass.Click += new System.EventHandler(this.buttonBypass_Click);
             // 
             // Login

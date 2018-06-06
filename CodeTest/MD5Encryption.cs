@@ -26,63 +26,48 @@ namespace CodeTest
 {
     class MD5Encryption
     {
-        public string CalculateMD5Hash(string input)
+        
+        private const string initVector = "pemgail9uzpgzl88";
+        // This constant is used to determine the keysize of the encryption algorithm
+        private const int keysize = 256;
+        //Encrypt
 
+        
+        public string EncryptString(string plainText, string passPhrase)
         {
-
-            // step 1, calculate MD5 hash from input
-
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
-
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-
-            byte[] hash = md5.ComputeHash(inputBytes);
-
-            // step 2, convert byte array to hex string
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < hash.Length; i++)
-
-            {
-
-                sb.Append(hash[i].ToString("X2"));
-
-            }
-
-            return sb.ToString();
-
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+            cryptoStream.FlushFinalBlock();
+            byte[] cipherTextBytes = memoryStream.ToArray();
+            memoryStream.Close();
+            cryptoStream.Close();
+            return Convert.ToBase64String(cipherTextBytes);
         }
-        public string SHA1Hash(string input)
+        //Decrypt
+        public string DecryptString(string cipherText, string passPhrase)
         {
-            using (SHA1Managed sha1 = new SHA1Managed())
-            {
-                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var sb = new StringBuilder(hash.Length * 2);
-
-                foreach (byte b in hash)
-                {
-                    // can be "x2" if you want lowercase
-                    sb.Append(b.ToString("X2"));
-                }
-
-                return sb.ToString();
-            }
-        }
-
-
-        // Encrypt a file.
-        public void AddEncryption(string FileName)
-        {
-
-            File.Encrypt(FileName);
-
-        }
-
-        // Decrypt a file.
-        public void RemoveEncryption(string FileName)
-        {
-            File.Decrypt(FileName);
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
 
     }

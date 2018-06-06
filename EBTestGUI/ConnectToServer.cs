@@ -75,7 +75,7 @@ namespace EBTestGUI
                 while (!footerStr.Contains(serverNeeded))
                 {
                     driver.Close();
-                    driver = new ChromeDriver("D:\\");
+                    driver = new ChromeDriver("D:\\Easybook Test System\\");
                     driver.Navigate().GoToUrl(EBUrl);
                     driver.Manage().Window.Maximize();
                     ((IJavaScriptExecutor)driver).ExecuteScript(ScrollBottom);

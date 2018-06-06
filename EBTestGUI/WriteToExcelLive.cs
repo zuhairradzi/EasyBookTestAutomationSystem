@@ -23,7 +23,7 @@ namespace EBTestGUI
         public void ExcelWrite(string productType, string orderNo, string CartID, string tripDetail, string PurchaseDate,
            string tripDuration, string passengerName, string Company, string serverUsed, string platformUsed, string timeTaken)
         {
-            string file = "D:\\Product Purchase Log Live.xlsx";
+            string file = "D:\\Easybook Test System\\Product Purchase Log Live.xlsx";
             File.SetAttributes(file, File.GetAttributes(file) & ~FileAttributes.ReadOnly);
 
             int i = 0;

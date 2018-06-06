@@ -32,7 +32,9 @@ namespace EBTestGUI
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30");
+           
+           SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30");
+           // SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Easybook Test System\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30");
             SqlDataAdapter sda = new SqlDataAdapter("select count(*) from loginEB where emailEB ='" + emailTextBox.Text + "' and passwordEB ='" + passwordTextBox.Text + "'", conn);
             DataTable dt = new DataTable();
             sda.Fill(dt);
