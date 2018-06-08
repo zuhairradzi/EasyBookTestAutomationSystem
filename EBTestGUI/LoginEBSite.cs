@@ -1,19 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Globalization;
-using OpenQA.Selenium.Interactions;
-using NUnit.Framework;
 using System.Xml;
 using System.IO;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
@@ -23,7 +14,13 @@ namespace EBTestGUI
     {
         //---------------------VARIABLES, XPATH, ID-------------------------------------------//
         //----Login Elements--//
-        string ElLogin, ElSignIn, ElemEmail, ElemPass, email, password, ElemCaptcha, ElBtnLogin, scrollToTopJS;
+        string ElLogin, ElSignIn, ElemEmail, ElemPass, emailEN, passEN, ElemCaptcha, ElBtnLogin, scrollToTopJS;
+        string passKey = "eb123";
+        string EBemail, EBpass;
+        private const string initVector = "pemgail9uzpgzl88";
+        // This constant is used to determine the keysize of the encryption algorithm
+        private const int keysize = 256;
+        //Encrypt
         //-------------------------------------------------------------------------------------//
 
         //---------------------METHODS-------------------------------------------//
@@ -49,24 +46,49 @@ namespace EBTestGUI
                 ElemCaptcha = xnode["Captcha"]["Id"].InnerText.Trim();
                 ElBtnLogin = xnode["buttonLogin"]["Id"].InnerText.Trim();
                 scrollToTopJS = xnode["JSactions"]["ScrolltoTop"]["Action"].InnerText.Trim();
+                
+            }
+            XmlNodeList xnMenu1 = xml.SelectNodes("/ETAS/Login/EB");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                emailEN = xnode["Email"].InnerText.Trim();
+                passEN = xnode["Password"].InnerText.Trim();
             }
         }
-
-        public void ReadDB(string sqlString)
+        public void DecryptStringEmail()
         {
-            using (SqlConnection connection = new SqlConnection(sqlString))
-            using (SqlCommand command = new SqlCommand("select * from loginEB", connection))
-            {
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        email = reader["emailEB"].ToString();
-                        password = reader["passwordEB"].ToString();
-                    }
-                }
-            }
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(emailEN);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passKey, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            EBemail = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+        }
+
+        public void DecryptStringPW()
+        {
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(passEN);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passKey, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            EBpass = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
 
         public void loginEB()
@@ -78,9 +100,9 @@ namespace EBTestGUI
                 driver.FindElement(By.XPath(ElSignIn)).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElLogin)))).Click();
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).SendKeys(email);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemEmail)))).SendKeys(EBemail);
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).Clear();
-                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).SendKeys(password);
+                new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElemPass)))).SendKeys(EBpass);
                 new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementExists((By.Id(ElBtnLogin)))).Click();
             }
             catch (NoSuchElementException)
@@ -90,45 +112,5 @@ namespace EBTestGUI
             }
         }
 
-        private const string initVector = "pemgail9uzpgzl88";
-        // This constant is used to determine the keysize of the encryption algorithm
-        private const int keysize = 256;
-        //Encrypt
-        public static string EncryptString(string plainText, string passPhrase)
-        {
-            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream();
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-            cryptoStream.FlushFinalBlock();
-            byte[] cipherTextBytes = memoryStream.ToArray();
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Convert.ToBase64String(cipherTextBytes);
-        }
-        //Decrypt
-        public static string DecryptString(string cipherText, string passPhrase)
-        {
-            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
-            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
-        }
     }
 }

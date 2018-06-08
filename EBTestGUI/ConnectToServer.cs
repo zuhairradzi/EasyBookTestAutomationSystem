@@ -1,17 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Globalization;
-using OpenQA.Selenium.Interactions;
 using System.Xml;
-using NUnit.Framework;
 using System.Windows.Forms;
 
 namespace EBTestGUI

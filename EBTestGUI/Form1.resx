@@ -129,6 +129,15 @@ Other testing process that can be automated from this system are checking the bo
 
 </value>
   </data>
+  <data name="XMLInstructionTextBox.Text" xml:space="preserve">
+    <value>For first time users, please read the instruction first. 
+
+This is the trip value panel where you can edit the relevant information needed to run the automation test buy process. The information that is editable are the destination/place of the trip, the date of the trip, the trip key or value used to select the trip and continue to passenger details page for Ferry. These three information are vital in choosing the desired trip in the website and editable due to the frequent change happened. This panel will provide the users with the ability to edit the information precisely without opening the XML document containing all these values and edit manually.
+
+Bear in mind that trip key entered will be inserted into the XPath string which will be used by the selenium to navigate through the elements of the webpage, so please ensure the edited infomation is accurate and precised. Wrong value may result in failure to do the test buy process.
+ 
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System.Xml;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EBTestGUI
@@ -98,10 +90,6 @@ namespace EBTestGUI
         private void GetXMLButton_Click(object sender, EventArgs e)
         {
             buttonGetXMLwasClicked = true;
-           //IndexInputCallXML ind = new IndexInputCallXML();
-           //int key = ind.ReadElement(path, ProductComboBox.SelectedValue.ToString(), SiteComboBox.SelectedValue.ToString(), CurrencyComboBox.SelectedValue.ToString());
-            //newList[key-1].BringToFront();
-            //MessageBox.Show("GET XML ===> product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
             xml.Load(path);
 
             if (ProductComboBox.SelectedValue.ToString().ToLower().Contains("car"))
@@ -144,22 +132,7 @@ namespace EBTestGUI
                 {
                     TripKey.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
                 }
-                //TripKey.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
             }
-            /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
-            foreach (XmlNode xnode in xnMenu2)
-            {
-                TripContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
-            }
-            
-           
-            XmlNodeList xnMenu3 = xml.SelectNodes("ETAS/Seat");
-            foreach (XmlNode xnode in xnMenu3)
-            {
-                ContinueContent1.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["ContinueButton"]["XPath"].InnerText.Trim();
-            }*/
-            
-          
             newList[0].BringToFront();
         }
 
@@ -171,8 +144,6 @@ namespace EBTestGUI
                 return;
             }
             buttonEditwasClicked = true;
-
-            //MessageBox.Show("EDIT ===> product : " + ProductComboBox.SelectedValue.ToString() + " - site : " + SiteComboBox.SelectedValue.ToString() + " - currency : " + CurrencyComboBox.SelectedValue.ToString());
             xml.Load(path);
 
             if ((ProductComboBox.SelectedValue.ToString().ToLower().Contains("car")))
@@ -215,14 +186,7 @@ namespace EBTestGUI
                 {
                     tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
                 }
-               // tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText.Trim();
             }
-            /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
-            foreach (XmlNode xnode in xnMenu2)
-            {
-                tripKeyTextBox.Text = xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText.Trim();
-            }*/
-            
             newList[1].BringToFront();
         }
 
@@ -313,17 +277,10 @@ namespace EBTestGUI
                     {
                         xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText = TripKey.Text;
                     }
-                    //xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["Key"].InnerText = TripKey.Text;
                 }
-                /*XmlNodeList xnMenu2 = xml.SelectNodes("ETAS/SelectTrip");
-                foreach (XmlNode xnode in xnMenu2)
-                {
-                    xnode[ProductComboBox.SelectedValue.ToString()][SiteComboBox.SelectedValue.ToString()][CurrencyComboBox.SelectedValue.ToString()]["XPath"].InnerText = TripKey.Text;
-                }*/
-
-
                 MessageBox.Show("Update for [" + ProductComboBox.SelectedValue.ToString() + " <=> " + SiteComboBox.SelectedValue.ToString() + " <=> " + CurrencyComboBox.SelectedValue.ToString()+"] successful");
                 buttonEditwasClicked = false;
+                buttonGetXMLwasClicked = false;
                 xml.Save(path);
             }
             else if (dialogResult == DialogResult.No)

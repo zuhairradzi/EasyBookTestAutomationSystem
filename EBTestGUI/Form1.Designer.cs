@@ -94,6 +94,49 @@
             this.radioButtonTest = new System.Windows.Forms.RadioButton();
             this.radioButtonLive = new System.Windows.Forms.RadioButton();
             this.labelMenuTitle = new System.Windows.Forms.Label();
+            this.PanelXMLInstruction = new System.Windows.Forms.Panel();
+            this.XMLInstructionTextBox = new System.Windows.Forms.RichTextBox();
+            this.panelXML1Edit = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.RoutesToTextBox = new System.Windows.Forms.TextBox();
+            this.RoutesFromTextBox = new System.Windows.Forms.TextBox();
+            this.RouteTitle = new System.Windows.Forms.Label();
+            this.Routes = new System.Windows.Forms.Label();
+            this.dateTimePickerUpdateXML = new System.Windows.Forms.DateTimePicker();
+            this.tripKeyTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.PanelXMLEditLabel = new System.Windows.Forms.Label();
+            this.panelXML1Display = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.toLabelDisplay = new System.Windows.Forms.Label();
+            this.RoutesToContent = new System.Windows.Forms.Label();
+            this.RoutesFromContent = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.RoutesLable = new System.Windows.Forms.Label();
+            this.TripKey = new System.Windows.Forms.Label();
+            this.TripValue1 = new System.Windows.Forms.Label();
+            this.TripTitle1 = new System.Windows.Forms.Label();
+            this.DateContent1 = new System.Windows.Forms.Label();
+            this.DateValue1 = new System.Windows.Forms.Label();
+            this.DateTitle1 = new System.Windows.Forms.Label();
+            this.Title1 = new System.Windows.Forms.Label();
+            this.panelClassifyBar = new System.Windows.Forms.Panel();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.panelComboSearch = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.GetXMLButton = new System.Windows.Forms.Button();
+            this.CurrencyComboBox = new System.Windows.Forms.ComboBox();
+            this.SiteComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductComboBox = new System.Windows.Forms.ComboBox();
             this.panel5.SuspendLayout();
             this.panelCheckBH.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -108,13 +151,18 @@
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel17.SuspendLayout();
+            this.PanelXMLInstruction.SuspendLayout();
+            this.panelXML1Edit.SuspendLayout();
+            this.panelXML1Display.SuspendLayout();
+            this.panelClassifyBar.SuspendLayout();
+            this.panelComboSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // EBTestTitle
             // 
             this.EBTestTitle.AutoSize = true;
             this.EBTestTitle.Font = new System.Drawing.Font("Bebas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EBTestTitle.Location = new System.Drawing.Point(306, 20);
+            this.EBTestTitle.Location = new System.Drawing.Point(306, 5);
             this.EBTestTitle.Name = "EBTestTitle";
             this.EBTestTitle.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.EBTestTitle.Size = new System.Drawing.Size(260, 28);
@@ -561,7 +609,7 @@
             this.EditXMLButton.Name = "EditXMLButton";
             this.EditXMLButton.Size = new System.Drawing.Size(137, 36);
             this.EditXMLButton.TabIndex = 3;
-            this.EditXMLButton.Text = "XML Value";
+            this.EditXMLButton.Text = "Trip Value";
             this.EditXMLButton.UseVisualStyleBackColor = false;
             this.EditXMLButton.Click += new System.EventHandler(this.XMLDocButton_Click);
             // 
@@ -620,11 +668,11 @@
             // richTextBoxInstruction
             // 
             this.richTextBoxInstruction.Font = new System.Drawing.Font("Sitka Text", 9.7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxInstruction.Location = new System.Drawing.Point(30, 29);
+            this.richTextBoxInstruction.Location = new System.Drawing.Point(30, 30);
             this.richTextBoxInstruction.Name = "richTextBoxInstruction";
             this.richTextBoxInstruction.ReadOnly = true;
             this.richTextBoxInstruction.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBoxInstruction.Size = new System.Drawing.Size(316, 281);
+            this.richTextBoxInstruction.Size = new System.Drawing.Size(315, 270);
             this.richTextBoxInstruction.TabIndex = 0;
             this.richTextBoxInstruction.Text = resources.GetString("richTextBoxInstruction.Text");
             // 
@@ -880,12 +928,492 @@
             // 
             this.labelMenuTitle.AutoSize = true;
             this.labelMenuTitle.Font = new System.Drawing.Font("Raleway SemiBold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMenuTitle.Location = new System.Drawing.Point(241, 403);
+            this.labelMenuTitle.Location = new System.Drawing.Point(241, 40);
             this.labelMenuTitle.Name = "labelMenuTitle";
             this.labelMenuTitle.Size = new System.Drawing.Size(66, 14);
             this.labelMenuTitle.TabIndex = 15;
             this.labelMenuTitle.Text = "Menu Title";
             this.labelMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PanelXMLInstruction
+            // 
+            this.PanelXMLInstruction.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.PanelXMLInstruction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelXMLInstruction.Controls.Add(this.XMLInstructionTextBox);
+            this.PanelXMLInstruction.Location = new System.Drawing.Point(240, 60);
+            this.PanelXMLInstruction.Name = "PanelXMLInstruction";
+            this.PanelXMLInstruction.Size = new System.Drawing.Size(380, 330);
+            this.PanelXMLInstruction.TabIndex = 16;
+            // 
+            // XMLInstructionTextBox
+            // 
+            this.XMLInstructionTextBox.Font = new System.Drawing.Font("Sitka Text", 9.7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XMLInstructionTextBox.Location = new System.Drawing.Point(30, 30);
+            this.XMLInstructionTextBox.Name = "XMLInstructionTextBox";
+            this.XMLInstructionTextBox.ReadOnly = true;
+            this.XMLInstructionTextBox.Size = new System.Drawing.Size(315, 270);
+            this.XMLInstructionTextBox.TabIndex = 0;
+            this.XMLInstructionTextBox.Text = resources.GetString("XMLInstructionTextBox.Text");
+            // 
+            // panelXML1Edit
+            // 
+            this.panelXML1Edit.AutoScroll = true;
+            this.panelXML1Edit.BackColor = System.Drawing.Color.Violet;
+            this.panelXML1Edit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelXML1Edit.Controls.Add(this.label12);
+            this.panelXML1Edit.Controls.Add(this.label13);
+            this.panelXML1Edit.Controls.Add(this.toLabel);
+            this.panelXML1Edit.Controls.Add(this.RoutesToTextBox);
+            this.panelXML1Edit.Controls.Add(this.RoutesFromTextBox);
+            this.panelXML1Edit.Controls.Add(this.RouteTitle);
+            this.panelXML1Edit.Controls.Add(this.Routes);
+            this.panelXML1Edit.Controls.Add(this.dateTimePickerUpdateXML);
+            this.panelXML1Edit.Controls.Add(this.tripKeyTextBox);
+            this.panelXML1Edit.Controls.Add(this.label14);
+            this.panelXML1Edit.Controls.Add(this.label15);
+            this.panelXML1Edit.Controls.Add(this.label16);
+            this.panelXML1Edit.Controls.Add(this.label17);
+            this.panelXML1Edit.Controls.Add(this.PanelXMLEditLabel);
+            this.panelXML1Edit.Location = new System.Drawing.Point(240, 60);
+            this.panelXML1Edit.Name = "panelXML1Edit";
+            this.panelXML1Edit.Size = new System.Drawing.Size(380, 330);
+            this.panelXML1Edit.TabIndex = 17;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Violet;
+            this.label12.Location = new System.Drawing.Point(550, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 18);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Date Value";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Violet;
+            this.label13.Location = new System.Drawing.Point(65, 500);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 18);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Date Value";
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Font = new System.Drawing.Font("Sansation", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toLabel.Location = new System.Drawing.Point(197, 97);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(15, 12);
+            this.toLabel.TabIndex = 17;
+            this.toLabel.Text = "to";
+            // 
+            // RoutesToTextBox
+            // 
+            this.RoutesToTextBox.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoutesToTextBox.Location = new System.Drawing.Point(219, 95);
+            this.RoutesToTextBox.Name = "RoutesToTextBox";
+            this.RoutesToTextBox.Size = new System.Drawing.Size(126, 22);
+            this.RoutesToTextBox.TabIndex = 16;
+            // 
+            // RoutesFromTextBox
+            // 
+            this.RoutesFromTextBox.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoutesFromTextBox.Location = new System.Drawing.Point(65, 95);
+            this.RoutesFromTextBox.Name = "RoutesFromTextBox";
+            this.RoutesFromTextBox.Size = new System.Drawing.Size(126, 22);
+            this.RoutesFromTextBox.TabIndex = 15;
+            // 
+            // RouteTitle
+            // 
+            this.RouteTitle.AutoSize = true;
+            this.RouteTitle.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RouteTitle.Location = new System.Drawing.Point(65, 75);
+            this.RouteTitle.Name = "RouteTitle";
+            this.RouteTitle.Size = new System.Drawing.Size(74, 18);
+            this.RouteTitle.TabIndex = 14;
+            this.RouteTitle.Text = "Route / Area";
+            // 
+            // Routes
+            // 
+            this.Routes.AutoSize = true;
+            this.Routes.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Routes.Location = new System.Drawing.Point(35, 45);
+            this.Routes.Name = "Routes";
+            this.Routes.Size = new System.Drawing.Size(53, 23);
+            this.Routes.TabIndex = 13;
+            this.Routes.Text = "Routes";
+            // 
+            // dateTimePickerUpdateXML
+            // 
+            this.dateTimePickerUpdateXML.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerUpdateXML.Location = new System.Drawing.Point(65, 195);
+            this.dateTimePickerUpdateXML.Name = "dateTimePickerUpdateXML";
+            this.dateTimePickerUpdateXML.Size = new System.Drawing.Size(280, 22);
+            this.dateTimePickerUpdateXML.TabIndex = 12;
+            // 
+            // tripKeyTextBox
+            // 
+            this.tripKeyTextBox.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tripKeyTextBox.Location = new System.Drawing.Point(65, 295);
+            this.tripKeyTextBox.Name = "tripKeyTextBox";
+            this.tripKeyTextBox.Size = new System.Drawing.Size(450, 22);
+            this.tripKeyTextBox.TabIndex = 10;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(65, 275);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 18);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Trip Key/Value";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(35, 245);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 23);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Trip Selection";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(65, 175);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(64, 18);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Date Value";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(35, 145);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(39, 23);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Date";
+            // 
+            // PanelXMLEditLabel
+            // 
+            this.PanelXMLEditLabel.AutoSize = true;
+            this.PanelXMLEditLabel.Font = new System.Drawing.Font("Raleway SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelXMLEditLabel.Location = new System.Drawing.Point(35, 10);
+            this.PanelXMLEditLabel.Name = "PanelXMLEditLabel";
+            this.PanelXMLEditLabel.Size = new System.Drawing.Size(186, 19);
+            this.PanelXMLEditLabel.TabIndex = 0;
+            this.PanelXMLEditLabel.Text = "Element and Value List";
+            // 
+            // panelXML1Display
+            // 
+            this.panelXML1Display.AutoScroll = true;
+            this.panelXML1Display.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.panelXML1Display.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelXML1Display.Controls.Add(this.label18);
+            this.panelXML1Display.Controls.Add(this.label19);
+            this.panelXML1Display.Controls.Add(this.toLabelDisplay);
+            this.panelXML1Display.Controls.Add(this.RoutesToContent);
+            this.panelXML1Display.Controls.Add(this.RoutesFromContent);
+            this.panelXML1Display.Controls.Add(this.label20);
+            this.panelXML1Display.Controls.Add(this.RoutesLable);
+            this.panelXML1Display.Controls.Add(this.TripKey);
+            this.panelXML1Display.Controls.Add(this.TripValue1);
+            this.panelXML1Display.Controls.Add(this.TripTitle1);
+            this.panelXML1Display.Controls.Add(this.DateContent1);
+            this.panelXML1Display.Controls.Add(this.DateValue1);
+            this.panelXML1Display.Controls.Add(this.DateTitle1);
+            this.panelXML1Display.Controls.Add(this.Title1);
+            this.panelXML1Display.Location = new System.Drawing.Point(240, 60);
+            this.panelXML1Display.Name = "panelXML1Display";
+            this.panelXML1Display.Size = new System.Drawing.Size(380, 330);
+            this.panelXML1Display.TabIndex = 20;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.label18.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.label18.Location = new System.Drawing.Point(550, 295);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 15);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "label18";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.label19.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.label19.Location = new System.Drawing.Point(65, 500);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(47, 15);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "label19";
+            // 
+            // toLabelDisplay
+            // 
+            this.toLabelDisplay.AutoSize = true;
+            this.toLabelDisplay.Font = new System.Drawing.Font("Sansation", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toLabelDisplay.Location = new System.Drawing.Point(197, 97);
+            this.toLabelDisplay.Name = "toLabelDisplay";
+            this.toLabelDisplay.Size = new System.Drawing.Size(15, 12);
+            this.toLabelDisplay.TabIndex = 14;
+            this.toLabelDisplay.Text = "to";
+            // 
+            // RoutesToContent
+            // 
+            this.RoutesToContent.AutoSize = true;
+            this.RoutesToContent.BackColor = System.Drawing.Color.Plum;
+            this.RoutesToContent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RoutesToContent.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoutesToContent.Location = new System.Drawing.Point(219, 95);
+            this.RoutesToContent.Name = "RoutesToContent";
+            this.RoutesToContent.Size = new System.Drawing.Size(71, 17);
+            this.RoutesToContent.TabIndex = 13;
+            this.RoutesToContent.Text = "End Route";
+            // 
+            // RoutesFromContent
+            // 
+            this.RoutesFromContent.AutoSize = true;
+            this.RoutesFromContent.BackColor = System.Drawing.Color.Plum;
+            this.RoutesFromContent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RoutesFromContent.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoutesFromContent.Location = new System.Drawing.Point(65, 95);
+            this.RoutesFromContent.Name = "RoutesFromContent";
+            this.RoutesFromContent.Size = new System.Drawing.Size(74, 17);
+            this.RoutesFromContent.TabIndex = 12;
+            this.RoutesFromContent.Text = "Start Route";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(65, 75);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(73, 18);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "Routes/Area";
+            // 
+            // RoutesLable
+            // 
+            this.RoutesLable.AutoSize = true;
+            this.RoutesLable.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoutesLable.Location = new System.Drawing.Point(35, 40);
+            this.RoutesLable.Name = "RoutesLable";
+            this.RoutesLable.Size = new System.Drawing.Size(53, 23);
+            this.RoutesLable.TabIndex = 10;
+            this.RoutesLable.Text = "Routes";
+            // 
+            // TripKey
+            // 
+            this.TripKey.AutoSize = true;
+            this.TripKey.BackColor = System.Drawing.Color.Plum;
+            this.TripKey.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TripKey.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TripKey.Location = new System.Drawing.Point(65, 295);
+            this.TripKey.Name = "TripKey";
+            this.TripKey.Size = new System.Drawing.Size(55, 17);
+            this.TripKey.TabIndex = 6;
+            this.TripKey.Text = "TripKey";
+            // 
+            // TripValue1
+            // 
+            this.TripValue1.AutoSize = true;
+            this.TripValue1.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TripValue1.Location = new System.Drawing.Point(65, 275);
+            this.TripValue1.Name = "TripValue1";
+            this.TripValue1.Size = new System.Drawing.Size(88, 18);
+            this.TripValue1.TabIndex = 5;
+            this.TripValue1.Text = "Trip Key/Value";
+            // 
+            // TripTitle1
+            // 
+            this.TripTitle1.AutoSize = true;
+            this.TripTitle1.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TripTitle1.Location = new System.Drawing.Point(35, 245);
+            this.TripTitle1.Name = "TripTitle1";
+            this.TripTitle1.Size = new System.Drawing.Size(98, 23);
+            this.TripTitle1.TabIndex = 4;
+            this.TripTitle1.Text = "Trip Selection";
+            // 
+            // DateContent1
+            // 
+            this.DateContent1.AutoSize = true;
+            this.DateContent1.BackColor = System.Drawing.Color.Plum;
+            this.DateContent1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DateContent1.Font = new System.Drawing.Font("Sansation", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateContent1.Location = new System.Drawing.Point(65, 195);
+            this.DateContent1.Name = "DateContent1";
+            this.DateContent1.Size = new System.Drawing.Size(85, 17);
+            this.DateContent1.TabIndex = 3;
+            this.DateContent1.Text = "DateContent";
+            // 
+            // DateValue1
+            // 
+            this.DateValue1.AutoSize = true;
+            this.DateValue1.Font = new System.Drawing.Font("Sitka Subheading", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateValue1.Location = new System.Drawing.Point(65, 175);
+            this.DateValue1.Name = "DateValue1";
+            this.DateValue1.Size = new System.Drawing.Size(64, 18);
+            this.DateValue1.TabIndex = 2;
+            this.DateValue1.Text = "Date Value";
+            // 
+            // DateTitle1
+            // 
+            this.DateTitle1.AutoSize = true;
+            this.DateTitle1.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTitle1.Location = new System.Drawing.Point(35, 145);
+            this.DateTitle1.Name = "DateTitle1";
+            this.DateTitle1.Size = new System.Drawing.Size(39, 23);
+            this.DateTitle1.TabIndex = 1;
+            this.DateTitle1.Text = "Date";
+            // 
+            // Title1
+            // 
+            this.Title1.AutoSize = true;
+            this.Title1.Font = new System.Drawing.Font("Raleway SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title1.Location = new System.Drawing.Point(35, 10);
+            this.Title1.Name = "Title1";
+            this.Title1.Size = new System.Drawing.Size(186, 19);
+            this.Title1.TabIndex = 0;
+            this.Title1.Text = "Element and Value List";
+            // 
+            // panelClassifyBar
+            // 
+            this.panelClassifyBar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panelClassifyBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelClassifyBar.Controls.Add(this.buttonUpdate);
+            this.panelClassifyBar.Controls.Add(this.buttonEdit);
+            this.panelClassifyBar.Location = new System.Drawing.Point(240, 393);
+            this.panelClassifyBar.Name = "panelClassifyBar";
+            this.panelClassifyBar.Size = new System.Drawing.Size(380, 60);
+            this.panelClassifyBar.TabIndex = 21;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonUpdate.Font = new System.Drawing.Font("Zekton Rg", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.Location = new System.Drawing.Point(211, 12);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(126, 37);
+            this.buttonUpdate.TabIndex = 1;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.BackColor = System.Drawing.Color.Magenta;
+            this.buttonEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonEdit.Font = new System.Drawing.Font("Zekton Rg", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.Location = new System.Drawing.Point(37, 12);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(126, 37);
+            this.buttonEdit.TabIndex = 0;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // panelComboSearch
+            // 
+            this.panelComboSearch.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panelComboSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelComboSearch.Controls.Add(this.label21);
+            this.panelComboSearch.Controls.Add(this.label22);
+            this.panelComboSearch.Controls.Add(this.label23);
+            this.panelComboSearch.Controls.Add(this.GetXMLButton);
+            this.panelComboSearch.Controls.Add(this.CurrencyComboBox);
+            this.panelComboSearch.Controls.Add(this.SiteComboBox);
+            this.panelComboSearch.Controls.Add(this.ProductComboBox);
+            this.panelComboSearch.Location = new System.Drawing.Point(644, 60);
+            this.panelComboSearch.Name = "panelComboSearch";
+            this.panelComboSearch.Size = new System.Drawing.Size(116, 330);
+            this.panelComboSearch.TabIndex = 22;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Sitka Heading", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(12, 167);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(67, 21);
+            this.label21.TabIndex = 16;
+            this.label21.Text = "Currency";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Sitka Heading", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(12, 96);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(34, 21);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "Site";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Sitka Heading", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(12, 25);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 21);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "Product";
+            // 
+            // GetXMLButton
+            // 
+            this.GetXMLButton.BackColor = System.Drawing.Color.Magenta;
+            this.GetXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.GetXMLButton.Font = new System.Drawing.Font("Zekton Rg", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GetXMLButton.Location = new System.Drawing.Point(16, 251);
+            this.GetXMLButton.Name = "GetXMLButton";
+            this.GetXMLButton.Size = new System.Drawing.Size(80, 56);
+            this.GetXMLButton.TabIndex = 13;
+            this.GetXMLButton.Text = "Get Trip Value";
+            this.GetXMLButton.UseVisualStyleBackColor = false;
+            this.GetXMLButton.Click += new System.EventHandler(this.GetXMLButton_Click);
+            // 
+            // CurrencyComboBox
+            // 
+            this.CurrencyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CurrencyComboBox.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrencyComboBox.FormattingEnabled = true;
+            this.CurrencyComboBox.Location = new System.Drawing.Point(7, 192);
+            this.CurrencyComboBox.Name = "CurrencyComboBox";
+            this.CurrencyComboBox.Size = new System.Drawing.Size(90, 22);
+            this.CurrencyComboBox.TabIndex = 12;
+            // 
+            // SiteComboBox
+            // 
+            this.SiteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SiteComboBox.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SiteComboBox.FormattingEnabled = true;
+            this.SiteComboBox.Location = new System.Drawing.Point(8, 121);
+            this.SiteComboBox.Name = "SiteComboBox";
+            this.SiteComboBox.Size = new System.Drawing.Size(89, 22);
+            this.SiteComboBox.TabIndex = 11;
+            // 
+            // ProductComboBox
+            // 
+            this.ProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ProductComboBox.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductComboBox.FormattingEnabled = true;
+            this.ProductComboBox.Location = new System.Drawing.Point(8, 59);
+            this.ProductComboBox.Name = "ProductComboBox";
+            this.ProductComboBox.Size = new System.Drawing.Size(90, 22);
+            this.ProductComboBox.TabIndex = 0;
             // 
             // Form1
             // 
@@ -894,6 +1422,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.panelInstruction);
+            this.Controls.Add(this.PanelXMLInstruction);
+            this.Controls.Add(this.panelComboSearch);
+            this.Controls.Add(this.panelClassifyBar);
+            this.Controls.Add(this.panelXML1Display);
+            this.Controls.Add(this.panelXML1Edit);
             this.Controls.Add(this.panelGenOS);
             this.Controls.Add(this.panelCheckBH);
             this.Controls.Add(this.panelTestBuy);
@@ -933,6 +1466,14 @@
             this.panel16.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
+            this.PanelXMLInstruction.ResumeLayout(false);
+            this.panelXML1Edit.ResumeLayout(false);
+            this.panelXML1Edit.PerformLayout();
+            this.panelXML1Display.ResumeLayout(false);
+            this.panelXML1Display.PerformLayout();
+            this.panelClassifyBar.ResumeLayout(false);
+            this.panelComboSearch.ResumeLayout(false);
+            this.panelComboSearch.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1004,6 +1545,49 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel PanelXMLInstruction;
+        private System.Windows.Forms.RichTextBox XMLInstructionTextBox;
+        private System.Windows.Forms.Panel panelXML1Edit;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.TextBox RoutesToTextBox;
+        private System.Windows.Forms.TextBox RoutesFromTextBox;
+        private System.Windows.Forms.Label RouteTitle;
+        private System.Windows.Forms.Label Routes;
+        private System.Windows.Forms.DateTimePicker dateTimePickerUpdateXML;
+        private System.Windows.Forms.TextBox tripKeyTextBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label PanelXMLEditLabel;
+        private System.Windows.Forms.Panel panelXML1Display;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label toLabelDisplay;
+        private System.Windows.Forms.Label RoutesToContent;
+        private System.Windows.Forms.Label RoutesFromContent;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label RoutesLable;
+        private System.Windows.Forms.Label TripKey;
+        private System.Windows.Forms.Label TripValue1;
+        private System.Windows.Forms.Label TripTitle1;
+        private System.Windows.Forms.Label DateContent1;
+        private System.Windows.Forms.Label DateValue1;
+        private System.Windows.Forms.Label DateTitle1;
+        private System.Windows.Forms.Label Title1;
+        private System.Windows.Forms.Panel panelClassifyBar;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Panel panelComboSearch;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button GetXMLButton;
+        private System.Windows.Forms.ComboBox CurrencyComboBox;
+        private System.Windows.Forms.ComboBox SiteComboBox;
+        private System.Windows.Forms.ComboBox ProductComboBox;
     }
 }
 

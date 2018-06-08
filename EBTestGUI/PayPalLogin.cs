@@ -15,6 +15,7 @@ using System.Xml;
 using System.IO;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace EBTestGUI
 {
@@ -22,6 +23,9 @@ namespace EBTestGUI
     {
         private IWebDriver driver;
         private XmlDocument xml;
+        private const string initVector = "pemgail9uzpgzl88";
+        // This constant is used to determine the keysize of the encryption algorithm
+        private const int keysize = 256;
 
         public PayPalLogin(XmlDocument mainxml, IWebDriver maindriver)
         {
@@ -29,7 +33,9 @@ namespace EBTestGUI
             this.driver = maindriver;
         }
 
-        string LoginButtonFirst, emailElementID, emailVal, emailProceedElementId, emailProceedElementXp, passwordElemId, pwVal, LoginButtonCss, LoginButtonXP;
+        string LoginButtonFirst, emailElementID, PPemail, emailProceedElementId, emailProceedElementXp, passwordElemId, PPpass, LoginButtonCss, LoginButtonXP;
+        string emailEN, passEN;
+        string passKey = "eb123";
         public void ReadElement(string XMLpath)
         {
             xml.Load(XMLpath);
@@ -44,24 +50,48 @@ namespace EBTestGUI
                 LoginButtonCss = xnode["Password"]["ContinueButton"]["CssSelector"].InnerText.Trim();
                 LoginButtonXP = xnode["Password"]["ContinueButton"]["XPath"].InnerText.Trim();
             }
+            XmlNodeList xnMenu1 = xml.SelectNodes("/ETAS/Login/PayPal");
+            foreach (XmlNode xnode in xnMenu1)
+            {
+                emailEN = xnode["Email"].InnerText.Trim();
+                passEN = xnode["Password"].InnerText.Trim();
+            }
         }
 
-
-        public void ReadDB(string sqlString)
+        public void DecryptStringEmail()
         {
-            using (SqlConnection connection = new SqlConnection(sqlString))
-            using (SqlCommand command = new SqlCommand("select * from loginPayPal", connection))
-            {
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        emailVal = reader["emailPP"].ToString();
-                        pwVal = reader["passwordPP"].ToString();
-                    }
-                }
-            }
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(emailEN);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passKey, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            PPemail = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+        }
+
+        public void DecryptStringPW()
+        {
+            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
+            byte[] cipherTextBytes = Convert.FromBase64String(passEN);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(passKey, null);
+            byte[] keyBytes = password.GetBytes(keysize / 8);
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            memoryStream.Close();
+            cryptoStream.Close();
+            PPpass = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
 
         public void ClickLogin()
@@ -83,7 +113,7 @@ namespace EBTestGUI
             try
             {
                 Thread.Sleep(5000);
-                driver.FindElement(By.Id(emailElementID)).SendKeys(emailVal);
+                driver.FindElement(By.Id(emailElementID)).SendKeys(PPemail);
             }
             catch (NoSuchElementException)
             {
@@ -109,7 +139,7 @@ namespace EBTestGUI
             try
             {
                 var password = driver.FindElement(By.Id(passwordElemId));
-                password.SendKeys(pwVal);
+                password.SendKeys(PPpass);
             }
             catch (NoSuchElementException)
             {
