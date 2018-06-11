@@ -58,6 +58,7 @@ namespace EBTestGUI
                 }
             }
             catch (NoSuchElementException)
+
             {
                 MessageBox.Show("Server element not found!");
                 Console.WriteLine("Server element not found!");
