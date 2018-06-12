@@ -42,6 +42,7 @@ namespace EBTestGUI
             try
             {
                 driver.FindElement(By.Id(dateElemID)).Click();
+                driver.FindElement(By.Id(dateElemID)).Clear();
                 driver.FindElement(By.Id(dateElemID)).SendKeys(date);
                 driver.FindElement(By.Id(SelElemID)).Click();
                 driver.FindElement(By.XPath(productElemXP)).Click();

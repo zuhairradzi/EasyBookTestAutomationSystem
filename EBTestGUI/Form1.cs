@@ -49,6 +49,21 @@ namespace EBTestGUI
             newList.Add(panelXML1Display);//4
             newList.Add(panelXML1Edit);//5
             newList.Add(PanelXMLInstruction);//6
+            newList.Add(panelGeoIntel);//7
+
+            List<CountryCombo> listCountry = new List<CountryCombo>();
+            listCountry.Add(new CountryCombo() { ID = "Malaysia", country = "Malaysia" });
+            listCountry.Add(new CountryCombo() { ID = "Singapore", country = "Singapore" });
+            listCountry.Add(new CountryCombo() { ID = "SEA", country = "SEA" });
+            listCountry.Add(new CountryCombo() { ID = "Thailand", country = "Thailand" });
+            listCountry.Add(new CountryCombo() { ID = "Cambodia", country = "Cambodia" });
+            listCountry.Add(new CountryCombo() { ID = "Laos", country = "Laos" });
+            listCountry.Add(new CountryCombo() { ID = "Myanmar", country = "Myanmar" });
+            listCountry.Add(new CountryCombo() { ID = "Vietnam", country = "Vietnam" });
+            listCountry.Add(new CountryCombo() { ID = "Brunei", country = "Brunei" });
+            comboBoxCountry.DataSource = listCountry;
+            comboBoxCountry.ValueMember = "ID";
+            comboBoxCountry.DisplayMember = "country";
 
             List<SiteCombo> listSite = new List<SiteCombo>();
             listSite.Add(new SiteCombo() { ID = "Test", site = "Test" });
@@ -130,12 +145,24 @@ namespace EBTestGUI
             panelClassifyBar.Visible = true;
             panelComboSearch.Visible = true;
         }
+
+       
+
         private void siteName(object sender, EventArgs e)
         {
             RadioButton button = (RadioButton)sender;
             siteBH = button.Text;
         }
+
         
+        private void ButtonGeoIntelMenu_Click(object sender, EventArgs e)
+        {
+            panelClassifyBar.Visible = false;
+            panelComboSearch.Visible = false;
+            newList[7].BringToFront();
+            labelMenuTitle.Text = "Geolocation and Intellisense Test";
+        }
+
         private void productType(object sender, EventArgs e)
         {
             RadioButton button = (RadioButton)sender;
@@ -171,6 +198,69 @@ namespace EBTestGUI
             OS_textField.Text = "";
         }
 
+        private void buttonCheckGeo_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCountry.SelectedValue.ToString() == "")
+            {
+                MessageBox.Show("Please choose the country!");
+                return;
+            }
+
+            if (radioButtonLiveGeo.Checked == false && radioButtonTestGeo.Checked == false)
+            {
+                MessageBox.Show("Please choose a site type!");
+                return;
+            }
+
+            if (radioButtonS1Geo.Checked == false && radioButtonS2Geo.Checked == false && radioButtonNoServerGeo.Checked == false)
+            {
+                MessageBox.Show("Please choose a server!");
+                return;
+            }
+            Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
+            //-----CHOOSE SITE---//
+            SiteName newURL = new SiteName(xml, Maindriver);
+            string ChooseEBurl = newURL.ReadElement(XMLFilePath, siteBH);
+
+            //-----GO TO SITE---//
+            LaunchBrowser newSite = new LaunchBrowser(xml, Maindriver);
+            newSite.GoToURL(ChooseEBurl);
+
+            //-----CHECK SERVER---//
+            CheckServer NewServer = new CheckServer(xml, Maindriver);
+            NewServer.ReadElement(XMLFilePath, siteBH);
+            NewServer.CheckServerConnection();
+
+            if (server.ToLower().Contains("s1") || server.ToLower().Contains("s2"))
+            {
+                //-----SERVER CONNECTION---//
+                ConnectToServer newServer = new ConnectToServer(xml, Maindriver);
+                newServer.ReadElement(XMLFilePath, server, siteBH);
+                newServer.LaunchBrowser(ChooseEBurl);
+                Maindriver = newServer.ConnectToServerWanted(ChooseEBurl);
+            }
+
+            //-----GET IP AND SERVER---//
+            GeoLocServerIP newFooter = new GeoLocServerIP(xml, Maindriver);
+            newFooter.ReadElement(XMLFilePath, siteBH);
+            string serverGeo = newFooter.CheckServerConnection();
+            string IPadd = newFooter.CheckIPAddress();
+
+            //-----GET CONTENT---//
+            GeoLocContent findElement = new GeoLocContent(xml, Maindriver);
+            findElement.ReadElement(XMLFilePath, siteBH, comboBoxCountry.SelectedValue.ToString());
+            string currenGeo = findElement.findCurrency();
+            string flag = findElement.findFlag();
+            string language = findElement.findLanguage();
+            //findElement.findLocation();
+            string HomeURL = findElement.findURL();
+            string result = findElement.CheckResult();
+
+            //-----WRITE TO EXCEL---//
+            WriteToExcelGeoLocation newExcel = new WriteToExcelGeoLocation();
+            newExcel.ExcelWrite(siteBH, comboBoxCountry.SelectedValue.ToString(), IPadd.Trim(), serverGeo, HomeURL,
+            flag, currenGeo.ToUpper(), language, result);
+        }
 
 
         private void RunGenOS_Click(object sender, EventArgs e)
@@ -263,8 +353,8 @@ namespace EBTestGUI
             }
 
            
-                Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
-            string date = dateTimePickerBH.Value.ToString("MM/dd/yyyy");
+            Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
+            string date = dateTimePickerBH.Value.ToString("yyyy-MM-dd");
             //-----CHOOSE SITE---//
             SiteName newURL = new SiteName(xml, Maindriver);
             string ChooseEBurl = newURL.ReadElement(XMLFilePath, siteBH);
@@ -332,6 +422,8 @@ namespace EBTestGUI
             Maindriver = new ChromeDriver("D:\\Easybook Test System\\");
 
             //--TIMER START--//
+            sw.Stop();
+            sw.Reset();
             sw.Start();
 
             //-----CHOOSE SITE---//
@@ -455,11 +547,12 @@ namespace EBTestGUI
 
             //--STOP TIMER--//
             sw.Stop();
-            sw.Reset();
+           
             ts = sw.Elapsed;
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            sw.Reset();
             //MessageBox.Show("Time recorded : " + elapsedTime);
-           
+
 
 
             //--WRITE TO EXCEL--//

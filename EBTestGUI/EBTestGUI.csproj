@@ -9,14 +9,14 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EBTestGUI</RootNamespace>
-    <AssemblyName>EBTestGUI</AssemblyName>
+    <AssemblyName>Easybook Test Automation System</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Easybook KL\Desktop\</PublishUrl>
+    <PublishUrl>D:\Easybook Test System\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>32</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -105,6 +105,7 @@
     <Compile Include="CheckServer.cs" />
     <Compile Include="ChooseCountry.cs" />
     <Compile Include="ConnectToServer.cs" />
+    <Compile Include="CountryCombo.cs" />
     <Compile Include="CurrencyCombo.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Form1.cs">
@@ -113,6 +114,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeoLocContent.cs" />
+    <Compile Include="GeoLocServerIP.cs" />
     <Compile Include="IndexInputCallXML.cs" />
     <Compile Include="IPServerLaunch.cs" />
     <Compile Include="LaunchBrowser.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="SubmitSearch.cs" />
     <Compile Include="TripType.cs" />
     <Compile Include="WriteToExcel.cs" />
+    <Compile Include="WriteToExcelGeoLocation.cs" />
     <Compile Include="WriteToExcelLive.cs" />
     <Compile Include="WriteToExcelTest.cs" />
     <Compile Include="XMLComboInput.cs" />

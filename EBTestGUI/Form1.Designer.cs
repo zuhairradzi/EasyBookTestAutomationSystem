@@ -64,6 +64,7 @@
             this.radioButtonTestOS = new System.Windows.Forms.RadioButton();
             this.radioButtonLiveOS = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonGeoIntelMenu = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.InstructionButton = new System.Windows.Forms.Button();
             this.EditXMLButton = new System.Windows.Forms.Button();
@@ -137,6 +138,19 @@
             this.CurrencyComboBox = new System.Windows.Forms.ComboBox();
             this.SiteComboBox = new System.Windows.Forms.ComboBox();
             this.ProductComboBox = new System.Windows.Forms.ComboBox();
+            this.panelGeoIntel = new System.Windows.Forms.Panel();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
+            this.panelSite = new System.Windows.Forms.Panel();
+            this.radioButtonTestGeo = new System.Windows.Forms.RadioButton();
+            this.radioButtonLiveGeo = new System.Windows.Forms.RadioButton();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.labelCountry = new System.Windows.Forms.Label();
+            this.panelServer = new System.Windows.Forms.Panel();
+            this.radioButtonNoServerGeo = new System.Windows.Forms.RadioButton();
+            this.radioButtonS2Geo = new System.Windows.Forms.RadioButton();
+            this.radioButtonS1Geo = new System.Windows.Forms.RadioButton();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panelCheckBH.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -156,6 +170,9 @@
             this.panelXML1Display.SuspendLayout();
             this.panelClassifyBar.SuspendLayout();
             this.panelComboSearch.SuspendLayout();
+            this.panelGeoIntel.SuspendLayout();
+            this.panelSite.SuspendLayout();
+            this.panelServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // EBTestTitle
@@ -191,7 +208,6 @@
             this.radioButtonBHTest.TabIndex = 1;
             this.radioButtonBHTest.Text = "Test";
             this.radioButtonBHTest.UseVisualStyleBackColor = true;
-            this.radioButtonBHTest.CheckedChanged += new System.EventHandler(this.siteName);
             this.radioButtonBHTest.Click += new System.EventHandler(this.siteName);
             // 
             // radioButtonBHLive
@@ -204,7 +220,6 @@
             this.radioButtonBHLive.TabIndex = 0;
             this.radioButtonBHLive.Text = "Live";
             this.radioButtonBHLive.UseVisualStyleBackColor = true;
-            this.radioButtonBHLive.CheckedChanged += new System.EventHandler(this.siteName);
             this.radioButtonBHLive.Click += new System.EventHandler(this.siteName);
             // 
             // IPServerButton
@@ -560,6 +575,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkMagenta;
+            this.panel3.Controls.Add(this.buttonGeoIntelMenu);
             this.panel3.Controls.Add(this.buttonLogOut);
             this.panel3.Controls.Add(this.InstructionButton);
             this.panel3.Controls.Add(this.EditXMLButton);
@@ -570,6 +586,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(180, 470);
             this.panel3.TabIndex = 3;
+            // 
+            // buttonGeoIntelMenu
+            // 
+            this.buttonGeoIntelMenu.BackColor = System.Drawing.Color.MediumPurple;
+            this.buttonGeoIntelMenu.FlatAppearance.BorderColor = System.Drawing.Color.MediumPurple;
+            this.buttonGeoIntelMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGeoIntelMenu.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGeoIntelMenu.Location = new System.Drawing.Point(24, 220);
+            this.buttonGeoIntelMenu.Name = "buttonGeoIntelMenu";
+            this.buttonGeoIntelMenu.Size = new System.Drawing.Size(137, 62);
+            this.buttonGeoIntelMenu.TabIndex = 6;
+            this.buttonGeoIntelMenu.Text = "Geolocation and Intellisense Test";
+            this.buttonGeoIntelMenu.UseVisualStyleBackColor = false;
+            this.buttonGeoIntelMenu.Click += new System.EventHandler(this.ButtonGeoIntelMenu_Click);
             // 
             // buttonLogOut
             // 
@@ -605,7 +635,7 @@
             this.EditXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.MediumPurple;
             this.EditXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditXMLButton.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditXMLButton.Location = new System.Drawing.Point(24, 223);
+            this.EditXMLButton.Location = new System.Drawing.Point(24, 295);
             this.EditXMLButton.Name = "EditXMLButton";
             this.EditXMLButton.Size = new System.Drawing.Size(137, 36);
             this.EditXMLButton.TabIndex = 3;
@@ -1415,6 +1445,156 @@
             this.ProductComboBox.Size = new System.Drawing.Size(90, 22);
             this.ProductComboBox.TabIndex = 0;
             // 
+            // panelGeoIntel
+            // 
+            this.panelGeoIntel.BackColor = System.Drawing.Color.Violet;
+            this.panelGeoIntel.Controls.Add(this.comboBoxCountry);
+            this.panelGeoIntel.Controls.Add(this.panelSite);
+            this.panelGeoIntel.Controls.Add(this.label24);
+            this.panelGeoIntel.Controls.Add(this.label25);
+            this.panelGeoIntel.Controls.Add(this.labelCountry);
+            this.panelGeoIntel.Controls.Add(this.panelServer);
+            this.panelGeoIntel.Controls.Add(this.button3);
+            this.panelGeoIntel.Location = new System.Drawing.Point(240, 60);
+            this.panelGeoIntel.Name = "panelGeoIntel";
+            this.panelGeoIntel.Size = new System.Drawing.Size(380, 330);
+            this.panelGeoIntel.TabIndex = 22;
+            // 
+            // comboBoxCountry
+            // 
+            this.comboBoxCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCountry.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(33, 60);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(125, 22);
+            this.comboBoxCountry.TabIndex = 23;
+            // 
+            // panelSite
+            // 
+            this.panelSite.BackColor = System.Drawing.Color.GreenYellow;
+            this.panelSite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSite.Controls.Add(this.radioButtonTestGeo);
+            this.panelSite.Controls.Add(this.radioButtonLiveGeo);
+            this.panelSite.Location = new System.Drawing.Point(33, 122);
+            this.panelSite.Name = "panelSite";
+            this.panelSite.Size = new System.Drawing.Size(126, 26);
+            this.panelSite.TabIndex = 22;
+            // 
+            // radioButtonTestGeo
+            // 
+            this.radioButtonTestGeo.AutoSize = true;
+            this.radioButtonTestGeo.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTestGeo.Location = new System.Drawing.Point(58, 3);
+            this.radioButtonTestGeo.Name = "radioButtonTestGeo";
+            this.radioButtonTestGeo.Size = new System.Drawing.Size(49, 18);
+            this.radioButtonTestGeo.TabIndex = 1;
+            this.radioButtonTestGeo.Text = "Test";
+            this.radioButtonTestGeo.UseVisualStyleBackColor = true;
+            this.radioButtonTestGeo.Click += new System.EventHandler(this.siteName);
+            // 
+            // radioButtonLiveGeo
+            // 
+            this.radioButtonLiveGeo.AutoSize = true;
+            this.radioButtonLiveGeo.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonLiveGeo.Location = new System.Drawing.Point(4, 3);
+            this.radioButtonLiveGeo.Name = "radioButtonLiveGeo";
+            this.radioButtonLiveGeo.Size = new System.Drawing.Size(48, 18);
+            this.radioButtonLiveGeo.TabIndex = 0;
+            this.radioButtonLiveGeo.Text = "Live";
+            this.radioButtonLiveGeo.UseVisualStyleBackColor = true;
+            this.radioButtonLiveGeo.Click += new System.EventHandler(this.siteName);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(30, 162);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(104, 23);
+            this.label24.TabIndex = 21;
+            this.label24.Text = "Choose Server";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(31, 90);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(86, 23);
+            this.label25.TabIndex = 20;
+            this.label25.Text = "Choose Site";
+            // 
+            // labelCountry
+            // 
+            this.labelCountry.AutoSize = true;
+            this.labelCountry.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCountry.Location = new System.Drawing.Point(30, 26);
+            this.labelCountry.Name = "labelCountry";
+            this.labelCountry.Size = new System.Drawing.Size(116, 23);
+            this.labelCountry.TabIndex = 17;
+            this.labelCountry.Text = "Choose Country";
+            // 
+            // panelServer
+            // 
+            this.panelServer.BackColor = System.Drawing.Color.Tomato;
+            this.panelServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelServer.Controls.Add(this.radioButtonNoServerGeo);
+            this.panelServer.Controls.Add(this.radioButtonS2Geo);
+            this.panelServer.Controls.Add(this.radioButtonS1Geo);
+            this.panelServer.Location = new System.Drawing.Point(33, 196);
+            this.panelServer.Name = "panelServer";
+            this.panelServer.Size = new System.Drawing.Size(126, 52);
+            this.panelServer.TabIndex = 7;
+            // 
+            // radioButtonNoServerGeo
+            // 
+            this.radioButtonNoServerGeo.AutoSize = true;
+            this.radioButtonNoServerGeo.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonNoServerGeo.Location = new System.Drawing.Point(4, 28);
+            this.radioButtonNoServerGeo.Name = "radioButtonNoServerGeo";
+            this.radioButtonNoServerGeo.Size = new System.Drawing.Size(77, 18);
+            this.radioButtonNoServerGeo.TabIndex = 2;
+            this.radioButtonNoServerGeo.Text = "Irrelevant";
+            this.radioButtonNoServerGeo.UseVisualStyleBackColor = true;
+            this.radioButtonNoServerGeo.Click += new System.EventHandler(this.serverType);
+            // 
+            // radioButtonS2Geo
+            // 
+            this.radioButtonS2Geo.AutoSize = true;
+            this.radioButtonS2Geo.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS2Geo.Location = new System.Drawing.Point(57, 3);
+            this.radioButtonS2Geo.Name = "radioButtonS2Geo";
+            this.radioButtonS2Geo.Size = new System.Drawing.Size(40, 18);
+            this.radioButtonS2Geo.TabIndex = 1;
+            this.radioButtonS2Geo.Text = "S2";
+            this.radioButtonS2Geo.UseVisualStyleBackColor = true;
+            this.radioButtonS2Geo.Click += new System.EventHandler(this.serverType);
+            // 
+            // radioButtonS1Geo
+            // 
+            this.radioButtonS1Geo.AutoSize = true;
+            this.radioButtonS1Geo.Font = new System.Drawing.Font("Sansation", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonS1Geo.Location = new System.Drawing.Point(4, 3);
+            this.radioButtonS1Geo.Name = "radioButtonS1Geo";
+            this.radioButtonS1Geo.Size = new System.Drawing.Size(37, 18);
+            this.radioButtonS1Geo.TabIndex = 0;
+            this.radioButtonS1Geo.Text = "S1";
+            this.radioButtonS1Geo.UseVisualStyleBackColor = true;
+            this.radioButtonS1Geo.Click += new System.EventHandler(this.serverType);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Magenta;
+            this.button3.Font = new System.Drawing.Font("Zekton Rg", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(272, 272);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(89, 39);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Check";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.buttonCheckGeo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1422,13 +1602,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.panelInstruction);
+            this.Controls.Add(this.panelGeoIntel);
             this.Controls.Add(this.PanelXMLInstruction);
+            this.Controls.Add(this.panelCheckBH);
             this.Controls.Add(this.panelComboSearch);
             this.Controls.Add(this.panelClassifyBar);
             this.Controls.Add(this.panelXML1Display);
             this.Controls.Add(this.panelXML1Edit);
             this.Controls.Add(this.panelGenOS);
-            this.Controls.Add(this.panelCheckBH);
             this.Controls.Add(this.panelTestBuy);
             this.Controls.Add(this.labelMenuTitle);
             this.Controls.Add(this.panel3);
@@ -1474,6 +1655,12 @@
             this.panelClassifyBar.ResumeLayout(false);
             this.panelComboSearch.ResumeLayout(false);
             this.panelComboSearch.PerformLayout();
+            this.panelGeoIntel.ResumeLayout(false);
+            this.panelGeoIntel.PerformLayout();
+            this.panelSite.ResumeLayout(false);
+            this.panelSite.PerformLayout();
+            this.panelServer.ResumeLayout(false);
+            this.panelServer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1493,12 +1680,6 @@
         private System.Windows.Forms.Button InstructionButton;
         private System.Windows.Forms.Button EditXMLButton;
         private System.Windows.Forms.Panel panelGenOS;
-        private System.Windows.Forms.TextBox OrderNo_textBox;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.RadioButton radioButtonCarBH;
-        private System.Windows.Forms.RadioButton radioButtonTrainBH;
-        private System.Windows.Forms.RadioButton radioButtonFerryBH;
-        private System.Windows.Forms.RadioButton radioButtonBusBH;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.RadioButton radioButtonNoServerBH;
         private System.Windows.Forms.RadioButton radioButtonS2BH;
@@ -1529,7 +1710,6 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.RadioButton radioButtonTest;
         private System.Windows.Forms.RadioButton radioButtonLive;
-        private System.Windows.Forms.DateTimePicker dateTimePickerBH;
         private System.Windows.Forms.RichTextBox richTextBoxInstruction;
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.Label label3;
@@ -1588,6 +1768,27 @@
         private System.Windows.Forms.ComboBox CurrencyComboBox;
         private System.Windows.Forms.ComboBox SiteComboBox;
         private System.Windows.Forms.ComboBox ProductComboBox;
+        private System.Windows.Forms.Button buttonGeoIntelMenu;
+        private System.Windows.Forms.Panel panelGeoIntel;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label labelCountry;
+        private System.Windows.Forms.Panel panelServer;
+        private System.Windows.Forms.RadioButton radioButtonNoServerGeo;
+        private System.Windows.Forms.RadioButton radioButtonS2Geo;
+        private System.Windows.Forms.RadioButton radioButtonS1Geo;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBH;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.RadioButton radioButtonCarBH;
+        private System.Windows.Forms.RadioButton radioButtonTrainBH;
+        private System.Windows.Forms.RadioButton radioButtonFerryBH;
+        private System.Windows.Forms.RadioButton radioButtonBusBH;
+        private System.Windows.Forms.TextBox OrderNo_textBox;
+        private System.Windows.Forms.Panel panelSite;
+        private System.Windows.Forms.RadioButton radioButtonTestGeo;
+        private System.Windows.Forms.RadioButton radioButtonLiveGeo;
+        private System.Windows.Forms.ComboBox comboBoxCountry;
     }
 }
 
