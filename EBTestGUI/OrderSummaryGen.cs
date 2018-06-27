@@ -111,7 +111,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Div One not found");
+                MessageBox.Show("Error #GENOS02: OS Header not found");
                 Console.WriteLine("Div One not found");
             }
 
@@ -148,7 +148,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Product Name not found");
+                MessageBox.Show("Error #GENOS01: Product Name not found");
                 Console.WriteLine("Product Name not found");
                 return null;
             }
@@ -159,35 +159,80 @@ namespace EBTestGUI
         {
             try
             {
-                if (product == "Bus")
+                if (siteType.ToLower() == "test")
                 {
-                    string FrontTrim = DivOne.Remove(0, 40);
-                    string BackTrim = FrontTrim.Remove(21, 69);
-                    PurchaseDate = BackTrim.Trim();
-                    Console.WriteLine("Purchase date : " + PurchaseDate);
+                    if (product == "Bus")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 40);
+                        string BackTrim = FrontTrim.Remove(21, 69);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
+
+                    else if (product == "Car")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 42);
+                        string BackTrim = FrontTrim.Remove(21, 69);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
+                    else if (product == "Ferry")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 61);
+
+                        // MessageBox.Show("front trim : " + FrontTrim);
+                        string BackTrim = FrontTrim.Remove(20, 95);
+
+                        //MessageBox.Show("back trim : " + BackTrim);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
+
+                    else if (product == "Train")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 40);
+                        string BackTrim = FrontTrim.Remove(22, 68);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
                 }
 
-                else if (product == "Car")
+                else if (siteType.ToLower() == "live")
                 {
-                    string FrontTrim = DivOne.Remove(0, 42);
-                    string BackTrim = FrontTrim.Remove(21, 69);
-                    PurchaseDate = BackTrim.Trim();
-                    Console.WriteLine("Purchase date : " + PurchaseDate);
-                }
-                else if (product == "Ferry")
-                {
-                    string FrontTrim = DivOne.Remove(0, 61);
-                    string BackTrim = FrontTrim.Remove(20, 54);
-                    PurchaseDate = BackTrim.Trim();
-                    Console.WriteLine("Purchase date : " + PurchaseDate);
-                }
+                    if (product == "Bus")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 40);
+                        string BackTrim = FrontTrim.Remove(21, 69);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
 
-                else if (product == "Train")
-                {
-                    string FrontTrim = DivOne.Remove(0, 40);
-                    string BackTrim = FrontTrim.Remove(22, 68);
-                    PurchaseDate = BackTrim.Trim();
-                    Console.WriteLine("Purchase date : " + PurchaseDate);
+                    else if (product == "Car")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 42);
+                        string BackTrim = FrontTrim.Remove(21, 69);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
+                    else if (product == "Ferry")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 61);
+
+                        // MessageBox.Show("front trim : " + FrontTrim);
+                        string BackTrim = FrontTrim.Remove(20, 54);
+
+                        //MessageBox.Show("back trim : " + BackTrim);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
+
+                    else if (product == "Train")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 40);
+                        string BackTrim = FrontTrim.Remove(22, 68);
+                        PurchaseDate = BackTrim.Trim();
+                        Console.WriteLine("Purchase date : " + PurchaseDate);
+                    }
                 }
                 Console.WriteLine("Purchase date : " + PurchaseDate);
                 return PurchaseDate;
@@ -196,7 +241,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Purchase Date not found");
+                MessageBox.Show("Error #GENOS03: Purchase Date not found");
                 Console.WriteLine("Purchase Date not found");
                 return null;
 
@@ -208,42 +253,82 @@ namespace EBTestGUI
         {
             try
             {
+                if (siteType.ToLower() == "test")
+                {
+                    if (product == "Bus")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 71);
+                        string BackTrim = FrontTrim.Remove(21, 38);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
 
-                if (product == "Bus")
+                    else if (product == "Car")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 73);
+                        string BackTrim = FrontTrim.Remove(23, 36);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+                    else if (product == "Ferry")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 91);
+                        // MessageBox.Show("front trim : " + FrontTrim);
+                        string BackTrim = FrontTrim.Remove(21, 64);
+                        //MessageBox.Show("back trim : " + BackTrim);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+                    else if (product == "Train")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 71);
+                        string BackTrim = FrontTrim.Remove(21, 38);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+                }
+                else if (siteType.ToLower() == "live")
                 {
-                    string FrontTrim = DivOne.Remove(0, 71);
-                    string BackTrim = FrontTrim.Remove(21, 38);
-                    cartID = BackTrim.Trim();
-                    Console.WriteLine("Cart ID : " + cartID);
+                    if (product == "Bus")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 71);
+                        string BackTrim = FrontTrim.Remove(21, 38);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+
+                    else if (product == "Car")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 73);
+                        string BackTrim = FrontTrim.Remove(23, 36);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+                    else if (product == "Ferry")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 91);
+                        // MessageBox.Show("front trim : " + FrontTrim);
+                        string BackTrim = FrontTrim.Remove(21, 23);
+                        //MessageBox.Show("back trim : " + BackTrim);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
+                    else if (product == "Train")
+                    {
+                        string FrontTrim = DivOne.Remove(0, 71);
+                        string BackTrim = FrontTrim.Remove(21, 38);
+                        cartID = BackTrim.Trim();
+                        Console.WriteLine("Cart ID : " + cartID);
+                    }
                 }
 
-                else if (product == "Car")
-                {
-                    string FrontTrim = DivOne.Remove(0, 73);
-                    string BackTrim = FrontTrim.Remove(23, 36);
-                    cartID = BackTrim.Trim();
-                    Console.WriteLine("Cart ID : " + cartID);
-                }
-                else if (product == "Ferry")
-                {
-                    string FrontTrim = DivOne.Remove(0, 91);
-                    string BackTrim = FrontTrim.Remove(21, 23);
-                    cartID = BackTrim.Trim();
-                    Console.WriteLine("Cart ID : " + cartID);
-                }
-                else if (product == "Train")
-                {
-                    string FrontTrim = DivOne.Remove(0, 71);
-                    string BackTrim = FrontTrim.Remove(21, 38);
-                    cartID = BackTrim.Trim();
-                    Console.WriteLine("Cart ID : " + cartID);
-                }
+
                 return cartID;
 
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Cart ID not found");
+                MessageBox.Show("Error #GENOS04: Cart ID not found");
                 Console.WriteLine("Cart ID not found");
                 return null;
 
@@ -262,7 +347,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Order No not found");
+                MessageBox.Show("Error #GENOS05: Order No not found");
                 Console.WriteLine("Order No not found");
                 return null;
             }
@@ -346,7 +431,7 @@ namespace EBTestGUI
 
                 }
             }
-            MessageBox.Show("Trip Info/Car Info not found");
+            MessageBox.Show("Error #GENOS06: Trip Info/Car Info not found");
             Console.WriteLine("Trip Info/Car Info not found");
             return null;
         }
@@ -389,7 +474,7 @@ namespace EBTestGUI
                 }
             }
 
-            MessageBox.Show("Depart Time/Rent Period not found");
+            MessageBox.Show("Error #GENOS07: Depart Time/Rent Period not found");
             Console.WriteLine("Depart Time/Rent Period not found");
             return null;
         }
@@ -422,7 +507,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Passenger Name not found");
+                MessageBox.Show("Error #GENOS08: Passenger Name not found");
                 Console.WriteLine("Passenger Name not found");
                 return null;
             }
@@ -440,7 +525,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Company not found");
+                MessageBox.Show("Error #GENOS09: Company not found");
                 Console.WriteLine("Company not found");
                 return null;
             }
@@ -470,7 +555,7 @@ namespace EBTestGUI
                 }
                 else
                 {
-                    MessageBox.Show("Server Name not found");
+                    MessageBox.Show("Error #GENOS11: Server Name not found");
                     Console.WriteLine("Server Name not found");
                     return null;
                 }
@@ -508,7 +593,7 @@ namespace EBTestGUI
                 }
                 else
                 {
-                    MessageBox.Show("Platform Name not found");
+                    MessageBox.Show("Error #GENOS10: Platform Name not found");
                     Console.WriteLine("Platform Name not found");
                     return null;
                 }

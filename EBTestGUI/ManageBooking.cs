@@ -51,7 +51,7 @@ namespace EBTestGUI
             }
             catch (Exception)
             {
-                MessageBox.Show("Order No not found");
+                MessageBox.Show("Error #MBO01: Order No not found");
                 Console.WriteLine("Order No not found");
             }
         }

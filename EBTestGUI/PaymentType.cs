@@ -37,18 +37,13 @@ namespace EBTestGUI
         {
             try
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.Id(paymentGateID)))).Click();
-                Thread.Sleep(1000);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.Id(paymentGateID)))).Click();
-                Thread.Sleep(1000);
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.Id(paymentGateID)))).Click();
-                Thread.Sleep(1000);
                 new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists((By.Id(paymentGateID)))).Click();
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("PayPal option not found");
+                MessageBox.Show("Error #PYT01: PayPal option not found");
                 Console.WriteLine("PayPal option not found");
             }
         }
@@ -63,7 +58,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Captcha field not found");
+                MessageBox.Show("Error #PYT02: Captcha field not found");
                 Console.WriteLine("Captcha field not found");
             }
         }
@@ -85,7 +80,7 @@ namespace EBTestGUI
 
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Proceed to payment button not found");
+                MessageBox.Show("Error #PYT03: Proceed to payment button not found");
                 Console.WriteLine("Proceed to payment button not found");
             }
         }

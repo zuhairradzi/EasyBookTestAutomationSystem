@@ -61,7 +61,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
 
             {
-                MessageBox.Show("Server element not found!");
+                MessageBox.Show("Error #GEO01: Server element not found!");
                 Console.WriteLine("Server element not found!");
                 return null;
             }
@@ -83,7 +83,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
 
             {
-                MessageBox.Show("Server element not found!");
+                MessageBox.Show("Error #GEO02: IP address element not found!");
                 Console.WriteLine("Server element not found!");
                 return null;
             }

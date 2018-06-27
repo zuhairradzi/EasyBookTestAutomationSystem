@@ -68,7 +68,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Date element not found");
+                MessageBox.Show("Error #DAT01: Date element not found");
                 Console.WriteLine("Date element not found");
             }
         }

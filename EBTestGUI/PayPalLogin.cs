@@ -103,7 +103,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Login to PayPal button not found");
+                MessageBox.Show("Error #PPL01: Login to PayPal button not found");
                 Console.WriteLine("Login to PayPal button not found");
             }
         }
@@ -117,7 +117,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("PayPal email field not found");
+                MessageBox.Show("Error #PPL02: PayPal email field not found");
                 Console.WriteLine("PayPal email field not found");
             }
 
@@ -129,7 +129,7 @@ namespace EBTestGUI
             catch (NoSuchElementException)
             {
 
-                MessageBox.Show("Cannot proceed to password");
+                MessageBox.Show("Error #PPL02: Cannot proceed to password");
                 Console.WriteLine("Cannot proceed to password");
             }
         }
@@ -143,7 +143,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Password field not found");
+                MessageBox.Show("Error #PPL03: Password field not found");
                 Console.WriteLine("Password field not found");
             }
 
@@ -153,7 +153,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Cannot login into PayPal");
+                MessageBox.Show("Error #PPL03: Cannot login into PayPal");
                 Console.WriteLine("Cannot login into PayPal");
             }
 

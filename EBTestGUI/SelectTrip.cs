@@ -60,7 +60,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Select trip not found");
+                    MessageBox.Show("Error #STR01: Select trip not found");
                     Console.WriteLine("Select trip not found");
                 }
             }

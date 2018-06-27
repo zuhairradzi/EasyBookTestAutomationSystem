@@ -40,7 +40,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Search button not found");
+                MessageBox.Show("Error #SEA01: Search button not found");
                 Console.WriteLine("Search button not found");
             }
 

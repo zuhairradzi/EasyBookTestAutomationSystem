@@ -43,7 +43,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Sort fare not found");
+                    MessageBox.Show("Error #SOR01: Sort fare not found");
                 }
             }
             else if (product.ToLower().Contains("ferry") || product.ToLower().Contains("train") || product.ToLower().Contains("bus"))
@@ -54,7 +54,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Sort fare not found");
+                    MessageBox.Show("Error #SOR02: Sort fare not found");
                 }
             }
         }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using System.Xml;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace EBTestGUI
 {
@@ -78,6 +79,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Error #GLC01 : Flag element not found!");
                 Console.WriteLine("Flag not found");
                 return null;
             }
@@ -104,6 +106,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Error #GLC02 : URL element not found!");
                 Console.WriteLine("URL not found");
                 return null;
             }
@@ -132,6 +135,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Error #GLC03 : Currency element not found!");
                 Console.WriteLine("Currency not found");
                 return null;
             }
@@ -159,6 +163,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Error #GLC04 : Language element not found!");
                 Console.WriteLine("Language not found");
                 return null;
             }
@@ -234,6 +239,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
+                MessageBox.Show("Error #GLC05 : Location element not found!");
                 Console.WriteLine("location not found");
             }
         }

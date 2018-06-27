@@ -107,7 +107,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Login unsuccessful");
+                MessageBox.Show("Error #LOG01: Login unsuccessful");
                 Console.WriteLine("Login unsuccessful");
             }
         }

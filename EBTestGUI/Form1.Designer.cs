@@ -595,9 +595,9 @@
             this.buttonGeoIntelMenu.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGeoIntelMenu.Location = new System.Drawing.Point(24, 220);
             this.buttonGeoIntelMenu.Name = "buttonGeoIntelMenu";
-            this.buttonGeoIntelMenu.Size = new System.Drawing.Size(137, 62);
+            this.buttonGeoIntelMenu.Size = new System.Drawing.Size(137, 36);
             this.buttonGeoIntelMenu.TabIndex = 6;
-            this.buttonGeoIntelMenu.Text = "Geolocation and Intellisense Test";
+            this.buttonGeoIntelMenu.Text = "Geolocation Test";
             this.buttonGeoIntelMenu.UseVisualStyleBackColor = false;
             this.buttonGeoIntelMenu.Click += new System.EventHandler(this.ButtonGeoIntelMenu_Click);
             // 
@@ -635,7 +635,7 @@
             this.EditXMLButton.FlatAppearance.BorderColor = System.Drawing.Color.MediumPurple;
             this.EditXMLButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditXMLButton.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditXMLButton.Location = new System.Drawing.Point(24, 295);
+            this.EditXMLButton.Location = new System.Drawing.Point(24, 273);
             this.EditXMLButton.Name = "EditXMLButton";
             this.EditXMLButton.Size = new System.Drawing.Size(137, 36);
             this.EditXMLButton.TabIndex = 3;

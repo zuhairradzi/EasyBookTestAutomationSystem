@@ -66,7 +66,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Insurance not found");
+                MessageBox.Show("Error #PDE01: Insurance not found");
                 Console.WriteLine("Insurance not found");
             }
         }
@@ -82,7 +82,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Nationality not found");
+                MessageBox.Show("Error #PDE02:Nationality not found");
                 Console.WriteLine("Nationality not found");
             }
         }
@@ -97,7 +97,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("Gender not found");
+                MessageBox.Show("Error #PDE03: Gender not found");
                 Console.WriteLine("Gender not found");
             }
 
@@ -111,7 +111,7 @@ namespace EBTestGUI
             }
             catch (NoSuchElementException)
             {
-                MessageBox.Show("IC/Passport field not found");
+                MessageBox.Show("Error #PDE04: IC/Passport field not found");
                 Console.WriteLine("IC/Passport field not found");
             }
         }

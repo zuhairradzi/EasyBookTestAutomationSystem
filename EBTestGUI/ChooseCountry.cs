@@ -46,7 +46,7 @@ namespace EBTestGUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Country not found");
+                    MessageBox.Show("Error #COU01: Country not found");
                     Console.WriteLine("Country not found!");
                 }
             }

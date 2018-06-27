@@ -39,7 +39,7 @@ namespace EBTestGUI
         public void proceedPayPal1(string currency)
         {
             string currencyUp = currency.ToUpper();
-            Thread.Sleep(15000);
+            Thread.Sleep(13000);
             if (currencyUp.Contains("MYR"))
             {
                 try
@@ -48,7 +48,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Continue #1 not found");
+                    MessageBox.Show("Error #PPP01: Continue #1 not found");
                     Console.WriteLine("Continue #1 not found");
                 }
                 try
@@ -57,7 +57,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Continue #2 not found");
+                    MessageBox.Show("Error #PPP02: Continue #2 not found");
                     Console.WriteLine("Continue #2 not found");
                 }
 
@@ -67,7 +67,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Cannot proceed to Order Summary");
+                    MessageBox.Show("Error #PPP03: Cannot proceed to Order Summary");
                     Console.WriteLine("Cannot proceed to Order Summary");
                 }
             }
@@ -79,7 +79,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Continue #2 not found");
+                    MessageBox.Show("Error #PPP02: Continue #2 not found");
                     Console.WriteLine("Continue #2 not found");
                 }
                 try
@@ -88,7 +88,7 @@ namespace EBTestGUI
                 }
                 catch (NoSuchElementException)
                 {
-                    MessageBox.Show("Cannot proceed to Order Summary");
+                    MessageBox.Show("Error #PPP03: Cannot proceed to Order Summary");
                     Console.WriteLine("Cannot proceed to Order Summary");
                 }
             }

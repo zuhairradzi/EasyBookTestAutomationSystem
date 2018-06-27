@@ -42,7 +42,7 @@ namespace EBTestGUI
             }
             catch (Exception)
             {
-                MessageBox.Show("One way button not found");
+                MessageBox.Show("Error #TTY01: One way button not found");
                 Console.WriteLine("One way button not found");
             }
         }
