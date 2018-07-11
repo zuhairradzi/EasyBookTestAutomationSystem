@@ -96,8 +96,10 @@ namespace EBTestGUI
 
         public void ClickLogin()
         {
+            Thread.Sleep(10000);
             try
             {
+                
                 new WebDriverWait(driver,
                     TimeSpan.FromSeconds(60)).Until(ExpectedConditions.ElementExists(By.XPath(LoginButtonFirst))).Click();
             }

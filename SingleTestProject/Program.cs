@@ -21,63 +21,18 @@ namespace SingleTestProject
     {
         static void Main(string[] args)
         {
-            
-
-            String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Easybook KL\\Documents\\testlogin.mdf\";Integrated Security=True;Connect Timeout=30";
-            String XMLFilePath = "C:\\Users\\Easybook KL\\Documents\\Visual Studio 2015\\Projects\\EasyBookTestAutomationSystem\\XML files\\ETAS.xml";
             XmlDocument xml = new XmlDocument();
-          
+            IWebDriver driver = new ChromeDriver();
+            string url = "https://test.easybook.com/en-my/payment/paymentresult?guid=TR2b42e6071f6f41da8e&source=PaypalEC_SGD&status=completed";
+            driver.Navigate().GoToUrl(url);
+            var cartID = driver.FindElement(By.XPath("//*[@id='print-content']/table/tbody/tr/td/table[1]/tbody/tr[2]/td[1]/text[2]"));
+            string DivOne = cartID.Text.ToString();
+            Console.WriteLine();
+            Console.WriteLine("Div one = " + DivOne);
+            Console.WriteLine();
 
-            string urlOS;
-            Console.WriteLine("Enter CartID : ");
-            string cartID = Console.ReadLine();
-            Console.WriteLine("Enter Site type : ");
-            string siteType = Console.ReadLine();
-           
-            string productType, orderNo, CartID, PurchaseDate, passengerName, Company, tripDetail, tripDuration;
-            
-            IWebDriver Maindriver = new ChromeDriver();
-            Console.WriteLine("Launching browser");
-
-            LaunchBrowser2 newURL = new LaunchBrowser2(xml, Maindriver);
-            newURL.GoToURL(siteType, cartID);
-
-            OrderSummary2 OStest = new OrderSummary2(xml, Maindriver);
-            
-            productType = OStest.GetProductName(cartID);
-            OStest.ReadElement(XMLFilePath, siteType);
-            OStest.GetDiv1();
-           
-            CartID = OStest.GetCartID();
-            orderNo = OStest.GetOrderNo();
-
-            OStest.GetDepartPlace();
-            OStest.GetArrivePlace();
-
-            tripDetail = OStest.Journey();
-            PurchaseDate = OStest.GetPurchaseDate();
-            tripDuration = OStest.GetTripInfo();
-            passengerName = OStest.GetPassengerName();
-            Company = OStest.GetCompany();
-
-            OStest.GetReturnLocation();
-            OStest.Journey();
-            OStest.GetCartID();
-            OStest.Platform();
-            OStest.Server();
-
-            WriteToExcelTest2 OStoExcelTest = new WriteToExcelTest2();
-            WriteToExcelLive2 OStoExcelLive = new WriteToExcelLive2();
-
-            if (passengerName.ToLower().Contains("live"))
-            {
-                OStoExcelLive.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
-            }
-            else
-            {
-                OStoExcelTest.ExcelWrite(productType, orderNo, CartID, tripDetail, PurchaseDate, tripDuration, passengerName, Company);
-            }
-            
         }
+           
     }
 }
+
