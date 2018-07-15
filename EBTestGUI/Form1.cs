@@ -500,7 +500,7 @@ namespace EBTestGUI
 
             //--- PASSENGER DETAILS  ---//
             PassengerDetail PassengerTest = new PassengerDetail(xml, Maindriver);
-            PassengerTest.ReadElement(XMLFilePath, product);
+            PassengerTest.ReadElement(XMLFilePath, product, site);
 
 
             //--- PAYMENT METHOD  ---//

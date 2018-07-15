@@ -20,7 +20,7 @@ namespace EBTestGUI
 
         string insuranceElemClass, insuranceElemID, insuranceElemXP, nationalityValue, nationElem, genderElemXP, genderElemID, genderTypeXP, genderTypeText, ICPassElem, ICPassValue;
 
-        public void ReadElement(string XMLpath, string product)
+        public void ReadElement(string XMLpath, string product, string site)
         {
             PassengerDetail PassengerTest = new PassengerDetail(xml, driver);
             xml.Load(XMLpath);
@@ -44,6 +44,12 @@ namespace EBTestGUI
             {
                 PassengerTest.untickInsurance(insuranceElemID);
             }
+
+            if (product.ToLower().Contains("ferry") && site.ToLower().Contains("live"))
+            {
+                PassengerTest.untickInsurance(insuranceElemID);
+            }
+
 
             if (product.ToLower().Contains("car"))
             {
